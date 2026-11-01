@@ -15,6 +15,8 @@
 
 **Default principle:** Prefer an existing framework/conventions; use standard libraries when sufficient (Go `net/http` is the primary comparator for Gin). Choosing a framework does not automatically choose hosting, DB, storage, networking or observability.
 
+Every new `frameworks/*.md` profile must appear exactly once in the index. CI checks the required sections, ISO `**Reviewed:**` date (not in the future), and official HTTPS link structure. These tests **cannot establish that a claim is correct or that a framework is secure**.
+
 Each profile must state **fit, anti-fit, compatibility, maturity/review risks, licensing, test/operational questions and official evidence**. Documentation claims are scoped to their source; maturity ratings and rankings are not inferred from popularity.
 
 **Provider evidence SSOT:** [Providers](../providers/README.md) · [Pillars](../pillars/README.md) · [Decision records](../decisions/README.md) · [Languages](../languages/README.md).

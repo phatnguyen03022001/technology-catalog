@@ -151,6 +151,161 @@ class CatalogMutationTests(unittest.TestCase):
         self.change("glitchtip", "GlitchTip Cloud", "checked", lambda _: "2020-01-01")
         self.validate(1, "VERIFIED evidence older than 180 days")
 
+    def test_unindexed_framework_rejected(self):
+        (self.root / "frameworks" / "rogue.md").write_text("# Rogue\n\n**Reviewed:** 2026-11-01\n")
+        self.validate(1, "unindexed framework profile")
+
+    def test_indexed_framework_missing_evidence_rejected(self):
+        index = self.root / "frameworks" / "README.md"
+        index.write_text(index.read_text().replace(
+            "| Swift | Vapor | Swift server-side HTTP APIs | [Vapor](vapor.md) |",
+            "| Swift | Vapor | Swift server-side HTTP APIs | [Vapor](vapor.md) |\n"
+            "| Go | Rogue | Bad candidate | [Rogue](rogue.md) |",
+        ))
+        (self.root / "frameworks" / "rogue.md").write_text(
+            "# Rogue\n\n**Reviewed:** 2026-11-01\n\n## Fit\nNot evidenced.\n"
+        )
+        self.validate(1, "missing required section")
+
+    def test_unindexed_decision_rejected(self):
+        (self.root / "decisions" / "unsafe.md").write_text(
+            "# Unsafe\n\n**Status:** APPROVED_FOR_PRODUCTION\n"
+        )
+        self.validate(1, "unindexed decision record")
+
+    def test_indexed_fake_production_approval_rejected(self):
+        index = self.root / "decisions" / "README.md"
+        index.write_text(index.read_text().replace(
+            "| [Native Apple app](apple-native.md) |",
+            "| [Unsafe](unsafe.md) | fake | fake | APPROVED |\n"
+            "| [Native Apple app](apple-native.md) |",
+        ))
+        (self.root / "decisions" / "unsafe.md").write_text(
+            "# Unsafe\n\n**Status:** APPROVED_FOR_PRODUCTION · **Reviewed:** 2026-11-01 "
+            "· **Workload:** magic.\n\n## Hard gates\n"
+            "- Functional: **PASS**\n"
+        )
+        self.validate(1, "production approval")
+
+    def test_decision_index_status_mismatch_rejected(self):
+        index = self.root / "decisions" / "README.md"
+        index.write_text(index.read_text().replace(
+            "Next.js | CONDITIONAL; deploy/SSR workload test pending |",
+            "Next.js | APPROVED; deploy/SSR workload test pending |",
+        ))
+        self.validate(1, "decision index status mismatch")
+
+    def test_reference_decision_conflicting_approval_rejected(self):
+        p = self.root / "decisions" / "web-fullstack.md"
+        p.write_text(p.read_text() + "\nAPPROVED_FOR_PRODUCTION\n")
+        self.validate(1, "contradictory approval")
+
+    def test_review_date_valid_change_allowed(self):
+        p = self.root / "frameworks" / "nextjs.md"
+        p.write_text(p.read_text().replace("**Reviewed:** 2026-11-01",
+                                            "**Reviewed:** 2026-10-31"))
+        self.validate(0, "STRUCTURE PASS")
+
+    def test_invalid_review_date_rejected(self):
+        p = self.root / "frameworks" / "nextjs.md"
+        p.write_text(p.read_text().replace("**Reviewed:** 2026-11-01",
+                                            "**Reviewed:** next-week"))
+        self.validate(1, "invalid review date")
+
+    def test_future_review_date_rejected(self):
+        p = self.root / "frameworks" / "nextjs.md"
+        p.write_text(p.read_text().replace("**Reviewed:** 2026-11-01",
+                                            "**Reviewed:** 2099-01-01"))
+        self.validate(1, "future review date")
+
+    def test_fragment_only_broken_anchor_rejected(self):
+        p = self.root / "README.md"
+        p.write_text(p.read_text() + "\n[broken](#nonexistent-anchor)\n")
+        self.validate(1, "missing heading anchor")
+
+    def test_fragment_only_valid_anchor_allowed(self):
+        p = self.root / "README.md"
+        p.write_text(p.read_text() + "\n[nav](#navigation)\n")
+        self.validate(0, "STRUCTURE PASS")
+
+    def make_approved_fixture(self):
+        index = self.root / "decisions" / "README.md"
+        index.write_text(index.read_text().replace(
+            "| [Native Apple app](apple-native.md) |",
+            "| [Measured test](measured-test.md) | real project | measured | APPROVED |\n"
+            "| [Native Apple app](apple-native.md) |",
+        ))
+        proof = "[evidence](https://github.com/example/benchmark)"
+        gates = ("Functional", "Security/privacy", "Legal/licensing",
+                 "Cost/TCO", "Portability/recovery")
+        lines = [
+            "# Measured test",
+            "**Status:** APPROVED_FOR_PRODUCTION · **Reviewed:** 2026-10-31 "
+            "· **Workload:** measured production traffic.",
+            "",
+            "## Workload & candidates",
+            "Named project service comparing real traffic and measured options.",
+            "",
+            "## Hard gates",
+        ] + [f"- {gate}: **PASS** supported by {proof}." for gate in gates] + [
+            "",
+            "## Decision & falsification",
+            "Choose based on reviewed measurements and an explicit rollback option.",
+            "",
+            "## Verification / TCO / fallback",
+            "Reproduce the workload, measured resource use, billing and fallback.",
+            "",
+            "## Official evidence",
+            "- [Docs one](https://go.dev/doc/)",
+            "- [Docs two](https://docs.python.org/3/)",
+            "",
+            "## Approval evidence",
+            "- Owner: Team infrastructure",
+            "- Project: Actual production gateway",
+            "- Workload ID: production-load-2026-10",
+            "- Benchmark evidence: [benchmark](https://github.com/example/benchmarks)",
+            "- TCO evidence: [invoice](https://github.com/example/costs)",
+            "- Approval date: 2026-10-31",
+        ]
+        path = self.root / "decisions" / "measured-test.md"
+        path.write_text("\n".join(lines) + "\n")
+        return path
+
+    def test_complete_production_approval_contract_allowed(self):
+        self.make_approved_fixture()
+        self.validate(0, "STRUCTURE PASS")
+
+    def test_production_approval_missing_one_hard_gate_evidence_rejected(self):
+        path = self.make_approved_fixture()
+        path.write_text(path.read_text().replace(
+            "- Security/privacy: **PASS** supported by [evidence](https://github.com/example/benchmark).",
+            "- Security/privacy: **PASS** without evidence.",
+        ))
+        self.validate(1, "production approval missing PASS gate evidence: Security/privacy")
+
+    def test_production_approval_placeholder_gate_source_rejected(self):
+        path = self.make_approved_fixture()
+        path.write_text(path.read_text().replace(
+            "[evidence](https://github.com/example/benchmark)",
+            "[evidence](https://example.com/benchmark)",
+        ))
+        self.validate(1, "production approval missing PASS gate evidence")
+
+    def test_production_approval_unmeasured_rejected(self):
+        path = self.make_approved_fixture()
+        path.write_text(path.read_text() + "\nNOT_MEASURED\n")
+        self.validate(1, "production approval contains unresolved")
+
+    def test_broken_cross_document_anchor_rejected(self):
+        p = self.root / "README.md"
+        p.write_text(p.read_text() + "\n[bad](frameworks/nextjs.md#does-not-exist)\n")
+        self.validate(1, "missing heading anchor")
+
+    def test_valid_cross_document_anchor_allowed(self):
+        p = self.root / "README.md"
+        p.write_text(p.read_text() + "\n[good](frameworks/nextjs.md#compatibility)\n")
+        self.validate(0, "STRUCTURE PASS")
+
     def test_original_schema_validation_still_fails_unknown_status(self):
         self.change("supabase", "Supabase Storage", "status",
                     lambda _: "FAKE_VERIFIED")

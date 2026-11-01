@@ -1,50 +1,71 @@
-"""Structural contract only: semantics, versions, prices and benchmarks need review."""
+"""Dynamic structural coverage for all framework and decision records.
+
+These checks are not assessments of source truth, pricing, benchmark quality
+or production approval. The catalog validator applies the stronger gates.
+"""
+from datetime import date, datetime, timezone
 from pathlib import Path
 import re
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-FRAMEWORKS = ("nextjs", "nestjs", "fastapi", "django", "gin", "axum", "swiftui", "vapor")
-DECISIONS = ("web-fullstack", "python-ai-api", "network-service", "apple-native")
+FRAMEWORK_SECTIONS = (
+    "Fit", "Anti-fit", "Compatibility", "Maturity & maintenance", "Licensing",
+    "Operational / test evidence needed", "Official evidence",
+)
+DECISION_SECTIONS = (
+    "Workload & candidates", "Decision & falsification",
+    "Verification / TCO / fallback", "Official evidence",
+)
 
 
 class TechnologyKnowledgeBaseTests(unittest.TestCase):
-    def test_five_languages_have_framework_coverage(self):
+    def test_all_framework_profiles_are_indexed_and_have_sections(self):
         index = (ROOT / "frameworks" / "README.md").read_text()
         for language in ("TypeScript", "Python", "Go", "Rust", "Swift"):
             self.assertIn(language, index)
-        for name in FRAMEWORKS:
-            with self.subTest(framework=name):
-                doc = ROOT / "frameworks" / (name + ".md")
-                self.assertIn(f"({name}.md)", index)
+        records = sorted(p for p in (ROOT / "frameworks").glob("*.md")
+                         if p.name != "README.md")
+        self.assertTrue(records, "framework catalog must have profiles")
+        for doc in records:
+            with self.subTest(profile=doc.name):
+                self.assertEqual(index.count(f"({doc.name})"), 1)
                 text = doc.read_text()
-                for heading in ("## Fit", "## Anti-fit", "## Compatibility",
-                                "## Maturity & maintenance", "## Licensing",
-                                "## Operational / test evidence needed", "## Official evidence"):
-                    self.assertIn(heading, text)
+                for heading in FRAMEWORK_SECTIONS:
+                    self.assertIn(f"## {heading}", text)
                 self.assertGreaterEqual(len(re.findall(r"\]\(https://", text)), 2)
-                self.assertIn("2026-11-01", text)
+                self.assert_valid_review_date(text)
 
-    def test_reference_decisions_state_unmeasured_limits(self):
+    def test_all_decisions_are_indexed_and_have_sections(self):
         index = (ROOT / "decisions" / "README.md").read_text()
-        for name in DECISIONS:
-            with self.subTest(decision=name):
-                doc = ROOT / "decisions" / (name + ".md")
-                self.assertIn(f"({name}.md)", index)
+        records = sorted(p for p in (ROOT / "decisions").glob("*.md")
+                         if p.name != "README.md")
+        self.assertTrue(records, "decision catalog must have records")
+        for doc in records:
+            with self.subTest(decision=doc.name):
+                self.assertEqual(index.count(f"({doc.name})"), 1)
                 text = doc.read_text()
-                self.assertIn("CONDITIONAL_NOT_PRODUCTION", text)
-                self.assertIn("REFERENCE_SCENARIO_NOT_MEASURED", text)
-                self.assertIn("NOT_MEASURED", text)
-                for heading in ("## Workload & candidates", "## Hard gates",
-                                "## Decision & falsification", "## Verification / TCO / fallback",
-                                "## Official evidence"):
-                    self.assertIn(heading, text)
-                self.assertIn("UNKNOWN", text)
-                self.assertGreaterEqual(len(re.findall(r"\]\(https://", text)), 2)
+                self.assert_valid_review_date(text)
+                for heading in DECISION_SECTIONS:
+                    self.assertIn(f"## {heading}", text)
+                self.assertIn("## Hard gates", text)
+                status = re.findall(r"\*\*Status:\*\*\s+([A-Z_]+)", text)
+                self.assertEqual(len(status), 1)
+                self.assertIn(status[0], ("CONDITIONAL_NOT_PRODUCTION",
+                                           "APPROVED_FOR_PRODUCTION"))
+                if status[0] == "CONDITIONAL_NOT_PRODUCTION":
+                    self.assertNotIn("APPROVED_FOR_PRODUCTION", text)
+
+    def assert_valid_review_date(self, text):
+        matches = re.findall(r"\*\*Reviewed:\*\*\s+(\S+)", text)
+        self.assertEqual(len(matches), 1)
+        self.assertRegex(matches[0], r"^\d{4}-\d{2}-\d{2}$")
+        self.assertLessEqual(date.fromisoformat(matches[0]), datetime.now(timezone.utc).date())
 
     def test_navigation_is_present(self):
         index = (ROOT / "README.md").read_text()
-        for path in ("languages/README.md", "frameworks/README.md", "decisions/README.md"):
+        for path in ("languages/README.md", "frameworks/README.md",
+                     "decisions/README.md"):
             self.assertIn(f"({path})", index)
 
 

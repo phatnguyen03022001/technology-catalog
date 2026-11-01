@@ -13,12 +13,14 @@ import sys
 from collections import Counter, defaultdict
 from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS = ROOT / "providers"
 PILLARS = ROOT / "pillars"
 STATUSES = {"VERIFIED", "SOURCE_LINKED_SNAPSHOT", "UNVERIFIED", "STALE", "DISCONTINUED"}
+DECISION_GATES = ("Functional", "Security/privacy", "Legal/licensing",
+                  "Cost/TCO", "Portability/recovery")
 FREE_KINDS = {
     "PERMANENT", "RECURRING_CREDIT", "ONE_TIME_CREDIT", "TIME_LIMITED_TRIAL",
     "PERMANENT_AFTER_TRIAL", "LIMITED_FREE", "NO_MONTHLY_BASE", "SELF_HOSTED",
@@ -122,12 +124,10 @@ def local_links(markdown: Path) -> list[str]:
     errors = []
     text = markdown.read_text(encoding="utf-8")
     for target in re.findall(r"\[[^\]]*\]\(([^)]+)\)", text):
-        if target.startswith(("https://", "http://", "mailto:", "#")):
+        if target.startswith(("https://", "http://", "mailto:")):
             continue
         file_target, _, fragment = target.partition("#")
-        if not file_target:
-            continue
-        candidate = (markdown.parent / file_target).resolve()
+        candidate = ((markdown.parent / unquote(file_target)) if file_target else markdown).resolve()
         if not candidate.exists():
             errors.append(f"{markdown.relative_to(ROOT)}: broken link {target}")
             continue
@@ -136,8 +136,149 @@ def local_links(markdown: Path) -> list[str]:
             for heading in re.findall(r"^#{1,6} +(.+?)\s*#*\s*$", candidate.read_text(encoding="utf-8"), re.MULTILINE):
                 slug = re.sub(r"[^\w -]", "", heading.casefold(), flags=re.UNICODE).strip().replace(" ", "-")
                 headings.add(slug)
-            if fragment.casefold() not in headings:
+            if unquote(fragment).casefold() not in headings:
                 errors.append(f"{markdown.relative_to(ROOT)}: missing heading anchor {target}")
+    return errors
+
+
+
+def technology_document_errors(folder: str, index_header: str, link_column: int,
+                               required_sections: tuple[str, ...]) -> list[str]:
+    """Validate every profile/decision, including newly added documents.
+
+    This is structural evidence hygiene; source truth, semantic quality and
+    workload suitability are deliberately outside deterministic validation.
+    """
+    directory = ROOT / folder
+    errors: list[str] = []
+    index = directory / "README.md"
+    if not index.is_file():
+        return [f"{folder}/README.md missing index"]
+    rows = index.read_text(encoding="utf-8").splitlines()
+    try:
+        start = rows.index(index_header) + 2
+    except ValueError:
+        return [f"{folder}/README.md missing expected index table"]
+    listed: list[str] = []
+    indexed_decision_status: dict[str, str] = {}
+    for line in rows[start:]:
+        if not line.startswith("| "):
+            break
+        parts = cells(line)
+        if len(parts) != 4:
+            errors.append(f"{folder}/README.md malformed index row")
+            continue
+        match = re.fullmatch(r"\[([^\]]+)\]\(([a-z0-9-]+)\.md\)", parts[link_column])
+        if not match:
+            errors.append(f"{folder}/README.md invalid record link: {line}")
+            continue
+        listed.append(match.group(2))
+        if folder == "decisions":
+            index_status = parts[3].split(";", 1)[0].strip()
+            indexed_decision_status[match.group(2)] = index_status
+            if index_status not in {"CONDITIONAL", "APPROVED"}:
+                errors.append(f"{folder}/README.md invalid decision index status: {match.group(2)}")
+    if len(listed) != len(set(listed)):
+        errors.append(f"{folder}/README.md duplicate indexed record")
+    documents = sorted(p for p in directory.glob("*.md") if p.name != "README.md")
+    actual = {p.stem for p in documents}
+    for stem in sorted(actual - set(listed)):
+        errors.append(f"{folder}/README.md unindexed {('framework profile' if folder == 'frameworks' else 'decision record')}: {stem}.md")
+    for stem in sorted(set(listed) - actual):
+        errors.append(f"{folder}/README.md missing record: {stem}.md")
+
+    today = datetime.now(timezone.utc).date()
+    for doc in documents:
+        name = doc.relative_to(ROOT).as_posix()
+        text = doc.read_text(encoding="utf-8")
+        dates = re.findall(r"\*\*Reviewed:\*\*\s+([^\s]+)", text)
+        if len(dates) != 1 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", dates[0]):
+            errors.append(f"{name}: invalid review date (ISO YYYY-MM-DD required)")
+        else:
+            try:
+                reviewed = date.fromisoformat(dates[0])
+            except ValueError:
+                errors.append(f"{name}: invalid review date")
+            else:
+                if reviewed > today:
+                    errors.append(f"{name}: future review date {dates[0]}")
+        statuses = re.findall(r"^\*\*Status:\*\*\s+([A-Z_]+)", text, re.MULTILINE) if folder == "decisions" else []
+        status = statuses[0] if len(statuses) == 1 else None
+        if folder == "decisions" and status in {"CONDITIONAL_NOT_PRODUCTION", "APPROVED_FOR_PRODUCTION"}:
+            expected_index_status = ("APPROVED" if status == "APPROVED_FOR_PRODUCTION"
+                                     else "CONDITIONAL")
+            if doc.stem in indexed_decision_status and indexed_decision_status[doc.stem] != expected_index_status:
+                errors.append(f"{name}: decision index status mismatch")
+        if folder == "decisions" and status == "APPROVED_FOR_PRODUCTION":
+            sections_required = tuple("Hard gates" if h == "Hard gates & unknown evidence" else h
+                                      for h in required_sections)
+        else:
+            sections_required = required_sections
+        sections = {}
+        for heading in sections_required:
+            blocks = re.findall(
+                rf"(?ms)^## {re.escape(heading)}\s*\n(.*?)(?=^## |\Z)", text
+            )
+            if len(blocks) != 1 or len(blocks[0].strip()) < 20:
+                errors.append(f"{name}: missing required section or evidence: {heading}")
+            else:
+                sections[heading] = blocks[0]
+        evidence_section = sections.get("Official evidence", "")
+        sources = re.findall(r"\[[^\]]+\]\((https?://[^)]+)\)", evidence_section)
+        if len(sources) < 2:
+            errors.append(f"{name}: insufficient official evidence links")
+        for url in sources:
+            problem = source_url_error(url)
+            if problem:
+                errors.append(f"{name}: invalid official source: {problem}: {url}")
+        if folder != "decisions":
+            continue
+        if status not in {"CONDITIONAL_NOT_PRODUCTION", "APPROVED_FOR_PRODUCTION"}:
+            errors.append(f"{name}: missing or invalid decision status")
+            continue
+        gates = sections.get("Hard gates & unknown evidence", "") or sections.get("Hard gates", "")
+        # Existing references use "Hard gates & unknown evidence", while an
+        # approved decision may use "Hard gates" with actual measured evidence.
+        if status == "CONDITIONAL_NOT_PRODUCTION":
+            if "APPROVED_FOR_PRODUCTION" in text:
+                errors.append(f"{name}: contradictory approval in conditional decision")
+            for gate in DECISION_GATES:
+                if not re.search(rf"(?m)^- {re.escape(gate)}: \*\*(?:PASS|UNKNOWN|FAIL)\b", gates):
+                    errors.append(f"{name}: missing decision hard gate: {gate}")
+            continue
+        # Production approvals are fail-closed and must be project-specific,
+        # backed by five explicit PASS gates plus measured/TCO artifacts.
+        if any(token in text for token in ("CONDITIONAL_NOT_PRODUCTION", "UNKNOWN", "NOT_MEASURED",
+                                           "REFERENCE_SCENARIO_NOT_MEASURED")):
+            errors.append(f"{name}: production approval contains unresolved or reference evidence")
+        approved_gates = sections.get("Hard gates", "")
+        for gate in DECISION_GATES:
+            matching = re.findall(rf"(?m)^- {re.escape(gate)}: \*\*PASS\*\*([^\n]*)", approved_gates)
+            evidence_link = (re.search(r"\]\((https://[^)]+)\)", matching[0])
+                             if len(matching) == 1 else None)
+            if (not evidence_link or source_url_error(evidence_link.group(1)) or
+                    "conditional" in matching[0].lower()):
+                errors.append(f"{name}: production approval missing PASS gate evidence: {gate}")
+        approval = re.search(r"(?ms)^## Approval evidence\s*\n(.*?)(?=^## |\Z)", text)
+        proof = approval.group(1) if approval else ""
+        for field in ("Owner", "Project", "Workload ID"):
+            if not re.search(rf"(?m)^- {re.escape(field)}: \S.{{2,}}$", proof):
+                errors.append(f"{name}: production approval missing {field}")
+        for field in ("Benchmark evidence", "TCO evidence"):
+            match = re.search(rf"(?m)^- {re.escape(field)}: \[[^\]]+\]\((https://[^)]+)\)", proof)
+            if not match or source_url_error(match.group(1)):
+                errors.append(f"{name}: production approval missing {field}")
+        approval_date = re.search(r"(?m)^- Approval date: (.+)$", proof)
+        if not approval_date or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", approval_date.group(1)):
+            errors.append(f"{name}: production approval missing ISO approval date")
+        else:
+            try:
+                approved = date.fromisoformat(approval_date.group(1))
+            except ValueError:
+                errors.append(f"{name}: production approval invalid approval date")
+            else:
+                if approved > today:
+                    errors.append(f"{name}: production approval future approval date")
     return errors
 
 
@@ -221,6 +362,16 @@ def main() -> int:
 
     for path in sorted(ROOT.rglob("*.md")):
         errors.extend(local_links(path))
+    errors.extend(technology_document_errors(
+        "frameworks", "| Language | Candidate | Fit | Profile |", 3,
+        ("Fit", "Anti-fit", "Compatibility", "Maturity & maintenance", "Licensing",
+         "Operational / test evidence needed", "Official evidence"),
+    ))
+    errors.extend(technology_document_errors(
+        "decisions", "| Case | Workload giả định | Conditional choice | Gate |", 0,
+        ("Workload & candidates", "Hard gates & unknown evidence",
+         "Decision & falsification", "Verification / TCO / fallback", "Official evidence"),
+    ))
 
     indexed_links = Counter()
     indexed_services = Counter()
