@@ -20,6 +20,7 @@
 | Loops | [Loops](../../providers/loops.md) |
 | Mailgun | [Mailgun](../../providers/mailgun.md) |
 | Novu Cloud | [Novu](../../providers/novu.md) |
+| ntfy.sh Hosted Notifications | [ntfy](../../providers/ntfy.md) |
 | OneSignal Messaging | [OneSignal](../../providers/onesignal.md) |
 | Plivo | [Plivo](../../providers/plivo.md) |
 | Postmark | [Postmark](../../providers/postmark.md) |
@@ -32,8 +33,7 @@
 | Twilio SMS | [Twilio](../../providers/twilio.md) |
 | WhatsApp Business Platform Cloud API | [Meta](../../providers/meta.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| ntfy | Deferred | Useful self-hosted notification server, but not equivalent to a managed customer push delivery API. |

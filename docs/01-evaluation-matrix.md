@@ -41,11 +41,25 @@ Distinguish perpetual free, recurring monetary credits, one-time signup credit, 
 ## Evidence classifications
 
 - `VERIFIED`: service-row claims were checked against dated official sources; a price row includes plan/model/SKU, amount/currency/unit, region where applicable, free allowance/reset, source URL and checked date. This does not verify security, performance, or suitability.
-- `SOURCE_LINKED_SNAPSHOT`: legacy catalog claim has an official source link but its current value was not independently reproduced; recheck before production.
+- `SOURCE_LINKED_SNAPSHOT`: a legacy claim has an official source link, but its current value was not fully reproduced; recheck before production.
 - `UNVERIFIED`: a service's price or free-tier claim cannot be reproduced from current official evidence, or no such claim is made.
 - `STALE`: evidence changed or expired; do not imply still current.
-- `DISCONTINUED`: first-party evidence confirms the service has ceased operation; an announced future wind-down does not qualify.
+- `DISCONTINUED`: first-party evidence confirms the provider ended the offering. For software, state separately whether existing installations remain usable after upstream distribution or maintenance ends; an announced future wind-down does not qualify.
 
 Service evidence is recorded on each provider table row. A validator can check that status, dates and source links are present; it cannot establish that a price is factually accurate. Never infer pricing accuracy from a passing structural check.
+
+### Unresolved evidence root causes
+
+For an active `SOURCE_LINKED_SNAPSHOT`, `UNVERIFIED`, or `STALE` row, put one or more root-cause codes in its Caveat cell. These codes describe the current evidence blocker:
+
+- `RC1` — Price is not public or requires a quote.
+- `RC2` — Price depends on a selected region, SKU, plan, meter, currency, or billing term.
+- `RC3` — Official sources conflict and applicability is unresolved.
+- `RC4` — Only part of the material claims (price, quota, limit, or tier) is verified.
+- `RC5` — A prior claim is historical, deprecated, or affected by a lifecycle change.
+- `RC6` — Evidence requires login, account entitlement, an inaccessible calculator, or sales access.
+- `RC7` — A claim lacks adequate supporting evidence and must be removed, qualified, or rechecked.
+
+`Evidence checked` records the date the row's evidence was reviewed for every status. It does not imply that an unresolved price is verified.
 
 Output: workload, gates, candidate costs, security/operational tradeoffs, score only if supported, checkedAt, evidence URLs, recommendation and fallback.

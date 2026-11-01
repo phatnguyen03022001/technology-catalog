@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Modal Compute/Sandbox | 01 | `RECURRING_CREDIT` | $30 compute credits/month (monthly reset, non-rollover); 100 containers, 10 GPU concurrency, 1 TiB egress | Starter $0 base + PAYG per sec; Team $250/mo ($100 credit, 5,000 containers, 50 GPU concurrency) | Requires credit card beyond $30; region pinning adds 1.15x–1.75x; non-preemptible is 3x; 1-day log retention | [Modal Pricing](https://modal.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Modal Compute/Sandbox | 01 | `RECURRING_CREDIT` | $30 compute credits/month (monthly reset, non-rollover); 100 containers, 10 GPU concurrency, 1 TiB egress | Starter $0 base + PAYG per sec; Team $250/mo ($100 credit, 5,000 containers, 50 GPU concurrency) | RC2/RC4 — Requires credit card beyond $30; region pinning adds 1.15x–1.75x; non-preemptible is 3x; 1-day log retention | [Modal Pricing](https://modal.com/pricing) | UNVERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

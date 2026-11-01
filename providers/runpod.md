@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| RunPod | 01 | `UNKNOWN` | Current credits/free allowance not independently verified | Serverless and GPU pod pricing varies by product and GPU; prior amounts are an unrechecked snapshot | Do not claim a trial amount or infer $0 from idle compute; attached storage may incur charges. | [RunPod Pricing](https://www.runpod.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| RunPod | 01 | `UNKNOWN` | No current free credit or recurring allowance established. | Serverless published GPU SKUs range from $0.58 to $11.99/GPU-hour and are billed by the second. This range applies only to publicly listed Serverless GPU SKUs; Pods/Clusters use separate pricing, and some GPUs require sales contact. | Rates are model/SKU and deployment-mode specific. Do not apply the Serverless range to Pods, Clusters or sales-only GPU inventory. | [RunPod pricing](https://www.runpod.io/pricing) · [Serverless product](https://www.runpod.io/product/serverless) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

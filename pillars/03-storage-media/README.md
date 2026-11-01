@@ -19,6 +19,7 @@
 | Cloudinary Programmable Media | [Cloudinary](../../providers/cloudinary.md) |
 | DigitalOcean Spaces | [DigitalOcean](../../providers/digitalocean.md) |
 | Google Cloud Storage (GCS) | [Google Cloud & Firebase](../../providers/google.md) |
+| Hetzner Object Storage | [Hetzner](../../providers/hetzner.md) |
 | ImageKit | [ImageKit](../../providers/imagekit.md) |
 | MinIO AIStor | [MinIO](../../providers/minio.md) |
 | MinIO OSS | [MinIO](../../providers/minio.md) |
@@ -32,8 +33,7 @@
 | Vercel Blob | [Vercel](../../providers/vercel.md) |
 | Wasabi | [Wasabi](../../providers/wasabi.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Hetzner Object Storage | Deferred | Relevant low-cost storage candidate; current regional price/allowance could not be reconciled from official evidence. |

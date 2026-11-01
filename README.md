@@ -12,6 +12,6 @@ Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-p
 | PROVIDERS | Single Source of Truth for multi-service provider facts, free tier, prices, sources | [providers/](providers/README.md) |
 | DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
 
-**Catalog snapshot:** 2026-11-01 — 12 pillars; 193 provider profiles; 294 service offerings; 7 discovery-only watchlist candidates.
+**Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
 
 **Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Each service row carries its own evidence status and verification date. Read `VERIFIED` as confirmation of the specific listed claims only; structural validation does not prove pricing accuracy. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No unsupported ranking.

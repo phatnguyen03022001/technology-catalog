@@ -38,9 +38,9 @@
 | RunPod | [RunPod](../../providers/runpod.md) |
 | Scaleway Instances | [Scaleway](../../providers/scaleway.md) |
 | Vercel Hosting/Functions | [Vercel](../../providers/vercel.md) |
+| Vultr Cloud Compute | [Vultr](../../providers/vultr.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Vultr | Deferred | Mainstream compute candidate; current comparable price and quota scope were not reproducible from a stable official rate card. |

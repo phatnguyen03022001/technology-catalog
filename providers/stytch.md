@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Stytch | 07 | PERMANENT | Free Forever: 10K MAU, unlimited organizations, 5 SSO/SCIM connections and 1K M2M tokens; pricing page wording does not clarify whether MAU and AI agents share quota. | Paid overage and connection rates require the account calculator and were not independently reproduced. Removing email customization/branding costs $99/month. | Do not treat unclear AI-agent counting or account-calculator output as an exact production price. | [Stytch pricing](https://stytch.com/pricing) · [Pricing update](https://changelog.stytch.com/announcements/2024-11-22-updated-self-serve-pricing) | UNVERIFIED | — |
+| Stytch | 07 | PERMANENT | Free meter is described as 10,000 monthly active users and AI agents combined in one “External active members and agents” row; do not infer 10K for each. Published add-ons: SSO/SCIM $125/connection, branding $99/month, fingerprints after 10K at $0.005 each. | Exact numeric MAU/agent overage and M2M token rate are not reproducible from the pricing page; account calculator details remain unavailable. Preserve only the published included meter and add-on rates. | RC2/RC4/RC6 — The included MAU/agent quota is a single combined line, not 10K per category. Leave usage overage unresolved rather than using an account-specific calculator estimate. | [Stytch pricing](https://stytch.com/pricing) · [Pricing change history](https://changelog.stytch.com/announcements/2024-11-22-updated-self-serve-pricing) | UNVERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

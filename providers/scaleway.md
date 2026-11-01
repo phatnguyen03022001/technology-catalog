@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Scaleway Instances | 01 | UNKNOWN | Account credits or free eligibility may vary; no permanent instance quota asserted. | Instance plans vary by size, region and operating system; see current price sheet. | Do not treat account promotion as a permanent quota; availability differs by zone and family. | [Scaleway pricing](https://www.scaleway.com/en/pricing/) | UNVERIFIED | — |
+| Scaleway Instances | 01 | UNKNOWN | No Instances-specific recurring free allowance established; account credits are promotional and separate. | PAR-1 reference SKUs, prices exclude tax: STARDUST1-S €0.0006/hour (about €0.43/month); DEV1-S €0.00898/hour (about €6.55/month). Public IPv4 is €0.004/hour; each resource has a 60-minute minimum charge. Storage and IPv4 are billed separately. | These are exact PAR-1 SKU examples, not a global minimum. CPU billing stops when powered off, while storage and IPv4 continue; no contract minimum was found. | [Virtual Instances prices](https://www.scaleway.com/en/pricing/virtual-instances/) · [Instance billing](https://www.scaleway.com/en/docs/instances/reference-content/understanding-instance-pricing/) · [Instance FAQ](https://www.scaleway.com/en/docs/instances/faq/) · [Billing FAQ](https://www.scaleway.com/en/docs/billing/faq/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

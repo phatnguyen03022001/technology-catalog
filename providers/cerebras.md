@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cerebras Inference | 10 | ONE_TIME_CREDIT | Current site offers $5 one-time credit, requires valid payment details and expires 30 days after activation. | Current production pay-as-you-go model/token rates were not reproducible from public first-party pricing. | Legacy docs show example rates but say Exploration pricing unavailable; do not reuse old $10 minimum or model prices. | [Cerebras pricing](https://www.cerebras.ai/pricing) · [Legacy pricing docs](https://inference-docs.cerebras.ai/support/pricing) | UNVERIFIED | — |
+| Cerebras Inference | 10 | ONE_TIME_CREDIT | Developer tier receives a one-time $5 credit after adding a valid payment method; it expires 30 days after activation and does not auto-enroll or charge. Developer is for development/evaluation, not production. | Developer rates: GPT OSS 120B $0.35/M input and $0.75/M output; Qwen 3.8 27B $0.99/M input and $1.49/M output. Enterprise production tier is a custom quote; no universal production rate or model deployment ID is asserted. | RC1/RC4 — Public rates apply only to the Developer exploration tier and listed models; production capacity/models require Enterprise quote. Do not present Developer as production eligible. | [Cerebras inference pricing](https://www.cerebras.ai/pricing) · [Legacy pricing documentation](https://inference-docs.cerebras.ai/support/pricing) | UNVERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

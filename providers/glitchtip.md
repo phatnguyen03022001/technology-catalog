@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| GlitchTip Cloud | 09 | UNKNOWN | The current pricing page labels this “Hobby & Trial”: 1,000 events/month and 30-day retention. It does not publish whether the $0 allowance is permanent or how long any trial lasts. | Small $15/month includes up to 100K events/month and 90-day retention; Medium $50/month for 500K; Large $250/month for 3M. On-demand overage opt-in: $0.17/1K first million, $0.15/1K to 10M, then $0.12/1K. | An error and performance transaction each count as an event; uptime checks/logs are 10:1 and uploaded release/debug files count per MB. Spend cap controls on-demand billing. Keep free-tier duration unresolved; do not describe it as perpetual. | [GlitchTip pricing](https://glitchtip.com/pricing/) | UNVERIFIED | — |
+| GlitchTip Cloud | 09 | PERMANENT | Free forever: 1,000 events/month and 30-day retention. US and EU instances. The free plan has no SLA or support guarantee. | Small $15/month for 100K events/90-day retention; Medium $50/500K; Large $250/3M. Opt-in overage: $0.17/1K through 1M, $0.15/1K through 10M, then $0.12/1K. Some event types convert 10:1; uploaded release/debug files count per MB. | A hard monthly free allowance and paid overage are distinct; overspend protection can be enabled. Free is not an SLA-backed production commitment. | [GlitchTip pricing](https://glitchtip.com/pricing/) · [Terms of service](https://glitchtip.com/legal/tos/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

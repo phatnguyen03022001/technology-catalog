@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cockroach Continuum | 02 | ONE_TIME_CREDIT | New organizations/deployments may receive $400 usage credit for 30 days; no recurring $15 RU credit established for new deployments. | Official pricing page conflicts internally: top section lists Standard $0.092/vCPU-hour for AWS us-east-1; lower feature table says Standard from $0.057/vCPU-hour. Do not select a unique minimum until vendor resolves. | The $400/30-day promotion and service availability are supported, but contradictory first-party rates make the paid price stale/unresolved. Storage, backup and transfer remain separate. | [CockroachDB pricing](https://www.cockroachlabs.com/pricing/) | STALE | — |
+| Cockroach Continuum | 02 | ONE_TIME_CREDIT | New organizations/deployments may receive $400 usage credit for 30 days; no recurring $15 RU credit established for new deployments. | Official pricing page conflicts internally: top section lists Standard $0.092/vCPU-hour for AWS us-east-1; lower feature table says Standard from $0.057/vCPU-hour. Do not select a unique minimum until vendor resolves. | RC3/RC5 — The $400/30-day promotion and service availability are supported, but contradictory first-party rates make the paid price stale/unresolved. Storage, backup and transfer remain separate. | [CockroachDB pricing](https://www.cockroachlabs.com/pricing/) | STALE | 2026-11-01 |
 
 ## Evidence & maintenance
 

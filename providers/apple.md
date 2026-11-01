@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Apple Push Notification service (APNs) | 11 | UNKNOWN | APNs docs do not state a product-specific free allowance or quota; no $0 price asserted. | No public per-notification price found in reviewed API docs; Apple Developer Program membership may be required to distribute apps and is separate. | Best-effort delivery; payload max 4 KB (5 KB VoIP); expiry/retention follows API semantics. Do not conflate membership fee with APNs price. | [APNs API](https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns) · [Enrollment](https://developer.apple.com/programs/enroll/) | UNVERIFIED | — |
+| Apple Push Notification service (APNs) | 11 | UNKNOWN | APNs docs do not state a product-specific free allowance or quota; no $0 price asserted. | No public per-notification price found in reviewed API docs; Apple Developer Program membership may be required to distribute apps and is separate. | RC1/RC6 — Best-effort delivery; payload max 4 KB (5 KB VoIP); expiry/retention follows API semantics. Do not conflate membership fee with APNs price. | [APNs API](https://developer.apple.com/documentation/usernotifications/sending-notification-requests-to-apns) · [Enrollment](https://developer.apple.com/programs/enroll/) | UNVERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

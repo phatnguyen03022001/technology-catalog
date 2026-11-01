@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| PlanetScale | 02 | `UNKNOWN` | Free allowance not independently confirmed from a current source | Plan pricing needs current plan/region review; prior $5/$15 amounts are an unrechecked snapshot | Do not treat the 2024 Hobby plan change as sufficient evidence for current free status. | [PlanetScale Pricing](https://planetscale.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| PlanetScale | 02 | UNKNOWN | No current recurring free allowance was established for PlanetScale Postgres. | Scoped public Postgres references: single-node starts at $5/month; Metal starts at $50/month. Single-node does not provide HA; HA configurations add topology, compute, storage, backup, network and add-on charges. | Prices are starting configurations, not a universal database bill. This row covers the listed Postgres configurations; free eligibility and HA total are not asserted. | [PlanetScale pricing](https://planetscale.com/pricing) · [Single-node Postgres GA](https://planetscale.com/changelog/single-node) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

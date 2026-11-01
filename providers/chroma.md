@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Chroma Cloud | 02 | `UNKNOWN` | Cloud vẫn hoạt động vào 2026-11-01; Chroma thông báo writes sẽ bị vô hiệu 2026-11-22, reads 2026-12-22 | Giá/free allowance của Chroma Cloud không được trang timeline xác nhận | Lịch wind-down đã được xác minh nhưng chưa hoàn tất; ChromaDB OSS tiếp tục theo Apache-2.0. Chroma chỉ công bố thỏa thuận gia nhập Replit. | [Cloud wind-down timeline](https://www.trychroma.com/cloud-wind-down) · [Replit announcement](https://www.trychroma.com/blog/chroma-joins-replit) | `UNVERIFIED` | — |
+| Chroma Cloud | 02 | `UNKNOWN` | Cloud remained active on 2026-11-01; Chroma announced that writes will stop on 2026-11-22 and reads on 2026-12-22. | The wind-down timeline does not establish a current price or free allowance. | RC1/RC5 — The announced wind-down is not complete as of this check; ChromaDB OSS continues under Apache-2.0. Chroma's acquisition announcement does not change the service dates. | [Cloud wind-down timeline](https://www.trychroma.com/cloud-wind-down) · [Replit announcement](https://www.trychroma.com/blog/chroma-joins-replit) | UNVERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

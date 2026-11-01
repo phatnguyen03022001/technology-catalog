@@ -1,18 +1,18 @@
 # Provider Profiles — Single Source of Truth
 
-**193 provider profiles**, **294 service offering records**. Prices/free-tier amounts and official evidence live only in provider files. Each service has one primary pillar. Structural validation checks shape and links; it does not establish factual price accuracy.
+**198 provider profiles**, **300 service offering records**. Prices/free-tier amounts and official evidence live only in provider files. Each service has one primary pillar. Structural validation checks shape and links; it does not establish factual price accuracy.
 
 ## Evidence status by service
 
 | Evidence status | Service records |
 |---|---:|
-| `VERIFIED` | 226 |
-| `SOURCE_LINKED_SNAPSHOT` | 24 |
-| `UNVERIFIED` | 38 |
+| `VERIFIED` | 247 |
+| `SOURCE_LINKED_SNAPSHOT` | 7 |
+| `UNVERIFIED` | 40 |
 | `STALE` | 4 |
 | `DISCONTINUED` | 2 |
 
-Free-kind classifications are independent of evidence status: `PERMANENT` 134; `RECURRING_CREDIT` 5; `ONE_TIME_CREDIT` 24; `TIME_LIMITED_TRIAL` 20; `PERMANENT_AFTER_TRIAL` 1; `LIMITED_FREE` 33; `NO_MONTHLY_BASE` 10; `SELF_HOSTED` 26; `NONE` 1; `UNKNOWN` 40.
+Free-kind classifications: `PERMANENT` 134; `RECURRING_CREDIT` 5; `ONE_TIME_CREDIT` 24; `TIME_LIMITED_TRIAL` 21; `PERMANENT_AFTER_TRIAL` 1; `LIMITED_FREE` 38; `NO_MONTHLY_BASE` 10; `SELF_HOSTED` 27; `NONE` 2; `UNKNOWN` 38.
 
 | Provider | Offerings | Primary pillars |
 |---|---:|---|
@@ -31,7 +31,6 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [Auth0](./auth0.md) | 1 | 07 |
 | [Autumn](./autumn.md) | 1 | 12 |
 | [Axiom](./axiom.md) | 1 | 09 |
-| [Microsoft Azure](./azure.md) | 17 | 01, 02, 03, 04, 05, 06, 07, 08, 10 |
 | [Backblaze](./backblaze.md) | 1 | 03 |
 | [Better Auth](./better-auth.md) | 2 | 07 |
 | [Better Stack](./better-stack.md) | 1 | 09 |
@@ -94,15 +93,16 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [Google Cloud & Firebase](./google.md) | 20 | 01, 02, 03, 04, 05, 06, 07, 08, 10, 11, 12 |
 | [Grafana](./grafana.md) | 1 | 09 |
 | [Groq](./groq.md) | 1 | 10 |
+| [Harbor](./harbor.md) | 1 | 08 |
 | [Harness](./harness.md) | 1 | 08 |
-| [IBM Vault / HashiCorp](./hashicorp.md) | 4 | 07, 08 |
 | [Hatchet](./hatchet.md) | 1 | 06 |
 | [Helicone](./helicone.md) | 1 | 09 |
-| [Hetzner](./hetzner.md) | 1 | 01 |
+| [Hetzner](./hetzner.md) | 2 | 01, 03 |
 | [Honeycomb](./honeycomb.md) | 1 | 09 |
 | [Hookdeck](./hookdeck.md) | 1 | 06 |
 | [HubSpot](./hubspot.md) | 1 | 12 |
 | [Hugging Face](./hugging-face.md) | 1 | 10 |
+| [IBM Vault / HashiCorp](./hashicorp.md) | 4 | 07, 08 |
 | [ImageKit](./imagekit.md) | 1 | 03 |
 | [Infisical](./infisical.md) | 1 | 07 |
 | [Inngest](./inngest.md) | 1 | 06 |
@@ -124,6 +124,7 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [MapTiler](./maptiler.md) | 1 | 12 |
 | [Meilisearch](./meilisearch.md) | 2 | 05 |
 | [Meta](./meta.md) | 1 | 11 |
+| [Microsoft Azure](./azure.md) | 17 | 01, 02, 03, 04, 05, 06, 07, 08, 10 |
 | [MinIO](./minio.md) | 2 | 03 |
 | [Mistral AI](./mistral.md) | 1 | 10 |
 | [Modal](./modal.md) | 1 | 01 |
@@ -136,6 +137,7 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [Ngrok](./ngrok.md) | 1 | 04 |
 | [Northflank](./northflank.md) | 1 | 01 |
 | [Novu](./novu.md) | 1 | 11 |
+| [ntfy](./ntfy.md) | 1 | 11 |
 | [OneSignal](./onesignal.md) | 1 | 11 |
 | [OpenAI](./openai.md) | 1 | 10 |
 | [OpenLIT](./openlit.md) | 1 | 09 |
@@ -144,10 +146,12 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [OpenSearch Project](./opensearch-project.md) | 1 | 05 |
 | [OpenTofu](./opentofu.md) | 1 | 08 |
 | [Oracle Cloud Infrastructure](./oracle.md) | 2 | 01, 03 |
+| [Ory](./ory.md) | 1 | 07 |
 | [Paddle](./paddle.md) | 1 | 12 |
 | [PayPal](./paypal.md) | 1 | 12 |
 | [Permit.io](./permit-io.md) | 2 | 07 |
 | [Perplexity](./perplexity.md) | 1 | 10 |
+| [Persona](./persona.md) | 1 | 12 |
 | [Pinecone](./pinecone.md) | 1 | 02 |
 | [PingCAP](./pingcap.md) | 1 | 02 |
 | [Plaid](./plaid.md) | 1 | 12 |
@@ -204,6 +208,7 @@ Free-kind classifications are independent of evidence status: `PERMANENT` 134; `
 | [Upstash](./upstash.md) | 3 | 02, 05, 06 |
 | [Vercel](./vercel.md) | 3 | 01, 03, 08 |
 | [Voyage AI](./voyage-ai.md) | 1 | 10 |
+| [Vultr](./vultr.md) | 1 | 01 |
 | [Wasabi](./wasabi.md) | 1 | 03 |
 | [Weaviate](./weaviate.md) | 1 | 02 |
 | [WorkOS](./workos.md) | 1 | 07 |

@@ -25,14 +25,14 @@
 | Keycloak | [Keycloak](../../providers/keycloak.md) |
 | Kinde | [Kinde](../../providers/kinde.md) |
 | Microsoft Entra External ID | [Microsoft Azure](../../providers/azure.md) |
+| Ory Network | [Ory](../../providers/ory.md) |
 | Permit MCP Gateway | [Permit.io](../../providers/permit-io.md) |
 | Permit.io | [Permit.io](../../providers/permit-io.md) |
 | Stytch | [Stytch](../../providers/stytch.md) |
 | Supabase Auth | [Supabase](../../providers/supabase.md) |
 | WorkOS AuthKit & SSO | [WorkOS](../../providers/workos.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Ory Network | Deferred | Production plan starts with a paid annual commitment; no production free allowance established for this comparison. |

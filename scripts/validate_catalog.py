@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 import sys
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,15 +125,22 @@ def main() -> int:
                 nonverified_pillars[pillar] += 1
             if not re.search(r"https://", source):
                 errors.append(f"{path.relative_to(ROOT)}: missing official HTTPS source for {service}")
+            try:
+                parsed_checked = date.fromisoformat(checked)
+            except ValueError:
+                parsed_checked = None
+            if parsed_checked is None or parsed_checked.isoformat() != checked:
+                errors.append(f"{path.relative_to(ROOT)}: service {service} needs an ISO evidence review date")
+            if state in {"SOURCE_LINKED_SNAPSHOT", "UNVERIFIED", "STALE"}:
+                if not re.search(r"\bRC[1-7]\b", caveat):
+                    errors.append(f"{path.relative_to(ROOT)}: unresolved service {service} needs an RC1-RC7 cause in Caveat")
             if state == "VERIFIED":
-                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", checked):
-                    errors.append(f"{path.relative_to(ROOT)}: VERIFIED service {service} needs an ISO checked date")
                 if not allowance.strip() or not paid.strip() or not caveat.strip():
                     errors.append(f"{path.relative_to(ROOT)}: VERIFIED service {service} has incomplete evidence fields")
-            elif checked != "—":
-                errors.append(f"{path.relative_to(ROOT)}: non-VERIFIED service {service} must not carry a verified date")
-            if kind == "NONE" and state != "VERIFIED":
-                errors.append(f"{path.relative_to(ROOT)}: {service} cannot claim NONE without current verified evidence")
+            # Free-kind status is separate from price-evidence status. A verified
+            # no-free-tier claim can coexist with unresolved SKU/region pricing.
+            if kind == "NONE" and not re.search(r"\bno free (?:service )?(?:tier|allowance|quota)\b", allowance, re.I):
+                errors.append(f"{path.relative_to(ROOT)}: {service} uses NONE without an explicit no-free-tier claim")
 
     for path in sorted(ROOT.rglob("*.md")):
         errors.extend(local_links(path))
@@ -242,6 +250,22 @@ def main() -> int:
             errors.append(f"providers/README.md {kind} count differs from derived service rows")
 
     candidate_doc = (ROOT / "docs/provider-candidates.md").read_text(encoding="utf-8")
+    accepted_section = candidate_doc.split("## Accepted market additions", 1)
+    if len(accepted_section) != 2:
+        errors.append("docs/provider-candidates.md missing accepted market additions section")
+    else:
+        accepted_section = accepted_section[1].split("## Product-name and lifecycle", 1)[0]
+        accepted_rows = [line for line in accepted_section.splitlines() if re.match(r"\| (?:0[1-9]|1[0-2]) \|", line)]
+        declared_additions = re.search(r"^(\d+) market-discovery service offerings are recorded", candidate_doc, re.MULTILINE)
+        if not declared_additions:
+            errors.append("docs/provider-candidates.md missing declared market-discovery count")
+        elif int(declared_additions.group(1)) != len(accepted_rows):
+            errors.append(f"docs/provider-candidates.md declares {declared_additions.group(1)} market-discovery additions but lists {len(accepted_rows)}")
+        accepted_names = [cells(line)[1].casefold() for line in accepted_rows if len(cells(line)) == 5]
+        if len(accepted_names) != len(accepted_rows):
+            errors.append("docs/provider-candidates.md has malformed accepted market-addition rows")
+        if len(accepted_names) != len(set(accepted_names)):
+            errors.append("docs/provider-candidates.md has duplicate accepted market additions")
     for line in candidate_doc.splitlines():
         match = re.match(r"\| \[([0-1][0-9]) — .*\| (\d+) \| (\d+) \|$", line)
         if match:

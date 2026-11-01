@@ -23,6 +23,7 @@
 | MapTiler Cloud | [MapTiler](../../providers/maptiler.md) |
 | Paddle MoR | [Paddle](../../providers/paddle.md) |
 | PayPal Checkout | [PayPal](../../providers/paypal.md) |
+| Persona Identity Verification (KYC) | [Persona](../../providers/persona.md) |
 | Plaid Link and Data API | [Plaid](../../providers/plaid.md) |
 | Polar MoR | [Polar](../../providers/polar.md) |
 | Salesforce CRM | [Salesforce](../../providers/salesforce.md) |
@@ -36,8 +37,7 @@
 | Sumsub | [Sumsub](../../providers/sumsub.md) |
 | Zoho CRM | [Zoho](../../providers/zoho.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Persona KYC | Deferred | Public primary evidence does not establish a comparable production price or minimum. |

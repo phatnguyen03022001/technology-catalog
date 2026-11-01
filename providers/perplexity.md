@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Perplexity Sonar | 10 | UNKNOWN | No general API free allowance established for production model API. | Perplexity Search API $5/1K successful requests or Fast $1/1K, up to five queries/request with no model-token fee. Agent tool rates: web search $2.50/1K, Fast $1/1K, fetch $0.50/1K, image search $2.50/1K, sandbox $0.03/active-use 20-minute window. | Current API includes Orchestrator, Agent, Search, Embeddings and Decisions; model rate card remains dynamic/unresolved. Tool prices do not verify the whole model suite. | [Current pricing](https://docs.perplexity.ai/docs/getting-started/pricing) · [Rate limits](https://docs.perplexity.ai/docs/admin/rate-limits-and-usage-tiers) | UNVERIFIED | — |
+| Perplexity Sonar | 10 | UNKNOWN | No general production API free allowance established. | Scoped production model `perplexity/sonar`: $0.25/M input, $2.50/M output and $0.0625/M cache-read. Search API: $5/1,000 successful POSTs; Fast $1/1,000; up to five queries/request count as one unit. Agent web/search/fetch/image and sandbox charges are separate. | This row is scoped to Sonar and Search API rates. Other Agent API tools and models have separate prices; no universal free tier or all-model price is asserted. | [Agent API model pricing](https://docs.perplexity.ai/docs/agent-api/models) · [Current pricing](https://docs.perplexity.ai/docs/getting-started/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

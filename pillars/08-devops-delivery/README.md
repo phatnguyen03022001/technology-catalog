@@ -31,6 +31,7 @@
 | GitLab CI (SaaS) | [GitLab](../../providers/gitlab.md) |
 | Google Artifact Registry | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Cloud Build | [Google Cloud & Firebase](../../providers/google.md) |
+| Harbor Container Registry | [Harbor](../../providers/harbor.md) |
 | Harness CI | [Harness](../../providers/harness.md) |
 | HCP Terraform | [IBM Vault / HashiCorp](../../providers/hashicorp.md) |
 | Jenkins | [Jenkins](../../providers/jenkins.md) |
@@ -38,8 +39,7 @@
 | Pulumi Cloud | [Pulumi](../../providers/pulumi.md) |
 | Vercel CI | [Vercel](../../providers/vercel.md) |
 
-## Watchlist — 1 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Harbor | Deferred | Self-hosted registry candidate; current official deployment/pricing limits need a comparable evidence set. |
