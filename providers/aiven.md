@@ -6,8 +6,8 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Aiven PostgreSQL | 02 | `PERMANENT` | 1 vCPU, 1 GB RAM, 1 GB disk, 20 conns (1 svc/org) | ~$19/tháng (Startup-4) | Auto-power off nếu không có traffic; cần bật lại bằng tay | [Aiven Postgres Free](https://aiven.io/docs/products/postgresql/concepts/pg-free-tier) | `SOURCE_LINKED_SNAPSHOT` | — |
-| Aiven Valkey | 05 | `PERMANENT` | Always-Free: 1 vCPU, 1 GB RAM (512 MB cache khả dụng), backups | Developer ~$15/tháng (2 vCPU, 4 GB RAM); High Availability từ $30-$60/tháng | Tự động tắt nếu không có traffic (inactivity sleep); cần bật lại qua console | [Aiven Valkey Free](https://aiven.io/valkey) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Aiven PostgreSQL | 02 | `PERMANENT` | Permanent free, no card: 1 CPU, 1 GB RAM, 1 GB disk, max 20 connections; one service/type/org, no SLA. | Developer from $5/month; Hobbyist from $12/month; Startup from $75/month. Plan and region select resources. | Old Startup-4 ~$19 amount is obsolete. Free resources may be disabled for inactivity; exact availability/region and current plan limits matter. | [PostgreSQL free tier](https://aiven.io/docs/products/postgresql/concepts/pg-free-tier) · [Current pricing](https://aiven.io/pricing/postgresql) | `VERIFIED` | 2026-11-01 |
+| Aiven Valkey | 05 | PERMANENT | Free no-card indefinitely: 1 CPU, 1 GB RAM with maxmemory at 50%; no SLA, may be stopped for inactivity. | Developer $15/month; Business HA from $70/month. Resources and region affect price. | The old $30–$60 HA estimate is withdrawn. Free is resource-limited and may be suspended; confirm current node shape/region before purchase. | [Valkey pricing](https://aiven.io/pricing/valkey) · [Free Valkey tier](https://aiven.io/docs/products/valkey/concepts/valkey-free-tier) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

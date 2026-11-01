@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Storj DCS | 03 | `PERMANENT` | 25 GB storage + 25 GB egress/tháng Always Free | $0,004/GB-tháng lưu trữ; $0,007/GB egress; $50/tháng minimum reserve floor cho tài khoản trả phí | $50/tháng sàn nạp trước cho tài khoản thanh toán; mã hóa zero-knowledge phi tập trung | [Storj Pricing](https://www.storj.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Storj DCS | 03 | `TIME_LIMITED_TRIAL` | 30-day trial; no permanent 25 GB free allowance established. | Standard $7/TB-month storage + $7/TB egress; Advanced $10/TB-month storage + $7/TB egress. Minimum invoice $5. | Old $0.004/$0.007 per GB and $50 minimum are obsolete. Current FAQ supersedes prior Nov 2026 pricing notice. | [Pricing change FAQ](https://www.storj.io/pricing/change-FAQs/) · [Current pricing](https://www.storj.io/pricing/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

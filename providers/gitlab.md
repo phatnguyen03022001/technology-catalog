@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| GitLab CI (SaaS) | 08 | `PERMANENT` | 400 compute mins/mo; 10 GiB storage; up to 5 users on SaaS Free | Premium $29/user/mo (10K mins); Add-on $10 / 1K mins | 400 mins runs out rapidly; CC required for anti-fraud; hard stop | [GitLab Pricing](https://about.gitlab.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| GitLab CI (SaaS) | 08 | PERMANENT | Free includes 400 compute minutes/month and 10 GiB storage. Five-member cap applies only to private top-level groups on GitLab.com Free. | Premium $29/user/month billed annually includes 10,000 minutes. Add-on $10/1,000 minutes is a one-time purchase valid 12 months, not auto-renewing. | Do not state that Free requires a card for fraud prevention; current official source did not establish that condition. | [GitLab pricing](https://about.gitlab.com/pricing/) · [Compute minutes](https://docs.gitlab.com/subscriptions/gitlab_com/compute_minutes/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

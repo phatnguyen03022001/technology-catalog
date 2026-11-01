@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Stytch | 07 | `PERMANENT` | Free: 10,000 MAU; B2B unlimited orgs, 5 SSO/SCIM connections, 1,000 M2M tokens | Paid MAU overage and per-connection charges are not reproduced in current evidence | Free-tier figures are supported by current pricing page; prior $0.05/$0.10 MAU overage figures are retained only as an unverified snapshot and withdrawn from current pricing. | [Stytch Pricing](https://stytch.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Stytch | 07 | PERMANENT | Free Forever: 10K MAU, unlimited organizations, 5 SSO/SCIM connections and 1K M2M tokens; pricing page wording does not clarify whether MAU and AI agents share quota. | Paid overage and connection rates require the account calculator and were not independently reproduced. Removing email customization/branding costs $99/month. | Do not treat unclear AI-agent counting or account-calculator output as an exact production price. | [Stytch pricing](https://stytch.com/pricing) · [Pricing update](https://changelog.stytch.com/announcements/2024-11-22-updated-self-serve-pricing) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

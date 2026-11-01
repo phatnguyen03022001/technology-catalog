@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Deno Deploy | 01 | `PERMANENT` | 1M requests/mo, 20 GiB egress, 10 hours active CPU time/mo, 150 GiB-hrs memory time | Pro $20/mo: 5M requests, 200 GiB egress, 50 hrs CPU time, 100 domains | V8 isolate environment (not arbitrary Docker); strict 10h active CPU limit on Free | [Deno Deploy Pricing](https://deno.com/deploy/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Deno Deploy | 01 | `PERMANENT` | Free: 1M requests, 20 GiB egress, 10 active CPU-hours và 150 GiB-hours memory mỗi tháng. | Pro $20/tháng gồm 5M requests, 200 GiB egress và 50 CPU-hours; usage/plan limits apply. | Free không gồm sandbox sessions; Pro có tối đa 3 sandbox đồng thời. Deno announced on 2026-10-09 that Deploy will keep operating for six months and then shut down; an exact cutover date is not posted. Deno will support paying-customer migration to Cloudflare Workers. Free limits are not a production SLA. | [Deno Deploy pricing](https://deno.com/deploy/pricing) · [Six-month shutdown announcement](https://deno.com/blog/cloudflare) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

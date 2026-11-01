@@ -8,22 +8,31 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| AWS Secrets Manager | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Amazon Cognito | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Auth0 | [Auth0](../../providers/auth0.md) |
+| AWS Secrets Manager | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Azure Key Vault | [Microsoft Azure](../../providers/azure.md) |
 | Better Auth | [Better Auth](../../providers/better-auth.md) |
+| Better Auth Infrastructure | [Better Auth](../../providers/better-auth.md) |
 | Clerk | [Clerk](../../providers/clerk.md) |
 | Descope | [Descope](../../providers/descope.md) |
 | Doppler | [Doppler](../../providers/doppler.md) |
 | Firebase Authentication | [Google Cloud & Firebase](../../providers/google.md) |
-| HashiCorp Vault | [HashiCorp](../../providers/hashicorp.md) |
+| HCP Vault Dedicated | [IBM Vault / HashiCorp](../../providers/hashicorp.md) |
+| HCP Vault Secrets | [IBM Vault / HashiCorp](../../providers/hashicorp.md) |
+| IBM Vault Community Edition | [IBM Vault / HashiCorp](../../providers/hashicorp.md) |
 | Infisical Cloud | [Infisical](../../providers/infisical.md) |
+| Keycloak | [Keycloak](../../providers/keycloak.md) |
 | Kinde | [Kinde](../../providers/kinde.md) |
+| Microsoft Entra External ID | [Microsoft Azure](../../providers/azure.md) |
+| Permit MCP Gateway | [Permit.io](../../providers/permit-io.md) |
 | Permit.io | [Permit.io](../../providers/permit-io.md) |
 | Stytch | [Stytch](../../providers/stytch.md) |
 | Supabase Auth | [Supabase](../../providers/supabase.md) |
 | WorkOS AuthKit & SSO | [WorkOS](../../providers/workos.md) |
 
-## Watchlist — 0 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+| Candidate | Status | Note |
+|---|---|---|
+| Ory Network | Deferred | Production plan starts with a paid annual commitment; no production free allowance established for this comparison. |

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| PayPal Checkout | 12 | `NO_MONTHLY_BASE` | $0 platform fee; test sandbox free | Ví PayPal 3,49% + $0,49; Thẻ chuẩn 2,99% + $0,49 | Phí cố định $0,49 cao; rủi ro reserve hold đóng băng vốn; gateway thuần | [PayPal Fees](https://www.paypal.com/us/webapps/mpp/merchant-fees) | `SOURCE_LINKED_SNAPSHOT` | — |
+| PayPal Checkout | 12 | NO_MONTHLY_BASE | No monthly platform fee for US merchant checkout. | US PayPal checkout 3.49% + $0.49; standard online card 2.99% + $0.49. | International adds 1.5%; fees depend on merchant country and checkout type. Do not generalize US rate globally. | [US merchant fees](https://www.paypal.com/us/business/fees) · [Checkout](https://www.paypal.com/us/business/accept-payments/checkout) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

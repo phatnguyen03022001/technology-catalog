@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Inngest Cloud | 06 | `PERMANENT` | Free: 50,000 executions/month, 5 seats, 500,000 events; traces retained 24h | Pro $99/month; paid limits and overages depend on selected plan | Free execution/event quotas reset monthly. | [Inngest Pricing](https://www.inngest.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Inngest Cloud | 06 | PERMANENT | Free no-card: 50K executions/month, 5 seats, 500K events, 5 concurrent steps, 3 workers, 100K queue depth and 24-hour traces. | Pro $99/month includes 1M executions; execution overage is tiered from $50/M at the first tier down to $15/M at higher volume. Includes 5M events, then $0.50/M. | Function runs and each step execution count; a two-step run can count as three executions. Retries and concurrency affect workload totals; confirm the applicable overage tier. | [Inngest pricing](https://www.inngest.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

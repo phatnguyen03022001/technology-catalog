@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Arize Phoenix | 09 | `PERMANENT` | AX Free: 25,000 spans/month, 1GB ingest, 15-day retention; Phoenix self-host is a separate deployment | AX Pro $50/month includes 50,000 spans, 10GB ingest and 30-day retention | OSS license and hosting costs are separate from AX Cloud plans. | [Arize Pricing](https://arize.com/pricing/) | `VERIFIED` | 2026-11-01 |
+| Arize Phoenix | 09 | PERMANENT | AX Free: 25K spans/month, 1 GB/month and 15-day retention. | AX Pro $50/month includes 50K spans/month, 10 GB and 30-day retention. | AX Cloud is distinct from open-source/self-hosted Phoenix; normalize span, ingest volume and retention. | [Arize pricing](https://arize.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

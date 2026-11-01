@@ -2,11 +2,12 @@
 
 > **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
-**Offerings:** 1 · **Pillars:** [05](../pillars/05-cache-traditional-search/README.md)
+**Offerings:** 2 · **Pillars:** [05](../pillars/05-cache-traditional-search/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Dragonfly OSS | 05 | `SELF_HOSTED` | Source-available BSL 1.1; self-host software license cost $0 subject to BSL terms; compute/operations extra | No paid price for the OSS deployment itself; hosting is billed by the selected infrastructure provider | BSL is not an OSI-approved open-source license. Dragonfly Cloud is a separate offering; current Cloud starts at $8/GB-month and Flex at $36/month, subject to configuration. | [Dragonfly OSS](https://github.com/dragonflydb/dragonfly) · [Dragonfly Cloud pricing](https://www.dragonflydb.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Dragonfly OSS | 05 | SELF_HOSTED | Dragonfly OSS is source-available under BSL 1.1, not OSI-approved open source; self-host license does not remove infrastructure/operations costs. | No charge for the OSS deployment license under BSL terms; Dragonfly Cloud is a distinct service. | BSL 1.1 converts to Apache 2.0 on 2030-11-01; do not conflate OSS license with managed Cloud plan. | [Dragonfly license](https://github.com/dragonflydb/dragonfly/blob/main/LICENSE.md) · [Cloud pricing](https://www.dragonflydb.io/pricing) | VERIFIED | 2026-11-01 |
+| Dragonfly Cloud | 05 | `TIME_LIMITED_TRIAL` | Pricing page offers a free trial but does not publish its duration, resource allowance or payment-card requirement. | Flex starts at $36/month. On-demand starts at $8/GB-month plus cloud-provider network charges; Business starts at $2,000/month. The on-demand calculator assumes 20% compression savings versus Redis. | Trial details are unresolved; do not treat it as a permanent free tier. Managed Dragonfly Cloud is separate from self-hosted BSL 1.1 Dragonfly OSS. | [Dragonfly Cloud pricing](https://www.dragonflydb.io/pricing) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

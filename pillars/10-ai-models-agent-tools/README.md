@@ -8,6 +8,7 @@
 
 | Service offering | Provider SSOT |
 |---|---|
+| Amazon Bedrock | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Anthropic Claude API | [Anthropic](../../providers/anthropic.md) |
 | Apify | [Apify](../../providers/apify.md) |
 | Browserbase Search/Fetch | [Browserbase](../../providers/browserbase.md) |
@@ -18,12 +19,15 @@
 | DeepSeek API | [DeepSeek](../../providers/deepseek.md) |
 | ElevenLabs Voice API | [ElevenLabs](../../providers/elevenlabs.md) |
 | Exa Web Search | [Exa](../../providers/exa.md) |
+| fal.ai | [fal.ai](../../providers/fal-ai.md) |
 | Firecrawl Scrape/Search | [Firecrawl](../../providers/firecrawl.md) |
 | Fireworks AI | [Fireworks AI](../../providers/fireworks-ai.md) |
+| Gemini Enterprise Agent Platform | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Gemini Dev API | [Google Cloud & Firebase](../../providers/google.md) |
 | GroqCloud | [Groq](../../providers/groq.md) |
 | Hugging Face Inference | [Hugging Face](../../providers/hugging-face.md) |
 | Jina AI | [Jina AI](../../providers/jina-ai.md) |
+| Microsoft Foundry Models | [Microsoft Azure](../../providers/azure.md) |
 | Mistral API | [Mistral AI](../../providers/mistral.md) |
 | OpenAI API | [OpenAI](../../providers/openai.md) |
 | OpenRouter Free Models | [OpenRouter](../../providers/openrouter.md) |
@@ -34,8 +38,7 @@
 | Tavily Search/Extract | [Tavily](../../providers/tavily.md) |
 | Together AI | [Together AI](../../providers/together-ai.md) |
 | Voyage AI | [Voyage AI](../../providers/voyage-ai.md) |
-| fal.ai | [fal.ai](../../providers/fal-ai.md) |
 
 ## Watchlist — 0 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+> No active discovery-only candidates for this pillar. Recheck the candidate register before expanding the catalog.

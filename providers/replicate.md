@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Replicate | 10 | `UNKNOWN` | Playground trial and API credits are distinct; current API free allowance not verified | GPU/model-specific usage pricing; prior T4/A100/FLUX rates are an unrechecked snapshot | No current API free quota is asserted from playground access alone. | [Replicate Pricing](https://replicate.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Replicate | 10 | UNKNOWN | No general API free quota established. | Pricing is model/version-specific; examples: FLUX.1 Pro $0.04/image, Dev $0.025/image, Schnell $3/1K images; DeepSeek R1 is separately token-metered. | API limits: create prediction 600/minute and other endpoints 3,000/minute. Do not preserve universal T4/A100 rates. | [Replicate pricing](https://replicate.com/pricing) · [HTTP limits](https://replicate.com/docs/reference/http) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

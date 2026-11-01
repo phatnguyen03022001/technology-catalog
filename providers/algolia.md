@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Algolia Search | 05 | `PERMANENT` | Build: 10.000 search requests/tháng; 50.000 records; analytics 7 ngày | Grow: $0,50/1k searches overage; $0,40/1k records (gồm sẵn 100k records) | Search-as-you-type cần debounce ≥200-300ms tránh cạn quota 10k nhanh chóng | [Algolia Pricing](https://www.algolia.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Algolia Search | 05 | PERMANENT | Free: 10K requests and 50K records/month, no card. | Grow includes 10K requests and 100K records; overage $0.50/1K requests and $0.40/1K records. Grow Plus requests $1.75/1K. | Build plan was renamed Free. Requests and records are separate allowance/overage meters. | [Algolia pricing](https://www.algolia.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

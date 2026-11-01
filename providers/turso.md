@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Turso Database | 02 | `PERMANENT` | 100 DBs; 5 GB storage; 500M reads/mo; 10M writes/mo | $4,99/tháng Developer (9 GB, 2.5B reads) | Đã chỉnh từ 9 GB xuống 5 GB (tháng 3/2025); SQLite semantics | [Turso Pricing](https://turso.tech/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Turso Database | 02 | `PERMANENT` | Free: 100 databases, 5 GB, 500M rows read/month and 10M rows written/month; no card. | Developer $4.99/month includes 9 GB and 2.5B reads. | Pricing remains live; provider announced joining Supabase, but no shutdown date. Do not carry forward old 9 GB free allowance. | [Turso pricing](https://turso.tech/pricing) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Lemon Squeezy MoR | 12 | `NO_MONTHLY_BASE` | $0 platform fee; test sandbox free | 5,0% + $0,50 (+0,5% subscription); intl +1,5% | MoR nộp thuế thay; công ty con của Stripe; chỉ nhận sản phẩm digital/SaaS | [Lemon Squeezy](https://www.lemonsqueezy.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Lemon Squeezy MoR | 12 | NO_MONTHLY_BASE | No monthly platform fee; transaction fee applies. | 5% + $0.50/transaction; international adds 1.5%, PayPal adds 1.5%, subscriptions add 0.5%. | Payout fees vary by country and method; taxes/refunds/disputes can change net settlement. | [Lemon Squeezy pricing](https://www.lemonsqueezy.com/pricing) · [Fees](https://docs.lemonsqueezy.com/help/getting-started/fees) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

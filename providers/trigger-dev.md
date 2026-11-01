@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Trigger.dev Cloud | 06 | `RECURRING_CREDIT` | $5 credit compute/tháng; 20 concurrent runs; unlimited tasks; logs 1 ngày | Hobby $10/tháng (gồm $10 credit, 50 concurrency); Pro $50/tháng (200 concurrency) | Tính theo CPU/RAM time thực tế; delay/wait.for() miễn phí; logs 1 ngày | [Pricing/docs](https://trigger.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Trigger.dev Cloud | 06 | RECURRING_CREDIT | Free no-card includes $5 recurring credit/month, 20 concurrency, unlimited tasks, 5 members, 10 schedules and 1-day logs. | Hobby $10/month includes $10 credits; Pro $50/month includes $50 credits. CPU/RAM billed by second plus $0.000025/run; DEV runs do not incur invocation fee. | Credit offsets usage; run/invocation price must be included with CPU/RAM. API limit 1,500 requests/minute for all plans. | [Trigger.dev pricing](https://trigger.dev/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

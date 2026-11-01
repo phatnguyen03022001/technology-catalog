@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Plivo | 11 | `ONE_TIME_CREDIT` | $10 signup trial credit (snapshot; current eligibility not independently checked) | US local SMS $0.0077/message; local phone number $0.50/month (snapshot values) | Do not rank against other SMS vendors without same destination, carrier fees, message segments, and number type. | [Plivo SMS Pricing](https://www.plivo.com/pricing/sms/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Plivo | 11 | UNKNOWN | No SMS free allowance established. The $10 no-card signup credit applies to other PAYG products and does not establish SMS access. | SMS and Verify APIs are Enterprise-only, starting at $1,000/month; US SMS starts at $0.0077/message, with destination/volume terms under Enterprise. | US Professional PAYG does not include SMS/MMS/RCS or Verify; Enterprise includes them. Keep the signup credit separate from SMS access and do not reuse withdrawn legacy PAYG rates. | [Plivo pricing](https://www.plivo.com/pricing/) · [Plans and product availability FAQ](https://www.plivo.com/docs/faq/account/plans) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

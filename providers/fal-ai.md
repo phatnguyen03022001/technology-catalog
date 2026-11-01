@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| fal.ai | 10 | `UNKNOWN` | Free sandbox availability is separate from paid API inference; API allowance has not been confirmed | Model-specific inference pricing; prior rates are an unrechecked snapshot | Do not classify web playground access as recurring free API usage. | [fal.ai Pricing](https://fal.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| fal.ai | 10 | UNKNOWN | No general free API allowance established. Purchased credits expire after 365 days; promotional credits expire after 90 days. | Named endpoint examples: fal-ai/flux/schnell $0.003/megapixel; fal-ai/nano-banana-2 $0.08/image. | Pricing is endpoint/output-specific; resolution, duration and quality change total. Do not assert one provider-wide image rate. | [fal.ai pricing](https://fal.ai/pricing) · [Terms](https://fal.ai/legal/terms-of-service) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

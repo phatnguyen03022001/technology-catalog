@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| LangSmith | 09 | `PERMANENT` | Developer: tối đa 1 user seat; 5.000 base traces/tháng; 14d retention | Plus $39/seat/tháng ($2,50/1k base traces overage) | Giới hạn cứng 1 seat gây cản trở làm việc nhóm; 5.000 traces khá hẹp | [LangSmith Pricing](https://www.langchain.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| LangSmith | 09 | PERMANENT | Developer is $0/seat (one seat max), includes 5K base traces/month then pay-as-you-go. Plus includes one free small Serverless deployment. | Plus is $39/seat/month with 10K base traces/month and unlimited seats; Enterprise is custom. Usage-metered Fleet, Engine, and Sandbox products use LangChain Standard Units (LSU) at $1/LSU, with product-specific rates. Trace overage is pay-as-you-go, but its current rate is not reproduced on the public price page. | An LSU is not a trace. The listed $1/LSU meter applies across products and must not be presented as a trace overage rate; one trace can contain many events. Base traces retain 14 days; extended traces retain 180 days for an additional, unpublished fee. | [LangChain pricing](https://www.langchain.com/pricing) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

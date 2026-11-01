@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Redis Cloud | 05 | `PERMANENT` | Free: 30MB memory, 100 ops/s, 30 concurrent connections, 5GB monthly transfer | Essentials $5/month (250MB); Pro is usage-priced with $200/month minimum; first $200/month free credit on Pro | The Pro credit applies to the $200 minimum; total cost varies by capacity and region. | [Redis Cloud Pricing](https://redis.io/pricing/) | `VERIFIED` | 2026-11-01 |
+| Redis Cloud | 05 | PERMANENT | Free: 30 MB, 30 connections, 100 ops/second and 5 GB monthly bandwidth. | Essentials starts at $0.007/hour and is advertised as $5/month; size and region determine amount. | Removed the ambiguous First $200 free claim, which conflicts with a $200/month minimum without a clear period/eligibility. No credit is asserted. | [Redis pricing](https://redis.io/pricing/) · [Essentials details](https://redis.io/docs/latest/operate/rc/subscriptions/view-essentials-subscription/essentials-plan-details/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

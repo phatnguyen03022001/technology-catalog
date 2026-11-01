@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| SendGrid | 11 | `TIME_LIMITED_TRIAL` | 60 ngày trial 100 emails/ngày; Free vĩnh viễn ĐÃ BỎ | Essentials 50k $19,95/tháng; Essentials 100k $34,95/tháng | Không còn free lâu dài; hết 60 ngày bị dừng gửi email | [SendGrid Pricing](https://sendgrid.com/en-us/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| SendGrid | 11 | TIME_LIMITED_TRIAL | Current offer is a 60-day trial at up to 100 emails/day, no card required; no perpetual free quota asserted. | Essentials begins at $19.95/month; current exact 50K/$19.95 and 100K/$34.95 rates are not reproduced on the current page. | Historical 2022 volume prices are not current price evidence. Current page describes trial and volume plan entry only. | [Twilio SendGrid pricing](https://www.twilio.com/en-us/products/email-api/pricing) · [Historical 2022 change](https://www.twilio.com/en-us/changelog/essentials-40k-and-100k-pricing-and-packaging-have-changed) | SOURCE_LINKED_SNAPSHOT | — |
 
 ## Evidence & maintenance
 

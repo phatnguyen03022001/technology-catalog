@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| ElevenLabs Voice API | 10 | `PERMANENT` | 10k credits/tháng (~10 phút audio) | Starter $6/tháng (30k credits, instant cloning) / 1M tokens | Free tier strictly non-commercial + bắt buộc ghi nguồn | [ElevenLabs Pricing](https://elevenlabs.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| ElevenLabs Voice API | 10 | LIMITED_FREE | Free plan includes 10K credits/month; free usage is noncommercial under current Terms. | Starter $6/month includes 30K credits; model and output-type credit costs vary by TTS/STT model. | Billable unit is credits/characters/audio, not tokens. Do not use promotional first-month rate as standard floor; review commercial rights. | [ElevenLabs pricing](https://elevenlabs.io/pricing) · [Terms](https://elevenlabs.io/terms-of-use) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cockroach Continuum | 02 | `RECURRING_CREDIT` | $15/tháng recurring credit (50M RU + 10 GiB free); 30d $400 trial | $0,20/1M RU; Standard ~$0,092/vCPU-h | Daily backups trên Basic; 30K RU/s cap; CDC tách riêng | [CockroachDB Pricing](https://www.cockroachlabs.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Cockroach Continuum | 02 | ONE_TIME_CREDIT | New organizations/deployments may receive $400 usage credit for 30 days; no recurring $15 RU credit established for new deployments. | Official pricing page conflicts internally: top section lists Standard $0.092/vCPU-hour for AWS us-east-1; lower feature table says Standard from $0.057/vCPU-hour. Do not select a unique minimum until vendor resolves. | The $400/30-day promotion and service availability are supported, but contradictory first-party rates make the paid price stale/unresolved. Storage, backup and transfer remain separate. | [CockroachDB pricing](https://www.cockroachlabs.com/pricing/) | STALE | — |
 
 ## Evidence & maintenance
 

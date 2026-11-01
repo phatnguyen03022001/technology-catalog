@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Dagger Cloud | 08 | `PERMANENT` | Free local engine; Cloud Free tier: 1 user, 1M trace events/mo | Team starts at $20/user/mo for shared distributed caching | Shift from YAML to code requires team paradigm adaptation | [Dagger Pricing](https://dagger.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Dagger Cloud | 08 | UNKNOWN | Pricing page offers “Try for free,” but does not publish trial duration, quota, or ongoing free-plan terms; no permanent allowance established. | Starter $20/month (1 user); Scale $200/month (unlimited users); Enterprise custom. Usage: new/repeat CPU $0.005/$0.001 per CPU-minute; memory $0.005/$0.001 per GB-minute; inputs $0.025/$0.005 per GB; outputs $0.10/$0.02 per GB. Bill is the greater of plan price or usage. | Local Dagger Engine is distinct from Cloud. Free-trial conditions are unresolved; rates measure actual pipeline resources and cached repeat work. | [Dagger Cloud pricing](https://dagger.io/pricing/) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

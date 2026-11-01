@@ -8,9 +8,10 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| AWS SNS | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Ably | [Ably](../../providers/ably.md) |
 | Amazon SES | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Apple Push Notification service (APNs) | [Apple](../../providers/apple.md) |
+| AWS SNS | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Brevo Email | [Brevo](../../providers/brevo.md) |
 | Courier | [Courier](../../providers/courier.md) |
 | Expo Push Service | [Expo](../../providers/expo.md) |
@@ -27,8 +28,12 @@
 | SendGrid | [SendGrid](../../providers/sendgrid.md) |
 | Stream Chat | [Stream](../../providers/stream.md) |
 | Telnyx | [Telnyx](../../providers/telnyx.md) |
+| Telnyx Email API | [Telnyx](../../providers/telnyx.md) |
 | Twilio SMS | [Twilio](../../providers/twilio.md) |
+| WhatsApp Business Platform Cloud API | [Meta](../../providers/meta.md) |
 
-## Watchlist — 0 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+| Candidate | Status | Note |
+|---|---|---|
+| ntfy | Deferred | Useful self-hosted notification server, but not equivalent to a managed customer push delivery API. |

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Descope | 07 | `PERMANENT` | 7.500 MAUs free; 10 tenants, 3 SSO conns, visual workflow editor | Pro $249/tháng khi thanh toán theo năm (10k MAU, 35 tenants); Growth $799/tháng | Free là giới hạn cứng không cho overage; vượt 7.500 MAU cần gói trả phí. | [descope.com/pricing](https://descope.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Descope | 07 | PERMANENT | Free Forever: 7,500 MAU, 10 monthly active tenants, 3 SSO connections, 1 OIDC app and 5 test users; no overage, upgrade required after grace period if over cap. | Pro is $249/month billed annually for 10K MAU, 35 tenants and 5 SSO connections; Growth is $799/month. | Tenant count is monthly active tenants, not a static maximum; no overage applies before upgrade after grace period. | [Descope pricing](https://www.descope.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

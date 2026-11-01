@@ -12,13 +12,17 @@
 | Axiom | [Axiom](../../providers/axiom.md) |
 | Better Stack | [Better Stack](../../providers/better-stack.md) |
 | Braintrust | [Braintrust](../../providers/braintrust.md) |
+| ClickStack OSS | [ClickHouse](../../providers/clickhouse.md) |
+| Dash0 Observability | [Dash0](../../providers/dash0.md) |
 | Datadog | [Datadog](../../providers/datadog.md) |
+| GlitchTip Cloud | [GlitchTip](../../providers/glitchtip.md) |
 | Grafana Cloud | [Grafana](../../providers/grafana.md) |
 | Helicone | [Helicone](../../providers/helicone.md) |
 | Honeycomb | [Honeycomb](../../providers/honeycomb.md) |
-| LangSmith | [LangSmith](../../providers/langsmith.md) |
 | Langfuse Cloud | [Langfuse](../../providers/langfuse.md) |
+| LangSmith | [LangSmith](../../providers/langsmith.md) |
 | Logfire (Pydantic) | [Logfire](../../providers/logfire.md) |
+| Managed ClickStack | [ClickHouse](../../providers/clickhouse.md) |
 | New Relic | [New Relic](../../providers/new-relic.md) |
 | OpenLIT | [OpenLIT](../../providers/openlit.md) |
 | OpenObserve | [OpenObserve](../../providers/openobserve.md) |
@@ -27,6 +31,8 @@
 | Sentry | [Sentry](../../providers/sentry.md) |
 | SigNoz | [SigNoz](../../providers/signoz.md) |
 
-## Watchlist — 0 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+| Candidate | Status | Note |
+|---|---|---|
+| ClickStack Cloud (private preview) | Deferred | Separate waitlist-only hosted endpoint remains in private preview and has no finalized public price; ClickStack OSS and GA Managed ClickStack are cataloged separately. |

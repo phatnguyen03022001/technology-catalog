@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Loops | 11 | `PERMANENT` | 1.000 subscribed contacts; 4.000 emails/tháng (rolling 30 ngày) | Growth $49/tháng (5k contacts, unlimited sends, bỏ footer logo) | Kết hợp transactional và marketing email cho SaaS; free có logo | [Loops Pricing](https://loops.so/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Loops | 11 | PERMANENT | Free: up to 4K sends in a rolling 30-day window to the first 1K contacts; marketing and transactional share the allowance. | 1,001–5,000 contacts is $49/month with unlimited sends and transactional email. | Free limit is a rolling 30-day window and subscriber cap, not a calendar-month quota. | [Loops pricing](https://loops.so/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

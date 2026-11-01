@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Better Stack | 09 | `PERMANENT` | Free: 10 monitors, 3GB logs and 3GB traces (3-day retention), 30GB metrics, 100k exceptions, 5k session replays | Paid pricing is bundled by product/plan; the previously listed $29–$34 per-seat Responder price is not supported by the current page | Plan mix and usage limits vary by telemetry product. | [Better Stack Pricing](https://betterstack.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Better Stack | 09 | PERMANENT | Free for personal projects: 10 monitors, 100K exceptions/month, 5K replays, 3 GB logs and 3 GB traces with 3-day retention, 30 GB metrics, and 3 GB web events with 3-day retention. | Responder seat: $29/month billed annually or $34 monthly; all other team members can access telemetry free. Logs/traces: 3 GB/month included, then $0.10/GB ingested and $0.05/GB-month retained. Metrics: 30 GB included, then $0.50/GB-month. | Free plan is for personal projects. Do not treat the responder-seat price as a telemetry floor; usage rates depend on telemetry volume, retention and selected product. | [Better Stack pricing](https://betterstack.com/pricing) · [Metrics billing](https://betterstack.com/docs/logs/billing-for-metrics/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

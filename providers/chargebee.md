@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Chargebee | 12 | `LIMITED_FREE` | $0/tháng tới khi đạt $250.000 doanh thu trọn đời | 0,75% overage sau $250k lifetime | Quản lý subscription/invoicing; không nộp thuế thay (gateway riêng) | [Chargebee Pricing](https://www.chargebee.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Chargebee | 12 | LIMITED_FREE | Eligible new startups receive free usage up to $1M cumulative billing volume; eligibility requires membership in accelerator/VC network and under $5M raised, with application. | Paid plan uses fixed fee by revenue threshold plus percentage overage; current universal list price is not public and remains quote-only. | Offer is not a general permanent free tier. Old $250K/0.75% figures are not current verified pricing. | [Startup offer](https://www.chargebee.com/startups/) · [Pricing model](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/what-is-chargebees-pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

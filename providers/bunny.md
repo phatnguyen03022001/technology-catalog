@@ -6,8 +6,8 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Bunny Storage | 03 | `TIME_LIMITED_TRIAL` | 14 ngày trial ($20-$50 credit); KHÔNG có free vĩnh viễn | Standard HDD $0,01/GB; Edge SSD $0,02/GB; API requests $0; Egress sang Bunny CDN $0 | Cần sàn account $1/tháng; siêu rẻ cho static asset khi đi kèm Bunny CDN | [Bunny Storage Pricing](https://bunny.net/pricing/storage/) | `SOURCE_LINKED_SNAPSHOT` | — |
-| Bunny CDN | 04 | `TIME_LIMITED_TRIAL` | Trial 14 ngày (monetary trial credit); không có perpetual free | Từ $0,01/GB EU/NA; $0,03/GB Asia; Volume tier $0,005/GB; min $1/tháng | Theo vùng; tính bandwidth thực; min $1/tháng sàn account | [Pricing/docs](https://bunny.net/pricing/cdn/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Bunny Storage | 03 | `TIME_LIMITED_TRIAL` | 14-day trial; current pricing page does not establish the old $20–$50 account credit. | Standard HDD $0.01/GB per region (up to two regions; extra region $0.005/GB); Edge SSD $0.02/GB/region; $1/month minimum. | No API fee; managed egress and Bunny CDN traffic included under stated terms. Distinguish trial from recurring free allowance. | [Bunny Storage pricing](https://bunny.net/pricing/storage/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Bunny CDN | 04 | TIME_LIMITED_TRIAL | 14-day trial without card; no $20–$50 trial credit was established. | Standard: $0.01/GB North America/Europe, $0.03 Asia/Oceania, $0.045 South America and $0.06 Middle East/Africa; Volume starts $0.005/GB; $1 monthly minimum. | Rates depend on network tier and region; trial credit claim removed. Separate Bunny CDN egress from other storage/transfer products. | [Bunny pricing](https://bunny.net/pricing) · [Billing FAQ](https://bunny.net/faq/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

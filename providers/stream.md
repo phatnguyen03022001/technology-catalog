@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Stream Chat | 11 | `LIMITED_FREE` | Maker Tier: 2.000 MAUs free; 100 conns; $100 AI credit (cần duyệt đơn) | Start $399-$499/tháng (10k MAU); overage $0,09/MAU | Bộ SDK UI chat hoàn chỉnh nhất; hết Maker nhảy lên $399-$499/tháng | [Stream Chat Pricing](https://getstream.io/chat/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Stream Chat | 11 | LIMITED_FREE | Build Free: 1K MAU/100 concurrent, no card. Maker Account requires application/approval and eligibility (team, revenue and funding thresholds), includes 2K MAU/100 connections and $100 monthly AI moderation credit. | Start is $399/month annual or $499 monthly for 10K MAU/500 concurrent; MAU overage $0.09/user, concurrent $0.99, stored messages/API/query/bandwidth can add charges. | Maker is conditional and not a generally available permanent plan; distinguish concurrent users, MAU, storage, API and bandwidth meters. | [Chat pricing](https://getstream.io/chat/pricing/) · [Maker eligibility](https://getstream.io/maker-account/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

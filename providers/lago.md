@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Lago | 12 | `PERMANENT` | 100% Free Open Source (AGPLv3) tự host | Cloud / Enterprise custom quote | Tự host cần PostgreSQL + ClickHouse để ingest sự kiện đo lường | [Lago Pricing](https://getlago.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Lago | 12 | SELF_HOSTED | Lago OSS self-hosted is AGPLv3 with no software license fee; infrastructure/operations are extra. | Lago Cloud Premium is sales-led; no public rate card established. | AGPLv3 compliance applies to OSS deployment; Cloud and self-hosted have different operations and pricing. | [Lago pricing](https://getlago.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

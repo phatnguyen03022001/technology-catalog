@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Pulumi Cloud | 08 | `PERMANENT` | 1 user; unlimited resources, stacks, & state; 500 workflow mins/mo | Essentials $40/mo (unlimited users, 500 resources); Pro $400/mo | Single user on Cloud Free tier; self-managed S3/GCS backend is 100% free | [Pulumi Pricing](https://www.pulumi.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Pulumi Cloud | 08 | PERMANENT | Free includes 1 user, 500 shared workflow-minutes/month, unlimited managed resources and up to 25 basic ESC secrets. | Essentials $40/month includes 40 credits and up to 500 managed resources; overage $0.00025/resource-hour, $0.01/workflow-minute and $0.50/managed secret-month. | Free workflow minutes are shared. Distinguish resource-hour, workflow-minute and secret meters. | [Pulumi pricing](https://www.pulumi.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

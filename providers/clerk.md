@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Clerk | 07 | `PERMANENT` | 50.000 MRUs (Monthly Retained Users) free mỗi app; components UI sẵn | Pro $25/tháng ($20 trả năm) gồm 50k MRU + $0,02/MRU overage | Free giữ logo Clerk; RBAC, MFA, session tùy chỉnh cần Pro $25/tháng | [clerk.com/pricing](https://clerk.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Clerk | 07 | PERMANENT | Hobby is free without a card: 50K monthly retained users/app and up to 3 dashboard seats. | Pro $25/month or $20/month billed annually, includes 50K MRU/app then $0.02/MRU. | Default admin/member organization roles are included; production custom roles/permissions require B2B Authentication add-on. MRU is not generic MAU. | [Clerk pricing](https://clerk.com/pricing) · [2026 plan change](https://clerk.com/changelog/2026-02-05-new-plans-more-value) · [Roles/permissions](https://clerk.com/docs/guides/organizations/control-access/roles-and-permissions) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Helicone | 09 | `PERMANENT` | 10.000 requests/tháng; 1 GB storage; 7d retention; 1 user seat | Pro $79/tháng (unlimited requests, 1.000 logs/min, caching) | Rate limit 10 logs/min ở gói Free; cliff nhảy lên trả phí cao ($79/tháng) | [Helicone Pricing](https://www.helicone.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Helicone | 09 | PERMANENT | Hobby: 10K requests/month, 1 GB, 1 seat/org, 7-day retention and 10 logs/minute. | Pro $79/month includes 10K requests then usage pricing, 1 GB and 1-month retention; 1,000 logs/minute and 10 API calls/minute. Separate 7-day Pro trial. | Do not describe request allowance as unlimited; retention, seat, logging and API limits are independent. | [Helicone pricing](https://www.helicone.ai/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

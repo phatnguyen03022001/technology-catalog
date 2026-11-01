@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Dodo Payments | 12 | `NO_MONTHLY_BASE` | $0 platform fee; test sandbox free | Domestic 4,0% + $0,40 (+0,5% sub, +1,5% intl) | MoR thiết kế cho AI agents & SaaS; phí nội địa 4% + 40¢ rẻ hơn Paddle | [Dodo Payments](https://dodopayments.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Dodo Payments | 12 | NO_MONTHLY_BASE | No monthly platform fee; processing billed per transaction. | US domestic cards 4% + $0.40/transaction; international adds 1.5%, PayPal and BNPL add 3%, recurring subscriptions add 0.5%. | Rate depends on payment method and market; payouts, dispute/refund, taxes and non-US transactions can add fees. Not an all-in rate. | [Dodo Payments pricing](https://dodopayments.com/vi/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

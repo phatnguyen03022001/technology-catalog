@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Uploadcare | 03 | `PERMANENT` | 1 GB storage; 5 GB traffic; 1.000 operations/tháng; file max 500MB | Pro $79/tháng (10 GB storage, 25 GB traffic, 5k ops); Business $199/tháng | Free chỉ cho mục đích cá nhân (personal); bước nhảy lên trả phí rất cao ($79/tháng) | [Uploadcare Pricing](https://uploadcare.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Uploadcare | 03 | `LIMITED_FREE` | Free: 1,000 operations/month, 5 GB traffic, 1 GB storage, 500 MB max file; personal use only. | Pro $79/month (annual effective $66); Business $199/month (annual effective $166); overage charged by usage. | Free quota is restricted to personal use; at quota, Free service pauses until reset. Plan meters and annual/monthly amounts differ. | [Uploadcare pricing](https://uploadcare.com/pricing/) · [Billing](https://uploadcare.com/docs/billing/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

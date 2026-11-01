@@ -10,14 +10,22 @@
 |---|---|
 | Aiven Valkey | [Aiven](../../providers/aiven.md) |
 | Algolia Search | [Algolia](../../providers/algolia.md) |
+| Amazon ElastiCache for Valkey | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Amazon OpenSearch | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Apache Solr | [Apache Solr](../../providers/apache-solr.md) |
+| Azure AI Search | [Microsoft Azure](../../providers/azure.md) |
+| Azure Managed Redis | [Microsoft Azure](../../providers/azure.md) |
+| Cloudflare Workers KV | [Cloudflare](../../providers/cloudflare.md) |
+| Dragonfly Cloud | [Dragonfly](../../providers/dragonfly.md) |
 | Dragonfly OSS | [Dragonfly](../../providers/dragonfly.md) |
 | Elastic Cloud | [Elastic](../../providers/elastic.md) |
+| Google Memorystore for Valkey | [Google Cloud & Firebase](../../providers/google.md) |
 | KeyDB | [KeyDB](../../providers/keydb.md) |
 | Meilisearch Cloud | [Meilisearch](../../providers/meilisearch.md) |
 | Meilisearch OSS | [Meilisearch](../../providers/meilisearch.md) |
 | Momento Cache | [Momento](../../providers/momento.md) |
-| Quickwit | [Quickwit](../../providers/quickwit.md) |
+| OpenSearch OSS | [OpenSearch Project](../../providers/opensearch-project.md) |
+| Quickwit | [Quickwit (Datadog)](../../providers/quickwit.md) |
 | Redis Cloud | [Redis](../../providers/redis.md) |
 | Typesense Cloud | [Typesense](../../providers/typesense.md) |
 | Typesense OSS | [Typesense](../../providers/typesense.md) |
@@ -25,4 +33,4 @@
 
 ## Watchlist — 0 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+> No active discovery-only candidates for this pillar. Recheck the candidate register before expanding the catalog.

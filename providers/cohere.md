@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cohere | 10 | `PERMANENT` | Trial Key: 1.000 API calls/tháng (20 RPM Command, 10 RPM Rerank) | Command R+: $2,50 in / $10 out; Rerank 3.5: $2,00/1k queries / 1M tokens | Trial Key chỉ cho đánh giá phi thương mại; Rerank hàng đầu | [Cohere Pricing](https://cohere.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Cohere | 10 | UNKNOWN | Trial keys allow 1,000 calls/month; production free eligibility is conflicted: Command A+ model card says free until rate limits while official rate-limit table says contact sales. | Named fixed model command-r-plus-08-2024: $2.50 input/$10 output per million tokens, 128K context, 4K max output; not latest Command model. Latest command-a-plus-05-2026 is 128K context/64K output but production price unresolved. Current rerank-v5.0-pro/fast are latest; old rerank-v3.5 $2/1K is not reproduced. | Do not claim a general production-free tier. Command A+ and Rerank production pricing conflict or is sales-led; 20 RPM Command, 10 RPM Rerank and 2,000 inputs/min Embed are rate limits, not prices. | [Command R+ model](https://docs.cohere.com/v2/docs/command-r-plus) · [Command A+ model](https://docs.cohere.com/v1/docs/command-a-plus) · [Rate limits](https://docs.cohere.com/v2/docs/rate-limits) · [Rerank models](https://docs.cohere.com/v2/docs/rerank) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

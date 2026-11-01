@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Knock Notifications | 11 | `PERMANENT` | 10.000 messages/tháng; 500 in-app guides; unlimited channels | Starter $250/tháng (50k msgs; overage $0,005/msg); Enterprise custom | Cliff giá cực lớn từ 10.001 nhảy lên $250/tháng; chi phí kênh SMS/email trả riêng | [Knock Pricing](https://knock.app/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Knock Notifications | 11 | PERMANENT | Free includes 10K message deliveries/month, 500 active guide recipients and 500 agent credits. | Starter $250/month includes 50K messages, 2,500 guide users and 2K agent credits; overages $0.005/message, $0.05/guide user and $0.01/agent credit. | A message is successful delivery to one user on one channel; multi-channel sends count multiple deliveries. Downstream provider charges are separate. | [Knock pricing](https://knock.app/pricing) · [Plan usage](https://docs.knock.app/manage-your-account/knock-plans) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

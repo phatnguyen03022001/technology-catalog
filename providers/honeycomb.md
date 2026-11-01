@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Honeycomb | 09 | `PERMANENT` | 20M events/tháng; 100M metric points; 60d retention; unlimited seats | Pro $150/tháng (50M events, 15 triggers, service maps) | 1 distributed trace gồm 10 child spans = 10 events; cliff lên Pro $150/tháng | [Honeycomb Pricing](https://www.honeycomb.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Honeycomb | 09 | PERMANENT | Free: 20M events/month, 100M metric points/month and 2 triggers. | Pro starts $150/month and includes 50M events plus 250M metric points, up to 100 triggers and 2 SLOs. | Service maps are Enterprise, not Pro. 60-day retention is for most customers, not guaranteed universally. | [Honeycomb pricing](https://www.honeycomb.io/pricing) · [Data protection/retention](https://docs.honeycomb.io/security-compliance/security-data-protection) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

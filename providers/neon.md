@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Neon Postgres | 02 | `PERMANENT` | 100 projects; 1 GB/proj (20 GB total); 100 CU-h/mo; 10 branches | $0 base (Launch PAYG $0,106/CU-h) | Scale-to-zero cold start sau 5 min idle; branch PR rất mạnh | [Neon Pricing](https://neon.tech/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Neon Lakebase Postgres | 02 | `PERMANENT` | Free: no card; up to 100 projects, each with 100 CU-hours/month, 1 GB Postgres storage, 10 branches and 5 GB public network transfer/month. If a project exceeds 1 GB Postgres storage or projects exceed 20 GB total, storage-increasing operations fail until space is freed. | Launch has no monthly minimum: $0.106/CU-hour and $0.35/GB-month Postgres storage; 500 GB public transfer/project/month included then $0.10/GB; extra branches above 10 cost $0.002/hour (~$1.50/branch-month); retained history is $0.20/GB-month; snapshots and scheduled backups are $0.09/GB-month each. Typical intermittent 1 GB workload: $15/month on Launch, estimate not a floor. | Neon now brands its database Lakebase Postgres. Free quotas stop applying after upgrade; actual cost also depends on compute sizing, autosuspend, branch/history retention and egress. | [Pricing and free-plan limits](https://neon.com/pricing) · [Plans and billing](https://neon.com/docs/introduction/about-billing) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

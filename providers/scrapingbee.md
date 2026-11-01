@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| ScrapingBee | 10 | `ONE_TIME_CREDIT` | 1.000 API credits khi đăng ký (dùng 1 lần) | Hobby $19/tháng (75k credits); Freelance $49/tháng (250k) | Không hồi hàng tháng; JS render tốn 5 credits; proxy dân cư tốn 10-25 credits | [ScrapingBee Pricing](https://www.scrapingbee.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| ScrapingBee | 10 | ONE_TIME_CREDIT | One-time 1,000 free credits, no card; paid-plan credits reset monthly and do not roll over. | Hobby $19/month includes 75K credits; Freelance $49/month includes 250K. | Default request is 1 credit; JavaScript rendering, proxy tier and stealth options have separate credit multipliers. | [ScrapingBee pricing](https://www.scrapingbee.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

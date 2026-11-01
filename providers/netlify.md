@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Netlify | 01 | `PERMANENT` | 300 platform credits/month (Credit Pool Model) | Personal $9/mo (1,000 credits); Pro $20/mo (3,000 credits, unlimited seats) | Hard site freeze when 300 credits exhausted; 15 credits/deploy (20 deploys = 100% quota); 20 credits/GB | [Netlify Pricing](https://www.netlify.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Netlify | 01 | `PERMANENT` | Free: 300 credits/tháng hard limit; project bị pause khi hết credits. | Personal $9/month includes 1,000 credits; Pro $20/month includes 3,000 credits and unlimited seats. Production deploy 15 credits; compute 10/GB-hour; bandwidth 20/GB; web requests 2/10,000. | Credit plans replace deploy-minute pricing. Free project pauses when monthly credits run out; usage meters differ and retry/background execution belong in TCO. | [Netlify pricing](https://www.netlify.com/pricing/) · [Credit plan pricing](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/) · [Credit meters](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/how-credits-work/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Fly.io Machines | 01 | `TIME_LIMITED_TRIAL` | Permanent free tier DEPRECATED; Trial: 2 hours of Machine runtime or 7 days, max 10 machines | $0 base platform fee; `shared-cpu-1x` (256MB RAM) ~$2.02–$2.19/mo; Volume $0.15/GB/mo | No permanent free tier; stopped machines pay $0 compute but volumes accrue storage fees | [Fly.io Pricing](https://fly.io/docs/about/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Fly.io Machines | 01 | `TIME_LIMITED_TRIAL` | Trial: 2 machine-hours tổng cộng hoặc 7 ngày (điều kiện nào đến trước), tối đa 10 machines; không có free compute vĩnh viễn. | Ví dụ US: 256 MB shared-cpu-1x khoảng $2,19/tháng; giá thay đổi theo region. Volume $0,15/GB-tháng. | Stopped machines không tính compute nhưng volume tiếp tục tính. Giá được nêu theo ví dụ/region, chưa là báo giá toàn cầu. | [Fly trial](https://fly.io/docs/about/free-trial/) · [Fly pricing](https://fly.io/docs/about/pricing/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

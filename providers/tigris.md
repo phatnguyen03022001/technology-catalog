@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Tigris Data | 03 | `PERMANENT` | 5 GB storage; 10k Class A; 100k Class B; $0,00 Egress vĩnh viễn toàn cầu | $0,025/GB-tháng; Class A $5,00/1M; Class B $0,40/1M; Egress $0,00 toàn cầu | Chuẩn S3 tương thích, multi-region tự động phân tán cạnh, không phí egress | [Tigris Data Pricing](https://www.tigrisdata.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Tigris Data | 03 | `PERMANENT` | 5 GB storage; 10k Class A; 100k Class B; $0,00 Egress vĩnh viễn toàn cầu | Standard $0.02/GB-month; Class A $0.005/1,000 requests; Class B $0.0005/1,000 requests; egress $0. | Free: 5 GB storage, 10K Class A and 100K Class B/month. Class A/B prices are stated per 1,000 operations; compare by normalizing request denominators. | [Tigris pricing](https://www.tigrisdata.com/pricing/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

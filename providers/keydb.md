@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| KeyDB | 05 | `SELF_HOSTED` | BSD-3-Clause software license $0; self-host compute, storage and operations cost extra | Self-host infrastructure billed by selected host | No hosted KeyDB plan is priced in this record; comparative throughput claims are not independently verified. | [KeyDB OSS](https://github.com/Snapchat/KeyDB) | `SOURCE_LINKED_SNAPSHOT` | — |
+| KeyDB | 05 | SELF_HOSTED | BSD-3-Clause software may be self-hosted without a license fee; hosting and operations are separate. | No hosted KeyDB plan or public managed price established. | Latest tagged release is v6.3.4 from 2023-10-30; review maintenance/security activity before adopting. | [KeyDB source/license](https://github.com/Snapchat/KeyDB) · [Releases](https://github.com/Snapchat/KeyDB/releases) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

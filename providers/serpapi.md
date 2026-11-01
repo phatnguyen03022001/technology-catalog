@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| SerpAPI | 10 | `PERMANENT` | 250 searches/tháng (50/giờ) vĩnh viễn | Starter $25/tháng (1k searches); Developer $75/tháng (5k) | Giá trên mỗi search khá cao ($0,025/search); phù hợp cào Google SERP chuẩn | [SerpAPI Pricing](https://serpapi.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| SerpAPI | 10 | PERMANENT | Free: 250 searches/month, maximum 50/hour. | Starter $25/month includes 1K searches; Developer $75/month includes 5K. $0.025/search is only the Starter effective unit price. | Higher tiers change included volume and support; do not generalize one effective unit price. | [SerpAPI pricing](https://serpapi.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

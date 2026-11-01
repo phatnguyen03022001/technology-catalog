@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| BullMQ | 06 | `PERMANENT` | 100% Free Open Source (MIT) chạy trên Redis/Valkey | BullMQ Pro $95/tháng hoặc $995/năm cho multi-tenant queue groups | Queue phổ biến nhất Node.js; tự vận hành Redis | [Pricing/docs](https://bullmq.io/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| BullMQ | 06 | SELF_HOSTED | BullMQ OSS is MIT licensed and runs on Redis/Valkey; software has no license fee, infrastructure does. | BullMQ Pro Standard is $139/month or $1,395/year per deployment for organizations under 100 employees; larger organizations require Enterprise quote. | BullMQ OSS depends on Redis-compatible infrastructure. Pro license is separate from Redis hosting and worker compute; old $95/$995 price is obsolete. | [BullMQ pricing/license](https://bullmq.io/) · [Pro docs](https://docs.bullmq.io/bullmq-pro/introduction) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Shopify APIs | 12 | `PERMANENT_AFTER_TRIAL` | Unlimited dev stores via Partner account | Basic $39/tháng + 2,9% + 30¢ | Headless commerce prod cần trả phí merchant tối thiểu $39/tháng | [Shopify Pricing](https://www.shopify.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Shopify APIs | 12 | LIMITED_FREE | Partner/developer stores are free and non-production, up to 250 per organization. New US Basic offer: 3-day trial then $1/month for 3 months, promotional and account-eligible. | US Basic $39/month or $29/month billed annually. | Development stores cannot process real production payments or transfer in ordinary production workflow. GraphQL Admin Standard is 100 cost points/second, max 1,000/query. | [Shopify pricing](https://www.shopify.com/pricing) · [Dev-store limits](https://shopify.dev/docs/apps/build/stores/development-stores) · [GraphQL limits](https://shopify.dev/docs/apps/build/apis/graphql-admin/rate-limits) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

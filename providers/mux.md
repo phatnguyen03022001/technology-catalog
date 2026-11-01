@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Mux Video | 03 | `PERMANENT` | Tối đa 10 video assets lưu trữ; 100.000 delivery minutes/tháng free; encoding basic free | Encode VOD free; Storage ~$0,0024-$0,003/min-tháng; Delivery ~$0,0010-$0,0014/min | Giới hạn 10 video ở Free; tính tiền theo phút xem thay vì GB; có React player xịn | [Mux Pricing](https://mux.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Mux Video | 03 | `PERMANENT` | Free: up to 10 VOD assets and 100K delivered minutes/month. | Basic 720p: $0.0024/video-minute-month storage and $0.0008/delivered minute after included delivery; 1080p $0.003 storage and $0.001 delivery. PAYG includes $20 monthly usage credit. | Pricing depends on resolution/quality; storage minutes and delivery minutes are different meters. Free plan does not cover live video. | [Mux pricing](https://www.mux.com/pricing) · [Detailed video pricing](https://www.mux.com/docs/pricing/video) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

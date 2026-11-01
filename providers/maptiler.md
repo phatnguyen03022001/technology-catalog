@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| MapTiler Cloud | 12 | `PERMANENT` | Free: 100k API requests/month, 5GB storage for non-commercial/R&D use | Flex $30/month includes 500k API requests, 25k sessions and 10GB storage | Requests and sessions are separate meters; free tier is not for commercial production use. | [MapTiler Cloud Pricing](https://www.maptiler.com/cloud/pricing/) · [Terms](https://www.maptiler.com/terms/cloud/) | `VERIFIED` | 2026-11-01 |
+| MapTiler Cloud | 12 | LIMITED_FREE | Free for testing, personal, PoC and non-commercial use: 100K API requests/month, 5 GB storage plus separate session/search/3D allowances. | Flex $30/month includes 500K API requests and 25K sessions. | Free plan is not commercial production; overage, VAT and reseller terms may apply. | [MapTiler pricing](https://www.maptiler.com/cloud/pricing/) · [Cloud terms](https://www.maptiler.com/terms/cloud/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

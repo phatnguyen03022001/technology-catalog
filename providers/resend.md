@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Resend | 11 | `PERMANENT` | 3,000 emails/month; hard limit 100 emails/day; 3 custom domains | Pro $20/month includes 50,000 emails; $0.90/1k overage | Daily cap may constrain short high-volume bursts; include all sends and overages in the workload estimate. | [Resend Pricing](https://resend.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Resend | 11 | PERMANENT | Free: 3K emails/month and 100/day, up to 3 domains. | Pro $20/month includes 50K; overage $0.90/1K. Scale $90/month includes 100K. | Paid overage depends on pay-as-you-go being enabled; do not apply paid overage to the free plan. | [Resend pricing](https://resend.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

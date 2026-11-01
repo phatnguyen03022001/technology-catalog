@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Fastly CDN | 04 | `PERMANENT` | Developer tier miễn phí 100 GB/tháng, 1M requests/tháng, 5 shared TLS domains | Pay-as-you-go với minimum spend $50/tháng; ~$0,12/GB NA/EU, $0,0075/10k requests | Vượt free tier chịu minimum spend $50/tháng; WAF/Image Optimizer tính phí riêng | [Pricing/docs](https://www.fastly.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Fastly CDN | 04 | `PERMANENT` | Full Site Delivery includes 100 GB transfer and 1M requests/month. | North America/Europe overage starts $0.12/GB and $0.01 per 10K requests; packaged contracts are separate. | Removed unsupported $50 monthly minimum and old $0.0075 request rate. Cost varies by region, delivery product, TLS and optional WAF/image products. | [Fastly pricing](https://www.fastly.com/pricing) · [Account types](https://www.fastly.com/documentation/guides/organizations-and-accounts/billing/account-types/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

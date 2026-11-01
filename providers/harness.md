@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Harness CI | 08 | `PERMANENT` | 2,000 Cloud credits/mo (~1,000 Linux mins); unlimited self-hosted runners | Essentials / Enterprise via custom quote | Free credits do not roll over; sales-focused enterprise tier | [Harness Pricing](https://www.harness.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Harness CI | 08 | PERMANENT | Free includes 2,000 build minutes/month. | XSmall 2 vCPU/7 GB is $0.005/build-minute; Small 4 vCPU/15 GB is $0.01/minute. | Meter is build minutes, not credits; runner size affects rate. | [Credits calculator](https://www.harness.io/products/continuous-integration/credits-calculator) · [Harness Cloud](https://www.harness.io/products/continuous-integration/harness-cloud) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

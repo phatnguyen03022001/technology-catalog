@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Twilio SMS | 11 | `TIME_LIMITED_TRIAL` | Trial account supports limited testing; exact credit and duration are not claimed here | US domestic SMS starts at $0.0083/segment; US local number from $1.15/month; carrier fees extra | Exact prior ~$15 trial-credit claim was not reproduced on current official pricing pages and is withdrawn. A2P 10DLC registration may add cost. | [US SMS Pricing](https://www.twilio.com/en-us/sms/pricing/us) · [Messaging Pricing](https://www.twilio.com/en-us/pricing/messaging) | `VERIFIED` | 2026-11-01 |
+| Twilio SMS | 11 | TIME_LIMITED_TRIAL | Trial: 100 SMS units for 30 days, no card; sending limited to verified recipients and sample content. | US long-code, toll-free and short-code SMS $0.0083/segment outbound and inbound; local number $1.15/month, toll-free $2.15; carrier fees and A2P registration extra. | Failed-message $0.001 applies only to Failed status; trial is not $15 SMS credit. Region and segment count change cost. | [US SMS pricing](https://www.twilio.com/en-us/sms/pricing/us) · [Trial terms](https://www.twilio.com/docs/usage/trials) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| GroqCloud | 10 | `PERMANENT` | Llama 3.3 70B: 30 RPM, 1.000 RPD, 100k tokens/ngày | PAYG: 70B $0,59 in / $0,79 out; 8B $0,05 in / $0,08 out / 1M tokens | Tốc độ LPU hàng đầu (>250 tps); 100k token/ngày cạn nhanh trên agent | [GroqCloud Pricing](https://groq.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| GroqCloud | 10 | UNKNOWN | Free limits vary by model and plan; no general quota asserted for the selected public production examples. | Developer-plan public models: openai/gpt-oss-120b $0.15 input/$0.60 output and openai/gpt-oss-20b $0.075/$0.30 per MTok; each 131,072 context, 65,536 max completion, 250K TPM/1K RPM. | Older Llama 3.3/3.1 production rates now show Enterprise/contact-sales; Developer upgrade requires payment method. RPM/TPM are request limits, not pricing. | [Models](https://console.groq.com/docs/models) · [Rate limits](https://console.groq.com/docs/rate-limits) · [Billing](https://console.groq.com/docs/billing-faqs) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

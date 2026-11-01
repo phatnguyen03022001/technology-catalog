@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Axiom | 09 | `PERMANENT` | Personal free: 500GB/month data-loading compute, 25GB storage, 10GB-hours query compute, 30-day retention, 1 seat | Cloud $25/month plus usage; includes 1TB loading compute, 100GB storage, 100GB-hours query compute | 500GB is loading compute, not data ingest. No comparative winner claim: workload and units must be normalized. | [Axiom Pricing](https://axiom.co/pricing) | `VERIFIED` | 2026-11-01 |
+| Axiom | 09 | PERMANENT | Personal: 500 GB/month loading compute, 25 GB storage, 10 GB-hour query compute and 30-day retention. | Cloud $25/month plus usage, includes 1 TB loading compute, 100 GB storage and 100 GB-hours query compute. | Loading compute is not raw ingest volume; model storage and query compute separately. | [Axiom pricing](https://axiom.co/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

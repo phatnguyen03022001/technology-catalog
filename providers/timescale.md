@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Timescale Cloud | 02 | `TIME_LIMITED_TRIAL` | 30 ngày trial (không có free cloud vĩnh viễn; OSS là $0) | ~$30/tháng compute + compressed storage | Hết 30 ngày bị xóa dữ liệu nếu không add card; OSS nén 90% | [Timescale Pricing](https://www.timescale.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Tiger Cloud (TimescaleDB) | 02 | `TIME_LIMITED_TRIAL` | 30-day Performance trial, no card; no permanent free hosted plan established. | Performance compute from $30/month plus $0.177/GB-month storage; Scale from $36/month plus $0.212/GB-month; region and resources affect pricing. | Current brand is Tiger Cloud. Removed unsupported automatic data-deletion-after-trial statement; verify retention/deletion policy before choosing. | [Tiger Cloud pricing](https://www.tigerdata.com/pricing) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

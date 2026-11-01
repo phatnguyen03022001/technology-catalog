@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cerebras Inference | 10 | `PERMANENT` | ~1M tokens/ngày, 30 RPM, 60k TPM | PAYG ($10 min); 70B $0,85 in / $1,20 out / 1M tokens | Output tokens tính trước theo max_tokens dễ chạm trần rate limit | [Cerebras Pricing](https://inference-docs.cerebras.ai/support/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Cerebras Inference | 10 | ONE_TIME_CREDIT | Current site offers $5 one-time credit, requires valid payment details and expires 30 days after activation. | Current production pay-as-you-go model/token rates were not reproducible from public first-party pricing. | Legacy docs show example rates but say Exploration pricing unavailable; do not reuse old $10 minimum or model prices. | [Cerebras pricing](https://www.cerebras.ai/pricing) · [Legacy pricing docs](https://inference-docs.cerebras.ai/support/pricing) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

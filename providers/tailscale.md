@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Tailscale | 04 | `PERMANENT` | Miễn phí tối đa 6 users, không giới hạn devices cá nhân, 50 tagged resources, Tailscale Funnel | Starter $8/user/tháng ($6 trả năm); Premium $18/user/tháng | Gói cá nhân Free giới hạn mục đích non-commercial; Tailscale Funnel bị rate limit băng thông | [Pricing/docs](https://tailscale.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Tailscale | 04 | `PERMANENT` | Personal is free indefinitely for up to 6 users, unlimited user devices, 50 tagged resources and 1,000 ephemeral-resource minutes/month; noncommercial/personal-use terms apply. | Standard $8/user/month; Premium $18/user/month. Additional tagged resources are $1/resource-month; ephemeral minutes vary by plan. | Current plan names replace Starter; Personal is for noncommercial use. Headscale is a community-maintained self-hosted alternative control plane, with compatibility/ops responsibility. | [Current plans](https://tailscale.com/pricing) · [Free-plan terms](https://tailscale.com/docs/reference/free-plans-discounts) · [Changelog](https://tailscale.com/changelog) · [Headscale relationship](https://tailscale.com/opensource) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

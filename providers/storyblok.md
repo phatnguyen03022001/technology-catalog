@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Storyblok | 12 | `PERMANENT` | 1 seat, 1 space, 100k API calls, 100GB traffic | Growth $99/tháng (5 seats, 1M calls) | Chỉ 1 seat free (seat 2 +$15); từ 3 seats phải lên $99/tháng | [Storyblok Pricing](https://www.storyblok.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Storyblok | 12 | LIMITED_FREE | Starter free: 1 included seat, max 2, one space, 100 GB traffic and 100K requests/month, 2 locales. | Growth $99/month or $90.75/month billed annually; 5 seats and 1M requests. | Starter is limited to testing/personal projects. Growth Plus 45-day trial is separate from free tier. | [Storyblok pricing](https://www.storyblok.com/pricing) · [Free plan](https://www.storyblok.com/free) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

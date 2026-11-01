@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Grafana Cloud | 09 | `PERMANENT` | 10k metric series; 50 GB logs, 50 GB traces, 50 GB profiles; 3 users | Pro $19/tháng platform fee + usage ($0,45/GB logs/traces) | Vượt 50 GB/tháng dữ liệu bị drop (không tính overage bất ngờ); 14d retention | [Grafana Cloud Pricing](https://grafana.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Grafana Cloud | 09 | PERMANENT | Free: 50 GB/month each for Logs and Traces as separate product allowances; 14-day retention and no card. | Pro from $19/month plus usage; the pricing page lists 50 GB/month included and 30-day retention separately for Logs and Traces. Logs and Traces starting meters: $0.050/GB processed, $0.400/GB written and $0.100/GB retained. | Do not treat the Logs and Traces 50 GB allowances as one shared pool. Ingest, process/write and retention are separate meters; the effective bill depends on telemetry mix and product selection. | [Grafana Cloud pricing](https://grafana.com/pricing/) · [Trace pricing](https://grafana.com/docs/grafana-cloud/platform/pricing-and-usage/traces/) · [Getting started](https://grafana.com/docs/grafana-cloud/learn-and-build/get-started/learn/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

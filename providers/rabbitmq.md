@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| RabbitMQ OSS | 06 | `PERMANENT` | 100% Free Open Source (MPL 2.0); $0 license software | Chi phí tự host compute/RAM/storage | Tự vận hành cụm Erlang; rủi ro memory alarm chặn publisher | [Pricing/docs](https://www.rabbitmq.com/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| RabbitMQ OSS | 06 | SELF_HOSTED | MPL-2.0 licensed broker can be self-hosted without a software license fee; hosting/support cost extra. | No hosted price asserted for RabbitMQ community edition. | RabbitMQ 4.4.0 released 2026-10-20 is the current docs version as checked. Tanzu commercial support is separate. | [RabbitMQ docs](https://www.rabbitmq.com/docs) · [Lifecycle](https://www.rabbitmq.com/release-information) · [License](https://www.rabbitmq.com/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

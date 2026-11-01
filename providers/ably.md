@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Ably | 11 | `PERMANENT` | 6.000.000 messages/tháng; 200 concurrent connections; 200 channels | Standard $29/tháng ($2,50/1M msgs, $1/1M conn-min, $1/1M channel-min) | Primitive WebSocket/Chat headless cực mạnh; 6M msgs/tháng free | [Ably Pricing](https://ably.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Ably | 11 | PERMANENT | Free: 6M messages/month, 200 concurrent connections, 200 channels and 500 messages/second. No rollover asserted. | Standard $29/month plus usage: $2.50/1M messages, $1/1M connection-minutes, $1/1M channel-minutes and $0.25/GiB transfer. | Standard caps: 10K connections/channels and 2.5K messages/second. Usage and transfer add to the base subscription. | [Ably pricing](https://ably.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

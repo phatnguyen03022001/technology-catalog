@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| TiDB Cloud Starter | 02 | `PERMANENT` | 25 GiB row + 25 GiB columnar; 250M RUs/tháng (tối đa 5 DBs) | PAYG ($0,10/1M RU; $0,20/GB row) | HTAP phân tán cực mạnh, tương thích MySQL/Postgres | [TiDB Cloud Pricing](https://pingcap.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| TiDB Cloud Starter | 02 | `PERMANENT` | Starter: 25 GiB row storage + 25 GiB columnar storage and 250M RU/month, up to five eligible instances. | After free usage: $0.10/M RU, $0.20/GiB-month row storage and $0.05/GiB-month columnar storage. | These rates apply to TiDB Cloud Starter usage; PostgreSQL-compatible Starter is a separate public preview with distinct limits and no production recommendation. | [TiDB Cloud pricing](https://www.pingcap.com/pricing/) · [Cluster tiers and preview](https://docs.pingcap.com/tidbcloud/select-cluster-tier/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

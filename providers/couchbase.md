@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Couchbase Capella | 02 | `PERMANENT` | 1 node (8 GB RAM), SQL++, Full-Text/Vector search | ~$0,17/node-hour (~$120/tháng HA cluster) | Single node (no HA); tạm dừng khi không dùng | [Couchbase Pricing](https://www.couchbase.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Couchbase Capella | 02 | `PERMANENT` | Free prototype cluster: single node, 8 GB RAM/50 GB storage; no HA and no card. | One-node configuration is 2 vCPU/8 GB/50 GB at $0.17/hour (about $124/month at 730 hours); three-node example is $0.83/hour (about $606/730 hours). | The former ~$120 monthly amount was for one node, not an HA cluster. Price depends on region, service and 730-hour assumption. | [Couchbase Capella pricing](https://www.couchbase.com/pricing/) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

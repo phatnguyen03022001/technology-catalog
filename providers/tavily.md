@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Tavily Search/Extract | 10 | `PERMANENT` | 1.000 API credits/tháng (1k searches hoặc 5k extracts) | PAYG $0,008/credit; Project $30/tháng (4k credits) | Tối ưu hàng đầu cho RAG agent context, trả về Markdown sạch | [Tavily Pricing](https://www.tavily.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Tavily Search/Extract | 10 | PERMANENT | Free 1,000 credits/month, no card, reset on first of month. | PAYG $0.008/credit; Project $30/month includes 4,000 credits. | Credit use depends on endpoint/request mode; broad terms grant service/product-improvement processing rights, so review before sending sensitive data. | [Tavily pricing](https://www.tavily.com/pricing) · [Credit rules](https://docs.tavily.com/documentation/api-credits) · [Terms](https://www.tavily.com/terms) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

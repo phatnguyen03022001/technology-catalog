@@ -16,22 +16,28 @@
 | Dodo Payments | [Dodo Payments](../../providers/dodo-payments.md) |
 | Google Maps Platform | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Places API | [Google Cloud & Firebase](../../providers/google.md) |
+| HubSpot CRM | [HubSpot](../../providers/hubspot.md) |
 | Lago | [Lago](../../providers/lago.md) |
 | Lemon Squeezy MoR | [Lemon Squeezy](../../providers/lemon-squeezy.md) |
-| MapTiler Cloud | [MapTiler](../../providers/maptiler.md) |
 | Mapbox GL JS | [Mapbox](../../providers/mapbox.md) |
+| MapTiler Cloud | [MapTiler](../../providers/maptiler.md) |
 | Paddle MoR | [Paddle](../../providers/paddle.md) |
 | PayPal Checkout | [PayPal](../../providers/paypal.md) |
+| Plaid Link and Data API | [Plaid](../../providers/plaid.md) |
 | Polar MoR | [Polar](../../providers/polar.md) |
+| Salesforce CRM | [Salesforce](../../providers/salesforce.md) |
 | Sanity Content Lake | [Sanity](../../providers/sanity.md) |
 | Shopify APIs | [Shopify](../../providers/shopify.md) |
+| Square Payments API | [Square](../../providers/square.md) |
 | Storyblok | [Storyblok](../../providers/storyblok.md) |
 | Strapi | [Strapi](../../providers/strapi.md) |
 | Stripe Payments | [Stripe](../../providers/stripe.md) |
+| Stripe Tax | [Stripe](../../providers/stripe.md) |
 | Sumsub | [Sumsub](../../providers/sumsub.md) |
+| Zoho CRM | [Zoho](../../providers/zoho.md) |
 
 ## Watchlist — 1 chưa xác minh giá/free tier
 
 | Candidate | Status | Note |
 |---|---|---|
-| Persona KYC | Discovery only; price unverified | Prior minimum-price and no-self-serve-free-tier claims were withdrawn on 2026-11-01 because no official source supporting them was found. Verify directly with the provider before comparison. |
+| Persona KYC | Deferred | Public primary evidence does not establish a comparable production price or minimum. |

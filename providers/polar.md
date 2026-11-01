@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Polar MoR | 12 | `NO_MONTHLY_BASE` | Starter has no monthly base fee | New orgs from 2026-05-27: Starter 5% + $0.50/transaction; Pro $20/month at 3.8% + $0.40. Earlier orgs are grandfathered at 4% + $0.40 plus 0.5% subscription fee. | Rate depends on organization creation date; no universal Starter rate. | [Polar plan announcement](https://polar.sh/blog/introducing-polar-plans) | `VERIFIED` | 2026-11-01 |
+| Polar MoR | 12 | NO_MONTHLY_BASE | Organizations created from 2026-05-27: Starter 5% + $0.50 per transaction. | Pro $20/month + 3.8% + $0.40; Growth $100/month + 3.6% + $0.35; Scale $400/month + 3.4% + $0.30. | Older organizations may be grandfathered under different rates; international, disputes and refunds add fees. | [Plan announcement](https://polar.sh/blog/introducing-polar-plans) · [Finance fees](https://polar.sh/features/finance) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

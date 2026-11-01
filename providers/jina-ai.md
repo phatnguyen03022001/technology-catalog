@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Jina AI | 10 | `ONE_TIME_CREDIT` | 10M tokens free dùng chung mọi endpoint | $50 / 1 Tỷ tokens ($0,05/1M tokens); Reader r.jina.ai free | Jina Reader biến URL thành Markdown; token free chỉ cho phi thương mại | [Jina AI Pricing](https://jina.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Jina AI | 10 | UNKNOWN | Free API keys have rate limits: Reader 500 RPM with key (20 RPM without); Search 100 RPM. These are request limits, not free token allowance. | Current dashboard does not reproduce paid token package prices. Old 10M shared free token and $50 per billion tokens claims are unsupported. | Embedding/rerank keyed rate limits vary by tier; do not label these endpoints or the whole service permanently free. Commercial terms apply. | [Dashboard pricing/limits](https://jina.ai/api-dashboard/pricing/) · [Commercial license](https://jina.ai/COMMERCIAL-LICENSE-TERMS.pdf) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

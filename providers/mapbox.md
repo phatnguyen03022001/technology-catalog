@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Mapbox GL JS | 12 | `PERMANENT` | 50,000 monthly map loads | USD per 1,000 loads: $5 for 50,001–100k; $4 for 100,001–200k; $3 for 200,001–1M; $2.50 for 1M–5M | Each map initialization is billable; price bands are volume-based and differ by SKU. | [Mapbox Pricing](https://www.mapbox.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Mapbox GL JS | 12 | PERMANENT | 50K map loads/month free. | First paid tier after 50K is $5/1K map loads; subsequent tiers are volume-based. | Each map initialization counts as a load; other Mapbox SKUs have separate allowances/prices. | [Mapbox pricing](https://www.mapbox.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

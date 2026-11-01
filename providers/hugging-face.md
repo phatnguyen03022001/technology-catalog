@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Hugging Face Inference | 10 | `PERMANENT` | Serverless Inference API rate limits cộng đồng | Dedicated Endpoints từ $0,033/h CPU, $0,60/h T4 GPU / 1M tokens | Serverless không có SLA; production cần Dedicated Endpoints | [Hugging Face Pricing](https://huggingface.co/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Hugging Face Inference | 10 | RECURRING_CREDIT | Inference Providers credit: Free accounts $0.10/month, Pro $2/month, Team/Enterprise $2/seat/month. | Charges pass through upstream provider prices without Hugging Face markup; dedicated Inference Endpoints are separate hourly compute. | Credit is a recurring dollar credit, not unlimited free serverless inference; dedicated endpoints require payment details and model/hardware-specific pricing. | [Inference Providers pricing](https://huggingface.co/docs/inference-providers/en/pricing) · [Endpoint access](https://huggingface.co/docs/inference-endpoints/guides/access) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

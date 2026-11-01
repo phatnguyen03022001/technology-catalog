@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Doppler | 07 | `PERMANENT` | Developer Plan: Free 3 users; 10 projects, 4 envs; service tokens/AI agents free | Developer: $8/tháng cho mỗi user bổ sung; Team $21/user/tháng (SAML SSO, RBAC, rotation) | Free không có RBAC và auto secret rotation. | [doppler.com/pricing](https://doppler.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Doppler | 07 | PERMANENT | Developer: 3 users, 10 projects, 4 environments and 3-day activity logs; additional users $8/month, platform maximum 25 users. | Team is $21/user/month and includes 14-day trial; SAML, RBAC, rotation and 90-day logs are paid features. | Trial is temporary; Developer free plan has user and audit-retention limits. | [Doppler pricing](https://www.doppler.com/pricing) · [Platform limits](https://docs.doppler.com/docs/platform-limits) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

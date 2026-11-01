@@ -8,9 +8,13 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| AWS Lambda | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Akamai Cloud Compute | [Akamai](../../providers/akamai.md) |
 | Amazon EC2 | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| AWS Fargate | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| AWS Lambda | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| AWS Lightsail | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Azure App Service | [Microsoft Azure](../../providers/azure.md) |
+| Azure Container Apps | [Microsoft Azure](../../providers/azure.md) |
 | Azure Functions | [Microsoft Azure](../../providers/azure.md) |
 | Browserbase Browser Runtime | [Browserbase](../../providers/browserbase.md) |
 | Cloudflare Pages | [Cloudflare](../../providers/cloudflare.md) |
@@ -22,6 +26,7 @@
 | Fly.io Machines | [Fly.io](../../providers/fly.md) |
 | Google Cloud Run | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Compute Engine (GCE) | [Google Cloud & Firebase](../../providers/google.md) |
+| Google Kubernetes Engine (GKE) | [Google Cloud & Firebase](../../providers/google.md) |
 | Hetzner Cloud | [Hetzner](../../providers/hetzner.md) |
 | Koyeb | [Koyeb](../../providers/koyeb.md) |
 | Modal Compute/Sandbox | [Modal](../../providers/modal.md) |
@@ -31,8 +36,11 @@
 | Railway | [Railway](../../providers/railway.md) |
 | Render Web Services | [Render](../../providers/render.md) |
 | RunPod | [RunPod](../../providers/runpod.md) |
+| Scaleway Instances | [Scaleway](../../providers/scaleway.md) |
 | Vercel Hosting/Functions | [Vercel](../../providers/vercel.md) |
 
-## Watchlist — 0 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+| Candidate | Status | Note |
+|---|---|---|
+| Vultr | Deferred | Mainstream compute candidate; current comparable price and quota scope were not reproducible from a stable official rate card. |

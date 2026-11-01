@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Fireworks AI | 10 | `ONE_TIME_CREDIT` | ~$1 credit dùng thử; nạp tối thiểu $5 | Llama 3.3 70B: $0,90 in/out; DeepSeek-R1 $0,80 in / $2,40 out / 1M tokens | Tối ưu hóa suy luận tốc độ cao, hỗ trợ function calling chuyên sâu | [Fireworks Pricing](https://fireworks.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Fireworks AI | 10 | UNKNOWN | No current general free credit or minimum top-up reproduced. | `accounts/fireworks/models/deepseek-v4p1-flash` (DeepSeek V4.1 Flash) is Ready on serverless, with 1,040K context: $0.30 input/$0.006 cached input/$1.20 output per 1M tokens. | Old $1 promotional credit and $5 minimum are unsupported by current public source; prices and rate limits differ for other models/dedicated GPUs. | [Model card](https://fireworks.ai/models/deepseek-ai/deepseek-v4p1-flash) · [Pricing](https://fireworks.ai/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

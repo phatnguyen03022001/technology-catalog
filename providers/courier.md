@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Courier | 11 | `PERMANENT` | 10.000 sends/tháng free; visual builder, routing journeys, 7d logs | Business: $0 platform fee + $0,005/send pay-as-you-go | Không có cliff giá sàn; vượt 10k tính theo $0,005/send; hỗ trợ đa kênh | [Courier Pricing](https://www.courier.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Courier | 11 | PERMANENT | Developer Free includes 10K message sends/month. | Business is $0.005 per send; provider email/SMS delivery charges remain separate. | Courier is orchestration, not the downstream delivery carrier; a send can trigger several paid channel providers. | [Courier pricing](https://www.courier.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

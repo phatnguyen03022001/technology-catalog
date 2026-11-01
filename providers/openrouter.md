@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| OpenRouter Free Models | 10 | `PERMANENT` | 50 RPD (tăng lên 1k RPD nếu nạp $10 một lần) | PAYG qua 200+ models; `:free` models: $0,00 | Không có SLA; upstream 429 giờ cao điểm; nạp $10 mở 1.000 RPD | [OpenRouter Pricing](https://openrouter.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| OpenRouter Free Models | 10 | PERMANENT | 25+ current free catalog options; 20 RPM and 50 requests/day. After loading at least $10 credit, daily cap becomes 1,000 requests. | Only model variants marked :free are $0; paid model route prices are provider-specific. | Do not call all OpenRouter models free or reuse old 200+ free count; limits may vary by model/provider. | [OpenRouter pricing](https://openrouter.ai/pricing) · [Free model collection](https://openrouter.ai/collections/free-models/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,8 +6,8 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Browserbase Browser Runtime | 01 | `LIMITED_FREE` | 1 browser-hour, 3 concurrent browsers, 7-day retention | Developer $20/mo (includes 100 browser-hrs; overage $0.12/hr) | Strict 1-min session minimum; proxies billed extra ($10–$12/GB); strictly for eval | [Browserbase Pricing](https://www.browserbase.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
-| Browserbase Search/Fetch | 10 | `LIMITED_FREE` | 1 browser-hour, testing | Developer $20/tháng (1k fetch + 1k search) | Search/Fetch tách biệt với runtime; proxy tính thêm $12/GB | [Browserbase Pricing](https://www.browserbase.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Browserbase Browser Runtime | 01 | `LIMITED_FREE` | Free: 1 browser-hour, 3 concurrent browsers, 15 minutes/session and 7-day retention. | Developer $20/month includes 100 browser-hours and 25 concurrent browsers; overage $0.12/browser-hour. Includes 1 GB proxy traffic, then $12/GB. | Current pricing page does not list the former one-minute session minimum; no such minimum is asserted. Search/Fetch calls and Model Gateway tokens have separate included allowances and overage rates. | [Browserbase pricing](https://www.browserbase.com/pricing) | `VERIFIED` | 2026-11-01 |
+| Browserbase Search/Fetch | 10 | LIMITED_FREE | Free: 1,000 Search and 1,000 Fetch calls, one browser-hour and three concurrent browsers. | Developer $20/month; after included allowance Search $5/1K calls and Fetch $1/1K calls. | Search/Fetch is distinct from Browser Runtime sessions/proxy; remove unsupported one-minute session minimum. | [Browserbase pricing](https://www.browserbase.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

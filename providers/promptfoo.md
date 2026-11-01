@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Promptfoo | 09 | `PERMANENT` | 100% Free Open Source (MIT) CLI & Local Web UI cho eval/red-team | Cloud Enterprise | Tiêu chuẩn đánh giá và bảo mật prompt trong CI/CD pipeline | [Promptfoo Pricing](https://www.promptfoo.dev/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Promptfoo | 09 | SELF_HOSTED | MIT-licensed community/local red-team and eval tooling; self-hosted CLI has no license fee. Red-team runs are limited to 10K probes/month. | Cloud collaboration/SSO is Enterprise; model inference charges are billed by the selected model vendor. | Model usage charges are separate from Promptfoo software; do not imply unlimited cloud probes or free inference. | [Promptfoo pricing](https://www.promptfoo.dev/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

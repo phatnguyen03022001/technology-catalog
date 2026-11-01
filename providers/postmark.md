@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Postmark | 11 | `PERMANENT` | 100 emails/tháng cho test dev; không có hạn sử dụng | Basic $15/tháng (10k emails, overage $1,80/1k); Pro $16,50/tháng | 100 emails/tháng chỉ dùng test; deliverability và tốc độ inbox đỉnh cao | [Postmark Pricing](https://postmarkapp.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Postmark | 11 | PERMANENT | Free: 100 emails/month, intended for integration testing and side projects; no overage asserted. | Basic $15/month at 10K, overage $1.80/1K; Pro $16.50, overage $1.30/1K; Platform $18, overage $1.20/1K. | Paid plans have no daily cap; default retention is 45 days. No general commercial-use ban asserted on pricing page. | [Postmark pricing](https://postmarkapp.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

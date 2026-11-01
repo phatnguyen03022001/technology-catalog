@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| DeepInfra | 10 | `UNKNOWN` | Free allowance has not been independently confirmed | Model-specific token and media pricing; prior Llama 3.3 rates are an unrechecked snapshot | Prior “cheapest” claim withdrawn; compare identical models, token mix and feature set before ranking. | [DeepInfra Pricing](https://deepinfra.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| DeepInfra | 10 | UNKNOWN | No general free API allowance confirmed for the selected hosted models. | Named model examples per million tokens: deepseek-ai/DeepSeek-V4-Flash-0731 $0.06 input/$0.015 cached/$0.18 output; DeepSeek-V4-Pro $1.30 input/$0.10 cached/$2.60 output. | These are DeepInfra-hosted model versions, not direct DeepSeek API IDs; other models, media and limits differ. | [DeepInfra model pricing](https://deepinfra.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

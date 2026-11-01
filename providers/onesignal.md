@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| OneSignal Messaging | 11 | `PERMANENT` | Free: 10,000 email sends/month; up to 10,000 web-push subscribers per send; mobile push/in-app up to 1,000 MAU | Growth starts at $19/month; mobile $0.012/MAU; Growth email includes 20,000 sends then $1.50/1k | Mobile MAU cap applies to new orgs from 2026-09-01 and existing orgs from 2026-10-01; web, mobile, email meters differ. | [OneSignal Pricing](https://onesignal.com/pricing/) · [Pricing policy](https://onesignal.com/blog/understanding-onesignals-pricing/) | `VERIFIED` | 2026-11-01 |
+| OneSignal Messaging | 11 | PERMANENT | Free: 10K emails/month; mobile push/in-app/live activities up to 1K MAU; web push up to 10K subscribers/send. | Growth starts at $19/month; email 20K included then $1.50/1K, mobile push $0.012/MAU, web push $0.004/subscriber; SMS/RCS separate. | Meters are independent: email volume, mobile MAU, web subscribers and SMS/RCS. Do not combine as one quota. | [OneSignal pricing](https://onesignal.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

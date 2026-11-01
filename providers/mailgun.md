@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Mailgun | 11 | `PERMANENT` | 100 emails/ngày (1 sending domain, logs 1 ngày) | Basic $15/tháng (10k emails); Foundation $35/tháng (50k emails) | Flex plan PAYG cũ đã ngừng; overage tự động tính theo block 1k emails | [Mailgun Pricing](https://www.mailgun.com/pricing/) | `VERIFIED` | 2026-11-01 |
+| Mailgun | 11 | PERMANENT | Free: 100 emails/day; intended for testing. | Basic $15/month includes 10K, overage from $1.80/1K. Foundation is $35/month after a free first month for 50K, overage from $1.30/1K. Scale is $90/month after first month for 100K, overage from $1.10/1K. | Paid plans also have retention, domain and feature limits; review deliverability/support terms and add-ons. | [Mailgun pricing](https://www.mailgun.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

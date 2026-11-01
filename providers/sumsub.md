@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Sumsub | 12 | `TIME_LIMITED_TRIAL` | 14-day trial includes 50 verification checks | Basic $1.35/check with a $149 monthly minimum | Minimum commitment applies; transaction cost depends on check type and region. | [Sumsub Pricing](https://sumsub.com/pricing/) | `VERIFIED` | 2026-11-01 |
+| Sumsub | 12 | TIME_LIMITED_TRIAL | 14-day trial includes 50 checks. | Basic $1.35/check with $149/month minimum; Compliance $1.85/check with $299/month minimum. | AML, email, phone and SMS modules may add fees; SMS and totals vary by country/module. Only completed checks are billable; VAT may apply. | [Sumsub pricing](https://sumsub.com/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

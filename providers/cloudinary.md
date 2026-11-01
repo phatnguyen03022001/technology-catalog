@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Cloudinary Programmable Media | 03 | `PERMANENT` | 25 monthly unified credits (1 credit = 1k transforms hoặc 1 GB storage hoặc 1 GB bandwidth) | Plus $99/tháng (225 credits); Advanced $249/tháng (600 credits) | 25 credits chia sẻ chung cả storage/transform/bandwidth; cliff nhảy thẳng lên $99/tháng | [Cloudinary Pricing](https://cloudinary.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Cloudinary Programmable Media | 03 | `PERMANENT` | Free: 25 credits/month. One credit represents 1,000 transformations, 1 GB storage or 1 GB image bandwidth; video bandwidth differs. | Plus $99/month/225 credits; Advanced $249/month/600 credits. Annual effective monthly prices are $89 and $224. Video bandwidth: 1 GB/credit Free and 2 GB/credit paid. | Credits are pooled across transforms, storage and image bandwidth; video bandwidth uses a separate allowance. Do not treat credits as one independent quantity per meter. | [Cloudinary pricing](https://cloudinary.com/pricing) · [Billing plans](https://cloudinary.com/documentation/billing_and_plans) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

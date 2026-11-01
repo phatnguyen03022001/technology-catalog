@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Zilliz Cloud | 02 | `PERMANENT` | 5 GB storage (~1M vectors); 2.5M vCUs/tháng; $100 trial | Serverless PAYG ($4/1M vCU) | Bản managed chính thức của Milvus; 5 collections free | [Zilliz Pricing](https://zilliz.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Zilliz Cloud | 02 | PERMANENT | Free cluster: 5 GB, 2.5M vCUs/month, up to 5 collections; one per organization. | Serverless $4 per million vCUs; storage is separate, as are some transfer and audit-log meters. | $100 promotional credit is a separate qualifying offer, not recurring free quota. Check current account/cluster limits and data transfer. | [Pricing](https://zilliz.com/pricing) · [Free trial limits](https://docs.zilliz.com/docs/free-trials) · [Limits](https://docs.zilliz.com/docs/limits) · [Serverless costs](https://docs.zilliz.com/docs/serverless-cluster-cost) · [Signup credit](https://zilliz.com/learn/getting-started-with-zilliz-cloud) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

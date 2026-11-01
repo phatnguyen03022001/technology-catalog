@@ -2,11 +2,12 @@
 
 > **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
-**Offerings:** 1 · **Pillars:** [03](../pillars/03-storage-media/README.md)
+**Offerings:** 2 · **Pillars:** [03](../pillars/03-storage-media/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| MinIO | 03 | `PERMANENT` | 100% Free Open Source (AGPLv3); tự host không giới hạn storage/egress | Enterprise license ~$0,02/GB-tháng cho hỗ trợ 24/7 và commercial license | Tự quản lý cụm server, ổ cứng NVMe và đường truyền mạng; bản quyền AGPL copyleft | [MinIO Official Site](https://min.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| MinIO OSS | 03 | `SELF_HOSTED` | Legacy AGPLv3 MinIO OSS reached end of life in September 2025 and is no longer maintained/distributed by MinIO. | No current paid price for the discontinued OSS offering; MinIO AIStor is the current successor and must be recorded separately. | Do not present old MinIO OSS as a maintained unlimited free object store. AIStor Free is single-node-limited; Enterprise is quote/capacity-based. | [MinIO EOL and legal](https://www.min.io/legal) · [Current pricing](https://www.min.io/pricing) · [AIStor license](https://docs.min.io/aistor/operations/licenses/) | `DISCONTINUED` | — |
+| MinIO AIStor | 03 | LIMITED_FREE | AIStor Free is limited to a single-node deployment; exact feature and capacity limits follow current license terms. | Enterprise capacity/support is quote-based; no universal public per-GB production price asserted. | Successor to MinIO OSS, which reached EOL in September 2025; do not present it as distributed free OSS. | [MinIO pricing](https://www.min.io/pricing) · [AIStor license](https://docs.min.io/aistor/operations/licenses/) | SOURCE_LINKED_SNAPSHOT | — |
 
 ## Evidence & maintenance
 

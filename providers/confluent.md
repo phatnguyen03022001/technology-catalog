@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Confluent Cloud | 06 | `TIME_LIMITED_TRIAL` | $400 credit dùng trong 30 ngày đầu; KHÔNG có permanent free tier | Basic $0 base + $0,13/GB throughput; Standard ~$1,50/h (~$1.100/tháng) | Hết 30 ngày credit bị đình chỉ nếu không add thẻ; không có free lâu dài | [Pricing/docs](https://www.confluent.io/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Confluent Cloud | 06 | LIMITED_FREE | Basic includes first eCKU free; new users may receive $400 trial credit for 30 days or until exhausted. Payment method is required to create resources. | Basic: first eCKU free, then $0.14/eCKU-hour; ingress/egress $0.05/GB, storage $0.08/GB-month. Standard: $0.75/eCKU-hour, network $0.035–$0.05/GB, storage $0.08/GB-month; region dependent. | Free eCKU does not waive network or storage. Trial credit is temporary and not a permanent free tier; billing mode and cluster region change price. | [Confluent pricing](https://www.confluent.io/pricing/) · [Billing FAQ](https://docs.confluent.io/cloud/current/billing/billing-faq.html) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

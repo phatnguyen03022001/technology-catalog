@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Datadog | 09 | `PERMANENT` | Tối đa 5 hosts; metric retention 1 NGÀY (24h); core dashboards | Pro $15-$18/host/tháng + APM $31/host/tháng + Log $0,10/GB | KHÔNG có APM/Logs ở Free; 1-day retention; rủi ro bill shock rất cao | [Datadog Pricing](https://www.datadoghq.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Datadog | 09 | PERMANENT | Free includes up to 5 infrastructure hosts and 1-day retention. | Infrastructure Basic is quote-only (“Contact Sales”); public Infrastructure Pro is $15/host/month annual or $18 monthly. APM is $31/host annual or $36 monthly. Logs: $0.10/uncompressed ingested GB plus indexed-event/retention price; 15-day indexing example $1.70/M annual or $2.55/M on-demand. | Logs have ingestion, indexed events and retention meters; do not treat ingestion GB as full log cost. The Basic-tier price and minimum commitment are not publicly stated; get a quote before comparing it with Pro. | [Pricing list](https://www.datadoghq.com/pricing/list/) · [Pricing](https://www.datadoghq.com/pricing/) · [Log pricing](https://www.datadoghq.com/pricing/?product=log-management) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

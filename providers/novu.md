@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Novu Cloud | 11 | `PERMANENT` | 10.000 workflow runs/tháng; 2 envs; 20 workflows; 3 seats; mọi kênh | Pro $30/tháng (30k runs; overage $1,20/1k); Team $250/tháng | Mã nguồn mở tự host được; cliff giá $30/tháng rất dễ thở; có inbox drop-in UI | [Novu Pricing](https://novu.co/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Novu Cloud | 11 | PERMANENT | Free includes 10K workflow runs/month, 20 workflows, 2 environments, 3 members and 24-hour activity retention. | Pro starts at $30/month for 30K runs, then $1.20/1K; Team starts at $250/month for 250K runs. | Workflow runs are not channel deliveries; downstream email/SMS providers bill separately. | [Novu pricing](https://novu.co/pricing/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

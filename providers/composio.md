@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Composio | 10 | `PERMANENT` | 100.000 tool executions/tháng; 50.000 trigger events | Pro $29/tháng (nâng hạn mức app quản lý) | Nền tảng tool/action cho AI agent kết nối 250+ OAuth tools | [Composio Pricing](https://composio.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Composio | 10 | PERMANENT | Free: 100K tool calls/month, 50K trigger events; hard caps with no surprise overage. | Pro $29/month. Meter examples: $0.0003/own-app/API/MCP tool call and $0.003/trigger event; sandbox LLM tokens billed separately. | Update old 250+ OAuth tools claim to current toolkit catalog. Premium managed apps and third-party limits are separate. | [Composio pricing](https://composio.dev/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

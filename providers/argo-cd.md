@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Argo CD | 08 | `PERMANENT` | 100% Free Open Source (Apache 2.0); unlimited syncs, clusters, and apps | $0 license; pay cloud provider for K8s infrastructure | Kubernetes required; operational burden of cluster and CRD management | [Argo CD](https://argoproj.github.io/cd/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Argo CD | 08 | SELF_HOSTED | Apache-2.0 licensed GitOps software can be self-hosted without license fees; Kubernetes and operations cost extra. | No first-party hosted price asserted for the community project. | Do not claim unlimited capacity; control plane, HA, storage, upgrades and cluster resources are operator responsibilities. | [License](https://github.com/argoproj/argo-cd/blob/master/LICENSE) · [Docs](https://argo-cd.readthedocs.io/en/stable/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

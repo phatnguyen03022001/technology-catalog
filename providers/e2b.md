@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| E2B Sandbox | 01 | `ONE_TIME_CREDIT` | $100 one-time credit; up to 20 concurrent sandboxes; 1 hr max continuous runtime | Pro $150/mo base + compute usage (~$0.000014/sec/vCPU; 100 concurrent, 24 hr max runtime) | $100 is NOT monthly recurring; Pro base ($150/mo) is a massive jump for indies | [E2B Pricing](https://e2b.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| E2B Sandbox | 01 | `ONE_TIME_CREDIT` | Hobby $0 với $100 credit một lần, tối đa 20 sandbox đồng thời và 1 giờ/session; không cần thẻ. | Pro $150/tháng cộng usage; 100 concurrent, sessions tối đa 24 giờ. Default 2 vCPU/4 GiB rates: $0,000028/vCPU-second và $0,000018/GiB-second. | Credit không phải recurring allowance; quota/hard limits phụ thuộc plan. Không đồng nhất sandbox runtime với Browserbase Browser Runtime. | [E2B pricing](https://e2b.dev/pricing) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

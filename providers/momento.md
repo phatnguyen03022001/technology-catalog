@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Momento Cache | 05 | `PERMANENT` | 5 GB data transfer/tháng (in+out kết hợp) vĩnh viễn; $0 storage | PAYG $0,50/GB data transfer; $0 phí lưu trữ cache; zero cold starts | Serverless cache tính theo GB dữ liệu luân chuyển thay vì connection; API tinh gọn | [Momento Pricing](https://www.gomomento.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Momento Cache | 05 | UNKNOWN | Current managed offering is Valkey Flex/Cluster; no recurring free allowance is listed on the current pricing page. | us-east-1 examples: Flex Standard $0.018/GiB-hour (~$13.14/GiB-month at 730 hours); Cluster t4g.micro $0.0105/instance-hour. Includes 200 GiB/month transfer, then $0.05/GiB. Rates may vary by region. | Old 5 GB free transfer/$0.50 GB pricing is obsolete. Flex capacity and Cluster nodes are separate products and meters. | [Momento pricing](https://www.gomomento.com/pricing/) · [Cache product](https://www.gomomento.com/products/cache/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

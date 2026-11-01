@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Autumn | 12 | `PERMANENT` | Free tới $8k MRR trên Cloud; OSS 100% free | Cloud từ ~$50/tháng sau $8k MRR | Layer billing và entitlement trên Stripe; xóa sạch boilerplate webhook | [Autumn](https://useautumn.com) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Autumn | 12 | PERMANENT | Free allowance through $8,000 monthly billing volume, 10K customers and 10M API requests. | Pro $375/month includes $50K billing volume and 20M requests; overage $5/M requests. | Billing volume is not MRR. Stripe processing fees are separate; Autumn states 0.7% plus Stripe fees. | [Autumn pricing](https://useautumn.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

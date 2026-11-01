@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Apify | 10 | `RECURRING_CREDIT` | $5/tháng credit hồi hàng tháng (~25 Compute Unit hours) | Starter $49/tháng ($0,20/CU); Scale $499/tháng | Hết $5 tự dừng không bị lố tiền; 5 datacenter proxies free | [Apify Pricing](https://apify.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Apify | 10 | RECURRING_CREDIT | Free includes $5 recurring usage credit/month, no card; $0.20/compute unit and five concurrent runs. | Starter $19/month, Scale $199/month and Business $999/month. | Separate $500 Actor promotion lasts six months and is not recurring Free allowance. Compute, proxy and storage use distinct meters. | [Apify pricing](https://apify.com/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

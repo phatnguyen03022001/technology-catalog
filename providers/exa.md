@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Exa Web Search | 10 | `RECURRING_CREDIT` | $10/tháng credit hàng tháng + $10 bonus | PAYG; Search Lite: $0,004/req (~2.500 req/tháng) | Credit hết hạn cuối tháng không dồn; 10 QPS cap | [Exa Pricing](https://exa.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Exa Web Search | 10 | RECURRING_CREDIT | Free plan includes $10 recurring monthly credit plus a separate $10 onboarding bonus; no payment method required. | Per 1K requests, up to 10 results: Lite Search $4, Auto Search $7, Deep Search $12, Monitors $15. Each additional result above 10 costs $1/1K requests; AI page summaries add $1/1K pages. | Old Search Lite $0.004/request is stale. Deep Search is $12 base; $15 is the separate Monitors endpoint. Search overage depends on result count and optional page summaries. | [Exa pricing](https://exa.ai/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

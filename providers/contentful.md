@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Contentful CMS | 12 | `PERMANENT` | Free: 10 users, 100k API calls/month, 50GB CDN bandwidth | Lite $300/month | Free plan terms restrict use to testing and learning; do not assume commercial production eligibility. | [Contentful Pricing](https://www.contentful.com/pricing/) · [Usage terms](https://www.contentful.com/help/admin/usage/usage-limit/) | `VERIFIED` | 2026-11-01 |
+| Contentful CMS | 12 | LIMITED_FREE | Free: 10 users, 100K API calls/month and 50 GB CDN bandwidth/month, plus role/locales/environment/record caps; the plan is described as for “learning and exploring” and has no paid overage allowance. | Lite $300/month includes 1M API calls and 100 GB bandwidth. | Published limits do not establish an explicit commercial-use ban. Hard caps, records, roles and environment limits may make the free plan unsuitable for a specific production workload; check current plan terms. | [Contentful pricing](https://www.contentful.com/pricing/) · [Usage limits](https://www.contentful.com/help/admin/usage/usage-limit/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

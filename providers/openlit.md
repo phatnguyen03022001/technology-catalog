@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| OpenLIT | 09 | `PERMANENT` | 100% Free Open Source (Apache-2.0) OTel GenAI & GPU metrics | Tự host compute | Tích hợp 1 dòng code, đo lường GPU và token OTel trực tiếp | [OpenLIT GitHub](https://github.com/openlit/openlit) | `SOURCE_LINKED_SNAPSHOT` | — |
+| OpenLIT | 09 | SELF_HOSTED | OpenLIT OSS can be self-hosted without license or per-trace fee; infrastructure, ClickHouse and OTel collector are user-operated costs. | Cloud is listed as coming soon; no public GA price established. | Name the offering as OpenLIT OSS. Self-hosted does not mean zero infrastructure/operations cost. | [OpenLIT pricing](https://www.openlit.io/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

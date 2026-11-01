@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Weaviate Cloud | 02 | `PERMANENT` | 1 cluster Free Forever; 100k objects; 1 GB RAM; 10 GB disk | $45/tháng minimum (Flex plan) | Sàn trả phí cao ($45/tháng); 1 collection | [Weaviate Pricing](https://weaviate.io/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Weaviate Cloud | 02 | `PERMANENT` | Free: one cluster, 100K objects, 1 GB memory, 10 GB disk, one collection (up to 3 tenants), embeddings at 2,000 requests/day and Query Agent at 1,000 requests/month. | Flex starts at $45/month, pay-as-you-go with no commitment; embedding usage is separately metered if enabled. | Keep cluster price separate from optional model/inference costs; Free is an evaluation-scale allowance and Flex is shared cloud. | [Weaviate pricing](https://weaviate.io/pricing) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

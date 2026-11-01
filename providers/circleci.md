@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| CircleCI | 08 | `PERMANENT` | 30,000 credits/mo (~6,000 mins on Small, ~3,000 mins on Medium); 5 users; 30 concurrent jobs | Performance from $15/mo (includes 30K credits); extra $15/seat | Hard stop when credits hit 0; storage >2GB consumes credits | [CircleCI Pricing](https://circleci.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| CircleCI | 08 | PERMANENT | Free: 30,000 credits/month, 5 active users, concurrency 30 (macOS 1), up to 6,000 small-Docker minutes depending on resource class; builds stop at credit exhaustion. | Performance $15/month includes 30,000 credits; another 25,000 credits costs $15. | Credits reset monthly; actual minutes depend on resource class. Public OSS Linux has separate terms. | [CircleCI pricing](https://circleci.com/pricing/) · [Credit guide](https://circleci.com/docs/guides/plans-pricing/credits/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

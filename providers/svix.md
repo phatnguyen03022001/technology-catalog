@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Svix Webhooks | 06 | `PERMANENT` | Free: 50,000 messages/month, 50 msg/s; retries are not billed | Basic $20/month (includes 50k messages); Professional $490/month; 14-day Professional trial | Current pricing page confirms retry treatment and plan amounts; overage rate is not reproduced here. | [Svix Pricing](https://www.svix.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Svix Webhooks | 06 | PERMANENT | Free: 50K messages/month, 50 msg/s, 7-day retention, no card. | Basic starts $20/month for 50K messages, 200 msg/s and 99.9% SLA. Professional starts $490/month, 800 msg/s and 99.99% SLA; trial is 30 days. Overage rate is not reproduced. | Free and plan entry terms are source-supported; published overage rate remains unresolved. Retries and filtered messages are free; payload is billed per 64 KiB chunk. Do not retain old 14-day trial claim. | [Svix pricing](https://www.svix.com/pricing/) · [October 2026 changes](https://www.svix.com/blog/changelog-10-2026/) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

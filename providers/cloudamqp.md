@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| CloudAMQP | 06 | `PERMANENT` | Little Lemur: 1.000.000 messages/tháng; 20 concurrent connections; 100 queues | Tough Tiger $19/tháng (5M msgs, 100 conns); Dedicated từ $49/tháng | Giới hạn cứng 20 connections; serverless dễ bị rớt kết nối nếu không có pooler | [Pricing/docs](https://www.cloudamqp.com/plans.html) | `SOURCE_LINKED_SNAPSHOT` | — |
+| CloudAMQP | 06 | LIMITED_FREE | Little Lemur: 1M messages/month, 20 connections, 100 queues and 10K queued messages; free without card. Idle instance may be deleted after warning if no publish/consume for two months. | Tough Tiger includes 10M messages/month, 100 connections at $19/month. Dedicated RabbitMQ starts at $50/month. | Idle deletion, message quotas and connections matter; $19 tier is not 5M messages. RabbitMQ hosting is billed by plan/region. | [Plans](https://www.cloudamqp.com/plans.html) · [FAQ](https://www.cloudamqp.com/docs/faq/) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

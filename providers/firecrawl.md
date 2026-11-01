@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Firecrawl Scrape/Search | 10 | `PERMANENT` | 1.000 credits/tháng, 2 conc | Hobby $19/tháng ($16 trả năm, 5k credits); Standard $99/tháng | Scrape 1 credit; structured extract 5 credits; mã nguồn mở AGPLv3 | [Firecrawl Pricing](https://www.firecrawl.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Firecrawl Scrape/Search | 10 | PERMANENT | Free: 1,000 credits/month, no card. | Hobby $19/month includes 5K credits; Standard $99/month includes 100K. Basic scrape/crawl/map 1 credit/page; Search 2 credits/10 results; advanced structured output adds 4 credits/page. | Monitor/browser interactions use different meters. AGPLv3 self-hosted is distinct from hosted API and model/LLM charges. | [Firecrawl pricing](https://www.firecrawl.dev/pricing) · [Credit rules](https://docs.firecrawl.dev/credits) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Auth0 | 07 | `PERMANENT` | 25.000 MAUs free; tối đa 5 Organizations; 1 Enterprise Connection | Essentials từ $35/tháng (500 MAU); Professional từ $240/tháng | Giới hạn cứng 5 organizations chặn B2B multi-tenant; custom domain cần thẻ | [auth0.com/pricing](https://auth0.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Auth0 | 07 | PERMANENT | Free: 25,000 MAU, 5 Organizations and 1 Enterprise Connection; no card. Custom domain requires card verification but Auth0 says it does not charge for this. | Essentials $35/month for 500 MAU. Professional $240/month; current official sources conflict between 500 and 1,000 included MAU. | Do not publish a definitive Professional MAU quota until the newer pricing article and pricing page are reconciled. Enterprise and add-ons vary. | [Auth0 pricing](https://auth0.com/pricing) · [Pricing article](https://auth0.com/blog/whatever-you-are-building-auth0-has-a-plan/) · [Custom domain card requirement](https://support.auth0.com/center/s/article/Using-Custom-Domains-with-Free-Tenants) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

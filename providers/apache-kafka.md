@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Apache Kafka OSS | 06 | `PERMANENT` | 100% Free Open Source (Apache 2.0); $0 license software | Chi phí tự host compute/disk/network | Tối thiểu 3 nodes cho KRaft quorum; gánh nặng vận hành JVM, partition | [Pricing/docs](https://kafka.apache.org/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Apache Kafka OSS | 06 | SELF_HOSTED | Apache-2.0 licensed Kafka software; no software license fee for self-hosted use. Brokers, disks and operations cost separately. | No hosted Kafka price asserted for the OSS project. | Combined broker/controller can serve development; production commonly uses 3 or 5 controllers. Three nodes are not a universal minimum imposed by KRaft. | [KRaft operations](https://kafka.apache.org/44/operations/kraft/) · [Kafka source/license](https://github.com/apache/kafka) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

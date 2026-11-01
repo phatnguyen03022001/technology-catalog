@@ -8,18 +8,23 @@
 
 | Service offering | Provider SSOT |
 |---|---|
+| Akamai Object Storage | [Akamai](../../providers/akamai.md) |
 | Amazon S3 | [Amazon Web Services](../../providers/amazon-web-services.md) |
 | Azure Blob Storage | [Microsoft Azure](../../providers/azure.md) |
 | Backblaze B2 | [Backblaze](../../providers/backblaze.md) |
 | Bunny Storage | [Bunny.net](../../providers/bunny.md) |
 | Cloudflare Images | [Cloudflare](../../providers/cloudflare.md) |
 | Cloudflare R2 Standard | [Cloudflare](../../providers/cloudflare.md) |
+| Cloudflare Stream | [Cloudflare](../../providers/cloudflare.md) |
 | Cloudinary Programmable Media | [Cloudinary](../../providers/cloudinary.md) |
 | DigitalOcean Spaces | [DigitalOcean](../../providers/digitalocean.md) |
 | Google Cloud Storage (GCS) | [Google Cloud & Firebase](../../providers/google.md) |
 | ImageKit | [ImageKit](../../providers/imagekit.md) |
-| MinIO | [MinIO](../../providers/minio.md) |
+| MinIO AIStor | [MinIO](../../providers/minio.md) |
+| MinIO OSS | [MinIO](../../providers/minio.md) |
 | Mux Video | [Mux](../../providers/mux.md) |
+| Oracle Object Storage | [Oracle Cloud Infrastructure](../../providers/oracle.md) |
+| SeaweedFS | [SeaweedFS](../../providers/seaweedfs.md) |
 | Storj DCS | [Storj](../../providers/storj.md) |
 | Supabase Storage | [Supabase](../../providers/supabase.md) |
 | Tigris Data | [Tigris Data](../../providers/tigris.md) |
@@ -27,6 +32,8 @@
 | Vercel Blob | [Vercel](../../providers/vercel.md) |
 | Wasabi | [Wasabi](../../providers/wasabi.md) |
 
-## Watchlist — 0 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.
+| Candidate | Status | Note |
+|---|---|---|
+| Hetzner Object Storage | Deferred | Relevant low-cost storage candidate; current regional price/allowance could not be reconciled from official evidence. |

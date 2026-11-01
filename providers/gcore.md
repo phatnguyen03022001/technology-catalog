@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Gcore CDN | 04 | `PERMANENT` | 1 TB/tháng traffic miễn phí toàn cầu; 1 tỷ requests; basic DDoS; 1 CDN resource | Start €35/tháng (1,5 TB); Pro €100/tháng (5 TB); overage ~€0,025/GB | Giới hạn 1 CDN resource & ~5 rules tùy biến ở Free; vượt 1 TB phải nâng lên gói trả phí | [Pricing/docs](https://gcore.com/pricing/cdn) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Gcore CDN | 04 | `PERMANENT` | PAYG includes first 1 TB/month globally across 210+ PoPs; no monthly subscription. Image optimization includes 10,000 operations/month. | After 1 TB: €0.01/GB up to 500 TB; requests above 1B/month are €0.75/M; image optimization overage is €1/10K. | PAYG replaced old Free/Start/Pro plans. Published prices exclude VAT; tier/volume and service mix affect TCO. | [Edge network pricing](https://gcore.com/pricing/edge-network) · [PAYG CDN change](https://gcore.com/developers/pay-as-you-go-cdn) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

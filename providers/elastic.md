@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Elastic Cloud | 05 | `TIME_LIMITED_TRIAL` | 14 ngày trial; KHÔNG có free vĩnh viễn | Standard ~$99/tháng (HA 2 nodes + Kibana); Gold/Platinum cao hơn | Sàn chi phí cao (~$99/tháng); OSS đã khôi phục AGPLv3 bên cạnh SSPL | [Elastic Cloud Pricing](https://www.elastic.co/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Elastic Cloud | 05 | TIME_LIMITED_TRIAL | 14-day trial includes one hosted deployment and up to three Serverless projects; trial scope is account-limited. | Hosted price depends on RAM, region, storage and transfer; a Standard $99/month minimum was not reproduced. | Keep trial and paid price separate. Do not assert a public paid floor without a selected deployment/region. | [Organization/trial](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/create-an-organization) · [Pricing FAQ](https://www.elastic.co/pricing/faq) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

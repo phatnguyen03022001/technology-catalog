@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Langfuse Cloud | 09 | `PERMANENT` | 50.000 units/tháng; 30d retention; 2 seats; full evals/prompts | Core $29/tháng (100k units, 90d retention, unlimited seats) | 1 unit = 1 trace hoặc 1 observation; tự host MIT OSS hoàn toàn miễn phí | [Langfuse Pricing](https://langfuse.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Langfuse Cloud | 09 | PERMANENT | Hobby: 50K billable units per 30 days and 2 users. | Core $29/month includes 100K units; $8/100K overage; 90-day retention and unlimited users. | A billable unit is each trace, observation and score, not one combined trace-or-observation. Self-hosted MIT edition has no usage billing; infrastructure is separate. | [Langfuse pricing](https://langfuse.com/pricing) · [Billable units](https://langfuse.com/docs/administration/billable-units) · [Glossary](https://langfuse.com/docs/glossary) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

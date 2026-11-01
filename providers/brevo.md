@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Brevo Email | 11 | `PERMANENT` | 300 emails/ngày (~9.000/tháng); lưu trữ 100k contacts free | Starter $9/tháng (5k emails/tháng); Standard $18/tháng | Giới hạn 300/ngày cứng không cộng dồn; Free có logo "Sent with Brevo" | [Brevo Pricing](https://help.brevo.com/hc/en-us/articles/208589409-About-Brevo-s-pricing-plans) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Brevo Email | 11 | PERMANENT | Free: 300 emails/day with up to 100K contacts and one marketing seat; no rollover. Transactional email is included subject to plan limits. | Starter starts at $9/month for the entry 5K-send/500-contact tier. Price for the 10K tier and higher tiers is not established by the plan article; Standard is tiered. | Free and entry-tier terms are source-supported; full paid-tier schedule remains unresolved. The free daily cap is a hard limit. Contact count, send volume and logo removal are separate; Starter logo-removal add-on is $9/month. | [Pricing plans](https://help.brevo.com/hc/en-us/articles/208589409-About-Brevo-s-pricing-plans) · [Free plan limits](https://help.brevo.com/hc/en-us/articles/208580669-FAQs-What-are-the-limits-of-the-Free-plan) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

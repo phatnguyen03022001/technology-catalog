@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Coolify | 08 | `PERMANENT` | 100% Free Open Source (Apache 2.0); self-host PaaS on any VPS | Coolify Cloud managed dashboard from $5/mo (for 2 servers) | Self-managed host security, Docker storage pruning, and server updates | [Coolify](https://coolify.io/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Coolify | 08 | SELF_HOSTED | Self-hosted license has no fee; user supplies and operates server/workload. | Coolify Cloud control plane $5/month includes two connected servers; each additional connected server is $3/month. | Cloud fee does not include servers running applications; self-host still has infrastructure and ops costs. | [Coolify pricing](https://coolify.io/pricing) · [Self-hosted vs cloud](https://coolify.io/docs/core/selfhosted-cloud-comparison) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

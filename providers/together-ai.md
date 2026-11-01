@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Together AI | 10 | `UNKNOWN` | Free credits and ongoing allowance not independently verified | Model-specific per-token prices; prior Llama 3.3 range and $15 top-up minimum are unrechecked snapshots | Do not state a minimum top-up or current model rate without current first-party evidence. | [Together AI Pricing](https://www.together.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Together AI | 10 | UNKNOWN | No general free credit or $15 minimum verified. | Named model examples per million tokens: DeepSeek V4.1 Flash 1017 $0.30 input/$0.006 cached/$1.20 output; GPT-OSS-120B $0.15/$0.60; GLM-5.3-Flash $0.15/$0.03 cached/$0.50. | Standard rates are current; serverless is best-effort and throttling can be model-specific. Pricing page has Batch selector but current batch rates for these examples are unresolved, so the row has mixed evidence. | [Together pricing](https://www.together.ai/pricing) · [Rate limits](https://docs.together.ai/docs/rate-limits) | UNVERIFIED | — |
 
 ## Evidence & maintenance
 

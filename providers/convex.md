@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Convex | 02 | `PERMANENT` | 1M function calls/tháng; 20 GB-h compute; 0.5 GB storage | $25/tháng per member Pro | 0.5 GB DB storage; 1 MiB document max | [Convex Pricing](https://convex.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Convex | 02 | `PERMANENT` | Free/Starter: 1M function calls, 20 GB-hours action compute, 0.5 GB database storage; one MiB maximum document size. | Professional $25/developer/month; usage and plan limits vary. State 20 GB-hours specifically as action compute. | Keep Free/Starter quota and Pro per-developer fee separate; current brand/pricing page is Convex.dev. | [Current pricing](https://www.convex.dev/pricing) · [Document limits](https://docs.convex.dev/production/state/limits) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

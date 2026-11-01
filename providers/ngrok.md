@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Ngrok | 04 | `PERMANENT` | 1 GB egress/tháng, 20.000 requests/tháng, 1 domain tĩnh dev ngrok-free.app, 3 endpoints | Personal $8–$10/tháng (5 GB, 100k req); Pay-as-you-go từ $20/tháng | Trang cảnh báo bảo mật interstitial trên trình duyệt ở gói Free; quota 1 GB chỉ đủ test dev | [Pricing/docs](https://ngrok.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Ngrok | 04 | `ONE_TIME_CREDIT` | Free includes $5 one-time usage credit, up to 3 endpoints, 1 GB transfer and 20K HTTP/S requests; includes browser interstitial. | Hobbyist $10/month includes $10 usage, 5 GB and 100K requests; production PAYG includes $20 monthly usage. | Free allowance is not a recurring monthly quota; TCP/payment requirements and endpoint limits apply. | [ngrok pricing](https://ngrok.com/pricing) · [TCP/payment FAQ](https://ngrok.com/faq) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

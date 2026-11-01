@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Depot | 08 | `TIME_LIMITED_TRIAL` | 7-day free trial (no permanent free tier) | Developer $20/mo (500 container mins); Overage $0.04/min | No perpetual free tier; cost justified only by build speedup ROI | [Depot Pricing](https://depot.dev/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Depot | 08 | TIME_LIMITED_TRIAL | A 7-day trial is offered; public pricing does not state whether a payment card is required. No perpetual free plan asserted. | Developer $20/month includes 500 container-build minutes, 2,000 shared sandbox/CI minutes, 2,000 GitHub Actions runner minutes, 25 GB cache/registry and unlimited concurrency. Overage: container builds $0.04/min, GitHub Actions $0.006/min, sandbox compute $0.00005/second/vCPU; extra cache $0.20/GB-month. | Trial is temporary; credit buckets and compute dimensions are separate. Card requirement is not published on the pricing page. | [Depot pricing](https://depot.dev/pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

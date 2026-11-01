@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Wasabi | 03 | `TIME_LIMITED_TRIAL` | 30 ngày trial 1 TB; KHÔNG có free vĩnh viễn | $7,99/TB-tháng; API requests $0; Egress $0 | Sàn tối thiểu 1 TB ($7,99/tháng); chính sách retention 90 ngày (file xóa vẫn tính tiền 90 ngày) | [Wasabi Pricing](https://wasabi.com/cloud-storage/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Wasabi | 03 | `TIME_LIMITED_TRIAL` | Current signup documentation describes a trial, but official pages disagree on the exact trial capacity; do not promise 1 TB without confirmation. | From 2026-07-01: $7.99/TB-month, 1 TB monthly minimum; 90-day minimum storage duration. | Egress is included only under fair-use when egress is no more than active storage; not unconditional zero egress. Trial cap conflict: signup docs say 1 TB/30 days while later trial limits say contact sales. | [Pricing FAQ](https://wasabi.com/pricing/faq) · [Product terms](https://wasabi.com/product-terms) · [Trial signup](https://docs.wasabi.com/v1/docs/signing-up-for-wasabi) · [Trial limits](https://docs.wasabi.com/docs/trial-data-limit) | `STALE` | — |
 
 ## Evidence & maintenance
 

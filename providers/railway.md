@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Railway | 01 | `PERMANENT_AFTER_TRIAL` | 30-day $5 trial; then $1/month non-rollover Free credit; 1 project, 3 services, 1 vCPU, 0.5 GB RAM, 0.5 GB volume | Hobby $5/mo minimum spend (includes $5 credit); Pro $20/mo base (includes $20 credit) | $1/mo free credit runs out in ~6 days for a 24/7 512MB container; Free is strictly ephemeral | [Railway Pricing](https://railway.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Railway | 01 | `PERMANENT_AFTER_TRIAL` | New account: up to 30-day trial with one-time $5 credit, then Free plan with $1/month non-rollover credit; no card required. After trial: 1 project, 3 services, 1 vCPU, 0.5 GB RAM, 1 GB ephemeral disk, one persistent volume up to 0.5 GB. | Hobby $5/month minimum includes $5 usage; Pro $20/month minimum includes $20. Published usage rates: RAM $10/GB-month, CPU $20/vCPU-month, egress $0.05/GB, volume storage $0.00000006/GB-second. | Deployment filesystem is ephemeral; attached volume persists and is metered. Trial resources differ from Free and unverified trial accounts can have restricted outbound networking; trial volumes are deleted 30 days after credit expiry. | [Current pricing and rates](https://railway.com/pricing) · [Plan resources](https://docs.railway.com/pricing/plans) · [Free trial](https://docs.railway.com/pricing/free-trial) · [Volumes](https://docs.railway.com/volumes/reference) · [Deployment storage](https://docs.railway.com/deployments/reference) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 

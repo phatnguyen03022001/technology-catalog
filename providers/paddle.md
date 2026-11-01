@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Paddle MoR | 12 | `NO_MONTHLY_BASE` | $0 platform fee; test sandbox free | 5,0% + $0,50 per checkout; Wire 3,5% | MoR chuẩn B2B SaaS toàn cầu; payout tối thiểu $100; chỉ phần mềm/SaaS | [Paddle Pricing](https://www.paddle.com/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
+| Paddle MoR | 12 | NO_MONTHLY_BASE | No monthly fee; transaction pricing applies. | 5% + $0.50/checkout; Paddle Invoicing bank transfer 3.5%. | Payout minimum $100; SWIFT and bank route may add fees. Merchant acceptance conditions apply. | [Paddle pricing](https://www.paddle.com/pricing) · [Payouts](https://www.paddle.com/help/manage/get-paid/when-and-how-do-i-get-paid) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 
