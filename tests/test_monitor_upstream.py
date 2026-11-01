@@ -55,6 +55,55 @@ class MonitorTests(unittest.TestCase):
                 self.assertEqual(m.freshness(row, day + timedelta(days=days)),
                                  (expected, days))
 
+    def test_markdown_warns_only_after_30_days_and_for_stale_or_unknown_date(self):
+        reviewed = date(2026, 4, 30)
+        for days in (29, 30, 31):
+            with self.subTest(days=days):
+                row = deepcopy(self.provider)
+                row["reviewed"] = reviewed.isoformat()
+                as_of = reviewed + timedelta(days=days)
+                result = m.evaluate([row], as_of)[0]
+                report = m.render([result], as_of)
+                if days <= 30:
+                    self.assertNotIn(row["name"], report.split("### Actionable alerts", 1)[1])
+                else:
+                    self.assertIn(row["name"], report)
+                    self.assertIn(row["reviewed"], report)
+                    self.assertIn(row["source"], report)
+                    self.assertIn("REVERIFY_REQUIRED", report)
+
+        for status, reviewed_date, expected in (
+            ("STALE", "2026-04-30", "STALE"),
+            ("STALE", "", "UNKNOWN"),
+            ("VERIFIED", "", "UNKNOWN"),
+        ):
+            with self.subTest(status=status, reviewed=reviewed_date):
+                row = deepcopy(self.provider)
+                row["status"] = status
+                row["reviewed"] = reviewed_date
+                result = m.evaluate([row], date(2026, 5, 1))[0]
+                report = m.render([result], date(2026, 5, 1))
+                self.assertIn(row["name"], report)
+                self.assertIn(status, report)
+                self.assertIn(expected, report)
+                self.assertIn(row["source"], report)
+
+    def test_not_checked_is_distinct_from_unknown_upstream_signal(self):
+        row = deepcopy(self.provider)
+        row["reviewed"] = "2026-11-01"
+        as_of = date(2026, 11, 1)
+
+        deterministic = m.evaluate(
+            [row], as_of, fetch=lambda *_: self.fail("freshness checks must not query upstream"))[0]
+        self.assertEqual(deterministic["freshness"], "CURRENT")
+        self.assertEqual(deterministic["signal"], "NOT_CHECKED")
+        self.assertEqual(deterministic["production_use"], "PROJECT_HARD_GATES_REQUIRED")
+
+        live_unknown = m.evaluate([row], as_of, live=True,
+                                  fetch=lambda *_: self.fail("unsupported provider must not fetch"))[0]
+        self.assertEqual(live_unknown["signal"], "UNKNOWN")
+        self.assertEqual(live_unknown["production_use"], "BLOCK_REVERIFY")
+
     def test_age_warns_without_downgrading_verified(self):
         old = deepcopy(self.provider)
         old["reviewed"] = "2020-01-01"

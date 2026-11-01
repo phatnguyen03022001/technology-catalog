@@ -221,10 +221,10 @@ def evaluate(rows: list[dict], now: date, live=False, security=False, fetch=fetc
     for row in rows:
         state, age = freshness(row, now)
         signal = probe(row, fetch, security) if live else dict(
-            signal="UNKNOWN", detail="Not checked in deterministic mode",
+            signal="NOT_CHECKED", detail="Upstream check not run in deterministic mode",
             probe_source=row["source"], security="UNKNOWN", security_detail="Not checked")
         entry = {**row, **signal, "freshness": state, "age": age}
-        # UNKNOWN detection is not a clean bill of health. Never approve from catalog alone.
+        # An unrun probe is not evidence of staleness; actual UNKNOWN/CHECK_FAILED signals remain gated.
         entry["production_use"] = "BLOCK_REVERIFY" if (
             state != "CURRENT" or signal["signal"] in ("UPSTREAM_CHANGED", "CHECK_FAILED", "SECURITY_REVIEW_REQUIRED")
             or signal["signal"] == "UNKNOWN"
@@ -247,17 +247,20 @@ def render(rows: list[dict], now: date, live=False, include_unknown=False) -> st
              "|---:|---:|---:|---:|",
              f"| {ages['CURRENT']} | {ages['REVERIFY_REQUIRED']} | {ages['STALE']} | {ages['UNKNOWN']} |",
              "", "### Upstream signals", "",
-             "| NO_CHANGE_DETECTED | UPSTREAM_CHANGED | SECURITY_REVIEW_REQUIRED | CHECK_FAILED | UNKNOWN |",
-             "|---:|---:|---:|---:|---:|",
-             f"| {signals['NO_CHANGE_DETECTED']} | {signals['UPSTREAM_CHANGED']} | {signals['CHECK_FAILED']} | {signals['UNKNOWN']} |",
+             "| NO_CHANGE_DETECTED | UPSTREAM_CHANGED | SECURITY_REVIEW_REQUIRED | CHECK_FAILED | UNKNOWN | NOT_CHECKED |",
+             "|---:|---:|---:|---:|---:|---:|",
+             f"| {signals['NO_CHANGE_DETECTED']} | {signals['UPSTREAM_CHANGED']} | {signals['SECURITY_REVIEW_REQUIRED']} | "
+             f"{signals['CHECK_FAILED']} | {signals['UNKNOWN']} | {signals['NOT_CHECKED']} |",
              "", "### Actionable alerts", "",
-             "| Record / evidence scope | Freshness / signal | Source | Verified / age | Change signal and next action |",
+             "| Record / evidence scope | Evidence status / freshness / signal | Source | Verified / age | Change signal and next action |",
              "|---|---|---|---|---|"]
     flagged = [r for r in rows if r["freshness"] != "CURRENT"
                or r["signal"] in ("UPSTREAM_CHANGED", "CHECK_FAILED", "SECURITY_REVIEW_REQUIRED")
-               or include_unknown and r["signal"] == "UNKNOWN"]
+               or include_unknown and r["signal"] in ("UNKNOWN", "NOT_CHECKED")]
     for r in flagged:
-        action = ("Reverify affected claims before production use" if r["freshness"] == "REVERIFY_REQUIRED"
+        action = ("Upstream check not run; freshness comes from the recorded evidence date"
+                  if r["signal"] == "NOT_CHECKED" else
+                  "Reverify affected claims before production use" if r["freshness"] == "REVERIFY_REQUIRED"
                   else "Assess release, security, compatibility and trade-offs; no auto bump"
                   if r["signal"] == "UPSTREAM_CHANGED" else
                   "Review affected package/symbol and advisory applicability; do not infer unsafe installation"
@@ -265,13 +268,16 @@ def render(rows: list[dict], now: date, live=False, include_unknown=False) -> st
                   "Retry or verify manually; never infer no change" if r["signal"] == "CHECK_FAILED"
                   else "Manual evidence review required")
         detail = str(r["detail"]).replace("|", "/").replace("\n", " ")[:150]
-        lines.append(f"| {r['path']} / {r['name']} ({r['scope']}) | {r['freshness']} / {r['signal']} "
+        lines.append(f"| {r['path']} / {r['name']} ({r['scope']}) | {r['status']} / {r['freshness']} / {r['signal']} "
                      f"| {r['probe_source']} | {r['reviewed'] or 'UNKNOWN'} / "
                      f"{r['age'] if r['age'] is not None else 'UNKNOWN'}d | {detail}; **{action}** |")
     if not flagged:
-        lines.append("| None | — | — | — | No alerts detected; UNKNOWN monitoring coverage still applies |")
+        note = ("No evidence-freshness alerts; upstream checks not run in deterministic mode"
+                if signals["NOT_CHECKED"] and not live else
+                "No alerts detected; UNKNOWN monitoring coverage still applies")
+        lines.append(f"| None | — | — | — | {note} |")
     lines += ["", "### Coverage limits", "",
-              "- Providers pricing/quotas/ToS, language docs, conditional decisions and frameworks without release APIs are manual-review only. UNKNOWN is never evidence of no change.",
+              "- Providers pricing/quotas/ToS, language docs, conditional decisions and frameworks without release APIs are manual-review only. UNKNOWN is never evidence of no change; NOT_CHECKED means no upstream query ran and is not a freshness state.",
               "- An advisory published on/before the last review date is SECURITY_REVIEW_REQUIRED (applicability unknown), not a confirmed upstream change. Only newer advisory publications signal UPSTREAM_CHANGED.",
               "- NO_CHANGE_DETECTED checks only release identifiers or release publication dates. It does not detect every breaking change, deprecation, platform, license or security notice.",
               "- OSV checks use a referenced version for Rust/Go/npm/PyPI only when --security is enabled. No result does not prove safe. Swift mapping remains UNKNOWN.",
