@@ -24,4 +24,4 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 
 ## Validation
 
-`python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`; GitHub Actions enforces both on `main` pushes. These are deterministic integrity/evidence-hygiene checks, **not** proof of current pricing or production suitability. See [cost decision readiness](docs/01-evaluation-matrix.md#cost-decision-readiness-separate-from-evidence-status).
+`python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`; GitHub Actions enforces both on `main` pushes. These are deterministic integrity/evidence-hygiene checks, **not** proof of current pricing or production suitability. Freshness warnings: `python3 scripts/monitor_upstream.py`; live read-only release and advisory checks: `python3 scripts/monitor_upstream.py --check-upstream --security`. [Freshness governance](docs/lifecycle.md#evidence-freshness-and-upstream-change-monitoring-utc). See [cost decision readiness](docs/01-evaluation-matrix.md#cost-decision-readiness-separate-from-evidence-status).

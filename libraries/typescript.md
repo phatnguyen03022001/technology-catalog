@@ -19,10 +19,10 @@
 - **Fit:** Parse untrusted runtime data, when the current codebase demonstrably needs it.
 - **Anti-fit:** Only compile-time types or already validated boundaries are involved.
 - **Fallback:** explicit checks or current validator.
-- **Compatibility:** UNKNOWN (npm package omits Node engine constraint; verify platform support); check deployment platform and integrations.
+- **Compatibility:** Node.js and modern browsers per official docs; TypeScript >=5.5 tested, strict mode required. Exact edge/bundler target UNKNOWN.
 - **Maintenance:** npm latest 4.6.7; publish recency UNKNOWN; activity does not prove long-term support.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/zod/latest); [upstream/manifest](https://github.com/colinhacks/zod)
+- **Official source:** [official registry or upstream](https://registry.npmjs.org/zod/latest); [upstream/manifest](https://github.com/colinhacks/zod); [Zod official requirements](https://zod.dev/)
 - **Evidence status:** PARTIAL
 - **Evidence reviewed:** 2026-11-01
 - **Unknowns:** Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
@@ -67,10 +67,10 @@
 - **Fit:** Structured JSON server logging, when the current codebase demonstrably needs it.
 - **Anti-fit:** Browser-only work or an existing structured logger meets needs.
 - **Fallback:** console or existing telemetry.
-- **Compatibility:** UNKNOWN (npm package omits Node engine constraint; verify platform support); check deployment platform and integrations.
+- **Compatibility:** Pino v10 dropped Node 18 per upstream release notes; verify supported active Node LTS line, transports and target runtime. Exact edge/worker compatibility UNKNOWN.
 - **Maintenance:** npm latest 10.4.0; publish recency UNKNOWN; activity does not prove long-term support.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/pino/latest); [upstream/manifest](https://github.com/pinojs/pino)
+- **Official source:** [official registry or upstream](https://registry.npmjs.org/pino/latest); [upstream/manifest](https://github.com/pinojs/pino); [Pino support policy](https://github.com/pinojs/pino/blob/main/docs/lts.md)
 - **Evidence status:** PARTIAL
 - **Evidence reviewed:** 2026-11-01
 - **Unknowns:** Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
@@ -115,10 +115,10 @@
 - **Fit:** JOSE token and key operations, when the current codebase demonstrably needs it.
 - **Anti-fit:** Opaque sessions or an existing vetted authentication library cover requirements.
 - **Fallback:** existing auth library or Web Crypto.
-- **Compatibility:** UNKNOWN (npm package omits Node engine constraint; verify platform support); check deployment platform and integrations.
+- **Compatibility:** jose v6 documents Node, Bun, Deno, browsers, Cloudflare Workers and Electron; algorithms and ESM/CJS requirements vary by runtime. Exact target crypto compatibility UNKNOWN.
 - **Maintenance:** npm latest 6.2.14; publish recency UNKNOWN; activity does not prove long-term support.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/jose/latest); [upstream/manifest](https://github.com/panva/jose)
+- **Official source:** [official registry or upstream](https://registry.npmjs.org/jose/latest); [upstream/manifest](https://github.com/panva/jose); [jose supported runtimes](https://github.com/panva/jose/blob/main/README.md)
 - **Evidence status:** PARTIAL
 - **Evidence reviewed:** 2026-11-01
 - **Unknowns:** Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
