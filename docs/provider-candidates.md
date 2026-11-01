@@ -6,18 +6,18 @@
 
 | Pillar | Service offerings | Non-VERIFIED offerings |
 |---|---:|---:|
-| [01 — Compute & Runtime](../pillars/01-compute-runtime/README.md) | 31 | 7 |
+| [01 — Compute & Runtime](../pillars/01-compute-runtime/README.md) | 31 | 6 |
 | [02 — Databases & Data](../pillars/02-databases-data/README.md) | 27 | 3 |
-| [03 — Storage & Media](../pillars/03-storage-media/README.md) | 24 | 4 |
+| [03 — Storage & Media](../pillars/03-storage-media/README.md) | 24 | 3 |
 | [04 — Networking & Edge](../pillars/04-networking-edge/README.md) | 14 | 1 |
 | [05 — Cache & Traditional Search](../pillars/05-cache-traditional-search/README.md) | 22 | 6 |
 | [06 — Messaging & Async](../pillars/06-messaging-async/README.md) | 25 | 7 |
-| [07 — Identity & Security](../pillars/07-identity-security/README.md) | 23 | 7 |
+| [07 — Identity & Security](../pillars/07-identity-security/README.md) | 23 | 6 |
 | [08 — DevOps & Delivery](../pillars/08-devops-delivery/README.md) | 30 | 2 |
 | [09 — Observability & Analytics](../pillars/09-observability-analytics/README.md) | 22 | 2 |
 | [10 — AI Models & Agent Tools](../pillars/10-ai-models-agent-tools/README.md) | 30 | 5 |
-| [11 — Communications](../pillars/11-communications/README.md) | 24 | 6 |
-| [12 — Business & Extension APIs](../pillars/12-business-extension-apis/README.md) | 28 | 3 |
+| [11 — Communications](../pillars/11-communications/README.md) | 24 | 5 |
+| [12 — Business & Extension APIs](../pillars/12-business-extension-apis/README.md) | 28 | 2 |
 
 Non-VERIFIED is a service-level evidence disposition. It does not count the number of separate price, quota or model claims within a row.
 
@@ -42,7 +42,7 @@ Non-VERIFIED is a service-level evidence disposition. It does not count the numb
 | 03 | Akamai Object Storage | Adds S3-compatible object storage from a global edge provider. | [Akamai](../providers/akamai.md) | `VERIFIED` |
 | 03 | Cloudflare Stream | Adds managed video upload, encoding and delivery. | [Cloudflare](../providers/cloudflare.md) | `VERIFIED` |
 | 03 | Oracle Object Storage | Adds a major cloud’s object storage and archive option. | [Oracle Cloud Infrastructure](../providers/oracle.md) | `VERIFIED` |
-| 03 | Hetzner Object Storage | Adds S3-compatible object storage in European regions; its exact current base-price cap remains unresolved. | [Hetzner](../providers/hetzner.md) | `UNVERIFIED` |
+| 03 | Hetzner Object Storage | Adds S3-compatible object storage in European regions with verified €6.49/month account base-fee cap and separately metered overage. | [Hetzner](../providers/hetzner.md) | `VERIFIED` |
 | 03 | SeaweedFS | Adds an Apache-licensed, self-hosted distributed object/file store. | [SeaweedFS](../providers/seaweedfs.md) | `VERIFIED` |
 | 04 | AWS WAF | Adds managed application-layer filtering to edge/network choices. | [Amazon Web Services](../providers/amazon-web-services.md) | `VERIFIED` |
 | 04 | Google Cloud DNS | Adds authoritative DNS from a major cloud provider. | [Google Cloud & Firebase](../providers/google.md) | `VERIFIED` |

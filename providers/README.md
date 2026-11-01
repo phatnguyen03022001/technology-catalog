@@ -6,9 +6,9 @@
 
 | Evidence status | Service records |
 |---|---:|
-| `VERIFIED` | 247 |
+| `VERIFIED` | 252 |
 | `SOURCE_LINKED_SNAPSHOT` | 7 |
-| `UNVERIFIED` | 40 |
+| `UNVERIFIED` | 35 |
 | `STALE` | 4 |
 | `DISCONTINUED` | 2 |
 
