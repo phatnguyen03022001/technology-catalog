@@ -82,7 +82,7 @@ Non-VERIFIED is a service-level evidence disposition. It does not count the numb
 | 08 | Harbor Container Registry | Adds a self-hosted OCI registry with signing and vulnerability-scanning integrations. | [Harbor](../providers/harbor.md) | `VERIFIED` |
 | 09 | ClickStack OSS | Adds a self-hostable OpenTelemetry observability stack with ClickHouse, HyperDX and the OTel Collector. | [ClickHouse](../providers/clickhouse.md) | `VERIFIED` |
 | 09 | Dash0 Observability | Adds an OpenTelemetry-native managed observability option. | [Dash0](../providers/dash0.md) | `VERIFIED` |
-| 09 | GlitchTip Cloud | Adds a Sentry-compatible error monitoring option with self-host lineage. | [GlitchTip](../providers/glitchtip.md) | `UNVERIFIED` |
+| 09 | GlitchTip Cloud | Adds a Sentry-compatible error monitoring option with self-host lineage. | [GlitchTip](../providers/glitchtip.md) | `VERIFIED` |
 | 09 | Managed ClickStack | Adds a GA managed observability service on ClickHouse Cloud with compute/storage billing. | [ClickHouse](../providers/clickhouse.md) | `VERIFIED` |
 | 10 | Amazon Bedrock | Adds AWS-hosted third-party model inference with AWS billing and governance. | [Amazon Web Services](../providers/amazon-web-services.md) | `VERIFIED` |
 | 10 | Gemini Enterprise Agent Platform | Adds managed Google agent/model platform coverage. | [Google Cloud & Firebase](../providers/google.md) | `VERIFIED` |

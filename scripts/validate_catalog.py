@@ -11,7 +11,7 @@ import ipaddress
 import re
 import sys
 from collections import Counter, defaultdict
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -153,6 +153,8 @@ def main() -> int:
     expected_index_links = Counter()
     expected_index_services = Counter()
     provider_counts = {}
+    provider_titles = {}
+    service_lookup = {}
     provider_pillars = defaultdict(set)
 
     for path in files:
@@ -162,6 +164,7 @@ def main() -> int:
         if not identity or identity.casefold() in identities:
             errors.append(f"{path.relative_to(ROOT)}: missing or duplicate provider identity {identity!r}")
         identities.add(identity.casefold())
+        provider_titles[path.stem] = identity
         try:
             rows = service_rows(path)
         except ValueError as exc:
@@ -174,6 +177,7 @@ def main() -> int:
             if key in services:
                 errors.append(f"{path.relative_to(ROOT)}: duplicate service identity {service!r}")
             services.add(key)
+            service_lookup[key] = (path.stem, pillar, status.strip("`"))
             if not re.fullmatch(r"0[1-9]|1[0-2]", pillar):
                 errors.append(f"{path.relative_to(ROOT)}: invalid primary pillar {pillar!r} for {service}")
             else:
@@ -202,6 +206,8 @@ def main() -> int:
                 errors.append(f"{path.relative_to(ROOT)}: service {service} needs an ISO evidence review date")
             elif parsed_checked > datetime.now(timezone.utc).date():
                 errors.append(f"{path.relative_to(ROOT)}: service {service} has a future evidence review date {checked}")
+            elif state == "VERIFIED" and datetime.now(timezone.utc).date() - parsed_checked > timedelta(days=180):
+                errors.append(f"{path.relative_to(ROOT)}: service {service} has VERIFIED evidence older than 180 days; re-review or downgrade")
             if state in {"SOURCE_LINKED_SNAPSHOT", "UNVERIFIED", "STALE"}:
                 if not re.search(r"\bRC[1-7]\b", caveat):
                     errors.append(f"{path.relative_to(ROOT)}: unresolved service {service} needs an RC1-RC7 cause in Caveat")
@@ -293,6 +299,10 @@ def main() -> int:
                 continue
             filename, count, pillar_text = match.groups()
             stem = Path(filename).stem
+            label_match = re.match(r"\|\s*\[([^\]]+)\]", line)
+            label = label_match.group(1) if label_match else ""
+            if label != provider_titles.get(stem):
+                errors.append(f"providers/README.md provider title mismatch for {filename}: index {label!r}, SSOT {provider_titles.get(stem)!r}")
             if stem in indexed_providers:
                 errors.append(f"providers/README.md duplicate provider entry: {filename}")
             indexed_providers[stem] = int(count)
@@ -337,6 +347,27 @@ def main() -> int:
             errors.append("docs/provider-candidates.md has malformed accepted market-addition rows")
         if len(accepted_names) != len(set(accepted_names)):
             errors.append("docs/provider-candidates.md has duplicate accepted market additions")
+        # Discovery is a denormalized view of provider SSOT; validate the
+        # offering identity, pillar, referenced provider and status.
+        for line in accepted_rows:
+            row = cells(line)
+            if len(row) != 5:
+                continue
+            pillar, service, _, provider_link, status = row
+            claim = service_lookup.get(service.casefold())
+            link = re.fullmatch(r"\[([^\]]+)\]\(\.\./providers/([a-z0-9-]+)\.md\)", provider_link)
+            if not claim:
+                errors.append(f"docs/provider-candidates.md unknown offering {service!r}")
+                continue
+            provider, expected_pillar, expected_status = claim
+            if pillar != expected_pillar:
+                errors.append(f"docs/provider-candidates.md pillar mismatch for {service!r}: {pillar} != {expected_pillar}")
+            if not link or link.group(2) != provider:
+                errors.append(f"docs/provider-candidates.md provider reference mismatch for {service!r}")
+            elif link.group(1) != provider_titles[provider]:
+                errors.append(f"docs/provider-candidates.md provider identity mismatch for {service!r}")
+            if status.strip("`") != expected_status:
+                errors.append(f"docs/provider-candidates.md evidence status mismatch for {service!r}: {status} != {expected_status}")
     for line in candidate_doc.splitlines():
         match = re.match(r"\| \[([0-1][0-9]) — .*\| (\d+) \| (\d+) \|$", line)
         if match:

@@ -18,7 +18,7 @@ class CatalogMutationTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for name in ("providers", "pillars", "docs", "scripts", "languages"):
+        for name in ("providers", "pillars", "docs", "scripts", "languages", "frameworks", "decisions"):
             shutil.copytree(REPO / name, self.root / name)
         shutil.copy2(REPO / "README.md", self.root / "README.md")
 
@@ -112,6 +112,44 @@ class CatalogMutationTests(unittest.TestCase):
         self.change("supabase", "Supabase Database", "paid",
                     lambda _: "Pro $0/month under a synthetic test scenario")
         self.validate(0, "STRUCTURE PASS")
+
+    def test_discovery_evidence_status_mismatch_fails(self):
+        p = self.root / "docs" / "provider-candidates.md"
+        original = "| 09 | GlitchTip Cloud | Adds a Sentry-compatible error monitoring option with self-host lineage. | [GlitchTip](../providers/glitchtip.md) | `VERIFIED` |"
+        assert original in p.read_text()
+        p.write_text(p.read_text().replace(original, original.replace("`VERIFIED`", "`UNVERIFIED`")))
+        self.validate(1, "evidence status mismatch")
+
+    def test_discovery_provider_link_to_existing_wrong_provider_fails(self):
+        p = self.root / "docs" / "provider-candidates.md"
+        original = "[GlitchTip](../providers/glitchtip.md) | `VERIFIED`"
+        assert original in p.read_text()
+        p.write_text(p.read_text().replace(original, "[Sentry](../providers/sentry.md) | `VERIFIED`"))
+        self.validate(1, "provider reference mismatch")
+
+    def test_discovery_provider_label_mismatch_fails(self):
+        p = self.root / "docs" / "provider-candidates.md"
+        original = "[GlitchTip](../providers/glitchtip.md) | `VERIFIED`"
+        assert original in p.read_text()
+        p.write_text(p.read_text().replace(original, "[Fake Brand](../providers/glitchtip.md) | `VERIFIED`"))
+        self.validate(1, "provider identity mismatch")
+
+    def test_discovery_pillar_mismatch_fails(self):
+        p = self.root / "docs" / "provider-candidates.md"
+        original = "| 09 | GlitchTip Cloud |"
+        assert original in p.read_text()
+        p.write_text(p.read_text().replace(original, "| 01 | GlitchTip Cloud |"))
+        self.validate(1, "pillar mismatch")
+
+    def test_provider_index_title_drift_fails(self):
+        p = self.root / "providers" / "glitchtip.md"
+        assert p.read_text().startswith("# GlitchTip\n")
+        p.write_text(p.read_text().replace("# GlitchTip\n", "# GlitchTip Renamed`n", 1))
+        self.validate(1, "provider title mismatch")
+
+    def test_verified_claim_too_old_fails(self):
+        self.change("glitchtip", "GlitchTip Cloud", "checked", lambda _: "2020-01-01")
+        self.validate(1, "VERIFIED evidence older than 180 days")
 
     def test_original_schema_validation_still_fails_unknown_status(self):
         self.change("supabase", "Supabase Storage", "status",

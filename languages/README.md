@@ -40,3 +40,8 @@
 **Integration KISS:** Ưu tiên HTTP/OpenAPI hoặc protocol đã có ở boundary. Chỉ dùng FFI, native bindings hoặc đa runtime nếu có yêu cầu đo được. Mọi boundary cần schema version, auth, error contract, observability, test tương thích và ownership dữ liệu rõ ràng.
 
 **Freshness:** Đánh giá phiên bản, SDK, platform, license và provider pricing lại trước quyết định production; ngày review chỉ là snapshot.
+
+## Framework và decision navigation
+
+- [Framework catalog](../frameworks/README.md) — compatibility, anti-fit, licensing và operational checks.
+- [Decision evidence](../decisions/README.md) — workload assumptions, hard gates, measured vs unknown costs, conditional choice/fallback.

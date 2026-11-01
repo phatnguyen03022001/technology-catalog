@@ -48,6 +48,10 @@ Distinguish perpetual free, recurring monetary credits, one-time signup credit, 
 
 Service evidence is recorded on each provider table row. A validator checks only structure and deterministic evidence hygiene (e.g. future dates, placeholders, malformed/obviously fake links, negative prices). It cannot authenticate an official source, detect every deceptive HTTPS domain, prove a URL is live, or establish that a price claim is true. Never infer pricing accuracy from a passing CI check.
 
+**Freshness policy:** An offering marked `VERIFIED` whose `Evidence checked` date is more than **180 days** old fails structural CI until the relevant claims are re-reviewed with first-party evidence or downgraded to an appropriate unresolved status. This is a **maximum age limit**, not a guarantee that a claim stayed true for 180 days; changes to price/ToS/security support require earlier review. A date field alone is not proof that a re-review occurred. Framework compatibility, security advisories, licenses and workload outcomes similarly require live human/agent verification at selection time.
+
+**Decision artifact status:** [Framework profiles](../frameworks/README.md) contain candidate fit/anti-fit and compatibility claims; [decision records](../decisions/README.md) are workload-scoped **conditional** examples. Their UNKNOWN hard gates and NOT_MEASURED benchmarks must not be treated as approved production decisions. Source links/required sections can be linted but **prose quality or factual claim support cannot be proven by deterministic checks**.
+
 ### Cost decision readiness (separate from evidence status)
 
 - `VERIFIED` is **claim-level**, not a production selection approval. `TCO_UNKNOWN` means a comparable numeric workload price has not been established; obtain the applicable quote/region/SKU before recommending on cost. `NO_DIRECT_FEE` only means no fee for the **specified direct service**, not that hosting, downstream services or operations are free.

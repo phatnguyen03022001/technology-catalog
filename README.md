@@ -7,6 +7,8 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 | Layer | Responsibility | Link |
 |---|---|---|
 | LANGUAGES | Rust, Go, TypeScript, Python, Swift: toolchains, frameworks, fit, trade-offs and decision gates | [languages/](languages/README.md) |
+| FRAMEWORKS | Framework fit, anti-fit, compatibility, licensing, maturity/review risk and sources | [frameworks/](frameworks/README.md) |
+| DECISIONS | Workload-based comparisons, hard gates, conditional decisions, TCO unknowns and fallback | [decisions/](decisions/README.md) |
 | WHAT | 12 functional pillars, service classifications, research watchlists | [pillars/](pillars/README.md) |
 | HOW | 8 evaluation criteria and comparison matrix | [taxonomy](docs/00-taxonomy.md) · [matrix](docs/01-evaluation-matrix.md) |
 | LIFECYCLE | Research → Compare → Select → Integrate → Operate → Retire | [lifecycle](docs/lifecycle.md) |

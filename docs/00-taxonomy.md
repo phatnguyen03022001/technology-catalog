@@ -1,6 +1,6 @@
 # Third-party taxonomy — WHAT / HOW / LIFECYCLE
 
-The [programming language profiles](../languages/README.md) cover languages, runtimes, toolchains and frameworks **outside** service-offering classification. They do not create a thirteenth pillar or duplicate provider cost evidence.
+The [programming language profiles](../languages/README.md) cover languages, runtimes, toolchains and frameworks **outside** service-offering classification. They do not create a thirteenth pillar or duplicate provider cost evidence. See [framework profiles](../frameworks/README.md) and [workload-specific decision records](../decisions/README.md); decisions without measured costs or required gates are conditional, not production-approved.
 
 ## WHAT — 12 Functional Pillars
 
