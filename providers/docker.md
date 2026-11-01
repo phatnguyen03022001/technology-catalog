@@ -1,16 +1,16 @@
 # Docker
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức. Dữ liệu được chuyển nguyên từ catalog cũ, **chưa kiểm chứng lại giá trực tiếp trong lần tái cấu trúc này**. Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
 
 **Offerings:** 1 · **Pillars:** [08](../pillars/08-devops-delivery/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
 |---|---|---|---|---|---|---|
-| Docker Hub Personal | 08 | `PERMANENT` | Repo public unlimited, 1 private; 200 authenticated pulls/6h | Pro/Team trả thuê bao | Pull limits và fair-use policy | [Pricing/docs](https://docs.docker.com/docker-hub/usage/pulls/) |
+| Docker Hub Personal | 08 | `PERMANENT` | Unlimited public repos; 1 private repo; 200 pulls/6h (authenticated) | Pro $9/mo (unlimited private repos & pulls); Team $15/user/mo | Free Desktop restricted to <250 employees and <$10M revenue | [Docker Pricing](https://www.docker.com/pricing/) |
 
 ## Evidence & maintenance
 
-- Evidence: `SOURCE_LINKED_SNAPSHOT`; live re-verification required before production or budget commitments.
+- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

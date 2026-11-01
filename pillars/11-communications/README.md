@@ -8,15 +8,27 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Resend Transactional Email | [Resend](../../providers/resend.md) |
-| Brevo Email | [Brevo](../../providers/brevo.md) |
+| AWS SNS | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Ably | [Ably](../../providers/ably.md) |
 | Amazon SES | [Amazon Web Services](../../providers/amazon-web-services.md) |
-| OneSignal Messaging | [OneSignal](../../providers/onesignal.md) |
-| Knock Notifications | [Knock](../../providers/knock.md) |
+| Brevo Email | [Brevo](../../providers/brevo.md) |
+| Courier | [Courier](../../providers/courier.md) |
 | Expo Push Service | [Expo](../../providers/expo.md) |
+| Firebase Cloud Messaging (FCM) | [Google Cloud & Firebase](../../providers/google.md) |
+| Knock Notifications | [Knock](../../providers/knock.md) |
+| Loops | [Loops](../../providers/loops.md) |
+| Mailgun | [Mailgun](../../providers/mailgun.md) |
+| Novu Cloud | [Novu](../../providers/novu.md) |
+| OneSignal Messaging | [OneSignal](../../providers/onesignal.md) |
+| Plivo | [Plivo](../../providers/plivo.md) |
+| Postmark | [Postmark](../../providers/postmark.md) |
+| Pusher Beams | [Pusher](../../providers/pusher.md) |
+| Resend | [Resend](../../providers/resend.md) |
+| SendGrid | [SendGrid](../../providers/sendgrid.md) |
+| Stream Chat | [Stream](../../providers/stream.md) |
+| Telnyx | [Telnyx](../../providers/telnyx.md) |
+| Twilio SMS | [Twilio](../../providers/twilio.md) |
 
-## Watchlist — 9 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`Twilio SMS`, `Postmark`, `Mailgun`, `SendGrid`, `Firebase Cloud Messaging`, `Pusher Beams`, `Novu Cloud`, `Stream Chat`, `AWS SNS`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

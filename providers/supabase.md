@@ -1,18 +1,18 @@
 # Supabase
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức. Dữ liệu được chuyển nguyên từ catalog cũ, **chưa kiểm chứng lại giá trực tiếp trong lần tái cấu trúc này**. Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
 
 **Offerings:** 3 · **Pillars:** [02](../pillars/02-databases-data/README.md), [03](../pillars/03-storage-media/README.md), [07](../pillars/07-identity-security/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
 |---|---|---|---|---|---|---|
-| Supabase Database | 02 | `PERMANENT` | 2 free projects (xác minh số project riêng); 500 MB database/project, 5 GB egress | Pro theo subscription + usage | Free projects có thể pause | [Pricing/docs](https://supabase.com/docs/guides/platform/billing-on-supabase) |
-| Supabase Storage | 03 | `PERMANENT` | 1 GB file storage (Free plan) | 100 GB included trong Pro; sau đó $0,021/GB | RLS/egress và object operations | [Pricing/docs](https://supabase.com/docs/guides/platform/billing-on-supabase) |
-| Supabase Auth | 07 | `PERMANENT` | 50K MAU cùng Supabase Free | Pro 100K MAU included, vượt mức $0,00325/MAU | Auth gắn với Supabase project limits | [Pricing/docs](https://supabase.com/docs/guides/platform/billing-on-supabase) |
+| Supabase Database | 02 | `PERMANENT` | 2 projects; 500 MB DB/proj; 5 GB egress; 50k MAU | $25/tháng Pro ($10 credit = Micro VM) | Pauses sau 7 ngày không active; không có backup tự động ở Free | [Supabase Pricing](https://supabase.com/pricing) |
+| Supabase Storage | 03 | `PERMANENT` | 1 GB storage; 5 GB uncached egress; 5 GB cached CDN egress; max file 50MB | Pro $25/tháng (100 GB storage, 250 GB uncached, 250 GB cached); transforms $5/1k images | Gắn liền database Supabase (pause sau 7 ngày không active); transforms cần Pro $25 | [Supabase Billing](https://supabase.com/docs/guides/platform/billing-on-supabase) |
+| Supabase Auth | 07 | `PERMANENT` | 50.000 MAUs free trên Free tier; Postgres RLS tích hợp | Pro $25/tháng (gồm 100k MAU); overage cực rẻ $0,00325/MAU | Free project pause sau 7 ngày không active; SAML SSO nằm ở gói Team $599/tháng | [supabase.com/docs/guides/platform/billing-on-supabase](https://supabase.com/docs/guides/platform/billing-on-supabase) |
 
 ## Evidence & maintenance
 
-- Evidence: `SOURCE_LINKED_SNAPSHOT`; live re-verification required before production or budget commitments.
+- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

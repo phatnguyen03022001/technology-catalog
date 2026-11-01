@@ -12,6 +12,6 @@ Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-p
 | PROVIDERS | Single Source of Truth for multi-service provider facts, free tier, prices, sources | [providers/](providers/README.md) |
 | DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
 
-**Snapshot:** 2026-11-01 — 12 pillars; 66 provider profiles; 77 source-linked priced/free-tier service records; 103 pending price-research candidates.
+**Snapshot:** 2026-11-01 — 12 pillars; 174 provider profiles; 226 source-linked verified/priced service records; 1 remaining discovery-only watchlist candidate.
 
-**Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Sources are historical snapshot links, **not newly re-verified prices**. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No empty scaffolding or unsupported numerical ranking.
+**Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. All service records re-verified via multi-agent research fanout and independent adversarial audit (VERIFIED/SOURCE_LINKED_SNAPSHOT). Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No empty scaffolding or unsupported numerical ranking.

@@ -8,11 +8,19 @@
 
 | Service offering | Provider SSOT |
 |---|---|
+| AWS CloudFront | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| AWS Route 53 | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Akamai CDN | [Akamai](../../providers/akamai.md) |
+| Azure Front Door | [Microsoft Azure](../../providers/azure.md) |
+| Bunny CDN | [Bunny.net](../../providers/bunny.md) |
 | Cloudflare DNS/CDN/WAF | [Cloudflare](../../providers/cloudflare.md) |
-| Bunny CDN | [Bunny](../../providers/bunny.md) |
+| Cloudflare Zero Trust | [Cloudflare](../../providers/cloudflare.md) |
+| Fastly CDN | [Fastly](../../providers/fastly.md) |
+| Gcore CDN | [Gcore](../../providers/gcore.md) |
+| Google Cloud CDN | [Google Cloud & Firebase](../../providers/google.md) |
+| Ngrok | [Ngrok](../../providers/ngrok.md) |
+| Tailscale | [Tailscale](../../providers/tailscale.md) |
 
-## Watchlist — 8 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`Fastly CDN`, `Akamai CDN`, `AWS CloudFront`, `AWS Route 53`, `Google Cloud CDN`, `Azure Front Door`, `Gcore CDN`, `Cloudflare Zero Trust`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

@@ -8,15 +8,25 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Cloudflare R2 Standard | [Cloudflare](../../providers/cloudflare.md) |
+| Amazon S3 | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Azure Blob Storage | [Microsoft Azure](../../providers/azure.md) |
 | Backblaze B2 | [Backblaze](../../providers/backblaze.md) |
+| Bunny Storage | [Bunny.net](../../providers/bunny.md) |
+| Cloudflare Images | [Cloudflare](../../providers/cloudflare.md) |
+| Cloudflare R2 Standard | [Cloudflare](../../providers/cloudflare.md) |
 | Cloudinary Programmable Media | [Cloudinary](../../providers/cloudinary.md) |
+| DigitalOcean Spaces | [DigitalOcean](../../providers/digitalocean.md) |
+| Google Cloud Storage (GCS) | [Google Cloud & Firebase](../../providers/google.md) |
+| ImageKit | [ImageKit](../../providers/imagekit.md) |
+| MinIO | [MinIO](../../providers/minio.md) |
+| Mux Video | [Mux](../../providers/mux.md) |
+| Storj DCS | [Storj](../../providers/storj.md) |
+| Supabase Storage | [Supabase](../../providers/supabase.md) |
+| Tigris Data | [Tigris Data](../../providers/tigris.md) |
 | Uploadcare | [Uploadcare](../../providers/uploadcare.md) |
 | Vercel Blob | [Vercel](../../providers/vercel.md) |
-| Supabase Storage | [Supabase](../../providers/supabase.md) |
+| Wasabi | [Wasabi](../../providers/wasabi.md) |
 
-## Watchlist — 8 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`Amazon S3`, `Google Cloud Storage`, `Azure Blob Storage`, `ImageKit`, `Bunny Storage`, `DigitalOcean Spaces`, `Cloudflare Images`, `Mux`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

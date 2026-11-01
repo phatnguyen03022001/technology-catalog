@@ -8,13 +8,24 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Svix Webhooks | [Svix](../../providers/svix.md) |
-| Upstash QStash | [Upstash](../../providers/upstash.md) |
+| AWS EventBridge | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| AWS SQS | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Apache Kafka OSS | [Apache Kafka](../../providers/apache-kafka.md) |
+| Azure Service Bus | [Microsoft Azure](../../providers/azure.md) |
+| BullMQ | [BullMQ](../../providers/bullmq.md) |
+| CloudAMQP | [CloudAMQP](../../providers/cloudamqp.md) |
+| Confluent Cloud | [Confluent](../../providers/confluent.md) |
+| Google Cloud Pub/Sub | [Google Cloud & Firebase](../../providers/google.md) |
+| Hatchet Cloud | [Hatchet](../../providers/hatchet.md) |
+| Hookdeck | [Hookdeck](../../providers/hookdeck.md) |
 | Inngest Cloud | [Inngest](../../providers/inngest.md) |
-| Trigger.dev | [Trigger.dev](../../providers/trigger-dev.md) |
+| Pusher Channels | [Pusher](../../providers/pusher.md) |
+| RabbitMQ OSS | [RabbitMQ](../../providers/rabbitmq.md) |
+| Svix Webhooks | [Svix](../../providers/svix.md) |
+| Temporal Cloud | [Temporal](../../providers/temporal.md) |
+| Trigger.dev Cloud | [Trigger.dev](../../providers/trigger-dev.md) |
+| Upstash QStash | [Upstash](../../providers/upstash.md) |
 
-## Watchlist — 9 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`AWS SQS`, `AWS EventBridge`, `Confluent Cloud`, `CloudAMQP`, `RabbitMQ OSS`, `Apache Kafka OSS`, `Google Cloud Pub/Sub`, `Azure Service Bus`, `Pusher Channels`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

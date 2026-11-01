@@ -1,16 +1,16 @@
 # ElevenLabs
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức. Dữ liệu được chuyển nguyên từ catalog cũ, **chưa kiểm chứng lại giá trực tiếp trong lần tái cấu trúc này**. Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
 
 **Offerings:** 1 · **Pillars:** [10](../pillars/10-ai-models-agent-tools/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
 |---|---|---|---|---|---|---|
-| ElevenLabs Voice API | 10 | `PERMANENT` | 10K shared credits/tháng | Starter $6/tháng; Creator $22/tháng | Free không có commercial license tương ứng | [Pricing/docs](https://elevenlabs.io/pricing) |
+| ElevenLabs Voice API | 10 | `PERMANENT` | 10k credits/tháng (~10 phút audio) | Starter $6/tháng (30k credits, instant cloning) / 1M tokens | Free tier strictly non-commercial + bắt buộc ghi nguồn | [ElevenLabs Pricing](https://elevenlabs.io/pricing) |
 
 ## Evidence & maintenance
 
-- Evidence: `SOURCE_LINKED_SNAPSHOT`; live re-verification required before production or budget commitments.
+- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

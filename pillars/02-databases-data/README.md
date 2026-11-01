@@ -8,16 +8,29 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Neon Postgres | [Neon](../../providers/neon.md) |
-| Supabase Database | [Supabase](../../providers/supabase.md) |
-| Turso Database | [Turso](../../providers/turso.md) |
 | Aiven PostgreSQL | [Aiven](../../providers/aiven.md) |
-| Qdrant Cloud | [Qdrant](../../providers/qdrant.md) |
-| Pinecone Database | [Pinecone](../../providers/pinecone.md) |
+| Amazon DynamoDB | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Chroma Cloud | [Chroma](../../providers/chroma.md) |
+| ClickHouse Cloud | [ClickHouse](../../providers/clickhouse.md) |
+| Cloudflare D1 | [Cloudflare](../../providers/cloudflare.md) |
+| Cloudflare Vectorize | [Cloudflare](../../providers/cloudflare.md) |
 | Cockroach Continuum | [CockroachDB](../../providers/cockroachdb.md) |
+| Convex | [Convex](../../providers/convex.md) |
+| Couchbase Capella | [Couchbase](../../providers/couchbase.md) |
+| Firebase Firestore | [Google Cloud & Firebase](../../providers/google.md) |
+| MongoDB Atlas | [MongoDB](../../providers/mongodb.md) |
+| Neon Postgres | [Neon](../../providers/neon.md) |
+| Pinecone Database | [Pinecone](../../providers/pinecone.md) |
+| PlanetScale | [PlanetScale](../../providers/planetscale.md) |
+| Qdrant Cloud | [Qdrant](../../providers/qdrant.md) |
+| Supabase Database | [Supabase](../../providers/supabase.md) |
+| TiDB Cloud Starter | [PingCAP](../../providers/pingcap.md) |
+| Timescale Cloud | [Timescale](../../providers/timescale.md) |
+| Turso Database | [Turso](../../providers/turso.md) |
+| Upstash Vector | [Upstash](../../providers/upstash.md) |
+| Weaviate Cloud | [Weaviate](../../providers/weaviate.md) |
+| Zilliz Cloud | [Zilliz](../../providers/zilliz.md) |
 
-## Watchlist — 8 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`MongoDB Atlas`, `Weaviate Cloud`, `Firebase Firestore`, `PlanetScale`, `Timescale Cloud`, `Amazon DynamoDB`, `Upstash Vector`, `Cloudflare D1`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

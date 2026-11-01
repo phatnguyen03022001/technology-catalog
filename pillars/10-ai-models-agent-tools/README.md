@@ -8,19 +8,34 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| OpenAI API — GPT-6 Luna | [OpenAI](../../providers/openai.md) |
-| DeepSeek API — V4.1 Flash | [DeepSeek](../../providers/deepseek.md) |
-| Google Gemini Developer API | [Google](../../providers/google.md) |
-| OpenRouter Free Models | [OpenRouter](../../providers/openrouter.md) |
-| Tavily Search/Extract | [Tavily](../../providers/tavily.md) |
-| Firecrawl Scrape/Search | [Firecrawl](../../providers/firecrawl.md) |
-| Exa Web Search | [Exa](../../providers/exa.md) |
-| Browserbase Search/Fetch API | [Browserbase](../../providers/browserbase.md) |
-| ElevenLabs Voice API | [ElevenLabs](../../providers/elevenlabs.md) |
+| Anthropic Claude API | [Anthropic](../../providers/anthropic.md) |
+| Apify | [Apify](../../providers/apify.md) |
+| Browserbase Search/Fetch | [Browserbase](../../providers/browserbase.md) |
 | Cerebras Inference | [Cerebras](../../providers/cerebras.md) |
+| Cohere | [Cohere](../../providers/cohere.md) |
+| Composio | [Composio](../../providers/composio.md) |
+| DeepInfra | [DeepInfra](../../providers/deepinfra.md) |
+| DeepSeek API | [DeepSeek](../../providers/deepseek.md) |
+| ElevenLabs Voice API | [ElevenLabs](../../providers/elevenlabs.md) |
+| Exa Web Search | [Exa](../../providers/exa.md) |
+| Firecrawl Scrape/Search | [Firecrawl](../../providers/firecrawl.md) |
+| Fireworks AI | [Fireworks AI](../../providers/fireworks-ai.md) |
+| Google Gemini Dev API | [Google Cloud & Firebase](../../providers/google.md) |
+| GroqCloud | [Groq](../../providers/groq.md) |
+| Hugging Face Inference | [Hugging Face](../../providers/hugging-face.md) |
+| Jina AI | [Jina AI](../../providers/jina-ai.md) |
+| Mistral API | [Mistral AI](../../providers/mistral.md) |
+| OpenAI API | [OpenAI](../../providers/openai.md) |
+| OpenRouter Free Models | [OpenRouter](../../providers/openrouter.md) |
+| Perplexity Sonar | [Perplexity](../../providers/perplexity.md) |
+| Replicate | [Replicate](../../providers/replicate.md) |
+| ScrapingBee | [ScrapingBee](../../providers/scrapingbee.md) |
+| SerpAPI | [SerpAPI](../../providers/serpapi.md) |
+| Tavily Search/Extract | [Tavily](../../providers/tavily.md) |
+| Together AI | [Together AI](../../providers/together-ai.md) |
+| Voyage AI | [Voyage AI](../../providers/voyage-ai.md) |
+| fal.ai | [fal.ai](../../providers/fal-ai.md) |
 
-## Watchlist — 14 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`Anthropic Claude API`, `GroqCloud`, `Together AI`, `Fireworks AI`, `Mistral API`, `Cohere`, `Perplexity Sonar`, `Replicate`, `fal.ai`, `Hugging Face Inference`, `Composio`, `ScrapingBee`, `Apify`, `SerpAPI`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

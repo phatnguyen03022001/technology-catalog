@@ -8,16 +8,30 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Stripe Payments | [Stripe](../../providers/stripe.md) |
-| Paddle Merchant of Record | [Paddle](../../providers/paddle.md) |
-| Lemon Squeezy MoR | [Lemon Squeezy](../../providers/lemon-squeezy.md) |
-| Mapbox GL JS | [Mapbox](../../providers/mapbox.md) |
-| Google Maps Platform | [Google](../../providers/google.md) |
-| Sanity Content Lake | [Sanity](../../providers/sanity.md) |
+| Autumn | [Autumn](../../providers/autumn.md) |
+| Chargebee | [Chargebee](../../providers/chargebee.md) |
+| Cloudflare Turnstile | [Cloudflare](../../providers/cloudflare.md) |
 | Contentful CMS | [Contentful](../../providers/contentful.md) |
+| Directus | [Directus](../../providers/directus.md) |
+| Dodo Payments | [Dodo Payments](../../providers/dodo-payments.md) |
+| Google Maps Platform | [Google Cloud & Firebase](../../providers/google.md) |
+| Google Places API | [Google Cloud & Firebase](../../providers/google.md) |
+| Lago | [Lago](../../providers/lago.md) |
+| Lemon Squeezy MoR | [Lemon Squeezy](../../providers/lemon-squeezy.md) |
+| MapTiler | [MapTiler](../../providers/maptiler.md) |
+| Mapbox GL JS | [Mapbox](../../providers/mapbox.md) |
+| Paddle MoR | [Paddle](../../providers/paddle.md) |
+| PayPal Checkout | [PayPal](../../providers/paypal.md) |
+| Polar MoR | [Polar](../../providers/polar.md) |
+| Sanity Content Lake | [Sanity](../../providers/sanity.md) |
+| Shopify APIs | [Shopify](../../providers/shopify.md) |
+| Storyblok | [Storyblok](../../providers/storyblok.md) |
+| Strapi | [Strapi](../../providers/strapi.md) |
+| Stripe Payments | [Stripe](../../providers/stripe.md) |
+| Sumsub | [Sumsub](../../providers/sumsub.md) |
 
-## Watchlist — 10 chưa xác minh giá/free tier
+## Watchlist — 1 chưa xác minh giá/free tier
 
-`PayPal Checkout`, `Shopify APIs`, `Polar`, `Directus Cloud`, `Strapi Cloud`, `Storyblok`, `MapTiler`, `Google Places API`, `Persona KYC`, `Cloudflare Turnstile`.
+`Persona KYC`.
 
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Persona KYC yêu cầu cam kết hợp đồng tối thiểu $250/tháng ($3.000/năm), bán hàng qua sales và không có self-serve free tier; giữ lại watchlist để theo dõi thêm.

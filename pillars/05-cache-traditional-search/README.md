@@ -8,14 +8,21 @@
 
 | Service offering | Provider SSOT |
 |---|---|
-| Upstash Redis | [Upstash](../../providers/upstash.md) |
-| Redis Cloud | [Redis](../../providers/redis.md) |
+| Aiven Valkey | [Aiven](../../providers/aiven.md) |
 | Algolia Search | [Algolia](../../providers/algolia.md) |
+| Amazon OpenSearch | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Dragonfly OSS | [Dragonfly](../../providers/dragonfly.md) |
+| Elastic Cloud | [Elastic](../../providers/elastic.md) |
+| KeyDB | [KeyDB](../../providers/keydb.md) |
 | Meilisearch Cloud | [Meilisearch](../../providers/meilisearch.md) |
+| Meilisearch OSS | [Meilisearch](../../providers/meilisearch.md) |
+| Momento Cache | [Momento](../../providers/momento.md) |
+| Quickwit | [Quickwit](../../providers/quickwit.md) |
+| Redis Cloud | [Redis](../../providers/redis.md) |
 | Typesense Cloud | [Typesense](../../providers/typesense.md) |
+| Typesense OSS | [Typesense](../../providers/typesense.md) |
+| Upstash Redis | [Upstash](../../providers/upstash.md) |
 
-## Watchlist — 6 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`Elastic Cloud`, `Amazon OpenSearch Service`, `Typesense OSS`, `Meilisearch OSS`, `Aiven Valkey`, `KeyDB`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.

@@ -8,21 +8,31 @@
 
 | Service offering | Provider SSOT |
 |---|---|
+| AWS Lambda | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Amazon EC2 | [Amazon Web Services](../../providers/amazon-web-services.md) |
+| Azure App Service | [Microsoft Azure](../../providers/azure.md) |
+| Azure Functions | [Microsoft Azure](../../providers/azure.md) |
+| Browserbase Browser Runtime | [Browserbase](../../providers/browserbase.md) |
+| Cloudflare Pages | [Cloudflare](../../providers/cloudflare.md) |
 | Cloudflare Workers | [Cloudflare](../../providers/cloudflare.md) |
-| Cloudflare Pages (static) | [Cloudflare](../../providers/cloudflare.md) |
-| Vercel Hosting/Functions | [Vercel](../../providers/vercel.md) |
+| Daytona | [Daytona](../../providers/daytona.md) |
+| Deno Deploy | [Deno](../../providers/deno.md) |
+| DigitalOcean Droplets | [DigitalOcean](../../providers/digitalocean.md) |
+| E2B Sandbox | [E2B](../../providers/e2b.md) |
+| Fly.io Machines | [Fly.io](../../providers/fly.md) |
+| Google Cloud Run | [Google Cloud & Firebase](../../providers/google.md) |
+| Google Compute Engine (GCE) | [Google Cloud & Firebase](../../providers/google.md) |
+| Hetzner Cloud | [Hetzner](../../providers/hetzner.md) |
+| Koyeb | [Koyeb](../../providers/koyeb.md) |
+| Modal Compute/Sandbox | [Modal](../../providers/modal.md) |
 | Netlify | [Netlify](../../providers/netlify.md) |
+| Northflank | [Northflank](../../providers/northflank.md) |
+| Oracle OCI Ampere A1 | [Oracle Cloud Infrastructure](../../providers/oracle.md) |
 | Railway | [Railway](../../providers/railway.md) |
 | Render Web Services | [Render](../../providers/render.md) |
-| Oracle OCI Ampere A1 | [Oracle](../../providers/oracle.md) |
-| Modal Compute/Sandbox | [Modal](../../providers/modal.md) |
-| E2B Sandbox | [E2B](../../providers/e2b.md) |
-| Browserbase Browser Runtime | [Browserbase](../../providers/browserbase.md) |
-| DigitalOcean Droplets | [DigitalOcean](../../providers/digitalocean.md) |
-| Hetzner Cloud | [Hetzner](../../providers/hetzner.md) |
+| RunPod | [RunPod](../../providers/runpod.md) |
+| Vercel Hosting/Functions | [Vercel](../../providers/vercel.md) |
 
-## Watchlist — 6 chưa xác minh giá/free tier
+## Watchlist — 0 chưa xác minh giá/free tier
 
-`AWS EC2/Lambda`, `Google Cloud Run/GCE`, `Fly.io Machines`, `Azure App Service/Functions`, `Koyeb`, `Northflank`.
-
-> Các mục watchlist chỉ là ứng cử viên; không khẳng định giá, free tier, SLA hay production readiness.
+> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.
