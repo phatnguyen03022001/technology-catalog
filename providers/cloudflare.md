@@ -2,7 +2,7 @@
 
 > **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức. Dữ liệu được chuyển nguyên từ catalog cũ, **chưa kiểm chứng lại giá trực tiếp trong lần tái cấu trúc này**. Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
 
-**Offerings:** 4 · **Pillars:** [01](../pillars/compute-runtime/README.md), [03](../pillars/storage-media/README.md), [04](../pillars/networking-edge/README.md)
+**Offerings:** 4 · **Pillars:** [01](../pillars/01-compute-runtime/README.md), [03](../pillars/03-storage-media/README.md), [04](../pillars/04-networking-edge/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
 |---|---|---|---|---|---|---|

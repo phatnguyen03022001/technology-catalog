@@ -4,18 +4,18 @@
 
 | # | Pillar | Scope |
 |---|---|---|
-| 01 | [Compute & Runtime](../pillars/compute-runtime/README.md) | VPS, server, container, serverless, edge runtime, isolated agent sandboxes |
-| 02 | [Databases & Data](../pillars/databases-data/README.md) | RDBMS, NoSQL, key-value, document DB, vector database |
-| 03 | [Storage & Media](../pillars/storage-media/README.md) | Object storage, file/media processing and storage |
-| 04 | [Networking & Edge](../pillars/networking-edge/README.md) | DNS, CDN, WAF, DDoS, load balancing |
-| 05 | [Cache & Traditional Search](../pillars/cache-traditional-search/README.md) | Cache and traditional keyword/full-text search |
-| 06 | [Messaging & Async](../pillars/messaging-async/README.md) | Queues, pub/sub, durable async jobs and webhooks |
-| 07 | [Identity & Security](../pillars/identity-security/README.md) | Auth, identity, authorization, secrets, KMS |
-| 08 | [DevOps & Delivery](../pillars/devops-delivery/README.md) | CI/CD, registries, IaC and deployment tools |
-| 09 | [Observability & Analytics](../pillars/observability-analytics/README.md) | System telemetry, analytics and LLM/agent tracing and evaluations |
-| 10 | [AI Models & Agent Tools](../pillars/ai-models-agent-tools/README.md) | Model, embeddings, voice, web intelligence, scraping, retrieval tools |
-| 11 | [Communications](../pillars/communications/README.md) | Email, SMS, push and chat APIs |
-| 12 | [Business & Extension APIs](../pillars/business-extension-apis/README.md) | Payments, billing, maps, CMS, KYC, CRM |
+| 01 | [Compute & Runtime](../pillars/01-compute-runtime/README.md) | VPS, server, container, serverless, edge runtime, isolated agent sandboxes |
+| 02 | [Databases & Data](../pillars/02-databases-data/README.md) | RDBMS, NoSQL, key-value, document DB, vector database |
+| 03 | [Storage & Media](../pillars/03-storage-media/README.md) | Object storage, file/media processing and storage |
+| 04 | [Networking & Edge](../pillars/04-networking-edge/README.md) | DNS, CDN, WAF, DDoS, load balancing |
+| 05 | [Cache & Traditional Search](../pillars/05-cache-traditional-search/README.md) | Cache and traditional keyword/full-text search |
+| 06 | [Messaging & Async](../pillars/06-messaging-async/README.md) | Queues, pub/sub, durable async jobs and webhooks |
+| 07 | [Identity & Security](../pillars/07-identity-security/README.md) | Auth, identity, authorization, secrets, KMS |
+| 08 | [DevOps & Delivery](../pillars/08-devops-delivery/README.md) | CI/CD, registries, IaC and deployment tools |
+| 09 | [Observability & Analytics](../pillars/09-observability-analytics/README.md) | System telemetry, analytics and LLM/agent tracing and evaluations |
+| 10 | [AI Models & Agent Tools](../pillars/10-ai-models-agent-tools/README.md) | Model, embeddings, voice, web intelligence, scraping, retrieval tools |
+| 11 | [Communications](../pillars/11-communications/README.md) | Email, SMS, push and chat APIs |
+| 12 | [Business & Extension APIs](../pillars/12-business-extension-apis/README.md) | Payments, billing, maps, CMS, KYC, CRM |
 
 ## HOW — 8 Evaluation Dimensions
 

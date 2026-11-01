@@ -2,7 +2,7 @@
 
 > **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức. Dữ liệu được chuyển nguyên từ catalog cũ, **chưa kiểm chứng lại giá trực tiếp trong lần tái cấu trúc này**. Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
 
-**Offerings:** 1 · **Pillars:** [02](../pillars/databases-data/README.md)
+**Offerings:** 1 · **Pillars:** [02](../pillars/02-databases-data/README.md)
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
 |---|---|---|---|---|---|---|
