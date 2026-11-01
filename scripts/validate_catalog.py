@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """Check provider-catalog structure and derive service evidence counts.
 
-This validates catalog shape and links only. It does not verify that prices or
-free-tier claims are factually correct; human source review remains necessary.
+This validates catalog structure and deterministic evidence hygiene only. It does
+not verify factual pricing or live source claims; source review remains necessary.
 """
 
 from __future__ import annotations
 
+import ipaddress
 import re
 import sys
 from collections import Counter, defaultdict
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVIDERS = ROOT / "providers"
@@ -26,6 +28,72 @@ EXPECTED_HEADERS = [
     "Service", "Primary pillar", "Free kind", "Free tier/credits", "Paid pricing",
     "Caveat", "Official source", "Evidence status", "Evidence checked",
 ]
+
+
+# Deterministic evidence hygiene only: this does not authenticate a web page
+# or establish that a source supports the stated price.
+PLACEHOLDER = re.compile(r"\b(?:TODO|TBD|FIXME|PLACEHOLDER)\b", re.IGNORECASE)
+NEGATIVE_PRICE = re.compile(
+    r"(?:[$€£]\s*-\s*\d|-\s*[$€£]\s*\d|-\s*\d+(?:[.,]\d+)?\s*(?:USD|EUR|GBP)\b)",
+    re.IGNORECASE,
+)
+RESERVED_HOSTS = {"localhost", "example.com", "example.net", "example.org"}
+
+
+def source_url_error(url: str) -> str | None:
+    """Reject malformed/obviously fake URLs; not a network or authority check."""
+    try:
+        parsed = urlsplit(url)
+        host = parsed.hostname
+        port = parsed.port  # Accessing this rejects invalid ports.
+    except ValueError:
+        return "malformed URL"
+    if parsed.scheme != "https" or not host or parsed.username or parsed.password:
+        return "source must be an HTTPS URL without credentials"
+    if port is not None and port != 443:
+        return "unexpected HTTPS source port"
+    host = host.lower()
+    if (host in RESERVED_HOSTS or
+            host.endswith((".localhost", ".example", ".test", ".invalid"))):
+        return "placeholder source domain"
+    if not re.fullmatch(r"[a-z0-9.-]+", host) or "." not in host or ".." in host:
+        return "invalid source hostname"
+    try:
+        addr = ipaddress.ip_address(host)
+    except ValueError:
+        pass
+    else:
+        if not addr.is_global:
+            return "non-public source IP"
+    return None
+
+
+def evidence_hygiene_errors(row: list[str], path: Path) -> list[str]:
+    service, _, free_kind, allowance, paid, caveat, source, status, checked = row
+    prefix = f"{path.relative_to(ROOT)}: service {service}"
+    errors = []
+    for name, value in (("free allowance", allowance), ("paid pricing", paid),
+                        ("caveat", caveat), ("official source", source)):
+        if PLACEHOLDER.search(value):
+            errors.append(f"{prefix}: {name} contains a placeholder")
+    if NEGATIVE_PRICE.search(paid):
+        errors.append(f"{prefix}: paid pricing contains a negative price")
+    links = re.findall(r"\[[^\]]+\]\(([^)]+)\)", source)
+    if not links:
+        errors.append(f"{prefix}: official source needs a Markdown HTTPS link")
+    for url in links:
+        problem = source_url_error(url)
+        if problem:
+            errors.append(f"{prefix}: {problem}: {url}")
+    # VERIFIED is claim-level evidence, not proof that TCO is calculable.
+    # No-digit prices must explicitly communicate their cost decision state.
+    if (status.strip("`") == "VERIFIED" and
+            free_kind.strip("`") != "SELF_HOSTED" and
+            not re.search(r"\d", paid) and
+            not re.search(r"\b(?:TCO_UNKNOWN|NO_DIRECT_FEE)\b", caveat)):
+        errors.append(f"{prefix}: non-quantified VERIFIED pricing needs "
+                      "TCO_UNKNOWN or NO_DIRECT_FEE in Caveat")
+    return errors
 
 
 def cells(line: str) -> list[str]:
@@ -123,6 +191,7 @@ def main() -> int:
             evidence[state] += 1
             if state != "VERIFIED":
                 nonverified_pillars[pillar] += 1
+            errors.extend(evidence_hygiene_errors(row, path))
             if not re.search(r"https://", source):
                 errors.append(f"{path.relative_to(ROOT)}: missing official HTTPS source for {service}")
             try:
@@ -131,6 +200,8 @@ def main() -> int:
                 parsed_checked = None
             if parsed_checked is None or parsed_checked.isoformat() != checked:
                 errors.append(f"{path.relative_to(ROOT)}: service {service} needs an ISO evidence review date")
+            elif parsed_checked > datetime.now(timezone.utc).date():
+                errors.append(f"{path.relative_to(ROOT)}: service {service} has a future evidence review date {checked}")
             if state in {"SOURCE_LINKED_SNAPSHOT", "UNVERIFIED", "STALE"}:
                 if not re.search(r"\bRC[1-7]\b", caveat):
                     errors.append(f"{path.relative_to(ROOT)}: unresolved service {service} needs an RC1-RC7 cause in Caveat")

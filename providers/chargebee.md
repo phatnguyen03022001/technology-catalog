@@ -6,7 +6,7 @@
 
 | Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
 |---|---|---|---|---|---|---|---|---|
-| Chargebee | 12 | LIMITED_FREE | Eligible new startups receive free usage up to $1M cumulative billing volume; eligibility requires membership in accelerator/VC network and under $5M raised, with application. | Paid plan uses fixed fee by revenue threshold plus percentage overage; current universal list price is not public and remains quote-only. | Offer is not a general permanent free tier. Old $250K/0.75% figures are not current verified pricing. | [Startup offer](https://www.chargebee.com/startups/) · [Pricing model](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/what-is-chargebees-pricing) | VERIFIED | 2026-11-01 |
+| Chargebee | 12 | LIMITED_FREE | Eligible new startups receive free usage up to $1M cumulative billing volume; eligibility requires membership in accelerator/VC network and under $5M raised, with application. | Paid plan uses fixed fee by revenue threshold plus percentage overage; current universal list price is not public and remains quote-only. | Offer is not a general permanent free tier. Old $250K/0.75% figures are not current verified pricing.  TCO_UNKNOWN — no comparable numeric paid rate is established here; obtain the applicable quote/SKU/region and workload estimate before selection. | [Startup offer](https://www.chargebee.com/startups/) · [Pricing model](https://www.chargebee.com/docs/billing/2.0/kb/getting-started/what-is-chargebees-pricing) | VERIFIED | 2026-11-01 |
 
 ## Evidence & maintenance
 

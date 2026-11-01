@@ -15,3 +15,7 @@ Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-p
 **Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
 
 **Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Each service row carries its own evidence status and verification date. Read `VERIFIED` as confirmation of the specific listed claims only; structural validation does not prove pricing accuracy. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No unsupported ranking.
+
+## Validation
+
+`python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`; GitHub Actions enforces both on `main` pushes. These are deterministic integrity/evidence-hygiene checks, **not** proof of current pricing or production suitability. See [cost decision readiness](docs/01-evaluation-matrix.md#cost-decision-readiness-separate-from-evidence-status).

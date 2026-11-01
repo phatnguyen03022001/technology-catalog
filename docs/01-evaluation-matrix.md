@@ -40,13 +40,21 @@ Distinguish perpetual free, recurring monetary credits, one-time signup credit, 
 
 ## Evidence classifications
 
-- `VERIFIED`: service-row claims were checked against dated official sources; a price row includes plan/model/SKU, amount/currency/unit, region where applicable, free allowance/reset, source URL and checked date. This does not verify security, performance, or suitability.
+- `VERIFIED`: the **specific claims stated in the row** were checked against dated official sources; where a numeric paid price is claimed, identify plan/model/SKU, amount/currency/unit, applicable region and quota period. If only a no-direct-fee claim or quote/variable-pricing model is supported, label the Caveat `NO_DIRECT_FEE` or `TCO_UNKNOWN` respectively. `VERIFIED` does **not** mean workload TCO is calculable or that security, performance or suitability was verified.
 - `SOURCE_LINKED_SNAPSHOT`: a legacy claim has an official source link, but its current value was not fully reproduced; recheck before production.
 - `UNVERIFIED`: a service's price or free-tier claim cannot be reproduced from current official evidence, or no such claim is made.
 - `STALE`: evidence changed or expired; do not imply still current.
 - `DISCONTINUED`: first-party evidence confirms the provider ended the offering. For software, state separately whether existing installations remain usable after upstream distribution or maintenance ends; an announced future wind-down does not qualify.
 
-Service evidence is recorded on each provider table row. A validator can check that status, dates and source links are present; it cannot establish that a price is factually accurate. Never infer pricing accuracy from a passing structural check.
+Service evidence is recorded on each provider table row. A validator checks only structure and deterministic evidence hygiene (e.g. future dates, placeholders, malformed/obviously fake links, negative prices). It cannot authenticate an official source, detect every deceptive HTTPS domain, prove a URL is live, or establish that a price claim is true. Never infer pricing accuracy from a passing CI check.
+
+### Cost decision readiness (separate from evidence status)
+
+- `VERIFIED` is **claim-level**, not a production selection approval. `TCO_UNKNOWN` means a comparable numeric workload price has not been established; obtain the applicable quote/region/SKU before recommending on cost. `NO_DIRECT_FEE` only means no fee for the **specified direct service**, not that hosting, downstream services or operations are free.
+- Before a production decision, re-open the relevant official links and confirm claim-specific price/limits/ToS, freshness, commercial rights and actual workload. Dead links, unrelated pages, a revised policy, or unpriced material meters are `UNKNOWN` for the relevant gate until resolved. Link availability by itself does not prove a claim.
+- **Billing ownership:** identify provider account/organization/team, subscription plan, quota meter and shared project scope. Add each base subscription once per billing owner; aggregate shared meter usage before applying included quotas; price project-level compute/add-ons separately. Track credits exactly once and do not subtract one credit repeatedly across offerings.
+- A valid comparison must show estimated monthly total, included and overage usage, uncertainty and fallback. If material cost assumptions are unresolved, the **cost gate is `UNKNOWN`**, regardless of `VERIFIED` status or a numeric score.
+
 
 ### Unresolved evidence root causes
 
