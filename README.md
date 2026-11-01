@@ -7,6 +7,7 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 | Layer | Responsibility | Link |
 |---|---|---|
 | LANGUAGES | Rust, Go, TypeScript, Python, Swift: toolchains, frameworks, fit, trade-offs and decision gates | [languages/](languages/README.md) |
+| LIBRARIES | Curated reusable packages, fit/anti-fit, compatibility, licensing, evidence and fallback | [libraries/](libraries/README.md) |
 | FRAMEWORKS | Framework fit, anti-fit, compatibility, licensing, maturity/review risk and sources | [frameworks/](frameworks/README.md) |
 | DECISIONS | Workload-based comparisons, hard gates, conditional decisions, TCO unknowns and fallback | [decisions/](decisions/README.md) |
 | WHAT | 12 functional pillars, service classifications, research watchlists | [pillars/](pillars/README.md) |
@@ -17,7 +18,7 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 
 **Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
 
-**Scope boundary:** Languages and frameworks are separate from the 12 service pillars, not additional offerings. Profiles do not duplicate provider prices/free tiers or override ECC implementation guidance.
+**Scope boundary:** Languages, libraries and frameworks are separate from the 12 service pillars, not additional offerings. Profiles do not duplicate provider prices/free tiers or override ECC implementation guidance.
 
 **Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Each service row carries its own evidence status and verification date. Read `VERIFIED` as confirmation of the specific listed claims only; structural validation does not prove pricing accuracy. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No unsupported ranking.
 

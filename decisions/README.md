@@ -26,6 +26,6 @@
 - Phải có `## Approval evidence` với các dòng `- Owner:`, `- Project:`, `- Workload ID:`, `- Benchmark evidence: [artifact](https://...)`, `- TCO evidence: [artifact](https://...)` và `- Approval date: YYYY-MM-DD`; đây là yêu cầu **cấu trúc tối thiểu**, không chứng minh các artifact là thật.
 - Owner phải xác minh độc lập các nguồn, bằng chứng thực nghiệm, legal/commercial và chi phí, sau đó mới phê duyệt. **CI PASS không cấp quyền tự động phê duyệt production**. Các URL/tài liệu có thể bị thay đổi hoặc ngụy tạo và cần kiểm tra thủ công ở thời điểm chọn stack.
 
-[Evaluation matrix](../docs/01-evaluation-matrix.md) · [Language profiles](../languages/README.md) · [Framework profiles](../frameworks/README.md).
+[Library candidates](../libraries/README.md) · [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Language profiles](../languages/README.md) · [Framework profiles](../frameworks/README.md).
 
 New real-project decisions can be added **only when a real workload and evidence exist**, not to make the folder look bigger.

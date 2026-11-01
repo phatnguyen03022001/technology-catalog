@@ -43,5 +43,6 @@
 
 ## Framework và decision navigation
 
+- [Library catalog](../libraries/README.md) — curated code dependencies, standard-library fallbacks and evidence gates.
 - [Framework catalog](../frameworks/README.md) — compatibility, anti-fit, licensing và operational checks.
 - [Decision evidence](../decisions/README.md) — workload assumptions, hard gates, measured vs unknown costs, conditional choice/fallback.

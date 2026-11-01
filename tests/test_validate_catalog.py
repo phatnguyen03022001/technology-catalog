@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+from datetime import date, timedelta
 import unittest
 from pathlib import Path
 
@@ -18,7 +20,7 @@ class CatalogMutationTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for name in ("providers", "pillars", "docs", "scripts", "languages", "frameworks", "decisions"):
+        for name in ("providers", "pillars", "docs", "scripts", "languages", "frameworks", "decisions", "libraries"):
             shutil.copytree(REPO / name, self.root / name)
         shutil.copy2(REPO / "README.md", self.root / "README.md")
 
@@ -310,6 +312,96 @@ class CatalogMutationTests(unittest.TestCase):
         self.change("supabase", "Supabase Storage", "status",
                     lambda _: "FAKE_VERIFIED")
         self.validate(1, "unsupported evidence status")
+
+    def library_doc(self):
+        # Dynamic package choice: no hard-coded package names, versions or dates.
+        return sorted(p for p in (self.root / "libraries").glob("*.md")
+                      if p.name != "README.md")[0]
+
+    def edit_library_field(self, field, transform):
+        path = self.library_doc()
+        body = path.read_text(encoding="utf-8")
+        pattern = rf"(?m)^- \*\*{re.escape(field)}:\*\* (.*)$"
+        match = re.search(pattern, body)
+        self.assertIsNotNone(match, field)
+        changed = body[:match.start(1)] + transform(match.group(1)) + body[match.end(1):]
+        path.write_text(changed, encoding="utf-8")
+
+    def test_library_missing_source_fails(self):
+        self.edit_library_field("Official source", lambda _: "")
+        self.validate(1, "required field Official source")
+
+    def test_library_duplicate_identity_fails(self):
+        doc = self.library_doc()
+        body = doc.read_text()
+        ids = re.findall(r"(?m)^- \*\*Package:\*\* (.+)$", body)
+        self.assertGreaterEqual(len(ids), 2)
+        body = body.replace("- **Package:** " + ids[1],
+                            "- **Package:** " + ids[0], 1)
+        doc.write_text(body)
+        self.validate(1, "duplicate or empty package identity")
+
+    def test_library_broken_reference_link_fails(self):
+        doc = self.library_doc()
+        doc.write_text(doc.read_text() + "\n[bad](missing-package-reference.md)\n")
+        self.validate(1, "broken link")
+
+    def test_library_invalid_date_fails(self):
+        self.edit_library_field("Evidence reviewed", lambda _: "not-a-date")
+        self.validate(1, "invalid evidence review date")
+
+    def test_library_future_date_fails(self):
+        future = (date.today() + timedelta(days=365)).isoformat()
+        self.edit_library_field("Evidence reviewed", lambda _: future)
+        self.validate(1, "future evidence review date")
+
+    def test_library_missing_field_fails(self):
+        doc = self.library_doc()
+        body = doc.read_text()
+        self.assertIn("- **Anti-fit:** ", body)
+        doc.write_text(re.sub(r"(?m)^- \*\*Anti-fit:\*\* .*\n", "", body, count=1))
+        self.validate(1, "required field Anti-fit")
+
+    def test_library_unindexed_document_fails(self):
+        (self.root / "libraries" / "other.md").write_text("# Other\n")
+        self.validate(1, "unindexed or missing library document")
+
+    def test_library_invalid_evidence_status_fails(self):
+        self.edit_library_field("Evidence status", lambda _: "TRUST_ME")
+        self.validate(1, "invalid evidence status")
+
+    def test_library_unknown_compatibility_cannot_be_recommended(self):
+        self.edit_library_field("Compatibility", lambda _: "UNKNOWN")
+        self.validate(1, "unclear compatibility/license")
+
+    def test_library_lowercase_unknown_cannot_be_recommended(self):
+        self.edit_library_field("Compatibility", lambda _: "unknown")
+        self.validate(1, "unclear compatibility/license")
+
+    def test_library_stale_verified_review_fails(self):
+        stale = (date.today() - timedelta(days=181)).isoformat()
+        self.edit_library_field("Evidence reviewed", lambda _: stale)
+        self.validate(1, "stale VERIFIED evidence review")
+
+    def test_library_index_count_mismatch_fails(self):
+        index = self.root / "libraries" / "README.md"
+        content = index.read_text()
+        match = re.search(r"(?m)^(\| [A-Za-z]+ \| )(\d+)( \|)", content)
+        self.assertIsNotNone(match)
+        value = int(match.group(2))
+        content = content[:match.start(2)] + str(value + 1) + content[match.end(2):]
+        index.write_text(content)
+        self.validate(1, "index count mismatch")
+
+    def test_library_syntactically_valid_wrong_source_fails(self):
+        self.edit_library_field("Official source", lambda _: "[fake](https://github.com/unrelated/repo)")
+        self.validate(1, "official source does not match package identity")
+
+    def test_library_safe_partial_downgrade_passes(self):
+        self.edit_library_field("Compatibility", lambda _: "UNKNOWN")
+        self.edit_library_field("Evidence status", lambda _: "PARTIAL")
+        self.edit_library_field("Selection", lambda _: "BLOCKED")
+        self.validate(0, "STRUCTURE PASS")
 
 
 if __name__ == "__main__":

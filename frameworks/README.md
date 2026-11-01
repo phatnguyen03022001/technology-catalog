@@ -19,4 +19,6 @@ Every new `frameworks/*.md` profile must appear exactly once in the index. CI ch
 
 Each profile must state **fit, anti-fit, compatibility, maturity/review risks, licensing, test/operational questions and official evidence**. Documentation claims are scoped to their source; maturity ratings and rankings are not inferred from popularity.
 
+**Code dependency selection:** [Libraries](../libraries/README.md) is the canonical shortlist for reusable packages; frameworks stay here.
+
 **Provider evidence SSOT:** [Providers](../providers/README.md) · [Pillars](../pillars/README.md) · [Decision records](../decisions/README.md) · [Languages](../languages/README.md).

@@ -282,6 +282,121 @@ def technology_document_errors(folder: str, index_header: str, link_column: int,
     return errors
 
 
+def library_document_errors() -> list[str]:
+    """Library index, per-package metadata and fail-closed selection hygiene."""
+    folder = ROOT / "libraries"
+    index = folder / "README.md"
+    if not index.is_file():
+        return ["libraries/README.md missing library index"]
+    errors: list[str] = []
+    labels = {"rust": "Rust", "go": "Go", "typescript": "TypeScript",
+              "python": "Python", "swift": "Swift"}
+    indexed: dict[str, int] = {}
+    for line in index.read_text(encoding="utf-8").splitlines():
+        parts = cells(line)
+        if len(parts) != 4 or parts[0] not in labels.values():
+            continue
+        match = re.fullmatch(r"\[[^]]+\]\(([a-z]+)\.md\)", parts[3])
+        slug = match.group(1) if match else None
+        if slug not in labels or labels[slug] != parts[0] or slug in indexed:
+            errors.append("libraries/README.md invalid or duplicate language index row")
+            continue
+        try:
+            indexed[slug] = int(parts[1])
+        except ValueError:
+            errors.append("libraries/README.md nonnumeric entry count")
+    docs = sorted(p for p in folder.glob("*.md") if p.name != "README.md")
+    actual = {p.stem for p in docs}
+    if actual != set(labels) or actual != set(indexed):
+        errors.append("libraries/README.md unindexed or missing library document")
+    if (ROOT / "README.md").read_text(encoding="utf-8").count("(libraries/README.md)") != 1:
+        errors.append("README.md missing or duplicate library navigation")
+    required = ("Package", "Capability", "Language/runtime", "Fit", "Anti-fit",
+                "Fallback", "Compatibility", "Maintenance", "License",
+                "Official source", "Evidence status", "Evidence reviewed",
+                "Unknowns", "Selection")
+    bt = chr(96)
+    for doc in docs:
+        name = doc.relative_to(ROOT).as_posix()
+        body = doc.read_text(encoding="utf-8")
+        if "## Entries\n" not in body:
+            errors.append(f"{name}: missing entry section")
+            continue
+        part = body.split("## Entries\n", 1)[1].split("\n## ", 1)[0]
+        chunks = re.split(rf"(?m)^### {bt}([^{bt}\n]+){bt}\s*$", part)
+        if len(chunks) < 3:
+            errors.append(f"{name}: no libraries")
+        seen: set[str] = set()
+        count = 0
+        for heading, record in zip(chunks[1::2], chunks[2::2]):
+            count += 1
+            prefix = f"{name}: package {heading}"
+            fields = {}
+            for field in required:
+                matches = re.findall(rf"(?m)^- \*\*{re.escape(field)}:\*\*[ \t]*(.*)$", record)
+                if len(matches) != 1 or not matches[0].strip():
+                    errors.append(f"{prefix}: missing or duplicate required field {field}")
+                else:
+                    fields[field] = matches[0].strip()
+            if len(fields) != len(required):
+                continue
+            package = fields["Package"].strip(bt)
+            if not package or package.casefold() in seen:
+                errors.append(f"{prefix}: duplicate or empty package identity")
+            seen.add(package.casefold())
+            if re.search(r"\s", package):
+                errors.append(f"{prefix}: invalid package identity")
+            source = {
+                "rust": f"https://docs.rs/{package}/latest/{package}/",
+                "go": f"https://pkg.go.dev/{package}@",
+                "typescript": f"https://registry.npmjs.org/{package}/latest",
+                "python": f"https://pypi.org/project/{package}/",
+                "swift": f"https://github.com/{package}",
+            }.get(doc.stem, "")
+            links = re.findall(r"\[[^]]+\]\(([^)]+)\)", fields["Official source"])
+            if not links or not any(
+                url.casefold().startswith(source.casefold())
+                if doc.stem == "go" else url.casefold() == source.casefold()
+                for url in links
+            ):
+                errors.append(f"{prefix}: official source does not match package identity")
+            for url in links:
+                reason = source_url_error(url)
+                if reason:
+                    errors.append(f"{prefix}: invalid official source: {reason}")
+            if not fields["Language/runtime"].startswith(labels.get(doc.stem, "\0")):
+                errors.append(f"{prefix}: language/runtime mismatch")
+            for key, value in fields.items():
+                if PLACEHOLDER.search(value):
+                    errors.append(f"{prefix}: placeholder in {key}")
+            status, choice = fields["Evidence status"], fields["Selection"]
+            if status not in {"VERIFIED", "PARTIAL", "UNKNOWN"}:
+                errors.append(f"{prefix}: invalid evidence status")
+            if choice not in {"EVALUATE", "BLOCKED"}:
+                errors.append(f"{prefix}: invalid selection state")
+            missing_gate = any(re.search(r"\bUNKNOWN\b", fields[key], re.IGNORECASE)
+                               for key in ("Compatibility", "License"))
+            if missing_gate and status == "VERIFIED":
+                errors.append(f"{prefix}: incomplete evidence cannot be VERIFIED")
+            if (missing_gate or status != "VERIFIED") and choice != "BLOCKED":
+                errors.append(f"{prefix}: unclear compatibility/license or evidence cannot be recommended")
+            try:
+                checked = date.fromisoformat(fields["Evidence reviewed"])
+                if checked.isoformat() != fields["Evidence reviewed"]:
+                    raise ValueError
+            except ValueError:
+                errors.append(f"{prefix}: invalid evidence review date")
+            else:
+                today = datetime.now(timezone.utc).date()
+                if checked > today:
+                    errors.append(f"{prefix}: future evidence review date")
+                if status == "VERIFIED" and today - checked > timedelta(days=180):
+                    errors.append(f"{prefix}: stale VERIFIED evidence review")
+        if count != indexed.get(doc.stem):
+            errors.append(f"{name}: index count mismatch")
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
     files = sorted(p for p in PROVIDERS.glob("*.md") if p.name != "README.md")
@@ -362,6 +477,7 @@ def main() -> int:
 
     for path in sorted(ROOT.rglob("*.md")):
         errors.extend(local_links(path))
+    errors.extend(library_document_errors())
     errors.extend(technology_document_errors(
         "frameworks", "| Language | Candidate | Fit | Profile |", 3,
         ("Fit", "Anti-fit", "Compatibility", "Maturity & maintenance", "Licensing",
