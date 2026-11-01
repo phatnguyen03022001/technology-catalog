@@ -1,39 +1,17 @@
 # third-party-standards
 
-Standards and research index for **third-party services used in Fullstack, AI, and Agentic software**.
+Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-party services.
 
-## Research index
+## Navigation
 
-- **[Provider candidates, pricing and strongest free tiers](docs/provider-candidates.md)** — research snapshot **2026-11-01**. Covers **12 functional pillars**, **77 first-party source-linked priced/free-tier service records** and **103 additional candidates awaiting detailed price verification**.
-- Price estimates are not vendor endorsements or binding quotes. Always re-check live official prices, quota reset period, regional billing, taxes, commercial-use terms, and production support before choosing.
+| Layer | Responsibility | Link |
+|---|---|---|
+| WHAT | 12 functional pillars, service classifications, research watchlists | [pillars/](pillars/README.md) |
+| HOW | 8 evaluation criteria and comparison matrix | [taxonomy](docs/00-taxonomy.md) · [matrix](docs/01-evaluation-matrix.md) |
+| LIFECYCLE | Research → Compare → Select → Integrate → Operate → Retire | [lifecycle](docs/lifecycle.md) |
+| PROVIDERS | Single Source of Truth for multi-service provider facts, free tier, prices, sources | [providers/](providers/README.md) |
+| DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
 
-## Taxonomy
+**Snapshot:** 2026-11-01 — 12 pillars; 66 provider profiles; 77 source-linked priced/free-tier service records; 103 pending price-research candidates.
 
-| # | Primary functional pillar |
-|---|---|
-| 01 | Compute & Runtime (including secure agent code sandboxes) |
-| 02 | Databases & Data (including vector databases) |
-| 03 | Storage & Media |
-| 04 | Networking & Edge |
-| 05 | Cache & Traditional Search |
-| 06 | Messaging & Async |
-| 07 | Identity & Security |
-| 08 | DevOps & Delivery |
-| 09 | Observability & Analytics (system, LLM tracing, evaluations) |
-| 10 | AI Models & Agent Tools (web search, scraping, retrieval) |
-| 11 | Communications |
-| 12 | Business & Extension APIs |
-
-**Information model:** Provider → Service offering → one primary pillar + capability tags.
-
-**Evaluation dimensions (HOW):** discovery, contracts/integration, security/governance, reliability, performance, cost/quotas, observability/operations, lifecycle/exit.
-
-**Lifecycle:** Research → Evaluate → Select → Integrate → Operate → Migrate/Retire.
-
-## Data quality rules
-
-1. Official provider pages are primary evidence. A candidate without verified public pricing remains marked **watchlist**; never invent a free tier or a quoted price.
-2. Treat perpetual free, recurring credits, one-time credits, trial, and no-subscription transaction fees differently.
-3. Compare service offerings under a concrete workload and context, not company names alone.
-4. Do not duplicate provider-wide information across pillars; assess each distinct service independently.
-5. Keep documentation compact and current, expanding into provider-specific files only when selected for a real project.
+**Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Sources are historical snapshot links, **not newly re-verified prices**. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No empty scaffolding or unsupported numerical ranking.
