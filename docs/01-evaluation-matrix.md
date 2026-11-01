@@ -40,9 +40,12 @@ Distinguish perpetual free, recurring monetary credits, one-time signup credit, 
 
 ## Evidence classifications
 
-- `VERIFIED`: newly checked dated official source, measured benchmarks where relevant.
-- `SOURCE_LINKED_SNAPSHOT`: sourced historical figures moved from previous catalog; recheck before production.
-- `UNVERIFIED`: candidate name with no priced/free-tier assertion.
+- `VERIFIED`: service-row claims were checked against dated official sources; a price row includes plan/model/SKU, amount/currency/unit, region where applicable, free allowance/reset, source URL and checked date. This does not verify security, performance, or suitability.
+- `SOURCE_LINKED_SNAPSHOT`: legacy catalog claim has an official source link but its current value was not independently reproduced; recheck before production.
+- `UNVERIFIED`: a service's price or free-tier claim cannot be reproduced from current official evidence, or no such claim is made.
 - `STALE`: evidence changed or expired; do not imply still current.
+- `DISCONTINUED`: first-party evidence confirms the service has ceased operation; an announced future wind-down does not qualify.
+
+Service evidence is recorded on each provider table row. A validator can check that status, dates and source links are present; it cannot establish that a price is factually accurate. Never infer pricing accuracy from a passing structural check.
 
 Output: workload, gates, candidate costs, security/operational tradeoffs, score only if supported, checkedAt, evidence URLs, recommendation and fallback.

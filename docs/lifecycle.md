@@ -16,12 +16,16 @@
 | ONE_TIME_CREDIT | Signup grant, not renewable |
 | TIME_LIMITED_TRIAL | Expires after a fixed period |
 | PERMANENT_AFTER_TRIAL | Small distinct permanent allocation after trial |
-| LIMITED_FREE | Free period/eligibility needs clarification |
+| LIMITED_FREE | A real free allowance with a stated eligibility or usage restriction; state the restriction |
 | NO_MONTHLY_BASE | Subscription $0 but transactions charged |
-| NONE | No verified ongoing free offering |
+| SELF_HOSTED | Software license is $0; user pays hosting and operations, subject to license terms |
+| NONE | Current evidence confirms no free allowance or credit for this offering |
+| UNKNOWN | Available evidence does not establish whether a free allowance exists; never imply NONE |
+
+Free kind describes the offer type, not the evidence quality. Keep it separate from service evidence status. A service scheduled to wind down is still available until the announced cutoff occurs; record the dates and current state in its caveat.
 
 ## SSOT maintenance
 
-Update the price and source only in `providers/<provider>.md`; pillar and research index contain references, not duplicated figures. Keep `checkedAt`, provider URL, plan/SKU, billing unit, currency, region, quota/reset, expiry, commercial restrictions and confidence when independently re-verifying.
+Update price and source only in `providers/<provider>.md`; pillar and research indexes contain references, not duplicated figures. Evidence is recorded on each service row. For `VERIFIED` rows, the service and pricing cells must identify plan/model/SKU, amount and currency, billing unit, region where applicable, free allowance and reset/expiry, official source URL, verification date, and explicit `VERIFIED` status. If a claim cannot be reproduced, use `SOURCE_LINKED_SNAPSHOT`, `UNVERIFIED`, or `STALE` as applicable. A provider-level badge never verifies all its services.
 
 Snapshot migration is **not** a price refresh. Do not overwrite historical dates without checking current primary evidence. Avoid placeholder files and unnecessary automations.

@@ -1,16 +1,15 @@
 # Tigris Data
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
 **Offerings:** 1 · **Pillars:** [03](../pillars/03-storage-media/README.md)
 
-| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
-|---|---|---|---|---|---|---|
-| Tigris Data | 03 | `PERMANENT` | 5 GB storage; 10k Class A; 100k Class B; $0,00 Egress vĩnh viễn toàn cầu | $0,025/GB-tháng; Class A $5,00/1M; Class B $0,40/1M; Egress $0,00 toàn cầu | Chuẩn S3 tương thích, multi-region tự động phân tán cạnh, không phí egress | [Tigris Data Pricing](https://www.tigrisdata.com/pricing/) |
+| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
+|---|---|---|---|---|---|---|---|---|
+| Tigris Data | 03 | `PERMANENT` | 5 GB storage; 10k Class A; 100k Class B; $0,00 Egress vĩnh viễn toàn cầu | $0,025/GB-tháng; Class A $5,00/1M; Class B $0,40/1M; Egress $0,00 toàn cầu | Chuẩn S3 tương thích, multi-region tự động phân tán cạnh, không phí egress | [Tigris Data Pricing](https://www.tigrisdata.com/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
 
 ## Evidence & maintenance
 
-- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

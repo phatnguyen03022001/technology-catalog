@@ -18,7 +18,7 @@
 | Google Places API | [Google Cloud & Firebase](../../providers/google.md) |
 | Lago | [Lago](../../providers/lago.md) |
 | Lemon Squeezy MoR | [Lemon Squeezy](../../providers/lemon-squeezy.md) |
-| MapTiler | [MapTiler](../../providers/maptiler.md) |
+| MapTiler Cloud | [MapTiler](../../providers/maptiler.md) |
 | Mapbox GL JS | [Mapbox](../../providers/mapbox.md) |
 | Paddle MoR | [Paddle](../../providers/paddle.md) |
 | PayPal Checkout | [PayPal](../../providers/paypal.md) |
@@ -32,6 +32,6 @@
 
 ## Watchlist — 1 chưa xác minh giá/free tier
 
-`Persona KYC`.
-
-> Persona KYC yêu cầu cam kết hợp đồng tối thiểu $250/tháng ($3.000/năm), bán hàng qua sales và không có self-serve free tier; giữ lại watchlist để theo dõi thêm.
+| Candidate | Status | Note |
+|---|---|---|
+| Persona KYC | Discovery only; price unverified | Prior minimum-price and no-self-serve-free-tier claims were withdrawn on 2026-11-01 because no official source supporting them was found. Verify directly with the provider before comparison. |

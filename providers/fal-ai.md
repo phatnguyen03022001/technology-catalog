@@ -1,16 +1,15 @@
 # fal.ai
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
 **Offerings:** 1 · **Pillars:** [10](../pillars/10-ai-models-agent-tools/README.md)
 
-| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
-|---|---|---|---|---|---|---|
-| fal.ai | 10 | `NONE` | Sandbox web free; API cần credit | FLUX Schnell: ~$0,003/MP; Whisper: ~$0,001/phút | Chuyên biệt cho generative media và voice; tốc độ cực nhanh | [fal.ai Pricing](https://fal.ai/pricing) |
+| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
+|---|---|---|---|---|---|---|---|---|
+| fal.ai | 10 | `UNKNOWN` | Free sandbox availability is separate from paid API inference; API allowance has not been confirmed | Model-specific inference pricing; prior rates are an unrechecked snapshot | Do not classify web playground access as recurring free API usage. | [fal.ai Pricing](https://fal.ai/pricing) | `SOURCE_LINKED_SNAPSHOT` | — |
 
 ## Evidence & maintenance
 
-- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

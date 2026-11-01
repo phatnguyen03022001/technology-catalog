@@ -26,4 +26,4 @@
 
 ## Watchlist — 0 chưa xác minh giá/free tier
 
-> Toàn bộ ứng cử viên watchlist ban đầu đã được xác minh giá và chuyển thành service profile chính thức trong `providers/`.
+> Historical discovery lists remain traceable in repository history at commit `2efd4d1`; individual services now carry their own evidence status in `providers/`.

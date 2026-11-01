@@ -1,6 +1,20 @@
 # Provider Profiles — Single Source of Truth
 
-**174 providers**, **226 service offering records**. Prices/free-tier amounts live **only in the provider files**; verified via multi-agent research fanout on 2026-11-01.
+**174 provider profiles**, **226 service offering records**. Prices/free-tier amounts live **only in the provider files**. Evidence status is tracked on each service row; see the derived status summary below. Structural validation does not establish factual price accuracy.
+
+## Evidence status by service
+
+Derived from the provider rows by `python3 scripts/validate_catalog.py` (checked date for `VERIFIED`: 2026-11-01). `SOURCE_LINKED_SNAPSHOT` means the current value was not reproduced. Status totals must be refreshed from the validator after catalog changes.
+
+| Evidence status | Service records |
+|---|---:|
+| `VERIFIED` | 37 |
+| `SOURCE_LINKED_SNAPSHOT` | 188 |
+| `UNVERIFIED` | 1 |
+| `STALE` | 0 |
+| `DISCONTINUED` | 0 |
+
+Free-kind classifications (same derived service rows): `PERMANENT` 153; `TIME_LIMITED_TRIAL` 18; `UNKNOWN` 18; `ONE_TIME_CREDIT` 11; `NO_MONTHLY_BASE` 8; `LIMITED_FREE` 6; `RECURRING_CREDIT` 5; `SELF_HOSTED` 5; `PERMANENT_AFTER_TRIAL` 2. There are no `VARIABLE` or `NONE_OR_CONDITIONAL` values.
 
 | Provider | Offerings | Primary pillars |
 |---|---:|---|

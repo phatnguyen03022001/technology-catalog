@@ -1,16 +1,15 @@
 # Polar
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
 **Offerings:** 1 · **Pillars:** [12](../pillars/12-business-extension-apis/README.md)
 
-| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
-|---|---|---|---|---|---|---|
-| Polar MoR | 12 | `NO_MONTHLY_BASE` | Starter $0/tháng base; API/portal đầy đủ | Starter 5,0% + $0,50; Pro $20/tháng: 3,8% + 40¢ | MoR chuyên cho open-source & SaaS; gói $20/tháng hạ phí giao dịch rất tốt | [Polar Pricing](https://polar.sh/pricing) |
+| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
+|---|---|---|---|---|---|---|---|---|
+| Polar MoR | 12 | `NO_MONTHLY_BASE` | Starter has no monthly base fee | New orgs from 2026-05-27: Starter 5% + $0.50/transaction; Pro $20/month at 3.8% + $0.40. Earlier orgs are grandfathered at 4% + $0.40 plus 0.5% subscription fee. | Rate depends on organization creation date; no universal Starter rate. | [Polar plan announcement](https://polar.sh/blog/introducing-polar-plans) | `VERIFIED` | 2026-11-01 |
 
 ## Evidence & maintenance
 
-- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

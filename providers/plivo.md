@@ -1,16 +1,15 @@
 # Plivo
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
 **Offerings:** 1 · **Pillars:** [11](../pillars/11-communications/README.md)
 
-| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
-|---|---|---|---|---|---|---|
-| Plivo | 11 | `ONE_TIME_CREDIT` | $10 trial credit khi đăng ký | Local SMS $0,0077/msg; Phone $0,50/tháng (rẻ nhất số phone) | Rẻ hơn Twilio ($0,0077 vs $0,0083); số phone $0,50/tháng | [Plivo SMS Pricing](https://www.plivo.com/pricing/sms/) |
+| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
+|---|---|---|---|---|---|---|---|---|
+| Plivo | 11 | `ONE_TIME_CREDIT` | $10 signup trial credit (snapshot; current eligibility not independently checked) | US local SMS $0.0077/message; local phone number $0.50/month (snapshot values) | Do not rank against other SMS vendors without same destination, carrier fees, message segments, and number type. | [Plivo SMS Pricing](https://www.plivo.com/pricing/sms/) | `SOURCE_LINKED_SNAPSHOT` | — |
 
 ## Evidence & maintenance
 
-- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)

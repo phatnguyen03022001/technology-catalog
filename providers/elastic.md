@@ -1,16 +1,15 @@
 # Elastic
 
-> **Provider SSOT.** Nguồn từ snapshot **2026-11-01**, có URL chính thức đã qua kiểm chứng (VERIFIED). Chỉ dùng để nghiên cứu; xác minh lại trước khi mua hoặc triển khai production.
+> **Provider SSOT.** Service claims and price evidence are recorded per offering below. `SOURCE_LINKED_SNAPSHOT` is not a current-price verification.
 
 **Offerings:** 1 · **Pillars:** [05](../pillars/05-cache-traditional-search/README.md)
 
-| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source |
-|---|---|---|---|---|---|---|
-| Elastic Cloud | 05 | `TIME_LIMITED_TRIAL` | 14 ngày trial; KHÔNG có free vĩnh viễn | Standard ~$99/tháng (HA 2 nodes + Kibana); Gold/Platinum cao hơn | Sàn chi phí cao (~$99/tháng); OSS đã khôi phục AGPLv3 bên cạnh SSPL | [Elastic Cloud Pricing](https://www.elastic.co/pricing/) |
+| Service | Primary pillar | Free kind | Free tier/credits | Paid pricing | Caveat | Official source | Evidence status | Evidence checked |
+|---|---|---|---|---|---|---|---|---|
+| Elastic Cloud | 05 | `TIME_LIMITED_TRIAL` | 14 ngày trial; KHÔNG có free vĩnh viễn | Standard ~$99/tháng (HA 2 nodes + Kibana); Gold/Platinum cao hơn | Sàn chi phí cao (~$99/tháng); OSS đã khôi phục AGPLv3 bên cạnh SSPL | [Elastic Cloud Pricing](https://www.elastic.co/pricing/) | `SOURCE_LINKED_SNAPSHOT` | — |
 
 ## Evidence & maintenance
 
-- Evidence: `VERIFIED`; live re-verification completed on 2026-11-01 via multi-agent research fanout.
 - Score: `NOT_EVALUATED` — workload, legal/security checks, benchmarks and price region are not yet supplied.
 - Update pricing and source **here only**; pillar pages should never duplicate provider prices.
 - [Evaluation matrix](../docs/01-evaluation-matrix.md) · [Lifecycle](../docs/lifecycle.md)
