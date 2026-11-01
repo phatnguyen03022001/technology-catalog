@@ -1,11 +1,12 @@
 # technology-catalog
 
-Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-party services.
+Evidence-based technology catalog for **Fullstack + AI + Agentic** software engineering: programming languages and third-party services.
 
 ## Navigation
 
 | Layer | Responsibility | Link |
 |---|---|---|
+| LANGUAGES | Rust, Go, TypeScript, Python, Swift: toolchains, frameworks, fit, trade-offs and decision gates | [languages/](languages/README.md) |
 | WHAT | 12 functional pillars, service classifications, research watchlists | [pillars/](pillars/README.md) |
 | HOW | 8 evaluation criteria and comparison matrix | [taxonomy](docs/00-taxonomy.md) · [matrix](docs/01-evaluation-matrix.md) |
 | LIFECYCLE | Research → Compare → Select → Integrate → Operate → Retire | [lifecycle](docs/lifecycle.md) |
@@ -13,6 +14,8 @@ Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-p
 | DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
 
 **Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
+
+**Scope boundary:** Languages and frameworks are separate from the 12 service pillars, not additional offerings. Profiles do not duplicate provider prices/free tiers or override ECC implementation guidance.
 
 **Governance:** One provider profile, multiple service offerings (each exactly one primary pillar). Prices live in provider files only. Each service row carries its own evidence status and verification date. Read `VERIFIED` as confirmation of the specific listed claims only; structural validation does not prove pricing accuracy. Re-check live limits, quota period, commercial restrictions, privacy and tax/region before procurement/production. No unsupported ranking.
 
