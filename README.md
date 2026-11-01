@@ -1,4 +1,4 @@
-# third-party-standards
+# technology-catalog
 
 Knowledge base and evaluation standards for **Fullstack + AI + Agentic** third-party services.
 
