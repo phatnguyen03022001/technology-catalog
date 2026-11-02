@@ -1,11 +1,12 @@
 # Framework catalog — 5 language ecosystems
 
-**Snapshot reviewed:** 2026-11-01. Framework ≠ language ≠ runtime ≠ cloud provider. Đây là hồ sơ **WHAT/WHY** để chọn technology, không hướng dẫn triển khai HOW. Chỉ lưu định tính có nguồn; benchmark, version security, pháp lý và fit production là **UNKNOWN** nếu chưa đo/xác minh.
+**Snapshot reviewed:** 2026-11-02. Framework ≠ language ≠ runtime ≠ cloud provider. Đây là hồ sơ **WHAT/WHY** để chọn technology, không hướng dẫn triển khai HOW. Chỉ lưu định tính có nguồn; benchmark, version security, pháp lý và fit production là **UNKNOWN** nếu chưa đo/xác minh.
 
 | Language | Candidate | Fit | Profile |
 |---|---|---|---|
 | TypeScript | Next.js | Fullstack React, SSR/server rendering & routing | [Next.js](nextjs.md) |
 | TypeScript | NestJS | Modular server APIs, controller/DI conventions | [NestJS](nestjs.md) |
+| TypeScript | Hono | Lightweight standards-based routing for edge and compatible servers; adapter-dependent | [Hono](hono.md) |
 | Python | FastAPI | Python APIs, typed request validation, OpenAPI | [FastAPI](fastapi.md) |
 | Python | Django | Data-centric web apps with admin/ORM | [Django](django.md) |
 | Go | Gin | Go API routing, binding and middleware | [Gin](gin.md) |

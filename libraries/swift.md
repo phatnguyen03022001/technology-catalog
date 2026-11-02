@@ -156,6 +156,54 @@
 - **Unknowns:** Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
 - **Selection:** EVALUATE
 
+### `modelcontextprotocol/swift-sdk`
+- **Package:** `modelcontextprotocol/swift-sdk`
+- **Capability:** Agentic / MCP
+- **Language/runtime:** Swift / SwiftPM
+- **Fit:** Official Swift MCP client/server SDK using SwiftPM for Apple-native or compatible Swift server tools.
+- **Anti-fit:** No MCP interoperability; a normal app HTTP client via URLSession suffices.
+- **Fallback:** Foundation URLSession or existing API SDK.
+- **Compatibility:** Swift tools >=6.1 in tag 0.12.1; tag manifest lists macOS 13+, iOS 16+; README advertises Swift 6.0+/Xcode 16+. No verified support for MCP 2026-07-28.
+- **Maintenance:** GitHub tag 0.12.1; inspected 2026-11-02; repository active 2026-10-31.
+- **License:** Mixed Apache-2.0 for new/relicensed code and MIT for legacy contributions (upstream LICENSE transition).
+- **Official source:** [official registry or upstream](https://github.com/modelcontextprotocol/swift-sdk); [upstream/manifest](https://github.com/modelcontextprotocol/swift-sdk/blob/0.12.1/Package.swift)
+- **Evidence status:** PARTIAL
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** README states MCP 2025-11-25 and differs from tagged tools-version. Check protocol negotiation, stdio/HTTP transport, pinned tag license and Apple deployment; never claim support for 2026-07-28. Tool permissions, untrusted tool output, SSRF, credential forwarding, cancellation and resource limits must be enforced independently. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** BLOCKED
+
+### `apple/swift-openapi-generator`
+- **Package:** `apple/swift-openapi-generator`
+- **Capability:** Generated API contracts
+- **Language/runtime:** Swift / SwiftPM
+- **Fit:** Generate Swift client/server API models from OpenAPI when cross-language contracts are maintained.
+- **Anti-fit:** Simple few-endpoint Codable + URLSession app; no shared OpenAPI schema.
+- **Fallback:** Codable + URLSession or established generated client.
+- **Compatibility:** Swift tools >=6.2 in tag 1.14.3; generator runs on supported macOS/Linux/Windows hosts (not iOS app runtime); generated clients need a distinct runtime library and transport.
+- **Maintenance:** GitHub tag 1.14.3; upstream pushed 2026-10-26.
+- **License:** Apache-2.0
+- **Official source:** [official registry or upstream](https://github.com/apple/swift-openapi-generator); [upstream/manifest](https://github.com/apple/swift-openapi-generator/blob/1.14.3/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** Generator is a build tool, not HTTP transport; verify OpenAPI 3.x feature support, SwiftPM plugin, target OS and generated API runtime compatibility. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
+### `apple/swift-distributed-tracing`
+- **Package:** `apple/swift-distributed-tracing`
+- **Capability:** Tracing API
+- **Language/runtime:** Swift / SwiftPM
+- **Fit:** Swift server/service-context tracing and instrumentation interfaces, with a separately configured backend/exporter.
+- **Anti-fit:** Apple-only app already adequately instrumented with OSLog; no cross-service trace requirement.
+- **Fallback:** OSLog or existing service instrumentation.
+- **Compatibility:** Swift tools >=6.2 in tag 1.7.3; check Swift concurrency, server runtime and exporter package separately.
+- **Maintenance:** GitHub tag 1.7.3; upstream pushed 2026-10-28.
+- **License:** Apache-2.0
+- **Official source:** [official registry or upstream](https://github.com/apple/swift-distributed-tracing); [upstream/manifest](https://github.com/apple/swift-distributed-tracing/blob/1.7.3/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** Tracing API alone does not export telemetry; validate context propagation, privacy redaction, sampling and operational overhead. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
 ## Selection boundary
 
 VERIFIED is scoped to official package identity, metadata and advertised function; it is NOT a security endorsement, benchmark result or production approval. PARTIAL means essential metadata is unresolved. EVALUATE permits comparison only, BLOCKED requires filling compatibility/license gaps first. No automatic migration.

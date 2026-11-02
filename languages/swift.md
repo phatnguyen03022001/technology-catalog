@@ -1,6 +1,6 @@
 # Swift
 
-**Evidence review:** 2026-11-01 · [Quay lại so sánh](README.md)
+**Evidence review:** 2026-11-02 · [Quay lại so sánh](README.md)
 
 ## Fit & trade-offs
 
@@ -15,8 +15,11 @@
 | Toolchain | Xcode + Swift, **SwiftPM** | Pin language mode, SDK và deployment target; CI cần đúng Apple toolchain nếu build app |
 | Native UI | **SwiftUI** nếu target đáp ứng | UIKit/AppKit interoperability khi API/legacy UI yêu cầu, không ép migrate |
 | Local data | Foundation, persistence hợp nhu cầu | **SwiftData** khi version support, schema migration và offline sync phù hợp |
+| On-device ML | **Core ML** là Apple platform framework, không phải third-party package | Chỉ dùng khi model format, OS/SDK/hardware, privacy, latency và memory budget phù hợp; hosted API vẫn là alternative |
 | Async | `async/await`, actors, `Sendable` | Kiểm chứng isolation, cancellation, task lifecycle, blocking behavior |
 | Server/API | Standard libraries và HTTP stack cần thiết | **Vapor** hoặc **Hummingbird** nếu cần server Swift với routing/middleware |
+
+**Inference boundary:** Core ML cho phép inference trên thiết bị với CPU/GPU/Neural Engine khi phần cứng/API hỗ trợ; không bảo đảm mọi model convert được, chạy offline hiệu quả hoặc đủ chất lượng. Hosted inference cần network, server-side credentials và data/privacy policy; hybrid chỉ khi workload thật cần. Kiểm model format/conversion, OS deployment target, ANE availability, battery/RAM, permission, p95 và model distribution. Không tạo `libraries/swift.md` entry cho Core ML.
 
 **Quality gates tham khảo:** `swift test` cho Swift packages, Swift Testing/XCTest theo target; UI tests trong Xcode/Simulator/device; static/concurrency checks và release signing validation. Linux CI cho pure Swift **không thay** iOS app testing trên macOS/Xcode.
 
@@ -30,6 +33,7 @@
 - [Swift concurrency](https://docs.swift.org/latest/documentation/the-swift-programming-language/concurrency/)
 - [Swift Package Manager](https://docs.swift.org/main/documentation/packagemanagerdocs/)
 - [SwiftUI](https://developer.apple.com/documentation/swiftui)
+- [Core ML platform framework](https://developer.apple.com/documentation/coreml)
 - [SwiftData](https://developer.apple.com/documentation/swiftdata)
 - [Swift Testing và XCTest](https://developer.apple.com/documentation/xcode/adding-tests-to-your-xcode-project)
 - [Swift on Server — Vapor và Hummingbird](https://www.swift.org/documentation/server/)

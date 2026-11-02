@@ -156,6 +156,54 @@
 - **Unknowns:** Certificate trust roots and crypto provider configuration require review. Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
 - **Selection:** EVALUATE
 
+### `rmcp`
+- **Package:** `rmcp`
+- **Capability:** Agentic / MCP
+- **Language/runtime:** Rust / Cargo
+- **Fit:** Official Tokio-based Rust MCP server/client SDK with tool macros and configurable transports.
+- **Anti-fit:** No MCP boundary or simpler reqwest service client suffices.
+- **Fallback:** reqwest or existing protocol client.
+- **Compatibility:** Rust >=1.88 per crates.io rmcp 3.8.0; runtime Tokio and selected transport features required; supports MCP 2026-07-28 and backward compatibility.
+- **Maintenance:** crates.io stable 3.8.0; updated 2026-10-26; official Rust MCP SDK.
+- **License:** Apache-2.0
+- **Official source:** [official registry or upstream](https://docs.rs/rmcp/latest/rmcp/); [upstream/manifest](https://github.com/modelcontextprotocol/rust-sdk)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** Validate negotiation and transport features; SDK does not provide agent tool permission, SSRF protection, secret forwarding rules or resource policies by default. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
+### `tonic`
+- **Package:** `tonic`
+- **Capability:** RPC / streaming
+- **Language/runtime:** Rust / Cargo
+- **Fit:** Rust async gRPC client/server based on generated typed Protobuf contracts.
+- **Anti-fit:** Simple HTTP/JSON or an already-supported axum route.
+- **Fallback:** axum or reqwest with HTTP/OpenAPI.
+- **Compatibility:** Rust >=1.88 per crates.io tonic 0.14.9; check Tokio, prost/protoc and TLS feature versions.
+- **Maintenance:** crates.io stable 0.14.9; updated 2026-10-29; official gRPC Rust repository.
+- **License:** MIT
+- **Official source:** [official registry or upstream](https://docs.rs/tonic/latest/tonic/); [upstream/manifest](https://github.com/grpc/grpc-rust)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** Protobuf generation, HTTP/2 proxies, deployment, cancellation and telemetry are separate operational concerns. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
+### `rayon`
+- **Package:** `rayon`
+- **Capability:** CPU parallelism
+- **Language/runtime:** Rust / Cargo
+- **Fit:** Data-parallel iterator and fork-join workloads that benefit from multicore CPU execution.
+- **Anti-fit:** Async I/O, small workloads or already adequate sequential iteration.
+- **Fallback:** std iterators/std::thread or Tokio for I/O.
+- **Compatibility:** Rust >=1.80 per crates.io rayon 1.12.0; thread pool limits and target CPU require measurement.
+- **Maintenance:** crates.io stable 1.12.0; updated 2026-04-14; verify maintenance before adoption.
+- **License:** MIT OR Apache-2.0
+- **Official source:** [official registry or upstream](https://docs.rs/rayon/latest/rayon/); [upstream/manifest](https://github.com/rayon-rs/rayon)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-02
+- **Unknowns:** Parallelism can increase peak memory and contention; compare same CPU-bound workload, NOT_MEASURED. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
 ## Selection boundary
 
 VERIFIED is scoped to official package identity, metadata and advertised function; it is NOT a security endorsement, benchmark result or production approval. PARTIAL means essential metadata is unresolved. EVALUATE permits comparison only, BLOCKED requires filling compatibility/license gaps first. No automatic migration.

@@ -248,7 +248,9 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(path.read_bytes(), content_before)
 
     def test_rerun_idempotent_and_no_git_or_storage_mutation(self):
-        frozen = m.parse_date(self.library["reviewed"])
+        # Inventory includes newer evidence dates; never evaluate a current record
+        # against a clock earlier than its review date.
+        frozen = max(m.parse_date(r["reviewed"]) for r in self.records if r["reviewed"])
         before = m.render(m.evaluate(self.records, frozen), frozen)
         after = m.render(m.evaluate(self.records, frozen), frozen)
         self.assertEqual(before, after)

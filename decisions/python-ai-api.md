@@ -1,6 +1,6 @@
 # DEC-AI-001 — Python model API
 
-**Status:** CONDITIONAL_NOT_PRODUCTION · **Reviewed:** 2026-11-01 · **Workload:** REFERENCE_SCENARIO_NOT_MEASURED.
+**Status:** CONDITIONAL_NOT_PRODUCTION · **Reviewed:** 2026-11-02 · **Workload:** REFERENCE_SCENARIO_NOT_MEASURED.
 
 ## Workload & candidates
 Assume an existing Python model library needs JSON inference endpoints, typed input schema and an independently deployed worker. Compare **FastAPI + compatible ASGI server** vs **NestJS gateway calling a Python worker** vs **Go net/http gateway calling a Python worker**. The model library itself remains Python; this case concerns the API boundary.
@@ -10,6 +10,8 @@ Assume an existing Python model library needs JSON inference endpoints, typed in
 | [FastAPI](../frameworks/fastapi.md) | Python types, Pydantic validation and OpenAPI in same process/stack | Model blocks event loop, ASGI workers/GPU memory, startup |
 | [NestJS](../frameworks/nestjs.md) + Python worker | Node controller/DI conventions if org already TS-centric | Additional deployment, network hops, contract consistency |
 | Go net/http + Python worker | Lean stdlib HTTP gateway if already Go infrastructure | Additional service, model transport/worker handling |
+
+**Model execution boundary:** A **hosted model API** needs a provider SDK/HTTP client, provider quotas/latency, data-retention/region review and server-only secrets; a local `transformers` or other Python-native stack needs model weights, compatible ML runtime, CPU/GPU driver, VRAM/RAM, cold-start and artifact lifecycle. These solve different requirements. Do not introduce a Python worker for a simple hosted API call already supported by the current backend. Evaluate hybrid/separate worker only for real scale/isolation needs. [Python library candidates](../libraries/python.md) own package metadata; external model/API prices remain in [providers](../providers/README.md).
 
 ## Hard gates & unknown evidence
 - Functional: **PASS conditional** — FastAPI exposes OpenAPI and Pydantic validation, not proof of model fit.
@@ -22,7 +24,7 @@ Assume an existing Python model library needs JSON inference endpoints, typed in
 **Conditional choice: FastAPI** when one Python service is enough and model calls do not violate latency/resource gates. Split gateway/worker only when independently scaling models, network security boundaries, existing platform or measured deployment behavior demands it. **Not production-approved.**
 
 ## Verification / TCO / fallback
-Run equal model/version/batch-size loads at expected concurrency; record p95/p99, peak RAM/VRAM, GPU util, timeout/cancel and crash recovery. TCO = compute/GPU per runtime-hour + model/network/storage/egress + operations, with plans from [AI & agent pillars](../pillars/10-ai-models-agent-tools/README.md) and [providers](../providers/README.md). Verify identity/secrets, input constraints, worker shutdown, rollback. Fallback: keep inference as isolated Python worker with established platform gateway if in-process model invalidates gates.
+Measure hosted API and local model variants only with comparable quality/functionality and a specified target workload (including provider network vs model hardware). Run equal model/version/batch-size loads at expected concurrency; record p95/p99, peak RAM/VRAM, GPU util, timeout/cancel and crash recovery. TCO = compute/GPU per runtime-hour + model/network/storage/egress + operations, with plans from [AI & agent pillars](../pillars/10-ai-models-agent-tools/README.md) and [providers](../providers/README.md). Verify identity/secrets, input constraints, worker shutdown, rollback. Fallback: keep inference as isolated Python worker with established platform gateway if in-process model invalidates gates.
 
 ## Official evidence
 - [FastAPI features](https://fastapi.tiangolo.com/features/)
