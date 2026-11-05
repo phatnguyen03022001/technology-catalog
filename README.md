@@ -17,7 +17,7 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 | DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
 | STACK RESEARCH | Conditional free-tier selection for Next.js + Go + Python; billing, runtime and recovery limits | [free-tier stack selection](docs/free-tier-stack-selection.md) |
 
-**Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
+**Catalog snapshot:** 2026-11-05 — 12 pillars; 198 provider profiles; 301 service offerings; 1 discovery-only watchlist candidate.
 
 **Scope boundary:** Languages, libraries and frameworks are separate from the 12 service pillars, not additional offerings. Profiles do not duplicate provider prices/free tiers or override ECC implementation guidance.
 

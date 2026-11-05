@@ -1,18 +1,18 @@
 # Provider Profiles — Single Source of Truth
 
-**198 provider profiles**, **300 service offering records**. Prices/free-tier amounts and official evidence live only in provider files. Each service has one primary pillar. Structural validation checks shape and links; it does not establish factual price accuracy.
+**198 provider profiles**, **301 service offering records**. Prices/free-tier amounts and official evidence live only in provider files. Each service has one primary pillar. Structural validation checks shape and links; it does not establish factual price accuracy.
 
 ## Evidence status by service
 
 | Evidence status | Service records |
 |---|---:|
-| `VERIFIED` | 252 |
+| `VERIFIED` | 253 |
 | `SOURCE_LINKED_SNAPSHOT` | 7 |
 | `UNVERIFIED` | 35 |
 | `STALE` | 4 |
 | `DISCONTINUED` | 2 |
 
-Free-kind classifications: `PERMANENT` 134; `RECURRING_CREDIT` 5; `ONE_TIME_CREDIT` 24; `TIME_LIMITED_TRIAL` 21; `PERMANENT_AFTER_TRIAL` 1; `LIMITED_FREE` 38; `NO_MONTHLY_BASE` 10; `SELF_HOSTED` 27; `NONE` 2; `UNKNOWN` 38.
+Free-kind classifications: `PERMANENT` 135; `RECURRING_CREDIT` 5; `ONE_TIME_CREDIT` 24; `TIME_LIMITED_TRIAL` 21; `PERMANENT_AFTER_TRIAL` 1; `LIMITED_FREE` 38; `NO_MONTHLY_BASE` 10; `SELF_HOSTED` 27; `NONE` 2; `UNKNOWN` 38.
 
 | Provider | Offerings | Primary pillars |
 |---|---:|---|
@@ -90,7 +90,7 @@ Free-kind classifications: `PERMANENT` 134; `RECURRING_CREDIT` 5; `ONE_TIME_CRED
 | [GitHub](./github.md) | 2 | 08 |
 | [GitLab](./gitlab.md) | 1 | 08 |
 | [GlitchTip](./glitchtip.md) | 1 | 09 |
-| [Google Cloud & Firebase](./google.md) | 20 | 01, 02, 03, 04, 05, 06, 07, 08, 10, 11, 12 |
+| [Google Cloud & Firebase](./google.md) | 21 | 01, 02, 03, 04, 05, 06, 07, 08, 10, 11, 12 |
 | [Grafana](./grafana.md) | 1 | 09 |
 | [Groq](./groq.md) | 1 | 10 |
 | [Harbor](./harbor.md) | 1 | 08 |

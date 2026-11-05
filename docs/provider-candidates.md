@@ -1,6 +1,6 @@
 # Provider candidates — discovery register and research disposition
 
-**As of 2026-11-01:** 300 service offerings in 198 provider profiles; 1 active discovery-only watchlist candidate. Seven deferred candidates were reviewed: six were promoted into the catalog and ClickStack Cloud private preview remains deferred. Prices and current evidence stay in provider profiles. Service evidence status does not imply that every independently priced plan is verified.
+**As of 2026-11-05:** 301 service offerings in 198 provider profiles; 1 active discovery-only watchlist candidate. Seven deferred candidates were reviewed: six were promoted into the catalog and ClickStack Cloud private preview remains deferred. Prices and current evidence stay in provider profiles. Service evidence status does not imply that every independently priced plan is verified.
 
 ## Pillar coverage
 
@@ -11,7 +11,7 @@
 | [03 — Storage & Media](../pillars/03-storage-media/README.md) | 24 | 3 |
 | [04 — Networking & Edge](../pillars/04-networking-edge/README.md) | 14 | 1 |
 | [05 — Cache & Traditional Search](../pillars/05-cache-traditional-search/README.md) | 22 | 6 |
-| [06 — Messaging & Async](../pillars/06-messaging-async/README.md) | 25 | 7 |
+| [06 — Messaging & Async](../pillars/06-messaging-async/README.md) | 26 | 7 |
 | [07 — Identity & Security](../pillars/07-identity-security/README.md) | 23 | 6 |
 | [08 — DevOps & Delivery](../pillars/08-devops-delivery/README.md) | 30 | 2 |
 | [09 — Observability & Analytics](../pillars/09-observability-analytics/README.md) | 22 | 2 |
@@ -23,7 +23,7 @@ Non-VERIFIED is a service-level evidence disposition. It does not count the numb
 
 ## Accepted market additions
 
-71 market-discovery service offerings are recorded after comparing mainstream, specialized, lower-cost and self-hosted options against the existing taxonomy: 65 from the prior review and six promoted from the current discovery watchlist. MinIO AIStor is tracked as a lifecycle successor in the reconciliation section below, not counted as a market-discovery addition. Rationale is capability-based; each linked provider profile contains current official source URLs, explicit free-tier classification, paid-price qualification and evidence status. A row can be included while some claims remain unresolved.
+72 market-discovery service offerings are recorded after comparing mainstream, specialized, lower-cost and self-hosted options against the existing taxonomy: 65 from the prior review, six promoted from the current discovery watchlist and Cloud Scheduler added by TASK 06. MinIO AIStor is tracked as a lifecycle successor in the reconciliation section below, not counted as a market-discovery addition. Rationale is capability-based; each linked provider profile contains current official source URLs, explicit free-tier classification, paid-price qualification and evidence status. A row can be included while some claims remain unresolved.
 
 | Pillar | Candidate | Why included | Provider SSOT / evidence | Evidence status |
 |---|---|---|---|---|
@@ -59,6 +59,7 @@ Non-VERIFIED is a service-level evidence disposition. It does not count the numb
 | 06 | Azure Event Grid | Adds managed event routing and serverless event delivery. | [Microsoft Azure](../providers/azure.md) | `UNVERIFIED` |
 | 06 | Azure Event Hubs | Adds managed high-throughput event streaming. | [Microsoft Azure](../providers/azure.md) | `UNVERIFIED` |
 | 06 | Cloudflare Queues | Adds managed queueing near Workers runtimes. | [Cloudflare](../providers/cloudflare.md) | `VERIFIED` |
+| 06 | Google Cloud Scheduler | Adds authorized production scheduling on the existing Google billing account; target execution is separate. | [Google Cloud & Firebase](../providers/google.md) | `VERIFIED` |
 | 06 | Google Cloud Tasks | Adds managed HTTP task queues with retry scheduling. | [Google Cloud & Firebase](../providers/google.md) | `VERIFIED` |
 | 06 | Google Cloud Workflows | Adds managed service orchestration and stateful steps. | [Google Cloud & Firebase](../providers/google.md) | `VERIFIED` |
 | 06 | Synadia Cloud NATS | Adds managed NATS messaging for low-latency pub/sub. | [Synadia](../providers/synadia.md) | `VERIFIED` |

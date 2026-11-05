@@ -21,6 +21,7 @@
 | Cloudflare Queues | [Cloudflare](../../providers/cloudflare.md) |
 | Confluent Cloud | [Confluent](../../providers/confluent.md) |
 | Google Cloud Pub/Sub | [Google Cloud & Firebase](../../providers/google.md) |
+| Google Cloud Scheduler | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Cloud Tasks | [Google Cloud & Firebase](../../providers/google.md) |
 | Google Cloud Workflows | [Google Cloud & Firebase](../../providers/google.md) |
 | Hatchet Cloud | [Hatchet](../../providers/hatchet.md) |
