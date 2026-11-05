@@ -15,6 +15,7 @@ Evidence-based technology catalog for **Fullstack + AI + Agentic** software engi
 | LIFECYCLE | Research → Compare → Select → Integrate → Operate → Retire | [lifecycle](docs/lifecycle.md) |
 | PROVIDERS | Single Source of Truth for multi-service provider facts, free tier, prices, sources | [providers/](providers/README.md) |
 | DISCOVERY | Summary and pending candidates | [research index](docs/provider-candidates.md) |
+| STACK RESEARCH | Conditional free-tier selection for Next.js + Go + Python; billing, runtime and recovery limits | [free-tier stack selection](docs/free-tier-stack-selection.md) |
 
 **Catalog snapshot:** 2026-11-01 — 12 pillars; 198 provider profiles; 300 service offerings; 1 discovery-only watchlist candidate.
 
