@@ -5,16 +5,13 @@
 | Language | Candidate | Fit | Profile |
 |---|---|---|---|
 | TypeScript | Next.js | Fullstack React, SSR/server rendering & routing | [Next.js](nextjs.md) |
-| TypeScript | NestJS | Modular server APIs, controller/DI conventions | [NestJS](nestjs.md) |
-| TypeScript | Hono | Lightweight standards-based routing for edge and compatible servers; adapter-dependent | [Hono](hono.md) |
 | Python | FastAPI | Python APIs, typed request validation, OpenAPI | [FastAPI](fastapi.md) |
-| Python | Django | Data-centric web apps with admin/ORM | [Django](django.md) |
 | Go | Gin | Go API routing, binding and middleware | [Gin](gin.md) |
 | Rust | axum | Async HTTP APIs using Tokio/hyper and Tower | [axum](axum.md) |
 | Swift | SwiftUI | Apple-native declarative app UI | [SwiftUI](swiftui.md) |
 | Swift | Vapor | Swift server-side HTTP APIs | [Vapor](vapor.md) |
 
-**Default principle:** Prefer an existing framework/conventions; use standard libraries when sufficient (Go `net/http` is the primary comparator for Gin). Choosing a framework does not automatically choose hosting, DB, storage, networking or observability.
+**Default principle:** Prefer an existing framework/conventions; use standard libraries when sufficient (Go `net/http` is the primary comparator for Gin). Choosing a framework does not automatically choose hosting, DB, storage, networking or observability. **Independence:** Each profile is independently selectable; no catalog framework requires another, a shared optional library, or migration of an existing application.
 
 Every new `frameworks/*.md` profile must appear exactly once in the index. CI checks the required sections, ISO `**Reviewed:**` date (not in the future), and official HTTPS link structure. These tests **cannot establish that a claim is correct or that a framework is secure**.
 

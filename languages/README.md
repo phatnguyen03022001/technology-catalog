@@ -16,14 +16,14 @@
 
 ## Scope và single source of truth
 
-- **Language:** type system, memory model, concurrency, interoperability. **Runtime/toolchain:** Node/Deno, CPython, Rust/Cargo, Go toolchain, Swift/SwiftPM/Xcode. **Framework/library:** Next.js, NestJS, FastAPI, Django, axum, Gin, SwiftUI, Vapor.
+- **Language:** type system, memory model, concurrency, interoperability. **Runtime/toolchain:** Node/Deno, CPython, Rust/Cargo, Go toolchain, Swift/SwiftPM/Xcode. **Framework/library:** Next.js, FastAPI, axum, Gin, SwiftUI, Vapor.
 - **Infrastructure và third-party:** cloud, database, storage, networking, observability, secrets, AI API thuộc [12 pillars](../pillars/README.md). Giá, free tier, licensing terms của dịch vụ và service evidence status vẫn chỉ nằm ở [provider profiles](../providers/README.md).
 - **Không copy facts sang nhiều nơi:** language profiles chỉ nêu fit, capability, compatibility, trade-offs, link chính thức và câu hỏi quyết định. Framework OSS không đồng nghĩa hosting/vận hành miễn phí.
 - **Không chồng ECC:** đây là WHAT/WHY và bằng chứng chọn công nghệ; kiến trúc triển khai HOW do target project và ECC quản lý.
 
 ## Framework, infrastructure và third-party compatibility
 
-- **Web/backend:** Next.js/NestJS (TypeScript), FastAPI/Django (Python), net/http/Gin (Go), axum/Tokio (Rust), Vapor/Hummingbird (Swift) là **candidates theo workload**; mỗi framework có version/adapter/runtime constraints riêng, không tương đương hoàn toàn.
+- **UI/backend:** Next.js (TypeScript web), FastAPI (Python API), Gin hoặc Go `net/http` (Go API), axum/Tokio (Rust API), SwiftUI (Apple UI), Vapor (Swift API) là các lựa chọn **độc lập theo workload**; mỗi framework có version/runtime constraints riêng. Không bắt buộc kết hợp frontend và backend framework.
 - **Provider examples:** [Supabase](../providers/supabase.md), [Vercel](../providers/vercel.md), [Cloudflare](../providers/cloudflare.md). Trước khi chọn phải kiểm SDK theo ngôn ngữ, target runtime/region, auth model, secret handling, quotas, egress và tính portability; không suy SDK/serverless compatibility chỉ từ brand.
 - **Storage/data/messaging/observability/AI:** tham khảo [pillars](../pillars/README.md) rồi mở file provider cho pricing/free tier và evidence. Không gán một provider mặc định cho cả 5 ngôn ngữ.
 - **Client boundary:** app Swift hoặc browser TypeScript không được chứa server-side service secrets; xác minh token scope, data access policy, SDK version và offline behavior.

@@ -6,7 +6,7 @@
 
 - **Phù hợp:** browser/fullstack web, typed Node.js backend, API/agent orchestration, tools tích hợp với JS/TS SDK.
 - **Lợi thế kỹ thuật:** static checking cải thiện contracts và refactoring; cùng JavaScript ecosystem cho browser/server.
-- **Giới hạn:** types bị xóa khi chạy và **không validate JSON/API input**; runtime (Node/Deno/Bun), TypeScript compiler và framework (Next/Nest) là các lớp khác nhau. CPU-bound work có thể cần worker/native module/service riêng; đo thay vì đoán.
+- **Giới hạn:** types bị xóa khi chạy và **không validate JSON/API input**; runtime (Node/Deno/Bun), TypeScript compiler và framework (Next.js) là các lớp khác nhau. CPU-bound work có thể cần worker/native module/service riêng; đo thay vì đoán.
 
 ## Ecosystem và điểm xuất phát KISS
 
@@ -15,7 +15,7 @@
 | Type safety | `tsc --noEmit`, `strict`, runtime input validation | Schema library khi payload từ ngoài hoặc shared contracts cần validate |
 | Runtime | **Node.js** nếu SDK/npm compatibility là ưu tiên | **Deno** nếu permission/toolchain model phù hợp; Bun là candidate cần kiểm chứng SDK/platform |
 | Browser/fullstack | Browser APIs/React theo nhu cầu | **Next.js** cho App Router, SSR/server components và integrated fullstack |
-| Backend/API | Node APIs/framework đang dùng | **NestJS** khi cần modules/DI conventions thật sự; cân nhắc abstraction/overhead |
+| Backend/API | Node.js `node:http` hoặc backend hiện hữu | **Next.js Route Handlers** khi web app cần API cùng deployment; backend riêng chỉ khi workload yêu cầu |
 | Data/agent workers | HTTP/OpenAPI, driver và SDK đã xác minh | Queue/workers cho durable job và retries nếu requirements có |
 
 **Quality gates tham khảo:** pin runtime và lockfile, `tsc --noEmit`, lint, unit/integration/e2e tests và schema boundary tests, dependency audit. Node native TypeScript type stripping **không type-check**, vẫn phải chạy compiler checker riêng.
@@ -31,4 +31,4 @@
 - [Node.js native TypeScript — không type-check](https://nodejs.org/learn/typescript/run-natively)
 - [Deno TypeScript runtime & checking](https://docs.deno.com/runtime/fundamentals/typescript/)
 - [Next.js App Router](https://nextjs.org/docs/app)
-- [NestJS backend framework](https://docs.nestjs.com/recipes/documentation)
+- [Node.js HTTP API](https://nodejs.org/api/http.html)

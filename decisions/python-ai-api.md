@@ -3,12 +3,12 @@
 **Status:** CONDITIONAL_NOT_PRODUCTION · **Reviewed:** 2026-11-02 · **Workload:** REFERENCE_SCENARIO_NOT_MEASURED.
 
 ## Workload & candidates
-Assume an existing Python model library needs JSON inference endpoints, typed input schema and an independently deployed worker. Compare **FastAPI + compatible ASGI server** vs **NestJS gateway calling a Python worker** vs **Go net/http gateway calling a Python worker**. The model library itself remains Python; this case concerns the API boundary.
+Assume an existing Python model library needs JSON inference endpoints, typed input schema and an independently deployed worker. Compare **FastAPI + compatible ASGI server** vs **Gin gateway calling a Python worker** vs **Go net/http gateway calling a Python worker**. The model library itself remains Python; this case concerns the API boundary.
 
 | Candidate | Evidence-backed fit | Costs/risks to verify |
 |---|---|---|
 | [FastAPI](../frameworks/fastapi.md) | Python types, Pydantic validation and OpenAPI in same process/stack | Model blocks event loop, ASGI workers/GPU memory, startup |
-| [NestJS](../frameworks/nestjs.md) + Python worker | Node controller/DI conventions if org already TS-centric | Additional deployment, network hops, contract consistency |
+| [Gin](../frameworks/gin.md) + Python worker | Go routing/middleware if a separate Go gateway is justified | Additional deployment, network hops, contract consistency and Go maintenance |
 | Go net/http + Python worker | Lean stdlib HTTP gateway if already Go infrastructure | Additional service, model transport/worker handling |
 
 **Model execution boundary:** A **hosted model API** needs a provider SDK/HTTP client, provider quotas/latency, data-retention/region review and server-only secrets; a local `transformers` or other Python-native stack needs model weights, compatible ML runtime, CPU/GPU driver, VRAM/RAM, cold-start and artifact lifecycle. These solve different requirements. Do not introduce a Python worker for a simple hosted API call already supported by the current backend. Evaluate hybrid/separate worker only for real scale/isolation needs. [Python library candidates](../libraries/python.md) own package metadata; external model/API prices remain in [providers](../providers/README.md).
@@ -29,5 +29,5 @@ Measure hosted API and local model variants only with comparable quality/functio
 ## Official evidence
 - [FastAPI features](https://fastapi.tiangolo.com/features/)
 - [FastAPI ASGI server operation](https://fastapi.tiangolo.com/deployment/manually/)
-- [Nest controllers](https://docs.nestjs.com/controllers)
+- [Gin binding](https://gin-gonic.com/en/docs/binding/)
 - [Go HTTP standard library](https://pkg.go.dev/net/http)

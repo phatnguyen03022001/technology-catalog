@@ -20,6 +20,12 @@ DECISION_SECTIONS = (
 
 
 class TechnologyKnowledgeBaseTests(unittest.TestCase):
+    def test_only_approved_framework_profiles_exist(self):
+        expected = {"nextjs", "swiftui", "axum", "gin", "fastapi", "vapor"}
+        actual = {p.stem for p in (ROOT / "frameworks").glob("*.md")
+                  if p.name != "README.md"}
+        self.assertEqual(actual, expected)
+
     def test_all_framework_profiles_are_indexed_and_have_sections(self):
         index = (ROOT / "frameworks" / "README.md").read_text()
         for language in ("TypeScript", "Python", "Go", "Rust", "Swift"):

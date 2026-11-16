@@ -13,7 +13,7 @@
 | Lớp | Mặc định | Khi nào thêm công nghệ |
 |---|---|---|
 | Environment | `venv`, `pip`, `pyproject.toml` | **uv** nếu muốn thống nhất environment, lock, Python/tool management; không bắt buộc migrate |
-| Web/API | Existing project framework hoặc tối giản | **FastAPI** cho typed endpoints, OpenAPI và request validation; **Django** cho ORM/admin/fullstack app |
+| Web/API | Existing project framework hoặc tối giản | **FastAPI** cho typed endpoints, OpenAPI và request validation; không thêm HTTP framework nếu workload chưa cần |
 | ML/data | Library đúng workload và model | Inference worker/queue khi CPU/GPU/memory trở thành bottleneck đã đo |
 | Concurrency | Sync hoặc async theo I/O behavior | `asyncio` cho I/O concurrency; process/worker riêng khi workloads yêu cầu |
 
@@ -30,4 +30,4 @@
 - [Python virtual environments](https://docs.python.org/3/library/venv.html)
 - [uv documentation](https://docs.astral.sh/uv/)
 - [FastAPI features](https://fastapi.tiangolo.com/features/)
-- [Django documentation](https://docs.djangoproject.com/)
+

@@ -17,7 +17,7 @@
 | Local data | Foundation, persistence hợp nhu cầu | **SwiftData** khi version support, schema migration và offline sync phù hợp |
 | On-device ML | **Core ML** là Apple platform framework, không phải third-party package | Chỉ dùng khi model format, OS/SDK/hardware, privacy, latency và memory budget phù hợp; hosted API vẫn là alternative |
 | Async | `async/await`, actors, `Sendable` | Kiểm chứng isolation, cancellation, task lifecycle, blocking behavior |
-| Server/API | Standard libraries và HTTP stack cần thiết | **Vapor** hoặc **Hummingbird** nếu cần server Swift với routing/middleware |
+| Server/API | Standard libraries và HTTP stack cần thiết | **Vapor** nếu cần Swift HTTP API với routing/middleware; không mặc định ghép SwiftUI |
 
 **Inference boundary:** Core ML cho phép inference trên thiết bị với CPU/GPU/Neural Engine khi phần cứng/API hỗ trợ; không bảo đảm mọi model convert được, chạy offline hiệu quả hoặc đủ chất lượng. Hosted inference cần network, server-side credentials và data/privacy policy; hybrid chỉ khi workload thật cần. Kiểm model format/conversion, OS deployment target, ANE availability, battery/RAM, permission, p95 và model distribution. Không tạo `libraries/swift.md` entry cho Core ML.
 
@@ -36,4 +36,4 @@
 - [Core ML platform framework](https://developer.apple.com/documentation/coreml)
 - [SwiftData](https://developer.apple.com/documentation/swiftdata)
 - [Swift Testing và XCTest](https://developer.apple.com/documentation/xcode/adding-tests-to-your-xcode-project)
-- [Swift on Server — Vapor và Hummingbird](https://www.swift.org/documentation/server/)
+- [Swift on Server guidance](https://www.swift.org/documentation/server/)
