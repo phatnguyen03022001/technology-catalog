@@ -14,7 +14,7 @@
 
 ### `tokio`
 - **Package:** `tokio`
-- **Capability:** Async
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Async network tasks, when the current codebase demonstrably needs it.
 - **Anti-fit:** Synchronous one-shot tasks with no async boundary.
@@ -30,7 +30,7 @@
 
 ### `serde`
 - **Package:** `serde`
-- **Capability:** Serialization
+- **Capability:** C07 — Data Contracts
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Typed data interchange, when the current codebase demonstrably needs it.
 - **Anti-fit:** No serialized boundary, or existing format-specific codec suffices.
@@ -46,7 +46,7 @@
 
 ### `reqwest`
 - **Package:** `reqwest`
-- **Capability:** HTTP
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Pooled high-level HTTP client, when the current codebase demonstrably needs it.
 - **Anti-fit:** Low-level protocol work or an established HTTP client already meets needs.
@@ -62,7 +62,7 @@
 
 ### `sqlx`
 - **Package:** `sqlx`
-- **Capability:** Database
+- **Capability:** C08 — Persistence
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Async SQL against relational stores, when the current codebase demonstrably needs it.
 - **Anti-fit:** No async SQL requirements, or existing database access is sufficient.
@@ -78,7 +78,7 @@
 
 ### `tracing`
 - **Package:** `tracing`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Span-based structured diagnostics, when the current codebase demonstrably needs it.
 - **Anti-fit:** A tiny tool needs only simple standard diagnostics.
@@ -94,7 +94,7 @@
 
 ### `clap`
 - **Package:** `clap`
-- **Capability:** CLI
+- **Capability:** C19 — Developer Tooling
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Subcommands and argument parsing, when the current codebase demonstrably needs it.
 - **Anti-fit:** A command has just a few arguments and std parsing is clear.
@@ -110,7 +110,7 @@
 
 ### `thiserror`
 - **Package:** `thiserror`
-- **Capability:** Errors
+- **Capability:** C14 — Resilience & Errors
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Typed library errors, when the current codebase demonstrably needs it.
 - **Anti-fit:** Simple built-in errors are sufficient without a derive dependency.
@@ -126,7 +126,7 @@
 
 ### `proptest`
 - **Package:** `proptest`
-- **Capability:** Testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Property testing and shrinking, when the current codebase demonstrably needs it.
 - **Anti-fit:** A compact deterministic case set exercises the relevant invariant.
@@ -142,7 +142,7 @@
 
 ### `rustls`
 - **Package:** `rustls`
-- **Capability:** Crypto
+- **Capability:** C15 — Security & Cryptography
 - **Language/runtime:** Rust / Cargo
 - **Fit:** TLS protocol in Rust, when the current codebase demonstrably needs it.
 - **Anti-fit:** TLS is already handled by the chosen HTTP client or platform stack.
@@ -158,7 +158,7 @@
 
 ### `rmcp`
 - **Package:** `rmcp`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Official Tokio-based Rust MCP server/client SDK with tool macros and configurable transports.
 - **Anti-fit:** No MCP boundary or simpler reqwest service client suffices.
@@ -174,7 +174,7 @@
 
 ### `tonic`
 - **Package:** `tonic`
-- **Capability:** RPC / streaming
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Rust async gRPC client/server based on generated typed Protobuf contracts.
 - **Anti-fit:** Simple HTTP/JSON or an already-supported axum route.
@@ -190,7 +190,7 @@
 
 ### `rayon`
 - **Package:** `rayon`
-- **Capability:** CPU parallelism
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Rust / Cargo
 - **Fit:** Data-parallel iterator and fork-join workloads that benefit from multicore CPU execution.
 - **Anti-fit:** Async I/O, small workloads or already adequate sequential iteration.

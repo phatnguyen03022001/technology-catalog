@@ -14,7 +14,7 @@
 
 ### `go-chi/chi`
 - **Package:** `github.com/go-chi/chi/v5`
-- **Capability:** HTTP
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Go / Go modules
 - **Fit:** Composable routing with net/http, when the current codebase demonstrably needs it.
 - **Anti-fit:** net/http ServeMux already supports the required routes.
@@ -30,7 +30,7 @@
 
 ### `jackc/pgx`
 - **Package:** `github.com/jackc/pgx/v5`
-- **Capability:** Database
+- **Capability:** C08 — Persistence
 - **Language/runtime:** Go / Go modules
 - **Fit:** PostgreSQL wire driver and pooling, when the current codebase demonstrably needs it.
 - **Anti-fit:** The workload is not PostgreSQL or an existing database/sql driver suffices.
@@ -46,7 +46,7 @@
 
 ### `rs/zerolog`
 - **Package:** `github.com/rs/zerolog`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** Go / Go modules
 - **Fit:** Structured application logging, when the current codebase demonstrably needs it.
 - **Anti-fit:** Built-in log/slog already meets structured logging needs.
@@ -62,7 +62,7 @@
 
 ### `stretchr/testify`
 - **Package:** `github.com/stretchr/testify`
-- **Capability:** Testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** Go / Go modules
 - **Fit:** Assertions and test doubles, when the current codebase demonstrably needs it.
 - **Anti-fit:** Standard testing comparisons are clearer and adequate.
@@ -78,7 +78,7 @@
 
 ### `google/go-cmp`
 - **Package:** `github.com/google/go-cmp`
-- **Capability:** Testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** Go / Go modules
 - **Fit:** Readable structural test differences, when the current codebase demonstrably needs it.
 - **Anti-fit:** Simple equality checks provide enough failure information.
@@ -94,7 +94,7 @@
 
 ### `spf13/cobra`
 - **Package:** `github.com/spf13/cobra`
-- **Capability:** CLI
+- **Capability:** C19 — Developer Tooling
 - **Language/runtime:** Go / Go modules
 - **Fit:** CLI command trees and completion, when the current codebase demonstrably needs it.
 - **Anti-fit:** The program has only basic flags without a command hierarchy.
@@ -110,7 +110,7 @@
 
 ### `golang/sync`
 - **Package:** `golang.org/x/sync`
-- **Capability:** Async
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Go / Go modules
 - **Fit:** errgroup and concurrency control, when the current codebase demonstrably needs it.
 - **Anti-fit:** sync.WaitGroup, context and channels already cover concurrency.
@@ -126,7 +126,7 @@
 
 ### `golang/crypto`
 - **Package:** `golang.org/x/crypto`
-- **Capability:** Crypto
+- **Capability:** C15 — Security & Cryptography
 - **Language/runtime:** Go / Go modules
 - **Fit:** Additional crypto primitives, when the current codebase demonstrably needs it.
 - **Anti-fit:** Standard crypto packages already provide vetted required algorithms.
@@ -142,7 +142,7 @@
 
 ### `openai/openai-go`
 - **Package:** `github.com/openai/openai-go`
-- **Capability:** AI
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Go / Go modules
 - **Fit:** Typed OpenAI API calls, when the current codebase demonstrably needs it.
 - **Anti-fit:** An existing SDK or vendor-neutral protocol satisfies the API contract.
@@ -158,7 +158,7 @@
 
 ### `modelcontextprotocol/go-sdk`
 - **Package:** `github.com/modelcontextprotocol/go-sdk`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Go / Go modules
 - **Fit:** Official Go SDK for MCP servers, clients, transports and protocol negotiation.
 - **Anti-fit:** Only simple REST/model calls; no MCP protocol exchange required.
@@ -174,7 +174,7 @@
 
 ### `grpc`
 - **Package:** `google.golang.org/grpc`
-- **Capability:** RPC / streaming
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Go / Go modules
 - **Fit:** Protobuf-based typed inter-service RPC and streaming when schemas, deadlines and streaming matter.
 - **Anti-fit:** Simple public CRUD endpoints with JSON and low operational complexity.
@@ -190,7 +190,7 @@
 
 ### `otel/sdk`
 - **Package:** `go.opentelemetry.io/otel/sdk`
-- **Capability:** Telemetry SDK
+- **Capability:** C18 — Observability
 - **Language/runtime:** Go / Go modules
 - **Fit:** Go tracing SDK for processing spans in independently observed network services; metrics use the separate `go.opentelemetry.io/otel/sdk/metric` module.
 - **Anti-fit:** log/slog sufficient or managed instrumentation already handles required telemetry.
@@ -206,7 +206,7 @@
 
 ### `hibiken/asynq`
 - **Package:** `github.com/hibiken/asynq`
-- **Capability:** Durable jobs
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Go / Go modules
 - **Fit:** Redis-backed at-least-once background jobs, retries and scheduled processing.
 - **Anti-fit:** Only best-effort goroutines or an established broker/managed queue suffices.

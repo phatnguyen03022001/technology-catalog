@@ -14,7 +14,7 @@
 
 ### `zod`
 - **Package:** `zod`
-- **Capability:** Validation
+- **Capability:** C07 — Data Contracts
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Parse untrusted runtime data, when the current codebase demonstrably needs it.
 - **Anti-fit:** Only compile-time types or already validated boundaries are involved.
@@ -30,7 +30,7 @@
 
 ### `valibot`
 - **Package:** `valibot`
-- **Capability:** Validation
+- **Capability:** C07 — Data Contracts
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Composable typed validation schemas, when the current codebase demonstrably needs it.
 - **Anti-fit:** Existing runtime schemas meet requirements; bundle change alone does not justify migration.
@@ -46,7 +46,7 @@
 
 ### `undici`
 - **Package:** `undici`
-- **Capability:** HTTP
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Advanced Node HTTP client and pool, when the current codebase demonstrably needs it.
 - **Anti-fit:** Native Node fetch or browser fetch is sufficient.
@@ -62,7 +62,7 @@
 
 ### `pino`
 - **Package:** `pino`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Structured JSON server logging, when the current codebase demonstrably needs it.
 - **Anti-fit:** Browser-only work or an existing structured logger meets needs.
@@ -78,7 +78,7 @@
 
 ### `vitest`
 - **Package:** `vitest`
-- **Capability:** Testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** TypeScript / npm
 - **Fit:** TS/ESM-aware unit tests, when the current codebase demonstrably needs it.
 - **Anti-fit:** An established test runner handles current ESM/TS workflow.
@@ -94,7 +94,7 @@
 
 ### `kysely`
 - **Package:** `kysely`
-- **Capability:** Database
+- **Capability:** C08 — Persistence
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Typed SQL query builder, when the current codebase demonstrably needs it.
 - **Anti-fit:** An existing database access layer provides equivalent query safety.
@@ -110,7 +110,7 @@
 
 ### `jose`
 - **Package:** `jose`
-- **Capability:** Crypto
+- **Capability:** C15 — Security & Cryptography
 - **Language/runtime:** TypeScript / npm
 - **Fit:** JOSE token and key operations, when the current codebase demonstrably needs it.
 - **Anti-fit:** Opaque sessions or an existing vetted authentication library cover requirements.
@@ -126,7 +126,7 @@
 
 ### `@opentelemetry/api`
 - **Package:** `@opentelemetry/api`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Telemetry instrumentation API, when the current codebase demonstrably needs it.
 - **Anti-fit:** No instrumentation contract exists, or existing telemetry API suffices.
@@ -142,7 +142,7 @@
 
 ### `openai`
 - **Package:** `openai`
-- **Capability:** AI
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Typed OpenAI model client, when the current codebase demonstrably needs it.
 - **Anti-fit:** Existing API client works or calling model APIs is unnecessary.
@@ -158,7 +158,7 @@
 
 ### `@modelcontextprotocol/server`
 - **Package:** `@modelcontextprotocol/server`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Official v2 MCP server SDK exposing tools, prompts and resources; stdio/HTTP transports, runtime adapters as needed.
 - **Anti-fit:** Ordinary REST endpoints or no MCP interoperability.
@@ -174,7 +174,7 @@
 
 ### `@modelcontextprotocol/client`
 - **Package:** `@modelcontextprotocol/client`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Official v2 MCP client SDK for tool/resource operations and stdio/HTTP server connectivity.
 - **Anti-fit:** Only hosted model API or ordinary HTTP services without MCP.
@@ -190,7 +190,7 @@
 
 ### `@playwright/test`
 - **Package:** `@playwright/test`
-- **Capability:** Browser testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Browser-driven cross-browser E2E and UI regression tests for real interactive applications.
 - **Anti-fit:** Unit-only services, library code or static checks without browser behavior.
@@ -206,7 +206,7 @@
 
 ### `@opentelemetry/sdk-trace`
 - **Package:** `@opentelemetry/sdk-trace`
-- **Capability:** Tracing SDK
+- **Capability:** C18 — Observability
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Create/process trace spans, complementary to @opentelemetry/api; export requires a span exporter configured separately.
 - **Anti-fit:** No distributed tracing requirement or existing telemetry SDK is sufficient.
@@ -222,7 +222,7 @@
 
 ### `ai`
 - **Package:** `ai`
-- **Capability:** Multi-provider AI SDK
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** TypeScript / npm
 - **Fit:** Typed model integration, streaming and provider abstraction when several providers/use cases warrant it.
 - **Anti-fit:** One provider with an existing official SDK or simple HTTP calls; migration adds unnecessary abstraction.

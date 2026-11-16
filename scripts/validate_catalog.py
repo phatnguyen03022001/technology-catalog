@@ -311,6 +311,25 @@ def library_document_errors() -> list[str]:
         errors.append("libraries/README.md unindexed or missing library document")
     if (ROOT / "README.md").read_text(encoding="utf-8").count("(libraries/README.md)") != 1:
         errors.append("README.md missing or duplicate library navigation")
+    # Canonical taxonomy is defined only in the library index.
+    taxonomy = index.read_text(encoding="utf-8").split("## Canonical primary capabilities\n", 1)
+    if len(taxonomy) != 2:
+        errors.append("libraries/README.md missing canonical primary capabilities")
+        definitions = []
+    else:
+        section = taxonomy[1].split("\n## ", 1)[0]
+        definitions = re.findall(r"(?m)^\| (C\d{2}) \| ([^|]+) \|$", section)
+    ids = [ident for ident, _ in definitions]
+    capability_names = [label.strip() for _, label in definitions]
+    if len(definitions) != 20:
+        errors.append("libraries/README.md requires exactly 20 canonical capability definitions")
+    if len(set(ids)) != len(ids):
+        errors.append("libraries/README.md duplicate canonical capability ID")
+    if ids != [f"C{i:02d}" for i in range(1, 21)]:
+        errors.append("libraries/README.md canonical IDs must be C01 through C20 in order")
+    if any(not label for label in capability_names) or len(set(capability_names)) != len(capability_names):
+        errors.append("libraries/README.md missing or duplicate canonical capability name")
+    allowed_capabilities = {f"{ident} — {label.strip()}" for ident, label in definitions}
     required = ("Package", "Capability", "Language/runtime", "Fit", "Anti-fit",
                 "Fallback", "Compatibility", "Maintenance", "License",
                 "Official source", "Evidence status", "Evidence reviewed",
@@ -364,6 +383,8 @@ def library_document_errors() -> list[str]:
                 reason = source_url_error(url)
                 if reason:
                     errors.append(f"{prefix}: invalid official source: {reason}")
+            if fields["Capability"] not in allowed_capabilities:
+                errors.append(f"{prefix}: invalid primary capability {fields['Capability']!r}")
             if not fields["Language/runtime"].startswith(labels.get(doc.stem, "\0")):
                 errors.append(f"{prefix}: language/runtime mismatch")
             for key, value in fields.items():

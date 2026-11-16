@@ -14,7 +14,7 @@
 
 ### `pydantic`
 - **Package:** `pydantic`
-- **Capability:** Validation
+- **Capability:** C07 — Data Contracts
 - **Language/runtime:** Python / PyPI
 - **Fit:** Validated typed input contracts, when the current codebase demonstrably needs it.
 - **Anti-fit:** Internal dataclasses with no untrusted runtime parsing are sufficient.
@@ -30,7 +30,7 @@
 
 ### `httpx`
 - **Package:** `httpx`
-- **Capability:** HTTP
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Python / PyPI
 - **Fit:** Sync/async pooled HTTP requests, when the current codebase demonstrably needs it.
 - **Anti-fit:** A few synchronous requests are adequately handled by urllib.
@@ -46,7 +46,7 @@
 
 ### `SQLAlchemy`
 - **Package:** `SQLAlchemy`
-- **Capability:** Database
+- **Capability:** C08 — Persistence
 - **Language/runtime:** Python / PyPI
 - **Fit:** SQL expression and ORM access, when the current codebase demonstrably needs it.
 - **Anti-fit:** Simple sqlite3 or a working existing driver is sufficient.
@@ -62,7 +62,7 @@
 
 ### `pytest`
 - **Package:** `pytest`
-- **Capability:** Testing
+- **Capability:** C17 — Testing & QA
 - **Language/runtime:** Python / PyPI
 - **Fit:** Fixtures and parametrized tests, when the current codebase demonstrably needs it.
 - **Anti-fit:** Current unittest suite already supports the needed assertions and fixtures.
@@ -78,7 +78,7 @@
 
 ### `structlog`
 - **Package:** `structlog`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** Python / PyPI
 - **Fit:** Structured event log pipelines, when the current codebase demonstrably needs it.
 - **Anti-fit:** Standard logging meets output format and privacy requirements.
@@ -94,7 +94,7 @@
 
 ### `tenacity`
 - **Package:** `tenacity`
-- **Capability:** Retry / resilience
+- **Capability:** C14 — Resilience & Errors
 - **Language/runtime:** Python / PyPI
 - **Fit:** Bounded retry and backoff policies, when the current codebase demonstrably needs it.
 - **Anti-fit:** Retries are unsafe for side effects, or a small explicit loop suffices.
@@ -110,7 +110,7 @@
 
 ### `openai`
 - **Package:** `openai`
-- **Capability:** AI
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Python / PyPI
 - **Fit:** Typed OpenAI model client, when the current codebase demonstrably needs it.
 - **Anti-fit:** Existing model client already covers required endpoints.
@@ -126,7 +126,7 @@
 
 ### `cryptography`
 - **Package:** `cryptography`
-- **Capability:** Crypto
+- **Capability:** C15 — Security & Cryptography
 - **Language/runtime:** Python / PyPI
 - **Fit:** Cryptographic operations and key handling, when the current codebase demonstrably needs it.
 - **Anti-fit:** Standard hashlib, hmac, ssl or secrets provide the necessary primitives.
@@ -142,7 +142,7 @@
 
 ### `typer`
 - **Package:** `typer`
-- **Capability:** CLI
+- **Capability:** C19 — Developer Tooling
 - **Language/runtime:** Python / PyPI
 - **Fit:** Typed multi-command CLI, when the current codebase demonstrably needs it.
 - **Anti-fit:** One script with small argument set is clearer with argparse.
@@ -158,7 +158,8 @@
 
 ### `numpy`
 - **Package:** `numpy`
-- **Capability:** Numerical / data processing
+- **Capability:** C16 — Performance & Cache
+- **Tags:** `numerical-computing`
 - **Language/runtime:** Python / PyPI
 - **Fit:** Dense arrays and numerical operations, when the current codebase demonstrably needs it.
 - **Anti-fit:** Small scalar, iterator or streaming workload does not benefit from dense arrays.
@@ -174,7 +175,7 @@
 
 ### `mcp`
 - **Package:** `mcp`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Python / PyPI
 - **Fit:** Official MCP Python client/server SDK for tools, resources and prompts over stdio, Streamable HTTP and legacy SSE.
 - **Anti-fit:** A conventional HTTP/model client with no MCP interoperability requirement.
@@ -190,7 +191,7 @@
 
 ### `celery`
 - **Package:** `celery`
-- **Capability:** Durable jobs
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Python / PyPI
 - **Fit:** Broker-backed distributed task queue when tasks must survive process exit and workers scale independently.
 - **Anti-fit:** Short best-effort work or no broker/operations capacity.
@@ -206,7 +207,7 @@
 
 ### `psycopg`
 - **Package:** `psycopg`
-- **Capability:** PostgreSQL driver
+- **Capability:** C08 — Persistence
 - **Language/runtime:** Python / PyPI
 - **Fit:** PostgreSQL protocol access and optional pooling where direct SQL/driver control is preferred.
 - **Anti-fit:** No PostgreSQL, or an existing SQLAlchemy/driver stack already suffices.
@@ -222,7 +223,8 @@
 
 ### `polars`
 - **Package:** `polars`
-- **Capability:** Data processing
+- **Capability:** C16 — Performance & Cache
+- **Tags:** `columnar-analytics`
 - **Language/runtime:** Python / PyPI
 - **Fit:** Columnar DataFrames and lazy analytical queries for sizeable batch/data transformations.
 - **Anti-fit:** Small iterators/scalars, SQL-only analytics or existing NumPy pipeline suffice.
@@ -238,7 +240,7 @@
 
 ### `transformers`
 - **Package:** `transformers`
-- **Capability:** Model integration
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Python / PyPI
 - **Fit:** Python-native loading/running of pretrained models when local inference or training workflows demand it.
 - **Anti-fit:** Only hosted API calls or an existing model runtime handles inference.
@@ -254,7 +256,7 @@
 
 ### `opentelemetry-sdk`
 - **Package:** `opentelemetry-sdk`
-- **Capability:** Telemetry SDK
+- **Capability:** C18 — Observability
 - **Language/runtime:** Python / PyPI
 - **Fit:** Generate/process Python spans and metrics for distributed observability, with separately configured exporters.
 - **Anti-fit:** Simple standard logging is sufficient or existing telemetry system already instrumented.

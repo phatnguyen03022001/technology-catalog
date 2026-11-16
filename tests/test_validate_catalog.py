@@ -404,5 +404,79 @@ class CatalogMutationTests(unittest.TestCase):
         self.validate(0, "STRUCTURE PASS")
 
 
+    def test_library_taxonomy_inventory_and_selection_snapshot(self):
+        index = (self.root / "libraries" / "README.md").read_text()
+        section = index.split("## Canonical primary capabilities\n", 1)[1].split("\n## ", 1)[0]
+        definitions = re.findall(r"(?m)^\| (C\d{2}) \| ([^|]+) \|$", section)
+        self.assertEqual(len(definitions), 20)
+        self.assertEqual([ident for ident, _ in definitions],
+                         [f"C{i:02d}" for i in range(1, 21)])
+        self.assertEqual(len({label.strip() for _, label in definitions}), 20)
+        allowed = {f"{ident} — {label.strip()}" for ident, label in definitions}
+        expected_packages = {
+            "typescript": {"@modelcontextprotocol/client", "@modelcontextprotocol/server", "@opentelemetry/api", "@opentelemetry/sdk-trace", "@playwright/test", "ai", "jose", "kysely", "openai", "pino", "undici", "valibot", "vitest", "zod"},
+            "swift": {"apple/swift-algorithms", "apple/swift-argument-parser", "apple/swift-async-algorithms", "apple/swift-collections", "apple/swift-crypto", "apple/swift-distributed-tracing", "apple/swift-log", "apple/swift-nio", "apple/swift-openapi-generator", "apple/swift-system", "groue/GRDB.swift", "modelcontextprotocol/swift-sdk"},
+            "rust": {"clap", "proptest", "rayon", "reqwest", "rmcp", "rustls", "serde", "sqlx", "thiserror", "tokio", "tonic", "tracing"},
+            "go": {"github.com/go-chi/chi/v5", "github.com/google/go-cmp", "github.com/hibiken/asynq", "github.com/jackc/pgx/v5", "github.com/modelcontextprotocol/go-sdk", "github.com/openai/openai-go", "github.com/rs/zerolog", "github.com/spf13/cobra", "github.com/stretchr/testify", "go.opentelemetry.io/otel/sdk", "golang.org/x/crypto", "golang.org/x/sync", "google.golang.org/grpc"},
+            "python": {"celery", "cryptography", "httpx", "mcp", "numpy", "openai", "opentelemetry-sdk", "polars", "psycopg", "pydantic", "pytest", "SQLAlchemy", "structlog", "tenacity", "transformers", "typer"},
+        }
+        expected_nondefault_gates = {
+            "typescript/zod": "PARTIAL|BLOCKED",
+            "typescript/pino": "PARTIAL|BLOCKED",
+            "typescript/jose": "PARTIAL|BLOCKED",
+            "swift/modelcontextprotocol/swift-sdk": "PARTIAL|BLOCKED",
+            "python/mcp": "PARTIAL|BLOCKED",
+        }
+        actual_nondefault_gates = {}
+        for language, identities in expected_packages.items():
+            body = (self.root / "libraries" / f"{language}.md").read_text()
+            entries = body.split("## Entries\n", 1)[1].split("\n## ", 1)[0]
+            chunks = re.split(r"(?m)^### `[^`\n]+`\s*$", entries)[1:]
+            self.assertEqual(len(chunks), len(identities), language)
+            actual = set()
+            for chunk in chunks:
+                def field(name):
+                    return re.findall(rf"(?m)^- \*\*{re.escape(name)}:\*\* (.+)$", chunk)
+                packages = field("Package")
+                primary = field("Capability")
+                status = field("Evidence status")
+                choice = field("Selection")
+                self.assertEqual(len(packages), 1)
+                self.assertEqual(len(primary), 1)
+                self.assertIn(primary[0], allowed)
+                self.assertEqual(len(status), 1)
+                self.assertEqual(len(choice), 1)
+                package = packages[0].strip("`")
+                actual.add(package)
+                gate = f"{status[0]}|{choice[0]}"
+                if gate != "VERIFIED|EVALUATE":
+                    actual_nondefault_gates[f"{language}/{package}"] = gate
+            self.assertEqual(actual, identities, language)
+        self.assertEqual(actual_nondefault_gates, expected_nondefault_gates)
+
+    def test_library_unknown_primary_capability_fails(self):
+        self.edit_library_field("Capability", lambda _: "C99 — Unrecognized")
+        self.validate(1, "invalid primary capability")
+
+    def test_library_multiple_primary_capabilities_fail(self):
+        self.edit_library_field("Capability", lambda value: value + ", C18 — Observability")
+        self.validate(1, "invalid primary capability")
+
+    def test_library_duplicate_canonical_id_fails(self):
+        path = self.root / "libraries" / "README.md"
+        body = path.read_text()
+        self.assertIn("| C02 | Animation & Visualization |", body)
+        path.write_text(body.replace("| C02 | Animation & Visualization |",
+                                     "| C01 | Animation & Visualization |", 1))
+        self.validate(1, "duplicate canonical capability ID")
+
+    def test_library_missing_canonical_id_fails(self):
+        path = self.root / "libraries" / "README.md"
+        body = path.read_text()
+        self.assertIn("| C20 | AI & Integrations |", body)
+        path.write_text(body.replace("| C20 | AI & Integrations |\n", "", 1))
+        self.validate(1, "exactly 20 canonical capability definitions")
+
+
 if __name__ == "__main__":
     unittest.main()

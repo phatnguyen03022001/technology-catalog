@@ -14,7 +14,8 @@
 
 ### `apple/swift-collections`
 - **Package:** `apple/swift-collections`
-- **Capability:** Data structures
+- **Capability:** C16 — Performance & Cache
+- **Tags:** `collections`
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Deque and specialized collections, when the current codebase demonstrably needs it.
 - **Anti-fit:** Array, Set, Dictionary and native collection types suffice.
@@ -30,7 +31,8 @@
 
 ### `apple/swift-algorithms`
 - **Package:** `apple/swift-algorithms`
-- **Capability:** Data structures
+- **Capability:** C16 — Performance & Cache
+- **Tags:** `collection-algorithms`
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Sequence and collection algorithms, when the current codebase demonstrably needs it.
 - **Anti-fit:** Standard Sequence APIs or a clear loop solve the task.
@@ -46,7 +48,7 @@
 
 ### `apple/swift-argument-parser`
 - **Package:** `apple/swift-argument-parser`
-- **Capability:** CLI
+- **Capability:** C19 — Developer Tooling
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Typed Swift command line parsing, when the current codebase demonstrably needs it.
 - **Anti-fit:** Small CLI options need only CommandLine.arguments.
@@ -62,7 +64,7 @@
 
 ### `apple/swift-log`
 - **Package:** `apple/swift-log`
-- **Capability:** Observability
+- **Capability:** C18 — Observability
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Common Swift logging API, when the current codebase demonstrably needs it.
 - **Anti-fit:** Apple-only app already uses adequate OSLog instrumentation.
@@ -78,7 +80,7 @@
 
 ### `apple/swift-crypto`
 - **Package:** `apple/swift-crypto`
-- **Capability:** Crypto
+- **Capability:** C15 — Security & Cryptography
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** CryptoKit-like cross-platform APIs, when the current codebase demonstrably needs it.
 - **Anti-fit:** Apple CryptoKit covers the supported target platforms.
@@ -94,7 +96,7 @@
 
 ### `apple/swift-nio`
 - **Package:** `apple/swift-nio`
-- **Capability:** HTTP
+- **Capability:** C09 — API & Networking
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Custom event-loop networking, when the current codebase demonstrably needs it.
 - **Anti-fit:** URLSession handles normal Apple app HTTP traffic.
@@ -110,7 +112,7 @@
 
 ### `apple/swift-async-algorithms`
 - **Package:** `apple/swift-async-algorithms`
-- **Capability:** Async
+- **Capability:** C13 — Async & Messaging
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** AsyncSequence combinators, when the current codebase demonstrably needs it.
 - **Anti-fit:** Basic AsyncSequence iteration and transformation suffice.
@@ -126,7 +128,7 @@
 
 ### `groue/GRDB.swift`
 - **Package:** `groue/GRDB.swift`
-- **Capability:** Database
+- **Capability:** C08 — Persistence
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** SQLite data persistence, when the current codebase demonstrably needs it.
 - **Anti-fit:** Existing SwiftData/Core Data/SQLite stack satisfies persistence needs.
@@ -142,7 +144,8 @@
 
 ### `apple/swift-system`
 - **Package:** `apple/swift-system`
-- **Capability:** Systems
+- **Capability:** C12 — Media & Files
+- **Tags:** `file-descriptors`
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Typed system and file descriptors, when the current codebase demonstrably needs it.
 - **Anti-fit:** Foundation FileManager and FileHandle cover filesystem operations.
@@ -158,7 +161,7 @@
 
 ### `modelcontextprotocol/swift-sdk`
 - **Package:** `modelcontextprotocol/swift-sdk`
-- **Capability:** Agentic / MCP
+- **Capability:** C20 — AI & Integrations
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Official Swift MCP client/server SDK using SwiftPM for Apple-native or compatible Swift server tools.
 - **Anti-fit:** No MCP interoperability; a normal app HTTP client via URLSession suffices.
@@ -174,7 +177,7 @@
 
 ### `apple/swift-openapi-generator`
 - **Package:** `apple/swift-openapi-generator`
-- **Capability:** Generated API contracts
+- **Capability:** C07 — Data Contracts
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Generate Swift client/server API models from OpenAPI when cross-language contracts are maintained.
 - **Anti-fit:** Simple few-endpoint Codable + URLSession app; no shared OpenAPI schema.
@@ -190,7 +193,7 @@
 
 ### `apple/swift-distributed-tracing`
 - **Package:** `apple/swift-distributed-tracing`
-- **Capability:** Tracing API
+- **Capability:** C18 — Observability
 - **Language/runtime:** Swift / SwiftPM
 - **Fit:** Swift server/service-context tracing and instrumentation interfaces, with a separately configured backend/exporter.
 - **Anti-fit:** Apple-only app already adequately instrumented with OSLog; no cross-service trace requirement.
