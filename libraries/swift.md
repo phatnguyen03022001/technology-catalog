@@ -253,7 +253,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/pointfreeco/swift-composable-architecture); [tag manifest](https://github.com/pointfreeco/swift-composable-architecture/blob/1.26.2/Package.swift); [tag license](https://github.com/pointfreeco/swift-composable-architecture/blob/1.26.2/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Compiler/toolchain macro support, strict concurrency, MainActor isolation, reducer cancellation, transitive swift-syntax constraints and target build not tested. Advisory and overhead measurements pending.
 - **Selection:** EVALUATE
 
@@ -270,7 +270,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/kean/Nuke); [tag manifest](https://github.com/kean/Nuke/blob/13.2.3/Package.swift); [tag license](https://github.com/kean/Nuke/blob/13.2.3/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Actor isolation, cancellation during cell reuse, cache size, image privacy, accessibility, exact Xcode build and device performance not tested; advisory exposure pending.
 - **Selection:** EVALUATE
 
@@ -287,7 +287,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** Apache-2.0
 - **Official source:** [upstream](https://github.com/airbnb/lottie-ios); [tag manifest](https://github.com/airbnb/lottie-ios/blob/4.6.1/Package.swift); [tag license](https://github.com/airbnb/lottie-ios/blob/4.6.1/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Animation asset rights, reduced-motion alternatives, VoiceOver, MainActor, binary provenance, size and real-device animation cost not tested; security advisory exposure pending.
 - **Selection:** EVALUATE
 
@@ -304,7 +304,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/pointfreeco/swift-snapshot-testing); [tag manifest](https://github.com/pointfreeco/swift-snapshot-testing/blob/1.19.7/Package.swift); [tag license](https://github.com/pointfreeco/swift-snapshot-testing/blob/1.19.7/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Cross-OS/font/dynamic-type snapshot parity, physical device, Swift 6 test isolation, CI consistency and accessibility are unverified; advisory and runtime costs pending.
 - **Selection:** EVALUATE
 
@@ -321,7 +321,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/realm/SwiftLint); [tag manifest](https://github.com/realm/SwiftLint/blob/0.65.1/Package.swift); [tag license](https://github.com/realm/SwiftLint/blob/0.65.1/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Swift 6 rule compatibility, exact Xcode/SwiftSyntax builds, plugin sandbox and CI integration not tested; advisories and run-time cost pending.
 - **Selection:** EVALUATE
 
@@ -338,7 +338,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/nicklockwood/SwiftFormat); [tag manifest](https://github.com/nicklockwood/SwiftFormat/blob/0.64.7/Package.swift); [tag license](https://github.com/nicklockwood/SwiftFormat/blob/0.64.7/LICENSE.md)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Swift 6 syntax handling, exact host/CI compiler and destructive rewrite review not tested; advisory and operational costs pending.
 - **Selection:** EVALUATE
 
@@ -355,7 +355,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **License:** MIT
 - **Official source:** [upstream](https://github.com/RevenueCat/purchases-ios); [tag manifest](https://github.com/RevenueCat/purchases-ios/blob/5.103.0/Package.swift); [tag license](https://github.com/RevenueCat/purchases-ios/blob/5.103.0/LICENSE)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-17
+- **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Vendor pricing, privacy, entitlement consistency, offline operation, StoreKit/App Store policy, Swift 6 strict concurrency and vendor exit unverified. No pricing/production approval; advisory and TCO work pending.
 - **Selection:** EVALUATE
 
