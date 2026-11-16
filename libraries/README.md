@@ -4,7 +4,7 @@
 
 | Language | Entries | Scope | Link |
 |---|---:|---|---|
-| Rust | 12 | Async, HTTP, serialization, DB, CLI, tests, security | [Rust](rust.md) |
+| Rust | 20 | Axum/Tower HTTP, contracts, DB, crypto, cache, testing, tracing and AI | [Rust](rust.md) |
 | Go | 13 | HTTP, DB, concurrency, logging, tests, CLI, AI | [Go](go.md) |
 | TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
 | Python | 16 | Validation, HTTP, data, retry, tests, AI | [Python](python.md) |

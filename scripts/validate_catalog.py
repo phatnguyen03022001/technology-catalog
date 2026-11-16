@@ -366,7 +366,7 @@ def library_document_errors() -> list[str]:
             if re.search(r"\s", package):
                 errors.append(f"{prefix}: invalid package identity")
             source = {
-                "rust": f"https://docs.rs/{package}/latest/{package}/",
+                "rust": f"https://docs.rs/{package}/latest/{package.replace(chr(45), chr(95))}/",
                 "go": f"https://pkg.go.dev/{package}@",
                 "typescript": f"https://registry.npmjs.org/{package}/latest",
                 "python": f"https://pypi.org/project/{package}/",

@@ -397,6 +397,14 @@ class CatalogMutationTests(unittest.TestCase):
         self.edit_library_field("Official source", lambda _: "[fake](https://github.com/unrelated/repo)")
         self.validate(1, "official source does not match package identity")
 
+    def test_hyphenated_rustdoc_identity_is_strict(self):
+        path = self.root / "libraries" / "rust.md"
+        content = path.read_text(encoding="utf-8")
+        good = "https://docs.rs/tower-http/latest/tower_http/"
+        self.assertIn(good, content)
+        path.write_text(content.replace(good, "https://docs.rs/tower-http/latest/other_http/", 1), encoding="utf-8")
+        self.validate(1, "official source does not match package identity")
+
     def test_library_safe_partial_downgrade_passes(self):
         self.edit_library_field("Compatibility", lambda _: "UNKNOWN")
         self.edit_library_field("Evidence status", lambda _: "PARTIAL")
@@ -416,7 +424,7 @@ class CatalogMutationTests(unittest.TestCase):
         expected_packages = {
             "typescript": {"@modelcontextprotocol/client", "@modelcontextprotocol/server", "@opentelemetry/api", "@opentelemetry/sdk-trace", "@playwright/test", "@reduxjs/toolkit", "@tanstack/react-query", "@tanstack/react-table", "@tanstack/react-virtual", "@testing-library/react", "ai", "better-auth", "fuse.js", "jose", "jotai", "kysely", "motion", "next-intl", "openai", "pino", "radix-ui", "react-dropzone", "react-hook-form", "recharts", "swr", "undici", "valibot", "vitest", "zod", "zustand"},
             "swift": {"RevenueCat/purchases-ios", "airbnb/lottie-ios", "apple/swift-algorithms", "apple/swift-argument-parser", "apple/swift-async-algorithms", "apple/swift-collections", "apple/swift-crypto", "apple/swift-distributed-tracing", "apple/swift-log", "apple/swift-nio", "apple/swift-openapi-generator", "apple/swift-system", "groue/GRDB.swift", "kean/Nuke", "modelcontextprotocol/swift-sdk", "nicklockwood/SwiftFormat", "pointfreeco/swift-composable-architecture", "pointfreeco/swift-snapshot-testing", "realm/SwiftLint"},
-            "rust": {"clap", "proptest", "rayon", "reqwest", "rmcp", "rustls", "serde", "sqlx", "thiserror", "tokio", "tonic", "tracing"},
+            "rust": {"argon2", "axum-extra", "axum-test", "clap", "garde", "moka", "proptest", "rayon", "reqwest", "rmcp", "rustls", "serde", "sqlx", "thiserror", "tokio", "tonic", "tower-http", "tracing", "tracing-subscriber", "utoipa"},
             "go": {"github.com/go-chi/chi/v5", "github.com/google/go-cmp", "github.com/hibiken/asynq", "github.com/jackc/pgx/v5", "github.com/modelcontextprotocol/go-sdk", "github.com/openai/openai-go", "github.com/rs/zerolog", "github.com/spf13/cobra", "github.com/stretchr/testify", "go.opentelemetry.io/otel/sdk", "golang.org/x/crypto", "golang.org/x/sync", "google.golang.org/grpc"},
             "python": {"celery", "cryptography", "httpx", "mcp", "numpy", "openai", "opentelemetry-sdk", "polars", "psycopg", "pydantic", "pytest", "SQLAlchemy", "structlog", "tenacity", "transformers", "typer"},
         }
