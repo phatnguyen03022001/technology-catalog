@@ -1,6 +1,6 @@
 # Libraries — curated reusable packages
 
-**Reviewed:** 2026-11-16. Package discovery (Awesome lists, TopGit, lib.rs) is not quality authority; records were reviewed through official registries or upstream repositories. The catalog never substitutes for project-specific acceptance.
+**Reviewed:** 2026-11-17. Package discovery (Awesome lists, TopGit, lib.rs) is not quality authority; records were reviewed through official registries or upstream repositories. The catalog never substitutes for project-specific acceptance.
 
 | Language | Entries | Scope | Link |
 |---|---:|---|---|
@@ -8,7 +8,7 @@
 | Go | 13 | HTTP, DB, concurrency, logging, tests, CLI, AI | [Go](go.md) |
 | TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
 | Python | 16 | Validation, HTTP, data, retry, tests, AI | [Python](python.md) |
-| Swift | 12 | Native systems, data, async, crypto, CLI | [Swift](swift.md) |
+| Swift | 19 | SwiftUI-native integrations, media, tooling, data and systems | [Swift](swift.md) |
 
 ## Canonical primary capabilities
 
