@@ -35,7 +35,7 @@ class MonitorTests(unittest.TestCase):
             for layer in ("languages", "frameworks", "decisions")
         }
         expected["libraries"] = sum(
-            len(re.findall(r"(?m)^### ", p.read_text()))
+            len(re.findall(r"(?m)^### `[^`\n]+`$", p.read_text()))
             for p in (ROOT / "libraries").glob("*.md") if p.name != "README.md"
         )
         expected["providers"] = sum(
