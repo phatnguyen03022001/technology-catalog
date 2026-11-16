@@ -1,6 +1,6 @@
 # TypeScript — curated libraries
 
-**Reviewed:** 2026-11-01. Reusable code packages only, never framework or managed service production approvals.
+**Reviewed:** 2026-11-16. Reusable code packages only, never framework or managed service production approvals.
 
 ## Dependency choice
 
@@ -9,6 +9,43 @@
 - **Keep:** do not migrate merely because a package appears in the catalog or has a newer release.
 - **Remove/replace:** prove need, test compatibility and preserve a rollback path.
 - **Verify:** target toolchain, platform, license, security advisories, dependency tree and realistic workload.
+
+## Next.js / React capability screening (reviewed 2026-11-16 UTC)
+
+All 20 canonical capabilities were screened for Next.js App Router. **Comparison is not an installation list.** Native or already-suitable packages win unless an actual application requirement proves a gap. React packages are not presumed compatible with Server Components, Edge, static export or every Node/runtime target; test pinned versions and deployment mode. Official upstream docs were reviewed on 2026-11-16 UTC; package release recency, bundled-size and security advisory checks are not pinned workload evidence.
+
+| Capability | Native/existing first | Conditional package choice or exclusion |
+|---|---|---|
+| C01 | Native semantic HTML/CSS; accessible primitives only for complex interaction | radix-ui for headless UI; @tanstack/react-table for advanced table state; shadcn/ui is copied source/registry, not a normal runtime package |
+| C02 | CSS transitions, keyframes and SVG before JS animation | motion for coordinated gestures/layout; recharts for interactive charts; GSAP only for specialized timelines |
+| C03 | HTML form/FormData, useActionState, Server Actions, next/link and next/navigation | react-hook-form for complex field state; do not add a router to App Router |
+| C04 | Intl, lang attributes, proper semantics and keyboard support | next-intl for real locale routing/translations; no library replaces accessibility testing |
+| C05 | useState, useReducer, Context, URL search parameters | zustand for small shared state; Jotai for atoms; Redux Toolkit for structured complex state; no global server store |
+| C06 | Server Component fetch, React.cache, Next cache/revalidation | SWR or TanStack Query only for client sync/cache/mutations; never blindly duplicate server state |
+| C07 | Existing boundary checks; existing zod (BLOCKED), valibot (EVALUATE) | ArkType considered, not added: overlapping validation choice without specific contract advantage |
+| C08 | Direct driver/SQL and existing kysely where useful | Drizzle/Prisma not added: DB schema/tooling ownership and deployment need project-level comparison |
+| C09 | Native fetch/Route Handlers; existing undici for advanced Node HTTP | Axios/ky/GraphQL clients excluded without protocol or interceptor needs |
+| C10 | Next server cookies plus authorization-aware DAL and existing session layer | better-auth included PARTIAL/BLOCKED for conditional review; next-auth v5 remains beta in official guidance |
+| C11 | Server SQL indexes/full-text or local Array.filter | fuse.js only for bounded local fuzzy search, not ACL-sensitive server search |
+| C12 | input type=file, FormData, next/image, platform image/file APIs | react-dropzone only for drag-drop UX; server validation mandatory |
+| C13 | Route Handlers for request-scoped tasks; host scheduler or durable infrastructure when actually required | No generic queue SDK: background durability/retries are workload and deployment choices |
+| C14 | error.tsx, expected errors, AbortSignal and idempotent bounded retries | No new retry/error package without demonstrated needs; never blindly retry mutations |
+| C15 | Web Crypto and vetted existing auth/session layer; jose remains BLOCKED | No new token library until key/algorithm/runtime model verified |
+| C16 | Next caching, React memoization and measured rendering profiling | @tanstack/react-virtual only for measured large-list rendering bottlenecks |
+| C17 | Existing vitest and @playwright/test; node:test as simple fallback | @testing-library/react for DOM interactions; async RSC require E2E coverage |
+| C18 | Existing console/pino (BLOCKED), OTel API+SDK and Next instrumentation | No duplicate APM SDK absent actual incident, tracing or telemetry gap |
+| C19 | TypeScript compiler, Next build/lint, established test and formatting workflow | No standalone build/lint package merely to raise catalog count |
+| C20 | Existing openai, ai, official MCP client/server and native HTTP | No new provider SDK or MCP abstraction without explicit integration needs |
+
+### Source and selection boundaries
+
+- [Next.js Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) and [Fetching Data](https://nextjs.org/docs/app/getting-started/fetching-data): default server ownership and client boundary.
+- [Next.js Forms](https://nextjs.org/docs/app/guides/forms), [Authentication](https://nextjs.org/docs/app/guides/authentication), [Testing](https://nextjs.org/docs/app/guides/testing): native and security/test fallbacks.
+- [Redux App Router guidance](https://redux.js.org/usage/nextjs), [Zustand Next.js guidance](https://zustand.docs.pmnd.rs/learn/guides/nextjs), [Jotai Next.js guidance](https://jotai.org/docs/guides/nextjs): request isolation and hydration.
+- [TanStack Query App Router guidance](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr) and [SWR Next.js guidance](https://swr.vercel.app/docs/with-nextjs): client cache vs server ownership.
+- [Radix installation](https://www.radix-ui.com/primitives/docs/overview/introduction), [Motion Next.js instructions](https://motion.dev/docs/react-installation) and [Auth.js status](https://authjs.dev/getting-started/integrations): distributions, client constraints and auth maturity.
+
+Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components as an ordinary published runtime dependency. Accessible primitives still need application-level accessibility tests; client fetching needs explicit hydration/invalidation strategy; security-sensitive auth and file uploads always require trusted server checks. Versioned license, advisory, peer dependency, Node/Edge compatibility, bundle cost and support horizon must be checked against the actual app before adoption.
 
 ## Entries
 
@@ -234,6 +271,262 @@
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-02
 - **Unknowns:** Cross-provider APIs do not guarantee equivalent tools, structured output, token accounting, safety, cost, latency or error contracts. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
+### `radix-ui`
+- **Package:** `radix-ui`
+- **Capability:** C01 — UI & Design System
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Accessible unstyled interaction primitives (dialogs, menus, tooltips) when native HTML lacks the needed interaction semantics.
+- **Anti-fit:** Simple static markup or an existing accessible component system; it does not supply an entire styled design system.
+- **Fallback:** Semantic HTML, native dialog and current UI components.
+- **Compatibility:** React UI primitives; interactive parts belong behind a Next.js Client Component boundary; server-only rendering is not a universal substitute.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/radix-ui/latest); [upstream](https://github.com/radix-ui/primitives); [official integration/usage](https://www.radix-ui.com/primitives/docs/overview/introduction)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Official docs recommend the tree-shakeable radix-ui distribution; individually published @radix-ui/react-* packages are separate optional choices. Accessibility still needs application-level keyboard and screen-reader testing. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `@tanstack/react-table`
+- **Package:** `@tanstack/react-table`
+- **Capability:** C01 — UI & Design System
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Headless interactive tables with multiple sorting, filtering, pagination and selection concerns.
+- **Anti-fit:** Static HTML tables and simple server-paginated lists; table logic increases client complexity.
+- **Fallback:** Native table markup and server-side query/pagination.
+- **Compatibility:** React adapter for interactive client tables; distinguish v8 from v9 APIs when pinning a major and verify SSR state hydration.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-table/latest); [upstream](https://github.com/TanStack/table); [official integration/usage](https://tanstack.com/table/latest/docs/framework/react/guide/table-state)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Headless state engine, not styled components or a database search/index. Large row counts may separately justify virtualization; avoid shipping all rows to the browser. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `motion`
+- **Package:** `motion`
+- **Capability:** C02 — Animation & Visualization
+- **Language/runtime:** TypeScript / npm
+- **Fit:** React gesture, layout and coordinated animations beyond isolated CSS transitions.
+- **Anti-fit:** Simple hover/fade/color effects, reduced-motion requirements or animations already covered by CSS.
+- **Fallback:** CSS transitions/keyframes and Web Animations API.
+- **Compatibility:** Official Motion React guide requires React >=18.2; Next.js App Router uses a client boundary or the documented motion/react-client entrypoint.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/motion/latest); [upstream](https://github.com/motiondivision/motion); [official integration/usage](https://motion.dev/docs/react-installation)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Account for prefers-reduced-motion, client JS and hydration; no unmeasured frame-rate or bundle improvement claims. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `recharts`
+- **Package:** `recharts`
+- **Capability:** C02 — Animation & Visualization
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Composable interactive React charts for dashboards whose requirements exceed a small static SVG.
+- **Anti-fit:** Static reports, tiny sparklines and server-rendered SVG where client interaction adds no value.
+- **Fallback:** Native SVG/HTML and existing visualization components.
+- **Compatibility:** React chart components use client-side interactivity; upstream installation documents react-is matching the installed React version; test Next SSR and hydration.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/recharts/latest); [upstream](https://github.com/recharts/recharts); [official integration/usage](https://recharts.github.io/en-US/guide/)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Chart accessibility, data integrity, responsive sizing and chart rendering costs remain project-specific; no RSC/Edge execution guarantee. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `react-hook-form`
+- **Package:** `react-hook-form`
+- **Capability:** C03 — Forms & Navigation
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Complex interactive forms needing field state, dirty tracking, validation and controlled-component adapters.
+- **Anti-fit:** Small forms handled well by native HTML validation plus React/Next Server Actions; does not provide routing.
+- **Fallback:** Native form/FormData, useActionState and existing field handlers.
+- **Compatibility:** React hooks operate in Client Components; Server Actions can receive submissions but server-side validation and authorization remain required.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/react-hook-form/latest); [upstream](https://github.com/react-hook-form/react-hook-form); [official integration/usage](https://react-hook-form.com/get-started)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Form schema resolvers and controlled UI components are separate optional integrations; duplicate schema systems are not required. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `next-intl`
+- **Package:** `next-intl`
+- **Capability:** C04 — Accessibility & i18n
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Multi-locale Next.js apps requiring locale-aware translations, formatting and routing.
+- **Anti-fit:** Single-locale apps or built-in Intl plus small dictionaries already covering needs.
+- **Fallback:** Intl, semantic HTML, lang attributes and native Next.js routing.
+- **Compatibility:** Official App Router integration covers Server and Client Components; locale request configuration and routing must match deployment mode.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/next-intl/latest); [upstream](https://github.com/amannn/next-intl); [official integration/usage](https://next-intl.dev/docs/getting-started/app-router)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Internationalization is not automatic accessibility, translation review or content governance; Edge compatibility requires target build checks. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `zustand`
+- **Package:** `zustand`
+- **Capability:** C05 — State Management
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Shared mutable client UI state across several interactive components with small store APIs.
+- **Anti-fit:** State local to one component, URL state, server-fetched data or context/useReducer sufficient.
+- **Fallback:** useState, useReducer, React Context and searchParams.
+- **Compatibility:** Official Next.js guide requires per-request store creation and stable SSR hydration; React Server Components must not read/write the mutable store.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/zustand/latest); [upstream](https://github.com/pmndrs/zustand); [official integration/usage](https://zustand.docs.pmnd.rs/learn/guides/nextjs)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Never export a singleton server store holding request/user data; persist middleware and browser storage need SSR guards. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `@reduxjs/toolkit`
+- **Package:** `@reduxjs/toolkit`
+- **Capability:** C05 — State Management
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Complex globally shared mutable client state that benefits from Redux conventions, slices, middleware and debugging.
+- **Anti-fit:** Small isolated UI state, data already owned by the server, or projects not needing centralized Redux policies.
+- **Fallback:** React context/reducer, Zustand or existing state solution.
+- **Compatibility:** Official Redux Next.js App Router guide requires per-request store factory and Client Component Provider; React binding also needs react-redux.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/@reduxjs/toolkit/latest); [upstream](https://github.com/reduxjs/redux-toolkit); [official integration/usage](https://redux.js.org/usage/nextjs)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Never read/write Redux from RSC; avoid a module-global store and reset route-specific state on navigation where necessary. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `jotai`
+- **Package:** `jotai`
+- **Capability:** C05 — State Management
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Fine-grained shared client state composed from independent atoms and derived relationships.
+- **Anti-fit:** A few isolated useState values or an existing store that covers the application.
+- **Fallback:** useState/useReducer and existing Zustand/Redux if already deployed.
+- **Compatibility:** Official Next.js guide requires Provider to isolate SSR requests and explicit hydration for server-provided atom state.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/jotai/latest); [upstream](https://github.com/pmndrs/jotai); [official integration/usage](https://jotai.org/docs/guides/nextjs)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Avoid provider-less global stores during SSR; storage atoms need browser guards to prevent hydration mismatches. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `@tanstack/react-query`
+- **Package:** `@tanstack/react-query`
+- **Capability:** C06 — Remote Data & Sync
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Interactive client data with mutation state, invalidation, retries and multiple cached query lifecycles.
+- **Anti-fit:** Server Components plus native fetch already satisfy the feature or client cache is not needed.
+- **Fallback:** Server-side fetch, React.cache, Next revalidation and minimal client fetch.
+- **Compatibility:** Official Next.js App Router guide uses a Client Component QueryClientProvider and per-request server QueryClient for hydration.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-query/latest); [upstream](https://github.com/TanStack/query); [official integration/usage](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Do not use Server Actions as client queryFn; manage client/server data ownership and avoid hydration leaks or cache divergence. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `swr`
+- **Package:** `swr`
+- **Capability:** C06 — Remote Data & Sync
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Lightweight browser revalidation and deduplicated fetching for frequently changing client views.
+- **Anti-fit:** Server-only data fetching or a project already standardizing on TanStack Query.
+- **Fallback:** Native fetch with Next cache/revalidation or existing client cache.
+- **Compatibility:** SWR hooks are Client Component APIs; RSC may use documented SWRConfig/serialization/preload APIs, not useSWR hooks.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/swr/latest); [upstream](https://github.com/vercel/swr); [official integration/usage](https://swr.vercel.app/docs/with-nextjs)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Docs flag cacheData/preload server-prefetch integration as experimental in relevant versions; test exact release and streaming semantics. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `better-auth`
+- **Package:** `better-auth`
+- **Capability:** C10 — Identity & Authorization
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Self-managed credential/OAuth/session flows when an established app session layer is insufficient.
+- **Anti-fit:** Guest-only apps, an existing tested identity solution or a simple provider integration already meeting policy.
+- **Fallback:** Next.js server-side session/DAL pattern or the current authentication system.
+- **Compatibility:** Official Next.js App Router Route Handler integration and Node-backed session APIs; Edge/database-adapter compatibility must be separately demonstrated.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/better-auth/latest); [upstream](https://github.com/better-auth/better-auth); [official integration/usage](https://better-auth.com/docs/integrations/next)
+- **Evidence status:** PARTIAL
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** BLOCKED as a general catalog candidate pending target-specific database adapter, deployment runtime, cookie/session threat model and advisory review. A Proxy cookie-presence check is not authorization. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** BLOCKED
+
+### `fuse.js`
+- **Package:** `fuse.js`
+- **Capability:** C11 — Search & Indexing
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Local fuzzy search over bounded in-memory lists or small preloaded catalogs.
+- **Anti-fit:** Large datasets, private server indexes, ACL-filtered search or relevance requirements beyond client-side fuzzy matching.
+- **Fallback:** Array filtering for simple match; server database search/index for real datasets.
+- **Compatibility:** JavaScript in browser/Node; if loaded in Client Components the search corpus enters the browser bundle or network payload.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** Apache-2.0
+- **Official source:** [npm package identity](https://registry.npmjs.org/fuse.js/latest); [upstream](https://github.com/krisk/Fuse); [official integration/usage](https://www.fusejs.io/fuzzy-search.html)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Not a hosted or persistent index; avoid loading secret records into a client-side corpus. Test corpus size and relevance with actual queries. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `react-dropzone`
+- **Package:** `react-dropzone`
+- **Capability:** C12 — Media & Files
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Drag/drop and paste UX for file selection beyond a native input.
+- **Anti-fit:** Ordinary file upload controls; it does not upload files, virus-scan or enforce server-side policy.
+- **Fallback:** Native input type=file, FormData and server upload handling.
+- **Compatibility:** React browser File/drag-drop APIs; Client Component only; official guide lists React >=18 peer dependency.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/react-dropzone/latest); [upstream](https://github.com/react-dropzone/react-dropzone); [official integration/usage](https://react-dropzone.org/guide/getting-started/)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Server must verify MIME, extension, size, authorization and storage safety; client accept filters are not trust boundaries. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `@tanstack/react-virtual`
+- **Package:** `@tanstack/react-virtual`
+- **Capability:** C16 — Performance & Cache
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Virtualized very large interactive lists/grids when measured DOM rendering overhead warrants it.
+- **Anti-fit:** Ordinary short lists or server pagination already yielding an acceptable UI.
+- **Fallback:** Server pagination, progressive rendering and normal DOM lists.
+- **Compatibility:** React hook measures browser scroll/element state; use inside interactive Client Components and verify SSR/hydration sizing.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-virtual/latest); [upstream](https://github.com/TanStack/virtual); [official integration/usage](https://tanstack.com/virtual/latest/docs/framework/react/react-virtual)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Virtualization is a rendering technique, not a Next.js data cache; test accessibility and scroll restoration. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `@testing-library/react`
+- **Package:** `@testing-library/react`
+- **Capability:** C17 — Testing & QA
+- **Language/runtime:** TypeScript / npm
+- **Fit:** Interaction-oriented React DOM component tests together with an existing runner.
+- **Anti-fit:** Pure business logic without DOM or async RSC tests needing browser-level evidence.
+- **Fallback:** Existing test runner and Playwright E2E for interactive flows.
+- **Compatibility:** Development-time React DOM tests; official docs require peer @testing-library/dom and appropriate DOM test environment.
+- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **License:** MIT
+- **Official source:** [npm package identity](https://registry.npmjs.org/@testing-library/react/latest); [upstream](https://github.com/testing-library/react-testing-library); [official integration/usage](https://testing-library.com/docs/react-testing-library/intro/)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-16
+- **Unknowns:** Not a runner or an async Server Component compatibility guarantee; Next.js directs E2E coverage for async RSC. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ## Selection boundary

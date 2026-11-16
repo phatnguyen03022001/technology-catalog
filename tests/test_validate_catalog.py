@@ -414,7 +414,7 @@ class CatalogMutationTests(unittest.TestCase):
         self.assertEqual(len({label.strip() for _, label in definitions}), 20)
         allowed = {f"{ident} — {label.strip()}" for ident, label in definitions}
         expected_packages = {
-            "typescript": {"@modelcontextprotocol/client", "@modelcontextprotocol/server", "@opentelemetry/api", "@opentelemetry/sdk-trace", "@playwright/test", "ai", "jose", "kysely", "openai", "pino", "undici", "valibot", "vitest", "zod"},
+            "typescript": {"@modelcontextprotocol/client", "@modelcontextprotocol/server", "@opentelemetry/api", "@opentelemetry/sdk-trace", "@playwright/test", "@reduxjs/toolkit", "@tanstack/react-query", "@tanstack/react-table", "@tanstack/react-virtual", "@testing-library/react", "ai", "better-auth", "fuse.js", "jose", "jotai", "kysely", "motion", "next-intl", "openai", "pino", "radix-ui", "react-dropzone", "react-hook-form", "recharts", "swr", "undici", "valibot", "vitest", "zod", "zustand"},
             "swift": {"apple/swift-algorithms", "apple/swift-argument-parser", "apple/swift-async-algorithms", "apple/swift-collections", "apple/swift-crypto", "apple/swift-distributed-tracing", "apple/swift-log", "apple/swift-nio", "apple/swift-openapi-generator", "apple/swift-system", "groue/GRDB.swift", "modelcontextprotocol/swift-sdk"},
             "rust": {"clap", "proptest", "rayon", "reqwest", "rmcp", "rustls", "serde", "sqlx", "thiserror", "tokio", "tonic", "tracing"},
             "go": {"github.com/go-chi/chi/v5", "github.com/google/go-cmp", "github.com/hibiken/asynq", "github.com/jackc/pgx/v5", "github.com/modelcontextprotocol/go-sdk", "github.com/openai/openai-go", "github.com/rs/zerolog", "github.com/spf13/cobra", "github.com/stretchr/testify", "go.opentelemetry.io/otel/sdk", "golang.org/x/crypto", "golang.org/x/sync", "google.golang.org/grpc"},
@@ -424,6 +424,7 @@ class CatalogMutationTests(unittest.TestCase):
             "typescript/zod": "PARTIAL|BLOCKED",
             "typescript/pino": "PARTIAL|BLOCKED",
             "typescript/jose": "PARTIAL|BLOCKED",
+            "typescript/better-auth": "PARTIAL|BLOCKED",
             "swift/modelcontextprotocol/swift-sdk": "PARTIAL|BLOCKED",
             "python/mcp": "PARTIAL|BLOCKED",
         }

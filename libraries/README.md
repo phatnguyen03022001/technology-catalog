@@ -1,12 +1,12 @@
 # Libraries — curated reusable packages
 
-**Reviewed:** 2026-11-02. Package discovery (Awesome lists, TopGit, lib.rs) is not quality authority; records were reviewed through official registries or upstream repositories. The catalog never substitutes for project-specific acceptance.
+**Reviewed:** 2026-11-16. Package discovery (Awesome lists, TopGit, lib.rs) is not quality authority; records were reviewed through official registries or upstream repositories. The catalog never substitutes for project-specific acceptance.
 
 | Language | Entries | Scope | Link |
 |---|---:|---|---|
 | Rust | 12 | Async, HTTP, serialization, DB, CLI, tests, security | [Rust](rust.md) |
 | Go | 13 | HTTP, DB, concurrency, logging, tests, CLI, AI | [Go](go.md) |
-| TypeScript | 14 | Runtime validation, HTTP, DB, telemetry, tests, AI | [TypeScript](typescript.md) |
+| TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
 | Python | 16 | Validation, HTTP, data, retry, tests, AI | [Python](python.md) |
 | Swift | 12 | Native systems, data, async, crypto, CLI | [Swift](swift.md) |
 
