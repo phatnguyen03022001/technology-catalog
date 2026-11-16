@@ -4,6 +4,21 @@
 
 [Taxonomy](../../docs/00-taxonomy.md) · [Evaluation matrix](../../docs/01-evaluation-matrix.md)
 
+## Discover by engineering concern
+
+Use these **existing** entries as starting points, not as a required toolchain or proof of feature support. The full service index and provider evidence remain below.
+
+| Need | Existing entry points |
+|---|---|
+| Continuous integration and test gates | [GitHub Actions](../../providers/github.md), [GitLab CI](../../providers/gitlab.md), [CircleCI](../../providers/circleci.md) |
+| Build pipelines and artifact/container registries | [AWS CodeBuild](../../providers/amazon-web-services.md), [GitHub Container Registry](../../providers/github.md), [Harbor](../../providers/harbor.md) |
+| Infrastructure as Code and reproducible provisioning | [OpenTofu](../../providers/opentofu.md), [HCP Terraform](../../providers/hashicorp.md), [Pulumi Cloud](../../providers/pulumi.md) |
+| Continuous delivery, deployment and release orchestration | [Argo CD](../../providers/argo-cd.md), [Coolify](../../providers/coolify.md), [Vercel CI](../../providers/vercel.md) |
+| Runtime hosting and infrastructure resources | [Compute & Runtime — Pillar 01](../01-compute-runtime/README.md); CI/CD tools are not automatically hosting services |
+| Secrets and environment configuration | [Identity & Security — Pillar 07](../07-identity-security/README.md); do not treat CI settings as a complete secrets-governance solution |
+
+**Selection gates, not certified features:** Verify build provenance and artifact integrity, credential least privilege, environment separation, promotion controls, rollout/deployment strategy, rollback or recovery, and operational costs against the chosen workload and current official provider evidence. A service appearing here does not demonstrate that it supports all these controls or is production-ready.
+
 ## Service index (facts in providers/)
 
 | Service offering | Provider SSOT |
