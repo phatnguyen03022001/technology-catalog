@@ -23,7 +23,7 @@ All 20 canonical capabilities were screened for Next.js App Router. **Comparison
 | C05 | useState, useReducer, Context, URL search parameters | zustand for small shared state; Jotai for atoms; Redux Toolkit for structured complex state; no global server store |
 | C06 | Server Component fetch, React.cache, Next cache/revalidation | SWR or TanStack Query only for client sync/cache/mutations; never blindly duplicate server state |
 | C07 | Existing boundary checks; existing zod (BLOCKED), valibot (EVALUATE) | ArkType considered, not added: overlapping validation choice without specific contract advantage |
-| C08 | Direct driver/SQL and existing kysely where useful | Drizzle/Prisma not added: DB schema/tooling ownership and deployment need project-level comparison |
+| C08 | Direct server-only driver/SQL or existing Kysely; Kysely includes PostgreSQL dialect and built-in Migrator | pg only for PostgreSQL + Kysely PostgresDialect on Node runtime; Edge/serverless pool and migration deployment need project validation; postgres/Postgres.js needs a separate verified Kysely dialect; Drizzle/Prisma not added without distinct schema/tooling ownership |
 | C09 | Native fetch/Route Handlers; existing undici for advanced Node HTTP | Axios/ky/GraphQL clients excluded without protocol or interceptor needs |
 | C10 | Next server cookies plus authorization-aware DAL and existing session layer | better-auth included PARTIAL/BLOCKED for conditional review; next-auth v5 remains beta in official guidance |
 | C11 | Server SQL indexes/full-text or local Array.filter | fuse.js only for bounded local fuzzy search, not ACL-sensitive server search |
@@ -46,6 +46,10 @@ All 20 canonical capabilities were screened for Next.js App Router. **Comparison
 - [Radix installation](https://www.radix-ui.com/primitives/docs/overview/introduction), [Motion Next.js instructions](https://motion.dev/docs/react-installation) and [Auth.js status](https://authjs.dev/getting-started/integrations): distributions, client constraints and auth maturity.
 
 Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components as an ordinary published runtime dependency. Accessible primitives still need application-level accessibility tests; client fetching needs explicit hydration/invalidation strategy; security-sensitive auth and file uploads always require trusted server checks. Versioned license, advisory, peer dependency, Node/Edge compatibility, bundle cost and support horizon must be checked against the actual app before adoption.
+
+### Next.js C08 driver and migration boundary (2026-11-17)
+
+Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL dialect uses the `pg` driver and its built-in `Migrator` and `FileMigrationProvider` support versioned up/down migrations; a controlled runtime/driver, deployment owner and rollback plan are still required. For a Next.js app using PostgreSQL and Kysely on the Node runtime, `pg` is an optional matching driver, not a mandatory dependency. Keep credentials, tenant ownership checks, SQL parameters and transactions server-side; size and release pools deliberately for serverless hosts and proxies. No Node TCP-driver compatibility with Edge is presumed. `postgres` (Postgres.js) requires a separate Kysely dialect such as `kysely-postgres-js`; Drizzle/Drizzle Kit and Prisma are alternative ORM/migration ownership choices, not missing Kysely migration features. [Kysely driver](https://kysely.dev/docs/getting-started) · [Kysely Migrator](https://kysely.dev/docs/migrations) · [Next.js Edge runtime](https://nextjs.org/docs/app/api-reference/edge) · [node-postgres pooling](https://node-postgres.com/features/pooling).
 
 ## Entries
 
@@ -143,6 +147,22 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-01
 - **Unknowns:** Security advisories: UNKNOWN; exact target support, comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
+- **Selection:** EVALUATE
+
+### `pg`
+- **Package:** `pg`
+- **Capability:** C08 — Persistence
+- **Language/runtime:** TypeScript / npm; server-side Node.js PostgreSQL client
+- **Fit:** Conditional PostgreSQL driver/pool for Kysely's built-in PostgresDialect or direct parameterized SQL on a Next.js Node runtime.
+- **Anti-fit:** No PostgreSQL; an existing driver or database API suffices; Edge runtime or browser bundle requires a separately supported alternative.
+- **Fallback:** Current PostgreSQL driver, or direct SQL with the already selected database access layer; no ORM migration by default.
+- **Compatibility:** npm pg 8.23.1 supports Node.js >=16 in the upstream package manifest; Kysely currently records Node >=22. Built-in Kysely PostgresDialect uses pg Pool. Node TCP-dependent integration is not portable to Next.js Edge by default; ESM/CJS imports and TypeScript @types/pg declarations require target verification.
+- **Maintenance:** npm latest 8.23.1; official npm release and upstream node-postgres package manifest reviewed; publishing activity is not a support SLA.
+- **License:** MIT
+- **Official source:** [npm registry](https://registry.npmjs.org/pg/latest); [upstream package manifest](https://github.com/brianc/node-postgres/blob/master/packages/pg/package.json); [Kysely PostgreSQL driver documentation](https://kysely.dev/docs/getting-started)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Application-level Node/Next deploy target, TLS trust configuration, pooled/serverless connections, transaction client affinity, parameterization, prepared statement behavior through proxies, secrets/tenant ownership enforcement, pinned-version advisories and full dependency graph NOT_VERIFIED; performance and TCO NOT_MEASURED. A driver does not implement authorization. Kysely already provides Migrator; its separately controlled migration deployment and rollback require application testing.
 - **Selection:** EVALUATE
 
 ### `jose`

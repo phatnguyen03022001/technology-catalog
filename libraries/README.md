@@ -4,9 +4,9 @@
 
 | Language | Entries | Scope | Link |
 |---|---:|---|---|
-| Rust | 20 | Axum/Tower HTTP, contracts, DB, crypto, cache, testing, tracing and AI | [Rust](rust.md) |
+| Rust | 24 | Axum/Tower HTTP, contracts, DB, crypto, cache, testing, tracing and AI | [Rust](rust.md) |
 | Go | 22 | Gin HTTP/auth, SQL, cache, resilience, QA, tracing, CLI and AI | [Go](go.md) |
-| TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
+| TypeScript | 31 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
 | Python | 26 | FastAPI ASGI, forms, contracts, SQL migrations, auth, cache, QA, tracing, tooling and AI | [Python](python.md) |
 | Swift | 27 | SwiftUI-native and Vapor-server integration, DB, HTTP, security, cache, tracing and tooling | [Swift](swift.md) |
 

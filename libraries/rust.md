@@ -332,11 +332,75 @@
 - **Unknowns:** Sensitive-field redaction, log sampling/volume, structured export, telemetry costs, platform sinks and advisory applicability require application review.
 - **Selection:** EVALUATE
 
+### `jsonwebtoken`
+- **Package:** `jsonwebtoken`
+- **Capability:** C10 — Identity & Authorization
+- **Language/runtime:** Rust / Cargo; optional Axum server-side bearer-token verification
+- **Fit:** Verify or issue signed JWTs for an explicitly selected bearer/OIDC token model after server-side identity and trust boundaries are defined.
+- **Anti-fit:** Existing trusted identity middleware, opaque browser sessions, or no bearer JWT model; parsing JWTs is neither a complete login system nor user/tenant authorization.
+- **Fallback:** Axum extractors with existing verified identity infrastructure; for owned cookie sessions evaluate axum-login plus tower-sessions separately.
+- **Compatibility:** crates.io jsonwebtoken 12.0.0 declares Rust >=1.88.0; choose one cryptographic provider feature (rust_crypto or aws_lc_rs), or explicitly install a custom CryptoProvider. Axum integration uses application extractors/middleware; serde claims and target Cargo/feature graph require verification.
+- **Maintenance:** crates.io stable 12.0.0; published 2026-11-13; v12 changed crypto/provider and key validation behavior, so migration and dependency checks are required.
+- **License:** MIT
+- **Official source:** [docs.rs crate documentation](https://docs.rs/jsonwebtoken/latest/jsonwebtoken/); [published manifest and changelog](https://docs.rs/crate/jsonwebtoken/12.0.0/source/CHANGELOG.md); [upstream repository](https://github.com/Keats/jsonwebtoken)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Allowed algorithms, expected issuer/audience, required expiry and not-before, key lookup/JWKS fetching and caching, kid rotation, revocation, secret custody, token confusion, authorization/tenant ownership, CSRF for cookie flows, RustSec/OSV and transitive advisories NOT_VERIFIED for a concrete app. The crate does not independently provide session lifecycle or resource authorization.
+- **Selection:** EVALUATE
+
+### `tracing-opentelemetry`
+- **Package:** `tracing-opentelemetry`
+- **Capability:** C18 — Observability
+- **Language/runtime:** Rust / Cargo; optional tracing-to-OpenTelemetry layer
+- **Fit:** Bridge existing tracing spans into an OpenTelemetry tracer provider when an Axum service genuinely needs exported distributed traces.
+- **Anti-fit:** Structured logs/tracing-subscriber already satisfy incident diagnostics, or there is no collector or remote trace requirement.
+- **Fallback:** Existing tracing + tracing-subscriber local logging; do not configure a remote exporter.
+- **Compatibility:** crates.io tracing-opentelemetry 0.34.0 declares Rust >=1.75; depends on opentelemetry ^0.33.0 and tracing-subscriber ^0.3.22, compatible with OpenTelemetry 0.33.x despite unequal versions. Default features include metrics and tracing-log; disable unnecessary features for trace-only use and verify Cargo resolution.
+- **Maintenance:** crates.io stable 0.34.0; published September 2026; upstream release notes and tagged Cargo manifest reviewed.
+- **License:** MIT
+- **Official source:** [docs.rs crate documentation](https://docs.rs/tracing-opentelemetry/latest/tracing_opentelemetry/); [published Cargo manifest](https://docs.rs/crate/tracing-opentelemetry/0.34.0/source/Cargo.toml.orig); [upstream repository](https://github.com/tokio-rs/tracing-opentelemetry)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** No exporter or collector comes with the bridge; HTTP context propagation, traceparent extraction/injection, sampling, span redaction, provider/SDK configuration, full feature resolution, RustSec/OSV advisories, performance and TCO NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `opentelemetry_sdk`
+- **Package:** `opentelemetry_sdk`
+- **Capability:** C18 — Observability
+- **Language/runtime:** Rust / Cargo; OpenTelemetry SDK for optional Axum trace processing
+- **Fit:** Configure SdkTracerProvider, processing, sampling, resource attribution and exporter connection where real trace export is required.
+- **Anti-fit:** Local tracing/logs suffice, or an existing configured SDK/provider is already owned by the application.
+- **Fallback:** Existing tracing-subscriber without remote export; use an already provided telemetry SDK when suitable.
+- **Compatibility:** crates.io opentelemetry_sdk 0.33.1; upstream OpenTelemetry Rust minimum supported Rust 1.75.0; API and OTLP exporter 0.33.1 belong to the same OpenTelemetry release line. Trace, runtime and batch features must be chosen and verified with Tokio and Cargo.
+- **Maintenance:** crates.io stable 0.33.1; official Rust OpenTelemetry SDK documentation and release metadata reviewed; no support SLA inferred.
+- **License:** Apache-2.0
+- **Official source:** [docs.rs crate documentation](https://docs.rs/opentelemetry_sdk/latest/opentelemetry_sdk/); [upstream repository](https://github.com/open-telemetry/opentelemetry-rust)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Actual sampling policy, batch queue limits/backpressure, runtime scheduling, shutdown and force_flush behavior, resource attributes, context propagation, collector outage, drop counts, advisory applicability, overhead and TCO NOT_VERIFIED. API alone is a no-op without an SDK.
+- **Selection:** EVALUATE
+
+### `opentelemetry-otlp`
+- **Package:** `opentelemetry-otlp`
+- **Capability:** C18 — Observability
+- **Language/runtime:** Rust / Cargo; optional OTLP transport/exporter
+- **Fit:** Export OpenTelemetry SDK spans to an existing OTLP-compatible collector/backend using an explicitly chosen HTTP/protobuf or gRPC transport.
+- **Anti-fit:** No remote trace destination, logs alone suffice, or another existing exporter is already configured.
+- **Fallback:** Local tracing-subscriber output; retain the existing telemetry backend integration when suitable.
+- **Compatibility:** crates.io opentelemetry-otlp 0.33.1 aligns with opentelemetry and opentelemetry_sdk 0.33.1; upstream Rust minimum 1.75.0. Select trace-only Cargo features and HTTP-protobuf or grpc-tonic transport, TLS backend, endpoint and Tokio-compatible processor deliberately; default features also enable other signal types. Upstream calls OTLP trace export beta.
+- **Maintenance:** crates.io stable 0.33.1; released 2026-10-08; upstream changelog states trace exporter beta while metrics/logs exporters are stable.
+- **License:** Apache-2.0
+- **Official source:** [docs.rs crate documentation](https://docs.rs/opentelemetry-otlp/latest/opentelemetry_otlp/); [official OTLP changelog](https://github.com/open-telemetry/opentelemetry-rust/blob/main/opentelemetry-otlp/CHANGELOG.md)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Exporter alone does not create a tracing layer, SDK or collector. Endpoint/auth/TLS, batch buffer and retry/drop behavior, W3C propagation, graceful flush, advisories, real delivery, runtime overhead and TCO NOT_VERIFIED. Collector deployment is conditional, not a framework default.
+- **Selection:** EVALUATE
+
 ## Selection boundary
 
 VERIFIED is scoped to official package identity, metadata and advertised function; it is NOT a security endorsement, benchmark result or production approval. PARTIAL means essential metadata is unresolved. EVALUATE permits comparison only, BLOCKED requires filling compatibility/license gaps first. No automatic migration.
 
-## Axum / Rust capability screen (UTC evidence: 2026-11-16)
+## Axum / Rust capability screen (UTC evidence: 2026-11-17)
 
 An Axum HTTP-service workload is the comparator, not a requirement to install all listed crates. `NOT_APPLICABLE` is intentional; `CONDITIONAL` does not imply a missing default package. Every entry above has one primary C01–C20 capability.
 
@@ -351,7 +415,7 @@ An Axum HTTP-service workload is the comparator, not a requirement to install al
 | C07 | ADDED | Serde for formats; garde for domain validation, utoipa for OpenAPI; neither automatically maps rejection responses nor replaces authorization. |
 | C08 | EXISTING | SQLx plus its own pooling/migrations when appropriate; Diesel/SeaORM, deadpool and bb8 deferred without ORM/pool requirement. |
 | C09 | ADDED | Axum routing + Tower services + Hyper/http first; tower-http opt-in HTTP middleware; existing tonic only when gRPC required. |
-| C10 | CONDITIONAL | Authentication extractor/session strategy plus application-owned authorization; axum-login and JWT deferred pending identity model. |
+| C10 | CONDITIONAL | Native Axum/Tower extraction and trusted identity first; jsonwebtoken only for justified signed bearer JWT validation; axum-login/tower-sessions is an alternative for owned cookie sessions. Signature and claims checks do not provide tenant authorization. |
 | C11 | CONDITIONAL | Database native full-text/indexing first; external search clients only with measured retrieval requirements. |
 | C12 | NATIVE_FIRST | Axum Multipart and streaming with bounded body sizes, file type/size checks and explicit object ownership. |
 | C13 | EXISTING | Tokio tasks, cancellation and shutdown; bounded channels/concurrency; Rayon solely for justified CPU parallelism. |
@@ -359,7 +423,7 @@ An Axum HTTP-service workload is the comparator, not a requirement to install al
 | C15 | ADDED | Existing rustls for TLS; argon2 only when managing user passwords; authz, CSRF, SSRF and secret redaction remain separate. |
 | C16 | ADDED | std collections and bounded app state first; moka for measured per-process cache needs, not distributed coherence. |
 | C17 | ADDED | cargo test + Axum Router/Tower oneshot and existing proptest first; axum-test for higher-level HTTP cases. |
-| C18 | ADDED | Existing tracing provides instrumentation; tracing-subscriber adds filtering/sinks; metric export and OTel optional. |
+| C18 | CONDITIONAL | Existing tracing + tracing-subscriber suffice for local diagnostics. Remote OTLP traces optionally require compatible tracing-opentelemetry bridge (0.34), opentelemetry_sdk (0.33.1) and opentelemetry-otlp (0.33.1); API opentelemetry (0.33.x) is already transitive unless application directly imports it. |
 | C19 | NATIVE_FIRST | Cargo fmt, Clippy, test, audit and feature inspection; existing clap for complex command surfaces only. |
 | C20 | EXISTING | Existing reqwest, rmcp and tonic are optional protocol boundaries; enforce permissions, SSRF protection and MCP transport limits. |
 
@@ -368,11 +432,17 @@ An Axum HTTP-service workload is the comparator, not a requirement to install al
 - **validator vs garde:** both perform domain validation; one optional validation library suffices for a specific workload. Serde does not do domain validation.
 - **schemars vs utoipa:** JSON Schema differs from endpoint OpenAPI. Add schemars only if standalone schema generation is required.
 - **sea-orm / diesel / deadpool / bb8:** existing SQLx and built-in pooling are enough to start; ORM or alternate pool is a separate workload decision.
-- **axum-login / jsonwebtoken / secrecy:** require a specified identity model and protected secret boundary; JWT verification does not express authorization policy. Session CSRF and cookie security are application decisions.
+- **axum-login / jsonwebtoken / secrecy:** jsonwebtoken now listed as a conditional JWT-specific option; axum-login plus tower-sessions remains an unadded session-based alternative. An identity model, issuer/audience/algorithm/key rotation, protected secret boundary and server authorization are required. Session CSRF and cookie security are application decisions.
 - **governor / backon / Tower:** Tower already has middleware primitives; add rate-limit/backoff tools only with a defined identity key, bounded retries, idempotency and distributed topology.
 - **wiremock / mockall / axum-test:** cargo test and Tower oneshot first; use an additional mock/test harness only for meaningful coverage.
-- **metrics / OpenTelemetry:** tracing + tracing-subscriber first; add exporters after real metric and tracing requirements.
+- **metrics / OpenTelemetry:** tracing + tracing-subscriber first. Optional OTLP trace integration needs a bridge, SDK and exporter together, not merely an exporter; opentelemetry API is transitive unless directly imported. No collector is provisioned by the catalog.
 - **Tower, Hyper, Tokio, reqwest, tonic, rmcp:** existing framework or catalog entries; do not add a duplicate primary record just to fill a category.
+
+### Conditional Axum identity and OTLP boundaries (2026-11-17)
+
+JWT and cookie sessions are different architectures: use application-owned extractors/Tower policy and existing identity first; `jsonwebtoken` is conditional for a service verifying signed bearer JWTs, while `axum-login`/`tower-sessions` suits owned browser cookie sessions when persistence, session expiration, CSRF and cookie flags are specified. A JWT signature alone cannot establish issuer, audience, expiry, revocation or tenant ownership. JWT signing algorithm allowlists, claim validation, key rotation and JWKS retrieval/caching remain application-specific. [JWT validation](https://docs.rs/jsonwebtoken/latest/jsonwebtoken/struct.Validation.html) · [Axum login](https://docs.rs/axum-login/latest/axum_login/).
+
+For a trace-exporting Axum service, `tracing` instruments spans, `tracing-subscriber` composes layers, `tracing-opentelemetry` 0.34.0 bridges to `opentelemetry` 0.33.x, `opentelemetry_sdk` 0.33.1 processes telemetry, and `opentelemetry-otlp` 0.33.1 exports to an existing endpoint. The OTel API is an ordinary transitive dependency unless the application imports it directly. Tower HTTP middleware instruments requests but does not automatically guarantee propagated trace context. Choose trace-only features, HTTP or gRPC, Tokio processing, TLS/auth, resource attributes, sampling, redaction, bounded queues, backpressure and shutdown flushing per service. Official upstream identifies OTLP **trace export as beta** in 0.33.1. No real context-propagation/export/retry/collector or performance validation exists. [Bridge compatibility](https://docs.rs/tracing-opentelemetry/latest/tracing_opentelemetry/) · [OTLP changelog](https://github.com/open-telemetry/opentelemetry-rust/blob/main/opentelemetry-otlp/CHANGELOG.md).
 
 ### Axum-specific engineering boundaries
 
