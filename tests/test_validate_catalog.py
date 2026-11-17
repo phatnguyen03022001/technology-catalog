@@ -432,7 +432,7 @@ class CatalogMutationTests(unittest.TestCase):
         allowed = {f"{ident} — {label.strip()}" for ident, label in definitions}
         expected_packages = {
             "typescript": {"@modelcontextprotocol/client", "@modelcontextprotocol/server", "@opentelemetry/api", "@opentelemetry/sdk-trace", "@playwright/test", "@reduxjs/toolkit", "@tanstack/react-query", "@tanstack/react-table", "@tanstack/react-virtual", "@testing-library/react", "ai", "better-auth", "fuse.js", "jose", "jotai", "kysely", "motion", "next-intl", "openai", "pino", "radix-ui", "react-dropzone", "react-hook-form", "recharts", "swr", "undici", "valibot", "vitest", "zod", "zustand"},
-            "swift": {"RevenueCat/purchases-ios", "airbnb/lottie-ios", "apple/swift-algorithms", "apple/swift-argument-parser", "apple/swift-async-algorithms", "apple/swift-collections", "apple/swift-crypto", "apple/swift-distributed-tracing", "apple/swift-log", "apple/swift-nio", "apple/swift-openapi-generator", "apple/swift-system", "groue/GRDB.swift", "kean/Nuke", "modelcontextprotocol/swift-sdk", "nicklockwood/SwiftFormat", "pointfreeco/swift-composable-architecture", "pointfreeco/swift-snapshot-testing", "realm/SwiftLint"},
+            "swift": {"RevenueCat/purchases-ios", "airbnb/lottie-ios", "apple/swift-algorithms", "apple/swift-argument-parser", "apple/swift-async-algorithms", "apple/swift-collections", "apple/swift-crypto", "apple/swift-distributed-tracing", "apple/swift-log", "apple/swift-nio", "apple/swift-openapi-generator", "apple/swift-system", "groue/GRDB.swift", "kean/Nuke", "modelcontextprotocol/swift-sdk", "nicklockwood/SwiftFormat", "pointfreeco/swift-composable-architecture", "pointfreeco/swift-snapshot-testing", "realm/SwiftLint", "swift-otel/swift-otel", "swift-server/async-http-client", "vapor/fluent", "vapor/fluent-postgres-driver", "vapor/jwt", "vapor/queues-redis-driver", "vapor/redis", "vapor/swift-openapi-vapor"},
             "rust": {"argon2", "axum-extra", "axum-test", "clap", "garde", "moka", "proptest", "rayon", "reqwest", "rmcp", "rustls", "serde", "sqlx", "thiserror", "tokio", "tonic", "tower-http", "tracing", "tracing-subscriber", "utoipa"},
             "go": {"github.com/cenkalti/backoff/v5", "github.com/gin-contrib/cors", "github.com/gin-contrib/sessions", "github.com/go-chi/chi/v5", "github.com/golang-jwt/jwt/v5", "github.com/google/go-cmp", "github.com/hibiken/asynq", "github.com/jackc/pgx/v5", "github.com/modelcontextprotocol/go-sdk", "github.com/openai/openai-go", "github.com/pressly/goose/v3", "github.com/redis/go-redis/v9", "github.com/rs/zerolog", "github.com/spf13/cobra", "github.com/stretchr/testify", "github.com/testcontainers/testcontainers-go", "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin", "go.opentelemetry.io/otel/sdk", "golang.org/x/crypto", "golang.org/x/sync", "golang.org/x/time", "google.golang.org/grpc"},
             "python": {"celery", "cryptography", "httpx", "mcp", "numpy", "openai", "opentelemetry-sdk", "polars", "psycopg", "pydantic", "pytest", "SQLAlchemy", "structlog", "tenacity", "transformers", "typer", "uvicorn", "python-multipart", "pydantic-settings", "alembic", "Authlib", "pwdlib", "redis", "pytest-asyncio", "opentelemetry-instrumentation-fastapi", "ruff"},
@@ -443,6 +443,7 @@ class CatalogMutationTests(unittest.TestCase):
             "typescript/jose": "PARTIAL|BLOCKED",
             "typescript/better-auth": "PARTIAL|BLOCKED",
             "swift/modelcontextprotocol/swift-sdk": "PARTIAL|BLOCKED",
+            "swift/vapor/queues-redis-driver": "PARTIAL|BLOCKED",
             "python/mcp": "PARTIAL|BLOCKED",
         }
         actual_nondefault_gates = {}
@@ -471,6 +472,15 @@ class CatalogMutationTests(unittest.TestCase):
                     actual_nondefault_gates[f"{language}/{package}"] = gate
             self.assertEqual(actual, identities, language)
         self.assertEqual(actual_nondefault_gates, expected_nondefault_gates)
+
+    def test_swift_vapor_screen_covers_all_capabilities(self):
+        body = (self.root / "libraries" / "swift.md").read_text()
+        section = body.split("## Vapor capability screening (2026-11-17)\n", 1)[1].split("\n## Entries\n", 1)[0]
+        matches = re.findall(
+            r"(?m)^\| (C\d{2}) \| (NOT_APPLICABLE|NATIVE_FIRST|EXISTING|CONDITIONAL|ADDED) \|",
+            section,
+        )
+        self.assertEqual([ident for ident, _ in matches], [f"C{i:02d}" for i in range(1, 21)])
 
     def test_library_unknown_primary_capability_fails(self):
         self.edit_library_field("Capability", lambda _: "C99 — Unrecognized")

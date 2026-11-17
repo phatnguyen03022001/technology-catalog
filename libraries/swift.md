@@ -1,6 +1,6 @@
 # Swift — curated libraries
 
-**Reviewed:** 2026-11-17 (SwiftUI research); 12 existing package records preserve their individual earlier evidence dates. Reusable code packages only, never framework or managed service production approvals.
+**Reviewed:** 2026-11-17 (SwiftUI and Vapor research); 12 existing package records preserve their individual earlier evidence dates. Reusable code packages only, never framework or managed service production approvals.
 
 ## Dependency choice
 
@@ -42,6 +42,39 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 **Evaluated, not added:** [Kingfisher](https://github.com/onevcat/Kingfisher) and [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI) overlap Nuke for the screened remote-image use case; revisit for concrete format/integration needs. [Alamofire](https://github.com/Alamofire/Alamofire) needs a demonstrated gap beyond URLSession. [ViewInspector](https://github.com/nalexn/ViewInspector) is a conditional test-introspection alternative, not device-UI proof. [swiftlang/swift-format](https://github.com/swiftlang/swift-format) is an alternative formatter; do not impose both formatters. These are conditional exclusions, **not universal rejection**.
 
 **Evidence boundary:** Tagged SwiftPM manifests, tagged licenses, upstream releases and repository metadata reviewed 2026-11-17. Swift tools version does not prove strict Swift 6 concurrency compliance; declared platforms do not establish target integration, performance, accessibility or App Store acceptance. Swift compilation, Xcode/physical-device testing, pinned transitive dependency security review and TCO benchmarking were **NOT_PERFORMED**. No dependency is required merely because listed.
+
+## Vapor capability screening (2026-11-17)
+
+**Scope:** Vapor 4.122.3 is the reviewed **stable tag**, not Vapor 5 beta or its main-branch manifest. Vapor is a SwiftNIO server framework, SwiftUI is an Apple frontend; shared language does not mean shared runtime dependencies. This matrix is native-first catalog guidance only. Sources: [official Vapor docs](https://docs.vapor.codes/), [Vapor 4.122.3 tagged manifest](https://github.com/vapor/vapor/blob/4.122.3/Package.swift), [Swift server ecosystem](https://www.swift.org/packages/server.html), [queues documentation](https://docs.vapor.codes/advanced/queues/).
+
+| Capability | Decision | Vapor / Swift Server assessment |
+|---|---|---|
+| C01 | NOT_APPLICABLE | JSON APIs have no Apple UI; Leaf/HTML rendering conditional. |
+| C02 | NOT_APPLICABLE | No animation or visualization in API-only services; SwiftUI/Lottie remain Apple-only. |
+| C03 | NATIVE_FIRST | Vapor routes, Content/Codable, form/multipart and body-size limits. |
+| C04 | NATIVE_FIRST | Foundation locale, Accept-Language and translated server errors; frontend accessibility separate. |
+| C05 | NATIVE_FIRST | Vapor Application storage and lifecycle; actor isolation, Sendable and request-scoped state. |
+| C06 | ADDED | Use Vapor Client first; direct AsyncHTTPClient for special outbound pooling, timeouts or streaming. |
+| C07 | ADDED | Codable first; OpenAPIVapor transport only with maintained generated OpenAPI contracts. |
+| C08 | ADDED | Fluent ORM and one chosen PostgreSQL driver when actually needed; SQL/SQLite alternatives. |
+| C09 | EXISTING | Vapor + SwiftNIO handle routing, HTTP/2 and WebSockets; verify EventLoop/backpressure. |
+| C10 | ADDED | Vapor sessions/authentication first; JWT only when justified; audience and authorization distinct. |
+| C11 | NATIVE_FIRST | DB full-text index and queries before external search. |
+| C12 | NATIVE_FIRST | Multipart, streaming, files; enforce upload caps, path checks and retention. |
+| C13 | CONDITIONAL | A Task is not durable; Redis queue driver PARTIAL/BLOCKED until Swift 6/queue integration verified. |
+| C14 | NATIVE_FIRST | Vapor middleware/errors; application-specific timeouts, idempotency, bounded retries and rate limits. |
+| C15 | EXISTING | swift-crypto and swift-nio-ssl are transitive; manage secrets, TLS/proxy and SSRF boundaries. |
+| C16 | ADDED | In-memory cache first; Vapor Redis for proven cross-worker cache/session needs. |
+| C17 | NATIVE_FIRST | VaporTesting and XCTVapor are products of Vapor; XCTest/Swift Testing, no extra repo. |
+| C18 | ADDED | SwiftLog/Metrics/Tracing already integrated; swift-otel only when exporters and collectors required. |
+| C19 | EXISTING | SwiftPM, compiler, current lint/format tools; separate Linux CI and Xcode workflows. |
+| C20 | EXISTING | AI HTTP integration as needed; existing MCP Swift SDK remains PARTIAL/BLOCKED. |
+
+**Runtime and operations:** Pin Swift/Vapor/package graph and verify strict Swift 6 concurrency, actor isolation, Sendable, EventLoopFuture/async interop, no blocking EventLoops, bounded work, cancellation and graceful shutdown. Verify HTTP/1.1/2, WebSockets, body limits, backpressure, client disconnects, TLS termination/proxy trust, outbound SSRF controls, retry/idempotency and failure handling. Test DB connection pools, migrations, transaction scope, file upload/streaming and storage lifecycle. Durable jobs require a real queue/driver and operating model; metrics/tracing API does not automatically export telemetry. Redis, PostgreSQL, queues and collectors are conditional infrastructure, never defaults.
+
+**Evaluated, not added:** [vapor/queues](https://github.com/vapor/queues) is the framework behind a queue driver; official docs tell applications to install the driver instead. [vapor/fluent-sqlite-driver](https://github.com/vapor/fluent-sqlite-driver) is the SQLite alternative, not an additional default database; [vapor/postgres-nio](https://github.com/vapor/postgres-nio) offers raw PostgreSQL instead of the Fluent choice. [vapor/jwt-kit](https://github.com/vapor/jwt-kit) is the core library under the Vapor JWT integration, not an extra default. [vapor/leaf](https://github.com/vapor/leaf) suits HTML server rendering, not JSON-only APIs. [swift-server/swift-service-lifecycle](https://github.com/swift-server/swift-service-lifecycle) can manage independent services, but should not duplicate Vapor lifecycle. [apple/swift-nio-ssl](https://github.com/apple/swift-nio-ssl) and [apple/swift-metrics](https://github.com/apple/swift-metrics) are already transitively declared in Vapor 4.122.3; direct dependencies require a distinct need. [apple/swift-openapi-runtime](https://github.com/apple/swift-openapi-runtime) is generated-code support, not a Vapor server transport. `VaporTesting` comes from `vapor/vapor`, not a separate repository. SwiftUI-only packages do not inherit Vapor/Linux support.
+
+**Security/evidence gates:** [Vapor's JWTKit 5.8.0 security release notice (2026-10-28)](https://blog.vapor.codes/posts/jwt-kit-5-8-0/) describes vulnerable audience handling, headers and X.509 checks; `vapor/jwt` 5.2.0 integrates the fix, but callers must still use expected-audience verification. Tagged SwiftPM manifests, tagged licenses and release metadata reviewed **2026-11-17 UTC**. No native Swift compilation, SwiftPM dependency-resolution test, Linux/macOS binary verification, Swift 6 strict-concurrency test, full pinned advisory clearance, actual Vapor integration, benchmarks or TCO measurements were run (**NOT_VERIFIED**).
 
 ## Entries
 
@@ -357,6 +390,134 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-16
 - **Unknowns:** Vendor pricing, privacy, entitlement consistency, offline operation, StoreKit/App Store policy, Swift 6 strict concurrency and vendor exit unverified. No pricing/production approval; advisory and TCO work pending.
+- **Selection:** EVALUATE
+
+### `vapor/fluent`
+- **Package:** `vapor/fluent`
+- **Capability:** C08 — Persistence
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Typed Fluent ORM models, queries and migrations for services that need an ORM.
+- **Anti-fit:** No database; direct SQL is smaller or better suited.
+- **Fallback:** Vapor without ORM or selected SQL client.
+- **Compatibility:** Tag 4.13.0: Swift tools 6.0; macOS 10.15+/iOS 13+ declared; tagged dependencies vapor/vapor 4.117.0+ and fluent-kit 1.52.2+; Linux build not performed.
+- **Maintenance:** Release 2025-09-25; upstream pushed 2026-08-25. No support SLA inferred.
+- **License:** MIT ([tagged license](https://github.com/vapor/fluent/blob/4.13.0/LICENSE)).
+- **Official source:** [upstream](https://github.com/vapor/fluent); [tagged manifest](https://github.com/vapor/fluent/blob/4.13.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Swift 6 isolation, Linux runtime, ORM migration rollback, database pooling, security advisories and TCO NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `vapor/fluent-postgres-driver`
+- **Package:** `vapor/fluent-postgres-driver`
+- **Capability:** C08 — Persistence
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** PostgreSQL driver for chosen Fluent ORM and actual PostgreSQL deployment.
+- **Anti-fit:** No PostgreSQL; prefer one DB driver, or direct PostgresNIO when appropriate.
+- **Fallback:** Direct SQL/PostgresNIO or the already selected DB driver.
+- **Compatibility:** Tag 2.14.1: Swift tools 6.2; macOS 10.15+/iOS 13+ declared; fluent-kit 1.52.2+, postgres-kit 2.17.0+, postgres-nio 1.33.1+ and service-lifecycle 2.12.0+ dependencies.
+- **Maintenance:** Release 2026-11-10; pushed 2026-11-10. No support SLA inferred.
+- **License:** MIT ([tagged license](https://github.com/vapor/fluent-postgres-driver/blob/2.14.1/LICENSE)).
+- **Official source:** [upstream](https://github.com/vapor/fluent-postgres-driver); [tagged manifest](https://github.com/vapor/fluent-postgres-driver/blob/2.14.1/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Vapor/Fluent graph co-resolution, Swift 6/Linux binary, pooling, TLS, transaction/cancellation and advisories NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `vapor/jwt`
+- **Package:** `vapor/jwt`
+- **Capability:** C10 — Identity & Authorization
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Vapor JWT integration for a justified bearer-token or identity-token model.
+- **Anti-fit:** Vapor sessions suffice, or JWT verification is being confused with authorization.
+- **Fallback:** Vapor authenticators/sessions and server-side authorization.
+- **Compatibility:** Tag 5.2.0: Swift tools 6.2; macOS 13+/iOS 16+ declared; vapor/vapor 4.110.2+ and jwt-kit 5.8.0+. Vapor 4 integration declared, Linux untested.
+- **Maintenance:** Security release 2026-10-28; underlying jwt-kit 5.9.0 released 2026-11-10. No support SLA inferred.
+- **License:** MIT ([tagged license](https://github.com/vapor/jwt/blob/5.2.0/LICENSE)).
+- **Official source:** [upstream](https://github.com/vapor/jwt); [tagged manifest](https://github.com/vapor/jwt/blob/5.2.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** GHSA-gxx9-vxm7-hgrq, GHSA-hfm2-66rr-3mcf, GHSA-jhmq-wqhf-47x2 and GHSA-pfgx-7g34-46fm are material. Verify expected audience, issuer, keys, token lifecycle, ownership and security advisories on the pinned graph; not production-cleared.
+- **Selection:** EVALUATE
+
+### `vapor/queues-redis-driver`
+- **Package:** `vapor/queues-redis-driver`
+- **Capability:** C13 — Async & Messaging
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Redis-backed delayed/durable jobs and workers for demonstrated async delivery needs.
+- **Anti-fit:** Request-scoped tasks suffice or Redis/worker operations unjustified.
+- **Fallback:** Swift structured concurrency for non-durable tasks, or an existing managed queue.
+- **Compatibility:** Tag 1.1.2: Swift tools 5.8; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.76.3+, queues 1.12.1+, redis 4.8.0+. Current Queues 1.18.0, Redis 4.14.0 and Swift 6 strict-concurrency compatibility unresolved.
+- **Maintenance:** Last stable release 2024-09-19; repository pushed 2026-07-17; maintenance does not prove compatibility. No support SLA inferred.
+- **License:** MIT ([tagged license](https://github.com/vapor/queues-redis-driver/blob/1.1.2/LICENSE)).
+- **Official source:** [upstream](https://github.com/vapor/queues-redis-driver); [tagged manifest](https://github.com/vapor/queues-redis-driver/blob/1.1.2/Package.swift)
+- **Evidence status:** PARTIAL
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** BLOCKED until current Swift 6/Linux graph, worker/retry integration, Redis recovery, idempotency and advisories tested. No exactly-once guarantee.
+- **Selection:** BLOCKED
+
+### `vapor/redis`
+- **Package:** `vapor/redis`
+- **Capability:** C16 — Performance & Cache
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Vapor Redis integration for proven distributed cache, sessions or coordination.
+- **Anti-fit:** Small single-instance cache works; Redis adds a needless network and outage dependency.
+- **Fallback:** Bounded application memory/cache or already approved cache.
+- **Compatibility:** Tag 4.14.0: Swift tools 5.10; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.100.0+, swift-server/RediStack 1.4.1+.
+- **Maintenance:** Release 2025-09-12; repository pushed 2026-07-17. No support SLA inferred.
+- **License:** MIT ([tagged license](https://github.com/vapor/redis/blob/4.14.0/LICENSE)).
+- **Official source:** [upstream](https://github.com/vapor/redis); [tagged manifest](https://github.com/vapor/redis/blob/4.14.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Redis TLS/auth, pooling, TTL, invalidation, failure recovery, Swift 6/Linux binary and advisory/TCO checks NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `swift-server/async-http-client`
+- **Package:** `swift-server/async-http-client`
+- **Capability:** C06 — Remote Data & Sync
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Advanced outbound HTTP, pooling, streaming and deadlines when Vapor Client is insufficient.
+- **Anti-fit:** Vapor Client already covers the workload; duplicate HTTP client lifecycle is harmful.
+- **Fallback:** Vapor's native Client using transitive AsyncHTTPClient.
+- **Compatibility:** Tag 1.37.0: Swift tools 6.2; swift-nio 2.100.0+, swift-nio-ssl 2.30.0+, NIO HTTP/2; Vapor 4.122.3 already depends on this package from 1.24.0; exact co-resolution untested.
+- **Maintenance:** Release 2026-11-02; pushed 2026-11-16. No support SLA inferred.
+- **License:** Apache-2.0 ([tagged license](https://github.com/swift-server/async-http-client/blob/1.37.0/LICENSE.txt)).
+- **Official source:** [upstream](https://github.com/swift-server/async-http-client); [tagged manifest](https://github.com/swift-server/async-http-client/blob/1.37.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** TLS, SSRF/redirects, DNS, connection limits, backpressure, blocking EventLoops, cancellation, Linux SwiftPM graph and advisories NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `vapor/swift-openapi-vapor`
+- **Package:** `vapor/swift-openapi-vapor`
+- **Capability:** C07 — Data Contracts
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** Generate and register Vapor server handlers from a maintained OpenAPI contract.
+- **Anti-fit:** Hand-written routes and Codable suffice; unnecessary generator/transport drift.
+- **Fallback:** Vapor Content/Codable; existing apple/swift-openapi-generator only if needed.
+- **Compatibility:** Tag 1.2.0: Swift tools 6.1 with StrictConcurrency=complete setting; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.106.7+, swift-openapi-runtime 1.11.0+, atomics and NIO extras. Linux unbuilt.
+- **Maintenance:** Stable 1.2.0 released 2026-09-02; 2.0 beta released 2026-10-15, not used for this comparison. No support SLA inferred.
+- **License:** Apache-2.0 ([tagged license](https://github.com/vapor/swift-openapi-vapor/blob/1.2.0/LICENSE.txt)).
+- **Official source:** [upstream](https://github.com/vapor/swift-openapi-vapor); [tagged manifest](https://github.com/vapor/swift-openapi-vapor/blob/1.2.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Generator/runtime and transport version alignment, API schema coverage, request isolation, streaming, Swift 6 build, Linux and CI NOT_VERIFIED.
+- **Selection:** EVALUATE
+
+### `swift-otel/swift-otel`
+- **Package:** `swift-otel/swift-otel`
+- **Capability:** C18 — Observability
+- **Language/runtime:** Swift / SwiftPM (Server-side Swift)
+- **Fit:** OTLP telemetry exporter when tracing/metrics/logging needs collectors and operational dashboards.
+- **Anti-fit:** SwiftLog/Metrics/Tracing APIs alone suffice; no exporter or collector.
+- **Fallback:** Already available Vapor SwiftLog/Metrics/Distributed Tracing.
+- **Compatibility:** Tag 1.6.0: Swift tools 6.2; OTel product and optional OTLPHTTP/OTLPGRPC traits; swift-distributed-tracing 1.7.2+, swift-metrics 2.4.1+ and service-lifecycle 2.4.1+. Transport traits have distinct dependency costs.
+- **Maintenance:** Release 2026-10-16; pushed 2026-11-06. No support SLA inferred.
+- **License:** Apache-2.0 ([tagged license](https://github.com/swift-otel/swift-otel/blob/1.6.0/LICENSE.txt)).
+- **Official source:** [upstream](https://github.com/swift-otel/swift-otel); [tagged manifest](https://github.com/swift-otel/swift-otel/blob/1.6.0/Package.swift)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Trace/metric propagation, collector integration, private data redaction, sampling, backpressure, Swift 6/Linux execution, advisories and operational cost NOT_VERIFIED.
 - **Selection:** EVALUATE
 
 ## Selection boundary

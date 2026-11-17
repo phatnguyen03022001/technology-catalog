@@ -8,7 +8,7 @@
 | Go | 22 | Gin HTTP/auth, SQL, cache, resilience, QA, tracing, CLI and AI | [Go](go.md) |
 | TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
 | Python | 26 | FastAPI ASGI, forms, contracts, SQL migrations, auth, cache, QA, tracing, tooling and AI | [Python](python.md) |
-| Swift | 19 | SwiftUI-native integrations, media, tooling, data and systems | [Swift](swift.md) |
+| Swift | 27 | SwiftUI-native and Vapor-server integration, DB, HTTP, security, cache, tracing and tooling | [Swift](swift.md) |
 
 ## Canonical primary capabilities
 
