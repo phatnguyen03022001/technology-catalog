@@ -327,7 +327,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/uvicorn/); [upstream/manifest](https://github.com/Kludex/uvicorn)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `python-multipart`
@@ -343,7 +343,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/python-multipart/); [upstream/manifest](https://github.com/Kludex/python-multipart)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `pydantic-settings`
@@ -359,7 +359,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/pydantic-settings/); [upstream/manifest](https://github.com/pydantic/pydantic-settings)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `alembic`
@@ -375,7 +375,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/alembic/); [upstream/manifest](https://github.com/sqlalchemy/alembic)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `Authlib`
@@ -391,7 +391,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/Authlib/); [upstream/manifest](https://github.com/authlib/authlib)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `pwdlib`
@@ -407,7 +407,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/pwdlib/); [upstream/manifest](https://github.com/frankie567/pwdlib)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `redis`
@@ -423,7 +423,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/redis/); [upstream/manifest](https://github.com/redis/redis-py)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `pytest-asyncio`
@@ -439,7 +439,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/pytest-asyncio/); [upstream/manifest](https://github.com/pytest-dev/pytest-asyncio)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `opentelemetry-instrumentation-fastapi`
@@ -455,7 +455,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/opentelemetry-instrumentation-fastapi/); [upstream/manifest](https://github.com/open-telemetry/opentelemetry-python-contrib)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ### `ruff`
@@ -471,7 +471,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Official source:** [PyPI metadata](https://pypi.org/project/ruff/); [upstream/manifest](https://github.com/astral-sh/ruff)
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** undefined Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
+- **Unknowns:** Exact target dependency graph, overall advisory clearance and performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ## Selection boundary

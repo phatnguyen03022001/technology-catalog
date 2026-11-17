@@ -331,6 +331,15 @@ class CatalogMutationTests(unittest.TestCase):
         self.edit_library_field("Official source", lambda _: "")
         self.validate(1, "required field Official source")
 
+    def test_library_leading_undefined_unknowns_fails(self):
+        self.edit_library_field("Unknowns", lambda value: "UnDeFiNeD " + value)
+        self.validate(1, "placeholder in Unknowns")
+
+    def test_library_javascript_undefined_prose_passes(self):
+        self.edit_library_field("Unknowns",
+                                lambda value: "JavaScript undefined is a language value. " + value)
+        self.validate(0, "STRUCTURE PASS")
+
     def test_library_duplicate_identity_fails(self):
         doc = self.library_doc()
         body = doc.read_text()

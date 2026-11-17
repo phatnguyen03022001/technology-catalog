@@ -390,6 +390,8 @@ def library_document_errors() -> list[str]:
             for key, value in fields.items():
                 if PLACEHOLDER.search(value):
                     errors.append(f"{prefix}: placeholder in {key}")
+            if re.match(r"undefined(?:\s|$)", fields["Unknowns"], re.IGNORECASE):
+                errors.append(f"{prefix}: placeholder in Unknowns")
             status, choice = fields["Evidence status"], fields["Selection"]
             if status not in {"VERIFIED", "PARTIAL", "UNKNOWN"}:
                 errors.append(f"{prefix}: invalid evidence status")
