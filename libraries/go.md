@@ -1,6 +1,6 @@
 # Go — curated libraries
 
-**Reviewed:** 2026-11-01. Reusable code packages only, never framework or managed service production approvals.
+**Reviewed:** 2026-11-17. Reusable code packages only, never framework or managed service production approvals.
 
 ## Dependency choice
 
@@ -9,6 +9,42 @@
 - **Keep:** do not migrate merely because a package appears in the catalog or has a newer release.
 - **Remove/replace:** prove need, test compatibility and preserve a rollback path.
 - **Verify:** target toolchain, platform, license, security advisories, dependency tree and realistic workload.
+
+## Gin / Go capability screening (2026-11-17)
+
+`NATIVE_FIRST` favors Go/Gin capabilities, `EXISTING` reuses indexed records, `CONDITIONAL` requires a specific workload, and `NOT_APPLICABLE` requires no Gin library. No selection is mandatory.
+
+| ID | Screening | Workload-specific finding |
+|---|---|---|
+| C01 | NOT_APPLICABLE | UI/design-system concerns belong to clients, not a JSON-only backend. |
+| C02 | NOT_APPLICABLE | Animation/visualization belongs to clients; expose data contracts. |
+| C03 | NATIVE_FIRST | Gin route params, ShouldBind, multipart; validate bounded payloads and map errors. |
+| C04 | NATIVE_FIRST | Locale negotiation and translated errors only for real multilingual needs. |
+| C05 | NATIVE_FIRST | context, sync, channels, lifecycle ownership; no shared mutable request state. |
+| C06 | NATIVE_FIRST | net/http and request deadlines; Redis sync only with a shared-state need. |
+| C07 | NATIVE_FIRST | Explicit DTOs, encoding/json and Gin-integrated validator; optional sqlc/OpenAPI generation. |
+| C08 | CONDITIONAL | database/sql or existing pgx first; goose for controlled SQL migrations. |
+| C09 | CONDITIONAL | Gin and net/http built in; cors middleware only for browser cross-origin needs; Chi is not Gin middleware. |
+| C10 | CONDITIONAL | Gin cookie sessions or jwt/v5 for different auth models; authorization separate. |
+| C11 | NATIVE_FIRST | PostgreSQL full-text through existing pgx before external search infrastructure. |
+| C12 | NATIVE_FIRST | Gin multipart and streaming, http.MaxBytesReader, content checks and safe storage. |
+| C13 | EXISTING | Context-bound goroutines, existing x/sync; Redis-backed asynq only if durable jobs needed. |
+| C14 | CONDITIONAL | Timeouts native; backoff for bounded retries and x/time/rate for per-instance limits. |
+| C15 | NATIVE_FIRST | Standard crypto/TLS and existing x/crypto when required; no homemade cryptography. |
+| C16 | CONDITIONAL | Bounded memory, SQL pooling/local cache first; go-redis only with justified Redis service. |
+| C17 | CONDITIONAL | testing, httptest, existing testify/go-cmp; testcontainers when real integration tests needed. |
+| C18 | CONDITIONAL | log/slog and existing OTel SDK; otelgin for instrumented Gin tracing. |
+| C19 | EXISTING | gofmt, go vet, go test, go generate; existing Cobra for CLI hierarchies. |
+| C20 | EXISTING | Existing OpenAI SDK, official MCP SDK and gRPC; net/http for simple third-party calls. |
+
+### Critical integration gates
+
+- **HTTP:** Gin `Bind*` writes 400 on binding error; `ShouldBind*` returns the error for handler-owned response mapping. Validate strict DTOs/unknown fields as needed, body sizes, upload types and response consistency. Middleware ordering, graceful shutdown and read/write timeouts remain application concerns.
+- **Context/concurrency:** Use `c.Request.Context()` for I/O cancellation. Never retain an active `gin.Context` across goroutines; `c.Copy()` provides a read-only snapshot when necessary. Bound workers, ensure idempotency for retries/jobs, and shut them down cleanly.
+- **Auth:** CORS is not CSRF or authorization. Cookie sessions require Secure/HttpOnly/SameSite, CSRF, secret rotation and trusted-proxy policy. JWT requires signature, expected algorithm, issuer, audience, expiry, key rotation and authorization checks on every protected route.
+- **Operations:** Rate limiting is not complete DoS protection; Redis requires service security, pooling, outage and persistence decisions. Migration ownership, SQL transaction behavior, OpenTelemetry exporter/sampling, PII redaction and metrics are not automatically solved by packages.
+- **Evaluated and not added:** go-playground/validator/v10 (Gin binding already uses it); GORM (existing pgx/database/sql first); sqlc and swaggo/gin-swagger (require an actual SQL/contract generation workflow); gin-contrib/secure (small security-header policy can be owned by Gin/proxy); gin-contrib/gzip (edge/proxy compression usually suffices); gin-contrib/requestid (small application/proxy middleware); go-sqlmock (native tests or real DB integration as appropriate); additional assertion/cache libraries without a distinct need.
+- **Official framework/security references:** [Go packages](https://pkg.go.dev/std), [Gin model binding](https://gin-gonic.com/en/docs/binding/binding-and-validation/), [Gin goroutines](https://gin-gonic.com/en/docs/middleware/goroutines-inside-a-middleware/), [Go vulnerability database](https://vuln.go.dev/). Records below cite pinned module sources; metadata verification never proves safety or performance.
 
 ## Entries
 
@@ -218,6 +254,150 @@
 - **Evidence status:** VERIFIED
 - **Evidence reviewed:** 2026-11-02
 - **Unknowns:** Redis durability depends on Redis configuration; at-least-once means duplicate deliveries; handlers need idempotency. No exactly-once claim. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
+- **Selection:** EVALUATE
+
+### `gin-contrib/cors`
+- **Package:** `github.com/gin-contrib/cors`
+- **Capability:** C09 — API & Networking
+- **Language/runtime:** Go / Go modules
+- **Fit:** Browser cross-origin policy with explicit origin and credential rules.
+- **Anti-fit:** Same-origin APIs; cors.Default() allows all origins and is unsafe as a credentialed-origin policy.
+- **Fallback:** Native Gin/net/http or trusted reverse-proxy CORS configuration.
+- **Compatibility:** v1.7.10 declares Go >=1.26.10 and Gin v1.12.0; native Gin middleware, net/http compatible.
+- **Maintenance:** Tagged v1.7.10, published 2026-10-31.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/gin-contrib/cors@v1.7.10); [upstream tagged manifest](https://github.com/gin-contrib/cors/tree/v1.7.10)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Credential/origin combinations, proxy headers and preflight policy are app-owned; transitive advisories NOT_VERIFIED, TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `gin-contrib/sessions`
+- **Package:** `github.com/gin-contrib/sessions`
+- **Capability:** C10 — Identity & Authorization
+- **Language/runtime:** Go / Go modules
+- **Fit:** Cookie-backed browser session middleware integrated with Gin when server-side session state is required.
+- **Anti-fit:** Bearer-only API; many optional storage drivers/operations may exceed requirements.
+- **Fallback:** Native cookie and application-owned simple session or existing identity provider.
+- **Compatibility:** v1.1.2 declares Go >=1.26.0, Gin v1.12.0 and gorilla/sessions v1.4.0; verify selected session store.
+- **Maintenance:** Tagged v1.1.2, published 2026-09-20; optional store adapters require review.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/gin-contrib/sessions@v1.1.2); [upstream tagged manifest](https://github.com/gin-contrib/sessions/tree/v1.1.2)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** CSRF, cookie flags, secret rotation, revocation and authorization are not automatic; store/transitive advisories NOT_VERIFIED, TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `golang-jwt/jwt`
+- **Package:** `github.com/golang-jwt/jwt/v5`
+- **Capability:** C10 — Identity & Authorization
+- **Language/runtime:** Go / Go modules
+- **Fit:** JWT signing and cryptographic verification in an explicitly bearer-token-authenticated API.
+- **Anti-fit:** Existing identity SDK handles verification, or stateful browser cookie sessions are preferable; JWT does not implement authorization.
+- **Fallback:** Existing identity-provider verifier; never hand-roll JOSE.
+- **Compatibility:** v5.3.1 declares Go >=1.21; framework-independent with Gin/net/http handlers.
+- **Maintenance:** Tagged v5.3.1, published 2026-01-28.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/golang-jwt/jwt/v5@v5.3.1); [upstream tagged manifest](https://github.com/golang-jwt/jwt/tree/v5.3.1)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** GO-2025-3553/GHSA-mh63-6h87-95cp affected v5 before v5.2.2, not reviewed v5.3.1. Other advisories, key rotation and revocation NOT_VERIFIED; TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `pressly/goose`
+- **Package:** `github.com/pressly/goose/v3`
+- **Capability:** C08 — Persistence
+- **Language/runtime:** Go / Go modules
+- **Fit:** SQL/Go migration versioning through CLI or library for evolving relational schema.
+- **Anti-fit:** Existing migration owner covers schema rollout; do not import driver-heavy tooling into a runtime needlessly.
+- **Fallback:** Existing migration runner or reviewed versioned SQL changes.
+- **Compatibility:** v3.30.1 declares Go >=1.26.0; standalone CLI/library, no Gin coupling; select target database driver.
+- **Maintenance:** Tagged v3.30.1, published 2026-11-12.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/pressly/goose/v3@v3.30.1); [upstream tagged manifest](https://github.com/pressly/goose/tree/v3.30.1)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Broad go.mod database drivers, transactional DDL, locks, rollback and transitive advisories NOT_VERIFIED; TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `redis/go-redis`
+- **Package:** `github.com/redis/go-redis/v9`
+- **Capability:** C16 — Performance & Cache
+- **Language/runtime:** Go / Go modules
+- **Fit:** Redis-backed cache/client operations if a real shared-state Redis service is already justified.
+- **Anti-fit:** Local cache or PostgreSQL suffices; do not add Redis infrastructure only for trivial caching.
+- **Fallback:** Bounded local cache, existing pgx or suitable installed Redis client.
+- **Compatibility:** v9.23.0 declares Go >=1.26.0; Gin-independent and context-aware; check Redis server/pool compatibility.
+- **Maintenance:** Tagged v9.23.0, published 2026-10-05; upstream raised Go floor to 1.26.
+- **License:** BSD-2-Clause
+- **Official source:** [official registry](https://pkg.go.dev/github.com/redis/go-redis/v9@v9.23.0); [upstream tagged manifest](https://github.com/redis/go-redis/tree/v9.23.0)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Redis failover, credentials, client caching staleness, pool limits and advisory resolution NOT_VERIFIED; workload/TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `cenkalti/backoff`
+- **Package:** `github.com/cenkalti/backoff/v5`
+- **Capability:** C14 — Resilience & Errors
+- **Language/runtime:** Go / Go modules
+- **Fit:** Context-aware bounded exponential backoff for idempotent transient upstream calls.
+- **Anti-fit:** One simple call or existing client policy sufficient; avoid blind retries on writes.
+- **Fallback:** Small application-owned context-aware retry or existing HTTP client retries.
+- **Compatibility:** v5.0.3 declares Go >=1.23; independent of Gin, receives Request.Context().
+- **Maintenance:** Tagged v5.0.3, published 2025-07-23; no claim of newer release.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/cenkalti/backoff/v5@v5.0.3); [upstream tagged manifest](https://github.com/cenkalti/backoff/tree/v5.0.3)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Retry budgets, idempotency, overload response and advisory applicability NOT_VERIFIED; performance/TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `golang/time`
+- **Package:** `golang.org/x/time`
+- **Capability:** C14 — Resilience & Errors
+- **Language/runtime:** Go / Go modules
+- **Fit:** rate.Limiter token-bucket control for in-process rate budgets.
+- **Anti-fit:** Distributed quotas or edge DDoS mitigation; local limiter state is not global.
+- **Fallback:** Native deadlines or already deployed reverse-proxy rate policy.
+- **Compatibility:** v0.16.0 declares Go >=1.26.0; rate package is Gin-independent and needs app middleware adaptation.
+- **Maintenance:** Tagged v0.16.0, published 2026-08-19.
+- **License:** BSD-3-Clause
+- **Official source:** [official registry](https://pkg.go.dev/golang.org/x/time@v0.16.0); [upstream tagged manifest](https://github.com/golang/time/tree/v0.16.0)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Proxy trust, cardinality/eviction, multi-replica enforcement, advisories NOT_VERIFIED; TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `testcontainers/testcontainers-go`
+- **Package:** `github.com/testcontainers/testcontainers-go`
+- **Capability:** C17 — Testing & QA
+- **Language/runtime:** Go / Go modules
+- **Fit:** Real disposable database/broker containers for integration tests where mocks miss protocol behavior.
+- **Anti-fit:** Standard httptest sufficient, or CI cannot safely provide Docker-compatible container runtime.
+- **Fallback:** testing/httptest or existing controlled integration environment.
+- **Compatibility:** v0.45.0 declares Go >=1.26.0 and toolchain go1.26.10; requires container runtime and CI permissions.
+- **Maintenance:** Tagged v0.45.0, published 2026-11-05; changes to some example modules require review.
+- **License:** MIT
+- **Official source:** [official registry](https://pkg.go.dev/github.com/testcontainers/testcontainers-go@v0.45.0); [upstream tagged manifest](https://github.com/testcontainers/testcontainers-go/tree/v0.45.0)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Direct go.mod uses moby/go-archive v0.3.3 (above v0.3.0 fix for GHSA-hfg8-hc9c-6c3h); complete graph/runtime NOT_VERIFIED, image/CI TCO NOT_MEASURED.
+- **Selection:** EVALUATE
+
+### `otelgin`
+- **Package:** `go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin`
+- **Capability:** C18 — Observability
+- **Language/runtime:** Go / Go modules
+- **Fit:** Gin inbound HTTP tracing middleware when an OTel pipeline already exists.
+- **Anti-fit:** slog alone is sufficient, or an existing instrumentation layer already owns spans.
+- **Fallback:** Existing OTel SDK with explicit instrumentation or slog.
+- **Compatibility:** v0.72.0 declares Go >=1.26.0 and requires Gin v1.12.0, OTel SDK v1.47.0; inspect resolved graph.
+- **Maintenance:** Tagged v0.72.0, published 2026-10-02; version alignment required.
+- **License:** Apache-2.0 and BSD-3-Clause material; inspect redistribution terms
+- **Official source:** [official registry](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin@v0.72.0); [upstream tagged manifest](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/instrumentation/github.com/gin-gonic/gin/otelgin/v0.72.0)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** No automatic metrics/exporter/collector/sampling or PII redaction; full transitive advisories NOT_VERIFIED; performance/TCO NOT_MEASURED.
 - **Selection:** EVALUATE
 
 ## Selection boundary
