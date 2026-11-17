@@ -462,13 +462,7 @@ class CatalogMutationTests(unittest.TestCase):
             "python": {"celery", "cryptography", "httpx", "mcp", "numpy", "openai", "opentelemetry-sdk", "polars", "psycopg", "pydantic", "pytest", "SQLAlchemy", "structlog", "tenacity", "transformers", "typer", "uvicorn", "python-multipart", "pydantic-settings", "alembic", "Authlib", "pwdlib", "redis", "pytest-asyncio", "opentelemetry-instrumentation-fastapi", "ruff"},
         }
         expected_nondefault_gates = {
-            "typescript/zod": "PARTIAL|BLOCKED",
-            "typescript/pino": "PARTIAL|BLOCKED",
-            "typescript/jose": "PARTIAL|BLOCKED",
-            "typescript/better-auth": "PARTIAL|BLOCKED",
-            "swift/modelcontextprotocol/swift-sdk": "PARTIAL|BLOCKED",
             "swift/vapor/queues-redis-driver": "PARTIAL|BLOCKED",
-            "python/mcp": "PARTIAL|BLOCKED",
         }
         actual_nondefault_gates = {}
         for language, identities in expected_packages.items():

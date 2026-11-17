@@ -37,7 +37,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 | C17 | Swift Testing, XCTest, XCUITest | SnapshotTesting in test target; real-device/accessibility separate. |
 | C18 | OSLog, MetricKit, Instruments | Existing swift-log/tracing are not automatic app dependencies. |
 | C19 | Compiler diagnostics and Xcode/SwiftPM tooling | SwiftLint for lint, SwiftFormat for formatting; separate decisions. |
-| C20 | Core ML, Apple AI APIs where available, StoreKit | RevenueCat for managed IAP; MCP SDK remains PARTIAL/BLOCKED. |
+| C20 | Core ML, Apple AI APIs where available, StoreKit | RevenueCat for managed IAP; MCP SDK VERIFIED/EVALUATE for Swift >=6.1 and protocol 2025-11-25 only. |
 
 **Evaluated, not added:** [Kingfisher](https://github.com/onevcat/Kingfisher) and [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI) overlap Nuke for the screened remote-image use case; revisit for concrete format/integration needs. [Alamofire](https://github.com/Alamofire/Alamofire) needs a demonstrated gap beyond URLSession. [ViewInspector](https://github.com/nalexn/ViewInspector) is a conditional test-introspection alternative, not device-UI proof. [swiftlang/swift-format](https://github.com/swiftlang/swift-format) is an alternative formatter; do not impose both formatters. These are conditional exclusions, **not universal rejection**.
 
@@ -68,7 +68,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 | C17 | NATIVE_FIRST | VaporTesting and XCTVapor are products of Vapor; XCTest/Swift Testing, no extra repo. |
 | C18 | ADDED | SwiftLog/Metrics/Tracing already integrated; swift-otel only when exporters and collectors required. |
 | C19 | EXISTING | SwiftPM, compiler, current lint/format tools; separate Linux CI and Xcode workflows. |
-| C20 | EXISTING | AI HTTP integration as needed; existing MCP Swift SDK remains PARTIAL/BLOCKED. |
+| C20 | EXISTING | AI HTTP integration as needed; MCP Swift SDK VERIFIED/EVALUATE on Swift >=6.1/protocol 2025-11-25; app checks remain. |
 
 **Runtime and operations:** Pin Swift/Vapor/package graph and verify strict Swift 6 concurrency, actor isolation, Sendable, EventLoopFuture/async interop, no blocking EventLoops, bounded work, cancellation and graceful shutdown. Verify HTTP/1.1/2, WebSockets, body limits, backpressure, client disconnects, TLS termination/proxy trust, outbound SSRF controls, retry/idempotency and failure handling. Test DB connection pools, migrations, transaction scope, file upload/streaming and storage lifecycle. Durable jobs require a real queue/driver and operating model; metrics/tracing API does not automatically export telemetry. Redis, PostgreSQL, queues and collectors are conditional infrastructure, never defaults.
 
@@ -232,14 +232,14 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Fit:** Official Swift MCP client/server SDK using SwiftPM for Apple-native or compatible Swift server tools.
 - **Anti-fit:** No MCP interoperability; a normal app HTTP client via URLSession suffices.
 - **Fallback:** Foundation URLSession or existing API SDK.
-- **Compatibility:** Swift tools >=6.1 in tag 0.12.1; tag manifest lists macOS 13+, iOS 16+; README advertises Swift 6.0+/Xcode 16+. No verified support for MCP 2026-07-28.
-- **Maintenance:** GitHub tag 0.12.1; inspected 2026-11-02; repository active 2026-10-31.
+- **Compatibility:** Tag 0.12.1 requires Swift tools >=6.1, macOS 13+/iOS 16+ declared; tag README saying Swift 6.0+/Xcode 16+ is superseded by authoritative manifest. Exact-tag CI run 25106485828 passed Swift 6.1 macOS/Linux builds/tests, conformance with baseline and Linux static SDK build. `MCP` product supports documented stdio and streaming HTTP. Protocol 2025-11-25 scoped; 2026-07-28 NOT_VERIFIED.
+- **Maintenance:** Stable tag 0.12.1, manifest, README, license, upstream workflow and passing tag CI inspected 2026-11-17; no silent version upgrade.
 - **License:** Mixed Apache-2.0 for new/relicensed code and MIT for legacy contributions (upstream LICENSE transition).
-- **Official source:** [official registry or upstream](https://github.com/modelcontextprotocol/swift-sdk); [upstream/manifest](https://github.com/modelcontextprotocol/swift-sdk/blob/0.12.1/Package.swift)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** README states MCP 2025-11-25 and differs from tagged tools-version. Check protocol negotiation, stdio/HTTP transport, pinned tag license and Apple deployment; never claim support for 2026-07-28. Tool permissions, untrusted tool output, SSRF, credential forwarding, cancellation and resource limits must be enforced independently. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
-- **Selection:** BLOCKED
+- **Official source:** [tag manifest](https://github.com/modelcontextprotocol/swift-sdk/blob/0.12.1/Package.swift); [tag README](https://github.com/modelcontextprotocol/swift-sdk/blob/0.12.1/README.md); [tag license](https://github.com/modelcontextprotocol/swift-sdk/blob/0.12.1/LICENSE); [exact-tag CI PASS](https://github.com/modelcontextprotocol/swift-sdk/actions/runs/25106485828)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** README/tools mismatch resolved for Swift >=6.1 only; Swift 6.0 is NOT_CLEARED. Tagged license mixes Apache-2.0 and legacy MIT grants; retain obligations. Tagged conformance does not prove 2026-07-28, untested Apple targets or application integration. Verify actual SwiftPM graph, sandbox/tool permissions, untrusted results, SSRF/credentials, cancellation, transport auth, limits, runtime costs, pinned-version advisories and full dependency scan before adoption.
+- **Selection:** EVALUATE
 
 ### `apple/swift-openapi-generator`
 - **Package:** `apple/swift-openapi-generator`
@@ -447,13 +447,13 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Fit:** Redis-backed delayed/durable jobs and workers for demonstrated async delivery needs.
 - **Anti-fit:** Request-scoped tasks suffice or Redis/worker operations unjustified.
 - **Fallback:** Swift structured concurrency for non-durable tasks, or an existing managed queue.
-- **Compatibility:** Tag 1.1.2: Swift tools 5.8; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.76.3+, queues 1.12.1+, redis 4.8.0+. Current Queues 1.18.0, Redis 4.14.0 and Swift 6 strict-concurrency compatibility unresolved.
-- **Maintenance:** GitHub tag 1.1.2; Last stable release 2024-09-19; repository pushed 2026-07-17; maintenance does not prove compatibility. No support SLA inferred.
+- **Compatibility:** Tag 1.1.2 manifest uses Swift tools 5.8 with macOS 10.15+/iOS 13+ declarations, Vapor >=4.76.3, Queues >=1.12.1 and Redis >=4.8.0. Tagged Linux CI tests Swift 5.8/5.9/5.10/6.0 with Redis 6/7, not current Swift 6.1 strict concurrency or current Vapor/Queues/Redis dependency resolution.
+- **Maintenance:** Tag 1.1.2, manifest and Linux/Redis CI matrix rechecked 2026-11-17; no SLA or current strict-concurrency claim.
 - **License:** MIT ([tagged license](https://github.com/vapor/queues-redis-driver/blob/1.1.2/LICENSE)).
-- **Official source:** [upstream](https://github.com/vapor/queues-redis-driver); [tagged manifest](https://github.com/vapor/queues-redis-driver/blob/1.1.2/Package.swift)
+- **Official source:** [tagged manifest](https://github.com/vapor/queues-redis-driver/blob/1.1.2/Package.swift); [tagged CI matrix](https://github.com/vapor/queues-redis-driver/blob/1.1.2/.github/workflows/test.yml); [upstream](https://github.com/vapor/queues-redis-driver)
 - **Evidence status:** PARTIAL
 - **Evidence reviewed:** 2026-11-17
-- **Unknowns:** BLOCKED until current Swift 6/Linux graph, worker/retry integration, Redis recovery, idempotency and advisories tested. No exactly-once guarantee.
+- **Unknowns:** RETAIN_BLOCKED: no proven current Swift 6.1 strict-concurrency/current Queues+Redis+Vapor resolution or target Linux worker integration. Queue storage is not exactly-once execution. Retry/backoff, delayed jobs, shutdown, recovery, Redis persistence and idempotent handlers need app testing; pinned dependency advisories, performance and TCO unverified. No worker deployment.
 - **Selection:** BLOCKED
 
 ### `vapor/redis`

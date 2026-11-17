@@ -35,7 +35,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 | C17 | ADDED | unittest/pytest + existing HTTPX; pytest-asyncio for coroutine tests; TestClient context or explicit ASGI lifespan required. |
 | C18 | ADDED | logging/structlog and existing OTel SDK first; FastAPI instrumentation adds ASGI spans, not exporter/sampling policy. |
 | C19 | ADDED | venv/pip/pyproject/unittest and existing typer first; Ruff if unified lint + format is wanted in CI. |
-| C20 | EXISTING | Existing openai, transformers, numpy/polars and PARTIAL/BLOCKED mcp; choose only for actual integration/inference demand. |
+| C20 | EXISTING | Existing openai, transformers, numpy/polars and mcp VERIFIED/EVALUATE for tagged 2.3.0/Python >=3.10; choose only for real integration/inference demand. |
 
 ### Runtime, security and deployment gates
 
@@ -224,14 +224,14 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Fit:** Official MCP Python client/server SDK for tools, resources and prompts over stdio, Streamable HTTP and legacy SSE.
 - **Anti-fit:** A conventional HTTP/model client with no MCP interoperability requirement.
 - **Fallback:** httpx or the established HTTP/model SDK.
-- **Compatibility:** PyPI `mcp` and pinned `mcp-types` 2.3.0 declare Python >=3.10, while the v2 installation guide states Python 3.11+ is required. Target Python 3.11+ until the documentation/metadata discrepancy is reconciled.
-- **Maintenance:** PyPI latest 2.3.0; uploaded 2026-10-02; v2 stable release line documented.
+- **Compatibility:** Exact mcp v2.3.0 tagged `pyproject.toml`, README and installation docs declare Python >=3.10; tag CI 37070302489 passed Python 3.10 on Ubuntu/Windows with locked and lowest-direct dependencies. Later `main` docs state 3.11+ but do not negate tagged v2.3.0 proof. v2 stdio/Streamable HTTP supported; handshake protocols through 2025-11-25 and modern 2026-07-28 per-request envelope are distinct.
+- **Maintenance:** PyPI/tag 2.3.0, version-specific docs, protocol registry and successful tag CI reviewed 2026-11-17; keep version baseline unchanged.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://pypi.org/project/mcp/); [upstream/manifest](https://github.com/modelcontextprotocol/python-sdk)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** Published 2.3.0 metadata and v2 installation guide disagree on minimum Python version; Python 3.10 support remains unconfirmed for project selection. Exact MCP revision/transport negotiation requires target testing. Untrusted tool outputs, credentials, SSRF, authorization, cancellation and request limits are application responsibilities. Security advisory applicability: UNKNOWN (no pinned-version OSV/GHSA review); target-specific integration, performance and TCO: NOT_MEASURED. Recheck official metadata and transitive dependencies before project adoption.
-- **Selection:** BLOCKED
+- **Official source:** [tag pyproject](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/pyproject.toml); [tag install](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/docs/get-started/installation.md); [protocol registry](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/src/mcp-types/mcp_types/version.py); [tag CI PASS](https://github.com/modelcontextprotocol/python-sdk/actions/runs/37070302489); [advisories](https://github.com/modelcontextprotocol/python-sdk/security/advisories)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Python floor discrepancy is version-specific documentation drift: exact v2.3.0 supports/tested 3.10, current `main` says 3.11+. Security GHSA-rwrf-2pqf-9j8j, GHSA-5h93-6whr-6q8j and GHSA-84m7-p3x7-pcfv patched in 2.2.0; on 2.3.0 GHSA-w4fh-qvv9-3v23 resource/audience validation still requires opt-in config. App must verify target protocol transport, untrusted outputs, auth/authorization, SSRF, credentials, cancellation, limits, transitive graph and TCO; no production/security approval.
+- **Selection:** EVALUATE
 
 ### `celery`
 - **Package:** `celery`

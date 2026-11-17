@@ -22,18 +22,18 @@ All 20 canonical capabilities were screened for Next.js App Router. **Comparison
 | C04 | Intl, lang attributes, proper semantics and keyboard support | next-intl for real locale routing/translations; no library replaces accessibility testing |
 | C05 | useState, useReducer, Context, URL search parameters | zustand for small shared state; Jotai for atoms; Redux Toolkit for structured complex state; no global server store |
 | C06 | Server Component fetch, React.cache, Next cache/revalidation | SWR or TanStack Query only for client sync/cache/mutations; never blindly duplicate server state |
-| C07 | Existing boundary checks; existing zod (BLOCKED), valibot (EVALUATE) | ArkType considered, not added: overlapping validation choice without specific contract advantage |
+| C07 | Existing boundary checks; zod and valibot (EVALUATE only for verified runtime/contract fit) | ArkType considered, not added: overlapping validation choice without specific contract advantage |
 | C08 | Direct server-only driver/SQL or existing Kysely; Kysely includes PostgreSQL dialect and built-in Migrator | pg only for PostgreSQL + Kysely PostgresDialect on Node runtime; Edge/serverless pool and migration deployment need project validation; postgres/Postgres.js needs a separate verified Kysely dialect; Drizzle/Prisma not added without distinct schema/tooling ownership |
 | C09 | Native fetch/Route Handlers; existing undici for advanced Node HTTP | Axios/ky/GraphQL clients excluded without protocol or interceptor needs |
-| C10 | Next server cookies plus authorization-aware DAL and existing session layer | better-auth included PARTIAL/BLOCKED for conditional review; next-auth v5 remains beta in official guidance |
+| C10 | Next server cookies plus authorization-aware DAL and existing session layer | better-auth VERIFIED/EVALUATE for bounded Node + supported DB; authz/CSRF/session app gates remain; next-auth v5 beta not promoted |
 | C11 | Server SQL indexes/full-text or local Array.filter | fuse.js only for bounded local fuzzy search, not ACL-sensitive server search |
 | C12 | input type=file, FormData, next/image, platform image/file APIs | react-dropzone only for drag-drop UX; server validation mandatory |
 | C13 | Route Handlers for request-scoped tasks; host scheduler or durable infrastructure when actually required | No generic queue SDK: background durability/retries are workload and deployment choices |
 | C14 | error.tsx, expected errors, AbortSignal and idempotent bounded retries | No new retry/error package without demonstrated needs; never blindly retry mutations |
-| C15 | Web Crypto and vetted existing auth/session layer; jose remains BLOCKED | No new token library until key/algorithm/runtime model verified |
+| C15 | Web Crypto and vetted existing auth/session layer; jose VERIFIED/EVALUATE for bounded Node/algorithms | No token use without key/issuer/audience/revocation and app authorization verification |
 | C16 | Next caching, React memoization and measured rendering profiling | @tanstack/react-virtual only for measured large-list rendering bottlenecks |
 | C17 | Existing vitest and @playwright/test; node:test as simple fallback | @testing-library/react for DOM interactions; async RSC require E2E coverage |
-| C18 | Existing console/pino (BLOCKED), OTel API+SDK and Next instrumentation | No duplicate APM SDK absent actual incident, tracing or telemetry gap |
+| C18 | Existing console; pino VERIFIED/EVALUATE for Node-only JSON logging, OTel API+SDK and Next instrumentation | No duplicate APM SDK absent actual incident, tracing or telemetry gap |
 | C19 | TypeScript compiler, Next build/lint, established test and formatting workflow | No standalone build/lint package merely to raise catalog count |
 | C20 | Existing openai, ai, official MCP client/server and native HTTP | No new provider SDK or MCP abstraction without explicit integration needs |
 
@@ -60,14 +60,14 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Fit:** Parse untrusted runtime data, when the current codebase demonstrably needs it.
 - **Anti-fit:** Only compile-time types or already validated boundaries are involved.
 - **Fallback:** explicit checks or current validator.
-- **Compatibility:** Node.js and modern browsers per official docs; TypeScript >=5.5 tested, strict mode required. Exact edge/bundler target UNKNOWN.
-- **Maintenance:** npm latest 4.6.7; publish recency UNKNOWN; activity does not prove long-term support.
+- **Compatibility:** Zod 4.6.7 supports Node.js and modern browsers; TypeScript >=5.5 tested, `strict` required; tagged manifest exports ESM/CJS. Catalog evaluation bounded to Next.js Node-runtime server boundaries and browser Client Components. Exact Edge/bundler target NOT_VERIFIED.
+- **Maintenance:** Tagged 4.6.7 package and official requirements rechecked 2026-11-17; no support SLA inferred.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/zod/latest); [upstream/manifest](https://github.com/colinhacks/zod); [Zod official requirements](https://zod.dev/)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** Upstream documents TypeScript strict mode >=5.5, but npm does not declare a universal Node engine, and the exact target edge/bundler contract remains unresolved; retain BLOCKED. Security advisories: UNKNOWN; target performance and operational burden: NOT_MEASURED. Recheck before project selection.
-- **Selection:** BLOCKED
+- **Official source:** [official requirements](https://zod.dev/); [tagged manifest](https://github.com/colinhacks/zod/blob/v4.6.7/packages/zod/package.json); [Next Edge restrictions](https://nextjs.org/docs/app/api-reference/edge)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** The original global Edge/bundler requirement was too broad for Node/browser eligibility. Validate target Next.js version, server/client boundary, Edge build separately, schema coverage, payload/bundle costs and performance. No full transitive/pinned-version vulnerability clearance; targeted advisory review found no demonstrated blocker for 4.6.7. Existing valibot remains an option.
+- **Selection:** EVALUATE
 
 ### `valibot`
 - **Package:** `valibot`
@@ -108,14 +108,14 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Fit:** Structured JSON server logging, when the current codebase demonstrably needs it.
 - **Anti-fit:** Browser-only work or an existing structured logger meets needs.
 - **Fallback:** console or existing telemetry.
-- **Compatibility:** Pino v10 dropped Node 18 per upstream release notes; verify supported active Node LTS line, transports and target runtime. Exact edge/worker compatibility UNKNOWN.
-- **Maintenance:** npm latest 10.4.0; publish recency UNKNOWN; activity does not prove long-term support.
+- **Compatibility:** Pino 10.4.0 tagged CI matrix covers Node 20/22/24/25/26, while v10 dropped Node 18. EVALUATE only for maintained Node.js 22/24 server-side JSON logging; Next.js `runtime='nodejs'` only. Worker-thread transports require explicit environment/bundler verification. Edge/Workers NOT_VERIFIED.
+- **Maintenance:** Tag v10.4.0 package, Node support policy, transport docs and CI matrix verified 2026-11-17; no generic runtime guarantee.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/pino/latest); [upstream/manifest](https://github.com/pinojs/pino); [Pino support policy](https://github.com/pinojs/pino/blob/main/docs/lts.md)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** Pino LTS policy covers supported Node lines but npm 10.4.0 omits an explicit engine range and target edge/transport compatibility remains unresolved; retain BLOCKED. Security advisories: UNKNOWN; target performance and operational burden: NOT_MEASURED. Recheck before project selection.
-- **Selection:** BLOCKED
+- **Official source:** [tagged manifest](https://github.com/pinojs/pino/blob/v10.4.0/package.json); [LTS policy](https://github.com/pinojs/pino/blob/v10.4.0/docs/lts.md); [transport worker behavior](https://github.com/pinojs/pino/blob/v10.4.0/docs/transports.md); [tagged CI](https://github.com/pinojs/pino/blob/v10.4.0/.github/workflows/ci.yml)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** No need to prove Edge for a Node-only logger. Console is sufficient when structured logging is unnecessary. Check target serverless log flush, graceful shutdown, PII redaction, transport worker bundling, ingestion costs and performance; browser/Edge and third-party transports remain unapproved. No complete dependency security scan.
+- **Selection:** EVALUATE
 
 ### `vitest`
 - **Package:** `vitest`
@@ -172,14 +172,14 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Fit:** JOSE token and key operations, when the current codebase demonstrably needs it.
 - **Anti-fit:** Opaque sessions or an existing vetted authentication library cover requirements.
 - **Fallback:** existing auth library or Web Crypto.
-- **Compatibility:** jose v6 documents Node, Bun, Deno, browsers, Cloudflare Workers and Electron; algorithms and ESM/CJS requirements vary by runtime. Exact target crypto compatibility UNKNOWN.
-- **Maintenance:** npm latest 6.2.15; publish recency UNKNOWN; activity does not prove long-term support.
+- **Compatibility:** jose 6.2.15 is zero-dependency tree-shakeable ESM; tagged README lists Node.js, browsers and Cloudflare Workers subject to WebCrypto and algorithm availability. Catalog evaluation limited to Node.js 22/24 with explicit algorithms and ESM imports. CJS require(esm) only where Node ^20.19.0 || ^22.12.0 || >=23.0.0 permits; Next.js Edge target unverified.
+- **Maintenance:** Tag v6.2.15 manifest, runtime matrix and changelog fixes rechecked 2026-11-17; baseline not upgraded to 6.2.16.
 - **License:** MIT
-- **Official source:** [official registry or upstream](https://registry.npmjs.org/jose/latest); [upstream/manifest](https://github.com/panva/jose); [jose supported runtimes](https://github.com/panva/jose/blob/main/README.md)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** Upstream documents ESM and multi-runtime WebCrypto but algorithm availability and bundler behavior depend on the target; retain BLOCKED pending target crypto matrix. Security advisories: UNKNOWN; performance and operations: NOT_MEASURED. Recheck before project selection.
-- **Selection:** BLOCKED
+- **Official source:** [tagged README](https://github.com/panva/jose/blob/v6.2.15/README.md); [tagged manifest](https://github.com/panva/jose/blob/v6.2.15/package.json); [JWT verification options](https://github.com/panva/jose/blob/v6.2.15/docs/jwt/verify/interfaces/JWTVerifyOptions.md); [changelog](https://github.com/panva/jose/blob/main/CHANGELOG.md)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** JWT verification is not an authentication/authorization system. Application must specify signing-algorithm allowlist, issuer, audience, expiry, not-before, key selection/rotation, JWKS trust/cache, revocation and authorization checks. Selected runtime crypto/bundle tests required. 6.2.15 includes JWE decompression limit, JWKS negative cache-duration and JWT negative clock-tolerance fixes; full transitive scan and threat model NOT_PERFORMED.
+- **Selection:** EVALUATE
 
 ### `@opentelemetry/api`
 - **Package:** `@opentelemetry/api`
@@ -476,14 +476,14 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Fit:** Self-managed credential/OAuth/session flows when an established app session layer is insufficient.
 - **Anti-fit:** Guest-only apps, an existing tested identity solution or a simple provider integration already meeting policy.
 - **Fallback:** Next.js server-side session/DAL pattern or the current authentication system.
-- **Compatibility:** Official Next.js App Router Route Handler integration and Node-backed session APIs; Edge/database-adapter compatibility must be separately demonstrated.
-- **Maintenance:** npm latest 1.7.25; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified; prerelease 1.8.0-beta.10 excluded.
+- **Compatibility:** Official Next.js App Router Route Handler/RSC/server-action integration, including Next.js 16 Node.js Proxy guidance; supported database choices include built-in SQLite/PostgreSQL/MySQL and documented adapters. Scope to an explicit Node-runtime + supported database configuration; Edge middleware/community adapters NOT_PREAPPROVED. Cookie-presence checks are not session authentication.
+- **Maintenance:** Stable tagged 1.7.25 package verified 2026-11-17; official November 3 security release fixed 12 issues in 1.7.16. Installed Better Auth core, plugins and adapters must be version-aligned and rechecked.
 - **License:** MIT
-- **Official source:** [npm package identity](https://registry.npmjs.org/better-auth/latest); [upstream](https://github.com/better-auth/better-auth); [official integration/usage](https://better-auth.com/docs/integrations/next)
-- **Evidence status:** PARTIAL
-- **Evidence reviewed:** 2026-11-16
-- **Unknowns:** BLOCKED as a general catalog candidate pending target-specific database adapter, deployment runtime, cookie/session threat model and advisory review. A Proxy cookie-presence check is not authorization. Pinned-version security advisory exposure: UNKNOWN; target bundle/runtime tests and performance: NOT_MEASURED.
-- **Selection:** BLOCKED
+- **Official source:** [Next.js integration](https://better-auth.com/docs/integrations/next); [database](https://better-auth.com/docs/concepts/database); [security/CSRF](https://better-auth.com/docs/reference/security); [2026-11-03 security fixes](https://better-auth.com/blog/security-release-2026-11-03); [tagged manifest](https://github.com/better-auth/better-auth/blob/v1.7.25/packages/better-auth/package.json)
+- **Evidence status:** VERIFIED
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Known GHSA-965c-763c-88jm fixed in 1.7.7 and November 3 core/plugin advisories fixed in 1.7.16 precede catalog baseline 1.7.25, not proof of complete security clearance. Application gates: pinned plugin/adapter advisories and full graph, DB migrations/ownership, secure/SameSite cookies, trusted origins, CSRF, OAuth state/redirects, secret rotation, session expiry/revocation, proxy constraints and server-side authorization. Custom `auth.api` routes bypass handler-level CSRF/origin checks; validate origin independently. No Edge or production approval.
+- **Selection:** EVALUATE
 
 ### `fuse.js`
 - **Package:** `fuse.js`
