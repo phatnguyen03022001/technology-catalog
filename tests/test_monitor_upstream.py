@@ -46,6 +46,93 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(len({(r["layer"], r.get("ecosystem"), r["name"])
                               for r in self.records}), len(self.records))
 
+    def test_catalog_primary_package_version_formats(self):
+        expected = {
+            ("rust", "tokio"): "1.54.1",                      # legacy crates.io
+            ("rust", "rmcp"): "3.10.0",                       # named crate
+            ("rust", "tower-http"): "0.7.1",                 # published manifest
+            ("go", "github.com/gin-contrib/cors"): "v1.7.10",
+            ("go", "github.com/go-chi/chi/v5"): "v5.5.0",     # legacy Go module
+            ("typescript", "zod"): "4.6.7",                  # legacy npm
+            ("python", "pydantic"): "2.14.2",                # legacy PyPI
+            ("python", "opentelemetry-instrumentation-fastapi"): "0.66b2",
+            ("swift", "groue/GRDB.swift"): "v7.11.1",        # legacy tag
+            ("swift", "kean/Nuke"): "13.2.3",
+            ("swift", "vapor/swift-openapi-vapor"): "1.2.0",
+        }
+        rows = {(r["ecosystem"], r["name"]): r for r in self.records
+                if r["layer"] == "libraries"}
+        for key, baseline in expected.items():
+            with self.subTest(package=key):
+                self.assertEqual(rows[key]["baseline"], baseline)
+
+    def test_primary_version_rejects_unrelated_and_ambiguous_versions(self):
+        cases = (
+            ("rust", "rmcp", "crates.io other-crate 3.10.0; rmcp depends on it", None),
+            ("rust", "rmcp", "Rust MSRV 1.90; dependency version 2.3.4", None),
+            ("swift", "vapor/jwt", "Security release 2026-10-28; jwt-kit 5.9.0 released", None),
+            ("swift", "vapor/fluent", "Release 2025-09-25; Swift tools 6.2", None),
+            ("swift", "example/pkg", "Release 1.2.0; Release 1.3.0", None),
+            ("swift", "example/pkg", "Swift tools 6.2; Tag 1.2.3 of dependency", None),
+            ("swift", "example/pkg", "Release 1.2.0; Swift tools 6.2; SwiftNIO 2.100.0; Vapor 4.122.3", "1.2.0"),
+            ("swift", "example/pkg", "Tag v1.2.3-rc.1", "v1.2.3-rc.1"),
+            ("python", "example", "PyPI 1!2.3.4rc1; Python 3.14 needed", "1!2.3.4rc1"),
+            ("typescript", "example", "Node 26.5; dependency latest 2.0.0", None),
+        )
+        for ecosystem, package, maintenance, expected in cases:
+            with self.subTest(maintenance=maintenance):
+                self.assertEqual(m.primary_version(ecosystem, package, maintenance), expected)
+
+    def test_new_baseline_flows_to_release_and_advisory_without_approval(self):
+        row = next(r for r in self.records if r.get("ecosystem") == "python"
+                   and r["name"] == "uvicorn")
+        calls = []
+        def fetch(url, body=None):
+            calls.append((url, body))
+            if "osv.dev" in url:
+                return {"vulns": []}
+            return {"info": {"version": row["baseline"]}}
+        result = m.evaluate([row], m.parse_date(row["reviewed"]), live=True,
+                            security=True, fetch=fetch)[0]
+        self.assertEqual(result["signal"], "NO_CHANGE_DETECTED")
+        self.assertEqual(result["security"], "NO_ADVISORY_RETURNED")
+        self.assertEqual(result["production_use"], "PROJECT_HARD_GATES_REQUIRED")
+        self.assertEqual(len(calls), 2)
+        self.assertIn("/uvicorn/json", calls[0][0])
+        self.assertEqual(calls[1][1]["version"], row["baseline"])
+        self.assertEqual(calls[1][1]["package"], {"name": "uvicorn", "ecosystem": "PyPI"})
+
+    def test_new_baseline_change_and_existing_gates_still_block(self):
+        row = deepcopy(next(r for r in self.records if r.get("ecosystem") == "go"
+                            and r["name"] == "github.com/gin-contrib/cors"))
+        row["status"], row["selection"] = "PARTIAL", "BLOCKED"
+        now = m.parse_date(row["reviewed"])
+        for upstream, expected in (("v1.7.10", "NO_CHANGE_DETECTED"),
+                                   ("v1.7.11", "UPSTREAM_CHANGED")):
+            with self.subTest(upstream=upstream):
+                observed = m.evaluate([row], now, live=True,
+                                      fetch=lambda *_: {"Version": upstream})[0]
+                self.assertEqual(observed["signal"], expected)
+                self.assertEqual(observed["production_use"], "BLOCK_REVERIFY")
+                self.assertEqual(observed["status"], "PARTIAL")
+                self.assertEqual(observed["selection"], "BLOCKED")
+
+    def test_unversioned_records_remain_unknown_without_network(self):
+        for ecosystem, package in (("typescript", "radix-ui"), ("swift", "vapor/jwt")):
+            with self.subTest(package=package):
+                row = next(r for r in self.records if r.get("ecosystem") == ecosystem
+                           and r["name"] == package)
+                self.assertIsNone(row["baseline"])
+                def unexpected(*_):
+                    self.fail("missing baselines must not probe upstream")
+                observed = m.evaluate([row], m.parse_date(row["reviewed"]),
+                                      live=True, security=True, fetch=unexpected)[0]
+                self.assertEqual(observed["signal"], "UNKNOWN")
+                self.assertEqual(observed["production_use"], "BLOCK_REVERIFY")
+                deterministic = m.evaluate([row], m.parse_date(row["reviewed"]),
+                                           fetch=unexpected)[0]
+                self.assertEqual(deterministic["signal"], "NOT_CHECKED")
+
     def test_frozen_day29_day30_day31(self):
         day = date(2026, 4, 30)
         row = {"reviewed": day.isoformat(), "status": "VERIFIED"}

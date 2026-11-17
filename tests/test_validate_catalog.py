@@ -56,6 +56,30 @@ class CatalogMutationTests(unittest.TestCase):
     def test_real_catalog_passes(self):
         self.validate(0, "STRUCTURE PASS")
 
+    def test_pillar_summary_count_mismatches_rejected(self):
+        path = self.root / "pillars" / "README.md"
+        original = path.read_text(encoding="utf-8")
+        for pillar, wrong_count in (("06", 25), ("01", 30)):
+            with self.subTest(pillar=pillar):
+                match = re.search(rf"(?m)^\| {pillar} \| [^|]+ \| (\d+) \| \d+ \|$", original)
+                self.assertIsNotNone(match)
+                modified = original[:match.start(1)] + str(wrong_count) + original[match.end(1):]
+                path.write_text(modified, encoding="utf-8")
+                self.validate(1, f"pillar {pillar} summary count")
+        path.write_text(original, encoding="utf-8")
+
+    def test_pillar_summary_missing_or_duplicate_row_rejected(self):
+        path = self.root / "pillars" / "README.md"
+        original = path.read_text(encoding="utf-8")
+        row = next(line for line in original.splitlines(keepends=True)
+                   if line.startswith("| 06 |"))
+        for replacement, diagnostic in (("", "missing pillar summary rows"),
+                                        (row + row, "duplicate pillar 06")):
+            with self.subTest(diagnostic=diagnostic):
+                path.write_text(original.replace(row, replacement, 1), encoding="utf-8")
+                self.validate(1, diagnostic)
+        path.write_text(original, encoding="utf-8")
+
     def test_future_review_date_fails(self):
         self.change("supabase", "Supabase Database", "checked", lambda _: "2099-01-01")
         self.validate(1, "future evidence review date")

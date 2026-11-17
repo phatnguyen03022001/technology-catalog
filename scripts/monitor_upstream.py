@@ -17,9 +17,37 @@ from validate_catalog import ROOT, service_rows
 
 LINK = re.compile(r"\[[^]]+\]\((https://[^)]+)\)")
 FIELD = re.compile(r"(?m)^- \*\*([^:]+):\*\*[ \t]*(.*)$")
-VERSIONS = {"rust": r"crates\.io stable (\S+)", "go": r"Go module (\S+)",
-            "typescript": r"npm latest (\S+)", "python": r"PyPI latest (\S+)",
-            "swift": r"GitHub tag (\S+)"}
+# A version is only a baseline when Maintenance starts with a primary-package
+# release declaration. Do not infer versions from Compatibility or dependencies.
+VERSION_TOKEN = r"(?:[0-9]+!)?v?[0-9]+(?:\.[0-9]+)+(?:[-+._]?[A-Za-z][A-Za-z0-9.+_-]*)?"
+
+def primary_version(ecosystem: str, package: str, maintenance: str) -> str | None:
+    patterns = {
+        "rust": (
+            rf"crates\.io stable ({VERSION_TOKEN})",
+            rf"crates\.io {re.escape(package)} ({VERSION_TOKEN})",
+            rf"({VERSION_TOKEN})(?= (?:published |crate manifest|official workspace|tagged Cargo workspace|official package manifest))",
+        ),
+        "go": (rf"Go module ({VERSION_TOKEN})", rf"Tagged ({VERSION_TOKEN})"),
+        "typescript": (rf"npm latest ({VERSION_TOKEN})",),
+        "python": (rf"PyPI (?:latest )?({VERSION_TOKEN})",),
+        "swift": (rf"(?:GitHub tag|Tag|Tagged|Release|Stable) ({VERSION_TOKEN})",),
+    }
+    candidates = []
+    for section in maintenance.split(";"):
+        found = None
+        for pattern in patterns[ecosystem]:
+            match = re.match(rf"^{pattern}(?=$|[\s,])", section.strip())
+            if match:
+                found = match.group(1)
+                break
+        candidates.append(found)
+    first = candidates[0]
+    if first and all(candidate is None or candidate.removeprefix("v") == first.removeprefix("v")
+                     for candidate in candidates[1:]):
+        return first
+    return None
+
 OSV_ECOSYSTEM = {"rust": "crates.io", "go": "Go", "typescript": "npm", "python": "PyPI"}
 
 def parse_date(value: str) -> date:
@@ -73,12 +101,12 @@ def inventory(root: Path = ROOT) -> list[dict]:
         for heading, block in zip(blocks[1::2], blocks[2::2]):
             fields = dict(FIELD.findall(block))
             identity = fields.get("Package", "").strip(bt)
-            version = re.search(VERSIONS[path.stem], fields.get("Maintenance", ""))
+            version = primary_version(path.stem, identity, fields.get("Maintenance", ""))
             urls = sources(fields.get("Official source", ""))
             add("libraries", path, identity, fields.get("Capability", "UNKNOWN"),
                 fields.get("Evidence reviewed", ""), fields.get("Evidence status", "UNKNOWN"),
                 urls[0] if urls else "", ecosystem=path.stem,
-                baseline=version.group(1).rstrip(";,.") if version else None,
+                baseline=version,
                 compatibility=fields.get("Compatibility", "UNKNOWN"),
                 license=fields.get("License", "UNKNOWN"),
                 selection=fields.get("Selection", "BLOCKED"))

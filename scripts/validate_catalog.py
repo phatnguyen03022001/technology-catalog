@@ -548,6 +548,34 @@ def main() -> int:
         if expected_index_services[key] != indexed_services[key]:
             errors.append(f"primary-pillar service index mismatch for {key[0]} in pillar {key[1]}: {key[2]!r}; provider rows={expected_index_services[key]}, index rows={indexed_services[key]}")
 
+    summary_text = (PILLARS / "README.md").read_text(encoding="utf-8")
+    summary_table = summary_text.split("| ID | Pillar | Service records | Watchlist |", 1)
+    allowed_pillars = {f"{n:02d}" for n in range(1, 13)}
+    summary_pillars = set()
+    if len(summary_table) != 2:
+        errors.append("pillars/README.md: missing pillar summary table")
+    else:
+        for line in summary_table[1].splitlines()[2:]:
+            if not line.startswith("| "):
+                break
+            row = cells(line)
+            if len(row) != 4:
+                errors.append(f"pillars/README.md: malformed summary row: {line}")
+                continue
+            pillar, _, count, _ = row
+            if pillar not in allowed_pillars:
+                errors.append(f"pillars/README.md: unexpected pillar {pillar!r}")
+            elif pillar in summary_pillars:
+                errors.append(f"pillars/README.md: duplicate pillar {pillar}")
+            else:
+                summary_pillars.add(pillar)
+                if not count.isdecimal() or int(count) != pillar_counts[pillar]:
+                    errors.append(f"pillars/README.md: pillar {pillar} summary count {count!r} "
+                                  f"differs from provider records {pillar_counts[pillar]}")
+    if summary_pillars != allowed_pillars:
+        errors.append(f"pillars/README.md: missing pillar summary rows "
+                      f"{sorted(allowed_pillars - summary_pillars)}")
+
     watchlist_counts = {}
     for index_path in sorted(PILLARS.glob("[0-1][0-9]-*/README.md")):
         content = index_path.read_text(encoding="utf-8")

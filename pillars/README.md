@@ -7,7 +7,7 @@
 | 03 | [Storage & Media](./03-storage-media/README.md) | 24 | 0 |
 | 04 | [Networking & Edge](./04-networking-edge/README.md) | 14 | 0 |
 | 05 | [Cache & Traditional Search](./05-cache-traditional-search/README.md) | 22 | 0 |
-| 06 | [Messaging & Async](./06-messaging-async/README.md) | 25 | 0 |
+| 06 | [Messaging & Async](./06-messaging-async/README.md) | 26 | 0 |
 | 07 | [Identity & Security](./07-identity-security/README.md) | 23 | 0 |
 | 08 | [DevOps & Delivery](./08-devops-delivery/README.md) | 30 | 0 |
 | 09 | [Observability & Analytics](./09-observability-analytics/README.md) | 22 | 1 |
