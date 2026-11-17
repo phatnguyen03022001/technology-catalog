@@ -7,7 +7,7 @@
 | Rust | 20 | Axum/Tower HTTP, contracts, DB, crypto, cache, testing, tracing and AI | [Rust](rust.md) |
 | Go | 22 | Gin HTTP/auth, SQL, cache, resilience, QA, tracing, CLI and AI | [Go](go.md) |
 | TypeScript | 30 | React UI, state, data, security, runtime and testing | [TypeScript](typescript.md) |
-| Python | 16 | Validation, HTTP, data, retry, tests, AI | [Python](python.md) |
+| Python | 26 | FastAPI ASGI, forms, contracts, SQL migrations, auth, cache, QA, tracing, tooling and AI | [Python](python.md) |
 | Swift | 19 | SwiftUI-native integrations, media, tooling, data and systems | [Swift](swift.md) |
 
 ## Canonical primary capabilities
