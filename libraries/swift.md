@@ -400,7 +400,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** No database; direct SQL is smaller or better suited.
 - **Fallback:** Vapor without ORM or selected SQL client.
 - **Compatibility:** Tag 4.13.0: Swift tools 6.0; macOS 10.15+/iOS 13+ declared; tagged dependencies vapor/vapor 4.117.0+ and fluent-kit 1.52.2+; Linux build not performed.
-- **Maintenance:** Release 2025-09-25; upstream pushed 2026-08-25. No support SLA inferred.
+- **Maintenance:** GitHub tag 4.13.0; Release 2025-09-25; upstream pushed 2026-08-25. No support SLA inferred.
 - **License:** MIT ([tagged license](https://github.com/vapor/fluent/blob/4.13.0/LICENSE)).
 - **Official source:** [upstream](https://github.com/vapor/fluent); [tagged manifest](https://github.com/vapor/fluent/blob/4.13.0/Package.swift)
 - **Evidence status:** VERIFIED
@@ -416,7 +416,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** No PostgreSQL; prefer one DB driver, or direct PostgresNIO when appropriate.
 - **Fallback:** Direct SQL/PostgresNIO or the already selected DB driver.
 - **Compatibility:** Tag 2.14.1: Swift tools 6.2; macOS 10.15+/iOS 13+ declared; fluent-kit 1.52.2+, postgres-kit 2.17.0+, postgres-nio 1.33.1+ and service-lifecycle 2.12.0+ dependencies.
-- **Maintenance:** Release 2026-11-10; pushed 2026-11-10. No support SLA inferred.
+- **Maintenance:** GitHub tag 2.14.1; Release 2026-11-10; pushed 2026-11-10. No support SLA inferred.
 - **License:** MIT ([tagged license](https://github.com/vapor/fluent-postgres-driver/blob/2.14.1/LICENSE)).
 - **Official source:** [upstream](https://github.com/vapor/fluent-postgres-driver); [tagged manifest](https://github.com/vapor/fluent-postgres-driver/blob/2.14.1/Package.swift)
 - **Evidence status:** VERIFIED
@@ -432,7 +432,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** Vapor sessions suffice, or JWT verification is being confused with authorization.
 - **Fallback:** Vapor authenticators/sessions and server-side authorization.
 - **Compatibility:** Tag 5.2.0: Swift tools 6.2; macOS 13+/iOS 16+ declared; vapor/vapor 4.110.2+ and jwt-kit 5.8.0+. Vapor 4 integration declared, Linux untested.
-- **Maintenance:** Security release 2026-10-28; underlying jwt-kit 5.9.0 released 2026-11-10. No support SLA inferred.
+- **Maintenance:** GitHub tag 5.2.0; Security release 2026-10-28; underlying jwt-kit 5.9.0 released 2026-11-10. No support SLA inferred.
 - **License:** MIT ([tagged license](https://github.com/vapor/jwt/blob/5.2.0/LICENSE)).
 - **Official source:** [upstream](https://github.com/vapor/jwt); [tagged manifest](https://github.com/vapor/jwt/blob/5.2.0/Package.swift)
 - **Evidence status:** VERIFIED
@@ -448,7 +448,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** Request-scoped tasks suffice or Redis/worker operations unjustified.
 - **Fallback:** Swift structured concurrency for non-durable tasks, or an existing managed queue.
 - **Compatibility:** Tag 1.1.2: Swift tools 5.8; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.76.3+, queues 1.12.1+, redis 4.8.0+. Current Queues 1.18.0, Redis 4.14.0 and Swift 6 strict-concurrency compatibility unresolved.
-- **Maintenance:** Last stable release 2024-09-19; repository pushed 2026-07-17; maintenance does not prove compatibility. No support SLA inferred.
+- **Maintenance:** GitHub tag 1.1.2; Last stable release 2024-09-19; repository pushed 2026-07-17; maintenance does not prove compatibility. No support SLA inferred.
 - **License:** MIT ([tagged license](https://github.com/vapor/queues-redis-driver/blob/1.1.2/LICENSE)).
 - **Official source:** [upstream](https://github.com/vapor/queues-redis-driver); [tagged manifest](https://github.com/vapor/queues-redis-driver/blob/1.1.2/Package.swift)
 - **Evidence status:** PARTIAL
@@ -464,7 +464,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** Small single-instance cache works; Redis adds a needless network and outage dependency.
 - **Fallback:** Bounded application memory/cache or already approved cache.
 - **Compatibility:** Tag 4.14.0: Swift tools 5.10; macOS 10.15+/iOS 13+ declared; vapor/vapor 4.100.0+, swift-server/RediStack 1.4.1+.
-- **Maintenance:** Release 2025-09-12; repository pushed 2026-07-17. No support SLA inferred.
+- **Maintenance:** GitHub tag 4.14.0; Release 2025-09-12; repository pushed 2026-07-17. No support SLA inferred.
 - **License:** MIT ([tagged license](https://github.com/vapor/redis/blob/4.14.0/LICENSE)).
 - **Official source:** [upstream](https://github.com/vapor/redis); [tagged manifest](https://github.com/vapor/redis/blob/4.14.0/Package.swift)
 - **Evidence status:** VERIFIED
@@ -480,7 +480,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** Vapor Client already covers the workload; duplicate HTTP client lifecycle is harmful.
 - **Fallback:** Vapor's native Client using transitive AsyncHTTPClient.
 - **Compatibility:** Tag 1.37.0: Swift tools 6.2; swift-nio 2.100.0+, swift-nio-ssl 2.30.0+, NIO HTTP/2; Vapor 4.122.3 already depends on this package from 1.24.0; exact co-resolution untested.
-- **Maintenance:** Release 2026-11-02; pushed 2026-11-16. No support SLA inferred.
+- **Maintenance:** GitHub tag 1.37.0; Release 2026-11-02; pushed 2026-11-16. No support SLA inferred.
 - **License:** Apache-2.0 ([tagged license](https://github.com/swift-server/async-http-client/blob/1.37.0/LICENSE.txt)).
 - **Official source:** [upstream](https://github.com/swift-server/async-http-client); [tagged manifest](https://github.com/swift-server/async-http-client/blob/1.37.0/Package.swift)
 - **Evidence status:** VERIFIED
@@ -512,7 +512,7 @@ Native references: [SwiftUI](https://developer.apple.com/documentation/swiftui/)
 - **Anti-fit:** SwiftLog/Metrics/Tracing APIs alone suffice; no exporter or collector.
 - **Fallback:** Already available Vapor SwiftLog/Metrics/Distributed Tracing.
 - **Compatibility:** Tag 1.6.0: Swift tools 6.2; OTel product and optional OTLPHTTP/OTLPGRPC traits; swift-distributed-tracing 1.7.2+, swift-metrics 2.4.1+ and service-lifecycle 2.4.1+. Transport traits have distinct dependency costs.
-- **Maintenance:** Release 2026-10-16; pushed 2026-11-06. No support SLA inferred.
+- **Maintenance:** GitHub tag 1.6.0; Release 2026-10-16; pushed 2026-11-06. No support SLA inferred.
 - **License:** Apache-2.0 ([tagged license](https://github.com/swift-otel/swift-otel/blob/1.6.0/LICENSE.txt)).
 - **Official source:** [upstream](https://github.com/swift-otel/swift-otel); [tagged manifest](https://github.com/swift-otel/swift-otel/blob/1.6.0/Package.swift)
 - **Evidence status:** VERIFIED

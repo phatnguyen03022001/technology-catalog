@@ -281,7 +281,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Simple static markup or an existing accessible component system; it does not supply an entire styled design system.
 - **Fallback:** Semantic HTML, native dialog and current UI components.
 - **Compatibility:** React UI primitives; interactive parts belong behind a Next.js Client Component boundary; server-only rendering is not a universal substitute.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 1.8.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/radix-ui/latest); [upstream](https://github.com/radix-ui/primitives); [official integration/usage](https://www.radix-ui.com/primitives/docs/overview/introduction)
 - **Evidence status:** VERIFIED
@@ -296,8 +296,8 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Fit:** Headless interactive tables with multiple sorting, filtering, pagination and selection concerns.
 - **Anti-fit:** Static HTML tables and simple server-paginated lists; table logic increases client complexity.
 - **Fallback:** Native table markup and server-side query/pagination.
-- **Compatibility:** React adapter for interactive client tables; distinguish v8 from v9 APIs when pinning a major and verify SSR state hydration.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Compatibility:** npm 9.3.1 declares Node >=20 and React >=18; React adapter for client tables; v9 is not assumed API-compatible with v8; verify SSR hydration.
+- **Maintenance:** npm latest 9.3.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-table/latest); [upstream](https://github.com/TanStack/table); [official integration/usage](https://tanstack.com/table/latest/docs/framework/react/guide/table-state)
 - **Evidence status:** VERIFIED
@@ -313,7 +313,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Simple hover/fade/color effects, reduced-motion requirements or animations already covered by CSS.
 - **Fallback:** CSS transitions/keyframes and Web Animations API.
 - **Compatibility:** Official Motion React guide requires React >=18.2; Next.js App Router uses a client boundary or the documented motion/react-client entrypoint.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 14.14.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/motion/latest); [upstream](https://github.com/motiondivision/motion); [official integration/usage](https://motion.dev/docs/react-installation)
 - **Evidence status:** VERIFIED
@@ -329,7 +329,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Static reports, tiny sparklines and server-rendered SVG where client interaction adds no value.
 - **Fallback:** Native SVG/HTML and existing visualization components.
 - **Compatibility:** React chart components use client-side interactivity; upstream installation documents react-is matching the installed React version; test Next SSR and hydration.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 3.10.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/recharts/latest); [upstream](https://github.com/recharts/recharts); [official integration/usage](https://recharts.github.io/en-US/guide/)
 - **Evidence status:** VERIFIED
@@ -345,7 +345,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Small forms handled well by native HTML validation plus React/Next Server Actions; does not provide routing.
 - **Fallback:** Native form/FormData, useActionState and existing field handlers.
 - **Compatibility:** React hooks operate in Client Components; Server Actions can receive submissions but server-side validation and authorization remain required.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 7.92.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified; prerelease 8.0.0-beta.0 excluded.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/react-hook-form/latest); [upstream](https://github.com/react-hook-form/react-hook-form); [official integration/usage](https://react-hook-form.com/get-started)
 - **Evidence status:** VERIFIED
@@ -361,7 +361,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Single-locale apps or built-in Intl plus small dictionaries already covering needs.
 - **Fallback:** Intl, semantic HTML, lang attributes and native Next.js routing.
 - **Compatibility:** Official App Router integration covers Server and Client Components; locale request configuration and routing must match deployment mode.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 4.15.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/next-intl/latest); [upstream](https://github.com/amannn/next-intl); [official integration/usage](https://next-intl.dev/docs/getting-started/app-router)
 - **Evidence status:** VERIFIED
@@ -377,7 +377,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** State local to one component, URL state, server-fetched data or context/useReducer sufficient.
 - **Fallback:** useState, useReducer, React Context and searchParams.
 - **Compatibility:** Official Next.js guide requires per-request store creation and stable SSR hydration; React Server Components must not read/write the mutable store.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 5.1.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/zustand/latest); [upstream](https://github.com/pmndrs/zustand); [official integration/usage](https://zustand.docs.pmnd.rs/learn/guides/nextjs)
 - **Evidence status:** VERIFIED
@@ -393,7 +393,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Small isolated UI state, data already owned by the server, or projects not needing centralized Redux policies.
 - **Fallback:** React context/reducer, Zustand or existing state solution.
 - **Compatibility:** Official Redux Next.js App Router guide requires per-request store factory and Client Component Provider; React binding also needs react-redux.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 2.14.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/@reduxjs/toolkit/latest); [upstream](https://github.com/reduxjs/redux-toolkit); [official integration/usage](https://redux.js.org/usage/nextjs)
 - **Evidence status:** VERIFIED
@@ -408,8 +408,8 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Fit:** Fine-grained shared client state composed from independent atoms and derived relationships.
 - **Anti-fit:** A few isolated useState values or an existing store that covers the application.
 - **Fallback:** useState/useReducer and existing Zustand/Redux if already deployed.
-- **Compatibility:** Official Next.js guide requires Provider to isolate SSR requests and explicit hydration for server-provided atom state.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Compatibility:** npm 3.0.2 requires Node >=22.12 and React >=18; official Next.js guide requires per-request Provider and explicit hydration for server-provided atom state.
+- **Maintenance:** npm latest 3.0.2; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/jotai/latest); [upstream](https://github.com/pmndrs/jotai); [official integration/usage](https://jotai.org/docs/guides/nextjs)
 - **Evidence status:** VERIFIED
@@ -425,7 +425,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Server Components plus native fetch already satisfy the feature or client cache is not needed.
 - **Fallback:** Server-side fetch, React.cache, Next revalidation and minimal client fetch.
 - **Compatibility:** Official Next.js App Router guide uses a Client Component QueryClientProvider and per-request server QueryClient for hydration.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 5.107.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-query/latest); [upstream](https://github.com/TanStack/query); [official integration/usage](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr)
 - **Evidence status:** VERIFIED
@@ -441,7 +441,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Server-only data fetching or a project already standardizing on TanStack Query.
 - **Fallback:** Native fetch with Next cache/revalidation or existing client cache.
 - **Compatibility:** SWR hooks are Client Component APIs; RSC may use documented SWRConfig/serialization/preload APIs, not useSWR hooks.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 2.5.1; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified; prerelease 2.6.0-beta.0 excluded.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/swr/latest); [upstream](https://github.com/vercel/swr); [official integration/usage](https://swr.vercel.app/docs/with-nextjs)
 - **Evidence status:** VERIFIED
@@ -457,7 +457,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Guest-only apps, an existing tested identity solution or a simple provider integration already meeting policy.
 - **Fallback:** Next.js server-side session/DAL pattern or the current authentication system.
 - **Compatibility:** Official Next.js App Router Route Handler integration and Node-backed session APIs; Edge/database-adapter compatibility must be separately demonstrated.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 1.7.25; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified; prerelease 1.8.0-beta.10 excluded.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/better-auth/latest); [upstream](https://github.com/better-auth/better-auth); [official integration/usage](https://better-auth.com/docs/integrations/next)
 - **Evidence status:** PARTIAL
@@ -473,7 +473,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Large datasets, private server indexes, ACL-filtered search or relevance requirements beyond client-side fuzzy matching.
 - **Fallback:** Array filtering for simple match; server database search/index for real datasets.
 - **Compatibility:** JavaScript in browser/Node; if loaded in Client Components the search corpus enters the browser bundle or network payload.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 7.5.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified; prerelease 7.6.0-beta.0 excluded.
 - **License:** Apache-2.0
 - **Official source:** [npm package identity](https://registry.npmjs.org/fuse.js/latest); [upstream](https://github.com/krisk/Fuse); [official integration/usage](https://www.fusejs.io/fuzzy-search.html)
 - **Evidence status:** VERIFIED
@@ -488,8 +488,8 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Fit:** Drag/drop and paste UX for file selection beyond a native input.
 - **Anti-fit:** Ordinary file upload controls; it does not upload files, virus-scan or enforce server-side policy.
 - **Fallback:** Native input type=file, FormData and server upload handling.
-- **Compatibility:** React browser File/drag-drop APIs; Client Component only; official guide lists React >=18 peer dependency.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Compatibility:** npm 20.2.0 requires Node >=22 and React >=18; browser File/drag-drop APIs require Client Components.
+- **Maintenance:** npm latest 20.2.0; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/react-dropzone/latest); [upstream](https://github.com/react-dropzone/react-dropzone); [official integration/usage](https://react-dropzone.org/guide/getting-started/)
 - **Evidence status:** VERIFIED
@@ -505,7 +505,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Ordinary short lists or server pagination already yielding an acceptable UI.
 - **Fallback:** Server pagination, progressive rendering and normal DOM lists.
 - **Compatibility:** React hook measures browser scroll/element state; use inside interactive Client Components and verify SSR/hydration sizing.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 3.14.26; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/@tanstack/react-virtual/latest); [upstream](https://github.com/TanStack/virtual); [official integration/usage](https://tanstack.com/virtual/latest/docs/framework/react/react-virtual)
 - **Evidence status:** VERIFIED
@@ -521,7 +521,7 @@ Do not treat [shadcn/ui](https://ui.shadcn.com/docs) copied/registry components 
 - **Anti-fit:** Pure business logic without DOM or async RSC tests needing browser-level evidence.
 - **Fallback:** Existing test runner and Playwright E2E for interactive flows.
 - **Compatibility:** Development-time React DOM tests; official docs require peer @testing-library/dom and appropriate DOM test environment.
-- **Maintenance:** Upstream project and official integration docs inspected 2026-11-16 UTC; exact npm version and release recency not pinned.
+- **Maintenance:** npm latest 16.3.3; official npm dist-tags.latest and /latest package metadata verified 2026-11-17 UTC; upstream project and integration docs inspected 2026-11-16 UTC; npm publication timestamp not verified.
 - **License:** MIT
 - **Official source:** [npm package identity](https://registry.npmjs.org/@testing-library/react/latest); [upstream](https://github.com/testing-library/react-testing-library); [official integration/usage](https://testing-library.com/docs/react-testing-library/intro/)
 - **Evidence status:** VERIFIED

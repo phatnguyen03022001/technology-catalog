@@ -59,6 +59,29 @@ class MonitorTests(unittest.TestCase):
             ("swift", "groue/GRDB.swift"): "v7.11.1",        # legacy tag
             ("swift", "kean/Nuke"): "13.2.3",
             ("swift", "vapor/swift-openapi-vapor"): "1.2.0",
+            ("typescript", "radix-ui"): "1.8.1",
+            ("typescript", "@tanstack/react-table"): "9.3.1",
+            ("typescript", "motion"): "14.14.0",
+            ("typescript", "recharts"): "3.10.1",
+            ("typescript", "react-hook-form"): "7.92.0",
+            ("typescript", "next-intl"): "4.15.1",
+            ("typescript", "zustand"): "5.1.0",
+            ("typescript", "@reduxjs/toolkit"): "2.14.0",
+            ("typescript", "jotai"): "3.0.2",
+            ("typescript", "@tanstack/react-query"): "5.107.1",
+            ("typescript", "swr"): "2.5.1",
+            ("typescript", "better-auth"): "1.7.25",
+            ("typescript", "fuse.js"): "7.5.0",
+            ("typescript", "react-dropzone"): "20.2.0",
+            ("typescript", "@tanstack/react-virtual"): "3.14.26",
+            ("typescript", "@testing-library/react"): "16.3.3",
+            ("swift", "vapor/fluent"): "4.13.0",
+            ("swift", "vapor/fluent-postgres-driver"): "2.14.1",
+            ("swift", "vapor/jwt"): "5.2.0",
+            ("swift", "vapor/queues-redis-driver"): "1.1.2",
+            ("swift", "vapor/redis"): "4.14.0",
+            ("swift", "swift-server/async-http-client"): "1.37.0",
+            ("swift", "swift-otel/swift-otel"): "1.6.0",
         }
         rows = {(r["ecosystem"], r["name"]): r for r in self.records
                 if r["layer"] == "libraries"}
@@ -117,12 +140,13 @@ class MonitorTests(unittest.TestCase):
                 self.assertEqual(observed["status"], "PARTIAL")
                 self.assertEqual(observed["selection"], "BLOCKED")
 
-    def test_unversioned_records_remain_unknown_without_network(self):
+    def test_missing_baselines_remain_unknown_without_network(self):
         for ecosystem, package in (("typescript", "radix-ui"), ("swift", "vapor/jwt")):
             with self.subTest(package=package):
-                row = next(r for r in self.records if r.get("ecosystem") == ecosystem
-                           and r["name"] == package)
-                self.assertIsNone(row["baseline"])
+                row = deepcopy(next(r for r in self.records if r.get("ecosystem") == ecosystem
+                                    and r["name"] == package))
+                self.assertIsNotNone(row["baseline"])
+                row["baseline"] = None
                 def unexpected(*_):
                     self.fail("missing baselines must not probe upstream")
                 observed = m.evaluate([row], m.parse_date(row["reviewed"]),
