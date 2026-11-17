@@ -225,7 +225,7 @@ Screened all 20 canonical capabilities. `ADDED` denotes an optional catalog reco
 - **Anti-fit:** A conventional HTTP/model client with no MCP interoperability requirement.
 - **Fallback:** httpx or the established HTTP/model SDK.
 - **Compatibility:** Exact mcp v2.3.0 tagged `pyproject.toml`, README and installation docs declare Python >=3.10; tag CI 37070302489 passed Python 3.10 on Ubuntu/Windows with locked and lowest-direct dependencies. Later `main` docs state 3.11+ but do not negate tagged v2.3.0 proof. v2 stdio/Streamable HTTP supported; handshake protocols through 2025-11-25 and modern 2026-07-28 per-request envelope are distinct.
-- **Maintenance:** PyPI/tag 2.3.0, version-specific docs, protocol registry and successful tag CI reviewed 2026-11-17; keep version baseline unchanged.
+- **Maintenance:** PyPI 2.3.0; version-specific docs, protocol registry and successful tag CI reviewed 2026-11-17; keep version baseline unchanged.
 - **License:** MIT
 - **Official source:** [official package identity](https://pypi.org/project/mcp/); [tag pyproject](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/pyproject.toml); [tag install](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/docs/get-started/installation.md); [protocol registry](https://github.com/modelcontextprotocol/python-sdk/blob/v2.3.0/src/mcp-types/mcp_types/version.py); [tag CI PASS](https://github.com/modelcontextprotocol/python-sdk/actions/runs/37070302489); [advisories](https://github.com/modelcontextprotocol/python-sdk/security/advisories)
 - **Evidence status:** VERIFIED

@@ -61,7 +61,7 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Anti-fit:** Only compile-time types or already validated boundaries are involved.
 - **Fallback:** explicit checks or current validator.
 - **Compatibility:** Zod 4.6.7 supports Node.js and modern browsers; TypeScript >=5.5 tested, `strict` required; tagged manifest exports ESM/CJS. Catalog evaluation bounded to Next.js Node-runtime server boundaries and browser Client Components. Exact Edge/bundler target NOT_VERIFIED.
-- **Maintenance:** Tagged 4.6.7 package and official requirements rechecked 2026-11-17; no support SLA inferred.
+- **Maintenance:** npm latest 4.6.7; tagged package and official requirements rechecked 2026-11-17; no support SLA inferred.
 - **License:** MIT
 - **Official source:** [official package identity](https://registry.npmjs.org/zod/latest); [official requirements](https://zod.dev/); [tagged manifest](https://github.com/colinhacks/zod/blob/v4.6.7/packages/zod/package.json); [Next Edge restrictions](https://nextjs.org/docs/app/api-reference/edge)
 - **Evidence status:** VERIFIED
@@ -109,7 +109,7 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Anti-fit:** Browser-only work or an existing structured logger meets needs.
 - **Fallback:** console or existing telemetry.
 - **Compatibility:** Pino 10.4.0 tagged CI matrix covers Node 20/22/24/25/26, while v10 dropped Node 18. EVALUATE only for maintained Node.js 22/24 server-side JSON logging; Next.js `runtime='nodejs'` only. Worker-thread transports require explicit environment/bundler verification. Edge/Workers NOT_VERIFIED.
-- **Maintenance:** Tag v10.4.0 package, Node support policy, transport docs and CI matrix verified 2026-11-17; no generic runtime guarantee.
+- **Maintenance:** npm latest 10.4.0; tagged package, Node support policy, transport docs and CI matrix verified 2026-11-17; no generic runtime guarantee.
 - **License:** MIT
 - **Official source:** [official package identity](https://registry.npmjs.org/pino/latest); [tagged manifest](https://github.com/pinojs/pino/blob/v10.4.0/package.json); [LTS policy](https://github.com/pinojs/pino/blob/v10.4.0/docs/lts.md); [transport worker behavior](https://github.com/pinojs/pino/blob/v10.4.0/docs/transports.md); [tagged CI](https://github.com/pinojs/pino/blob/v10.4.0/.github/workflows/ci.yml)
 - **Evidence status:** VERIFIED
@@ -173,7 +173,7 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Anti-fit:** Opaque sessions or an existing vetted authentication library cover requirements.
 - **Fallback:** existing auth library or Web Crypto.
 - **Compatibility:** jose 6.2.15 is zero-dependency tree-shakeable ESM; tagged README lists Node.js, browsers and Cloudflare Workers subject to WebCrypto and algorithm availability. Catalog evaluation limited to Node.js 22/24 with explicit algorithms and ESM imports. CJS require(esm) only where Node ^20.19.0 || ^22.12.0 || >=23.0.0 permits; Next.js Edge target unverified.
-- **Maintenance:** Tag v6.2.15 manifest, runtime matrix and changelog fixes rechecked 2026-11-17; baseline not upgraded to 6.2.16.
+- **Maintenance:** npm latest 6.2.15; tagged manifest, runtime matrix and changelog fixes rechecked 2026-11-17; baseline not upgraded to 6.2.16.
 - **License:** MIT
 - **Official source:** [official package identity](https://registry.npmjs.org/jose/latest); [tagged README](https://github.com/panva/jose/blob/v6.2.15/README.md); [tagged manifest](https://github.com/panva/jose/blob/v6.2.15/package.json); [JWT verification options](https://github.com/panva/jose/blob/v6.2.15/docs/jwt/verify/interfaces/JWTVerifyOptions.md); [changelog](https://github.com/panva/jose/blob/main/CHANGELOG.md)
 - **Evidence status:** VERIFIED
@@ -477,7 +477,7 @@ Kysely is a type-safe query builder, not a required ORM. Its built-in PostgreSQL
 - **Anti-fit:** Guest-only apps, an existing tested identity solution or a simple provider integration already meeting policy.
 - **Fallback:** Next.js server-side session/DAL pattern or the current authentication system.
 - **Compatibility:** Official Next.js App Router Route Handler/RSC/server-action integration, including Next.js 16 Node.js Proxy guidance; supported database choices include built-in SQLite/PostgreSQL/MySQL and documented adapters. Scope to an explicit Node-runtime + supported database configuration; Edge middleware/community adapters NOT_PREAPPROVED. Cookie-presence checks are not session authentication.
-- **Maintenance:** Stable tagged 1.7.25 package verified 2026-11-17; official November 3 security release fixed 12 issues in 1.7.16. Installed Better Auth core, plugins and adapters must be version-aligned and rechecked.
+- **Maintenance:** npm latest 1.7.25; tagged manifest verified 2026-11-17; official November 3 security release fixed 12 issues in 1.7.16. Installed Better Auth core, plugins and adapters must be version-aligned and rechecked.
 - **License:** MIT
 - **Official source:** [official package identity](https://registry.npmjs.org/better-auth/latest); [Next.js integration](https://better-auth.com/docs/integrations/next); [database](https://better-auth.com/docs/concepts/database); [security/CSRF](https://better-auth.com/docs/reference/security); [2026-11-03 security fixes](https://better-auth.com/blog/security-release-2026-11-03); [tagged manifest](https://github.com/better-auth/better-auth/blob/v1.7.25/packages/better-auth/package.json)
 - **Evidence status:** VERIFIED
