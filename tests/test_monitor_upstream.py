@@ -240,6 +240,29 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(m.evaluate([row], m.parse_date(self.library["reviewed"]))[0]["production_use"],
                          "BLOCK_REVERIFY")
 
+    def test_mislabeled_github_beta_and_other_prereleases_are_not_stable_updates(self):
+        swift = next(r for r in self.records if r.get("ecosystem") == "swift"
+                     and r["name"] == "vapor/swift-openapi-vapor")
+        result = m.probe(swift, lambda *_: {
+            "tag_name": "2.0.0-beta.1", "prerelease": False
+        })
+        self.assertEqual(result["signal"], "PRERELEASE_ONLY")
+        self.assertIn("not a verified stable update", result["detail"])
+        self.assertEqual(result["probe_source"],
+                         "https://api.github.com/repos/vapor/swift-openapi-vapor/releases/latest")
+        self.assertIn("PRERELEASE_ONLY", m.render(m.evaluate(
+            [swift], m.parse_date(swift["reviewed"]), live=True,
+            fetch=lambda *_: {"tag_name": "2.0.0-beta.1", "prerelease": False}
+        ), m.parse_date(swift["reviewed"]), live=True))
+        self.assertTrue(m.is_prerelease("v1.2.0-rc.1"))
+        self.assertTrue(m.is_prerelease("0.66b2"))
+        self.assertFalse(m.is_prerelease("v0.58.1-0.20261009181718-2f1f834330b2"))
+        # A documented baseline already on a beta line is still comparable.
+        row = next(r for r in self.records if r.get("ecosystem") == "python"
+                   and r["name"] == "opentelemetry-instrumentation-fastapi")
+        self.assertEqual(m.probe(row, lambda *_: {"info": {"version": row["baseline"]}})["signal"],
+                         "NO_CHANGE_DETECTED")
+
     def test_new_release_is_signal_not_automatic_update(self):
         row = deepcopy(self.library)
         original = deepcopy(row)

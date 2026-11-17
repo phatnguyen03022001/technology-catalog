@@ -49,6 +49,13 @@ def primary_version(ecosystem: str, package: str, maintenance: str) -> str | Non
     return None
 
 OSV_ECOSYSTEM = {"rust": "crates.io", "go": "Go", "typescript": "npm", "python": "PyPI"}
+PRERELEASE = re.compile(
+    r"(?i)(?:[-._](?:alpha|beta|rc|dev|preview|pre)(?:[._-]?\d+)?|(?:^|[v!])(?:\d+\.)+\d+(?:a|b|rc|dev)\d+)(?=$|[+._-])"
+)
+
+def is_prerelease(version: str) -> bool:
+    """Check the tag itself; release APIs may mislabel beta tags as stable."""
+    return bool(PRERELEASE.search(version))
 
 def parse_date(value: str) -> date:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
@@ -207,6 +214,10 @@ def probe(row: dict, fetch=fetch_json, security=False) -> dict:
             version, endpoint, published, notes = release(row, fetch)
             if not version:
                 detail = "Upstream release has no comparable identifier"
+            elif row["layer"] == "libraries" and version.removeprefix("v") == row["baseline"].removeprefix("v"):
+                signal, detail = "NO_CHANGE_DETECTED", f"Release {version} matches recorded baseline"
+            elif is_prerelease(version):
+                signal, detail = "PRERELEASE_ONLY", f"Upstream reports prerelease {version}; not a verified stable update"
             elif row["layer"] == "frameworks":
                 # No baseline version: release after review DAY is a conservative signal.
                 when = date.fromisoformat(published[:10]) if published else None
@@ -216,10 +227,8 @@ def probe(row: dict, fetch=fetch_json, security=False) -> dict:
                     signal, detail = "UPSTREAM_CHANGED", f"Release {version} published {when} after review"
                 else:
                     signal, detail = "NO_CHANGE_DETECTED", f"Latest release {version} predates review"
-            elif version.removeprefix("v") != row["baseline"].removeprefix("v"):
-                signal, detail = "UPSTREAM_CHANGED", f"Recorded {row['baseline']} versus upstream {version}"
             else:
-                signal, detail = "NO_CHANGE_DETECTED", f"Release {version} matches recorded baseline"
+                signal, detail = "UPSTREAM_CHANGED", f"Recorded {row['baseline']} versus upstream {version}"
             # Explicit upstream release-note heading, not inferred from semver/stars.
             if signal == "UPSTREAM_CHANGED" and re.search(
                 r"(?im)^#{1,5}[ \t]*breaking changes?\b", notes
@@ -275,15 +284,15 @@ def render(rows: list[dict], now: date, live=False, include_unknown=False) -> st
              "|---:|---:|---:|---:|",
              f"| {ages['CURRENT']} | {ages['REVERIFY_REQUIRED']} | {ages['STALE']} | {ages['UNKNOWN']} |",
              "", "### Upstream signals", "",
-             "| NO_CHANGE_DETECTED | UPSTREAM_CHANGED | SECURITY_REVIEW_REQUIRED | CHECK_FAILED | UNKNOWN | NOT_CHECKED |",
-             "|---:|---:|---:|---:|---:|---:|",
-             f"| {signals['NO_CHANGE_DETECTED']} | {signals['UPSTREAM_CHANGED']} | {signals['SECURITY_REVIEW_REQUIRED']} | "
-             f"{signals['CHECK_FAILED']} | {signals['UNKNOWN']} | {signals['NOT_CHECKED']} |",
+             "| NO_CHANGE_DETECTED | UPSTREAM_CHANGED | PRERELEASE_ONLY | SECURITY_REVIEW_REQUIRED | CHECK_FAILED | UNKNOWN | NOT_CHECKED |",
+             "|---:|---:|---:|---:|---:|---:|---:|",
+             f"| {signals['NO_CHANGE_DETECTED']} | {signals['UPSTREAM_CHANGED']} | {signals['PRERELEASE_ONLY']} | "
+             f"{signals['SECURITY_REVIEW_REQUIRED']} | {signals['CHECK_FAILED']} | {signals['UNKNOWN']} | {signals['NOT_CHECKED']} |",
              "", "### Actionable alerts", "",
              "| Record / evidence scope | Evidence status / freshness / signal | Source | Verified / age | Change signal and next action |",
              "|---|---|---|---|---|"]
     flagged = [r for r in rows if r["freshness"] != "CURRENT"
-               or r["signal"] in ("UPSTREAM_CHANGED", "CHECK_FAILED", "SECURITY_REVIEW_REQUIRED")
+               or r["signal"] in ("UPSTREAM_CHANGED", "PRERELEASE_ONLY", "CHECK_FAILED", "SECURITY_REVIEW_REQUIRED")
                or include_unknown and r["signal"] in ("UNKNOWN", "NOT_CHECKED")]
     for r in flagged:
         action = ("Upstream check not run; freshness comes from the recorded evidence date"
@@ -291,6 +300,8 @@ def render(rows: list[dict], now: date, live=False, include_unknown=False) -> st
                   "Reverify affected claims before production use" if r["freshness"] == "REVERIFY_REQUIRED"
                   else "Assess release, security, compatibility and trade-offs; no auto bump"
                   if r["signal"] == "UPSTREAM_CHANGED" else
+                  "Prerelease is not a stable baseline update; review separately"
+                  if r["signal"] == "PRERELEASE_ONLY" else
                   "Review affected package/symbol and advisory applicability; do not infer unsafe installation"
                   if r["signal"] == "SECURITY_REVIEW_REQUIRED" else
                   "Retry or verify manually; never infer no change" if r["signal"] == "CHECK_FAILED"
@@ -307,7 +318,7 @@ def render(rows: list[dict], now: date, live=False, include_unknown=False) -> st
     lines += ["", "### Coverage limits", "",
               "- Providers pricing/quotas/ToS, language docs, conditional decisions and frameworks without release APIs are manual-review only. UNKNOWN is never evidence of no change; NOT_CHECKED means no upstream query ran and is not a freshness state.",
               "- An advisory published on/before the last review date is SECURITY_REVIEW_REQUIRED (applicability unknown), not a confirmed upstream change. Only newer advisory publications signal UPSTREAM_CHANGED.",
-              "- NO_CHANGE_DETECTED checks only release identifiers or release publication dates. It does not detect every breaking change, deprecation, platform, license or security notice.",
+              "- NO_CHANGE_DETECTED checks only release identifiers or release publication dates. PRERELEASE_ONLY denotes a tagged prerelease (including GitHub releases misflagged as stable), not a reviewed stable update; neither detects all breaking, platform, license or security changes.",
               "- OSV checks use a referenced version for Rust/Go/npm/PyPI only when --security is enabled. No result does not prove safe. Swift mapping remains UNKNOWN.",
               "- This workflow does not certify production readiness; project-specific security, licensing, compatibility and cost hard gates still apply.", ""]
     return "\n".join(lines)

@@ -172,8 +172,8 @@
 - **License:** BSD-3-Clause
 - **Official source:** [official registry or upstream](https://pkg.go.dev/golang.org/x/crypto@v0.58.0); [upstream/manifest](https://github.com/golang/crypto); [Go vulnerability database](https://vuln.go.dev/ID/GO-2026-5932.json)
 - **Evidence status:** VERIFIED
-- **Evidence reviewed:** 2026-11-02
-- **Unknowns:** Go module currently declares minimum Go 1.26. GO-2026-5932 identifies `golang.org/x/crypto/openpgp` and subpackages as unmaintained and unsafe by design, with no fixed version; do not select those packages. For other imports, review advisory applicability by imported package and symbol rather than treating a module-level match as proof of exposure. Other security advisories and exact target support: UNKNOWN; comparative benchmarks and operational burden: NOT_MEASURED. Recheck before project selection.
+- **Evidence reviewed:** 2026-11-17
+- **Unknowns:** Go module v0.58.0 requires Go >=1.26. GO-2026-5932 (revised 2026-11-02) affects `golang.org/x/crypto/openpgp` and subpackages contained in this module; the module-level affected range ends at the carve-out version `v0.58.1-0.20261009181718-2f1f834330b2`. The separate `golang.org/x/crypto/openpgp` module remains unsafe and affected at all versions with no known fix. Do not use those OpenPGP packages; unrelated x/crypto imports are not confirmed vulnerable by this advisory without package/symbol applicability evidence. Other advisories and target support: UNKNOWN; performance and TCO: NOT_MEASURED. Recheck before project selection.
 - **Selection:** EVALUATE
 
 ### `openai/openai-go`
